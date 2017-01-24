@@ -1,0 +1,3069 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 1
+
+
+   1              		.file	"chheap.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text._heap_init,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl _heap_init
+   9              		.type	_heap_init, @function
+  10              	_heap_init:
+  11              	.LFB15:
+  12              		.file 1 "./components/chibios_rt_portable_kernel_component/lib/src/chheap.c"
+  13              		.loc 1 75 0
+  14              		.cfi_startproc
+  15              		.loc 1 77 0
+  16 0000 71200000 		e_li %r9,0
+  17              		.loc 1 76 0
+  18 0004 7140E000 		e_lis %r10,.LANCHOR0@ha
+  19 0008 1C6A0000 		e_la %r3,.LANCHOR0@l(%r10)
+  20              		.loc 1 77 0
+  21 000c 55230008 		e_stw %r9,8(%r3)
+  22              		.loc 1 78 0
+  23 0010 5523000C 		e_stw %r9,12(%r3)
+  24              		.loc 1 76 0
+  25 0014 7120E000 		e_lis %r9,chCoreAlloc@ha
+  26              		.loc 1 80 0
+  27 0018 20F3     		se_addi %r3,16
+  28              		.loc 1 76 0
+  29 001a 1D290000 		e_la %r9,chCoreAlloc@l(%r9)
+  30              		.loc 1 84 0
+  31              		.loc 1 76 0
+  32 001e 552A0000 		e_stw %r9,.LANCHOR0@l(%r10)
+  33              		.loc 1 80 0
+  34 0022 78000000 		e_b chMtxInit
+  35              	.LVL0:
+  36              		.cfi_endproc
+  37              	.LFE15:
+  38              		.size	_heap_init, .-_heap_init
+  39              		.section	.text.chHeapInit,"axv",@progbits
+  40              		.align 1
+  41              		.p2align 4,,15
+  42              		.globl chHeapInit
+  43              		.type	chHeapInit, @function
+  44              	chHeapInit:
+  45              	.LFB16:
+  46              		.loc 1 99 0
+  47              		.cfi_startproc
+  48              	.LVL1:
+  49              		.loc 1 105 0
+  50 0000 D243     		se_stw %r4,8(%r3)
+  51              		.loc 1 104 0
+  52 0002 71200000 		e_li %r9,0
+  53              		.loc 1 108 0
+  54 0006 18A584F8 		e_addi %r5,%r5,-8
+  55              	.LVL2:
+  56              		.loc 1 104 0
+  57 000a 55230000 		e_stw %r9,0(%r3)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 2
+
+
+  58              	.LVL3:
+  59              		.loc 1 106 0
+  60 000e 5523000C 		e_stw %r9,12(%r3)
+  61              		.loc 1 107 0
+  62 0012 55240000 		e_stw %r9,0(%r4)
+  63              		.loc 1 108 0
+  64 0016 D154     		se_stw %r5,4(%r4)
+  65              		.loc 1 110 0
+  66 0018 20F3     		se_addi %r3,16
+  67              	.LVL4:
+  68              		.loc 1 114 0
+  69              		.loc 1 110 0
+  70 001a 78000000 		e_b chMtxInit
+  71              	.LVL5:
+  72              		.cfi_endproc
+  73              	.LFE16:
+  74              		.size	chHeapInit, .-chHeapInit
+  75              		.section	.text.chHeapAlloc,"axv",@progbits
+  76              		.align 1
+  77              		.p2align 4,,15
+  78              		.globl chHeapAlloc
+  79              		.type	chHeapAlloc, @function
+  80              	chHeapAlloc:
+  81              	.LFB17:
+  82              		.loc 1 132 0
+  83              		.cfi_startproc
+  84              	.LVL6:
+  85 0000 182106E8 		e_stwu %r1,-24(%r1)
+  86              	.LCFI0:
+  87              		.cfi_def_cfa_offset 24
+  88 0004 0080     		se_mflr %r0
+  89 0006 1B810908 		e_stmw %r28,8(%r1)
+  90 000a D701     		se_stw %r0,28(%r1)
+  91              		.cfi_offset 65, 4
+  92              		.cfi_offset 28, -16
+  93              		.cfi_offset 29, -12
+  94              		.cfi_offset 30, -8
+  95              		.cfi_offset 31, -4
+  96              		.loc 1 135 0
+  97 000c 013C     		se_mr %r28,%r3
+  98 000e 2A0C     		se_cmpi %r28,0
+  99 0010 7A1200A6 		e_beq %cr0,.L17
+ 100              	.L4:
+ 101              	.LVL7:
+ 102              		.loc 1 138 0
+ 103 0014 2064     		se_addi %r4,7
+ 104              	.LVL8:
+ 105              		.loc 1 139 0
+ 106 0016 1BDC8008 		e_addi %r30,%r28,8
+ 107              		.loc 1 138 0
+ 108 001a 189DC4F8 		e_andi %r29,%r4,-8
+ 109              	.LVL9:
+ 110              		.loc 1 140 0
+ 111 001e 187C8010 		e_addi %r3,%r28,16
+ 112 0022 78000001 		e_bl chMtxLock
+ 113              	.LVL10:
+ 114              		.loc 1 142 0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 3
+
+
+ 115 0026 7800000E 		e_b .L5
+ 116              	.LVL11:
+ 117              	.L9:
+ 118              		.loc 1 144 0
+ 119 002a C17F     		se_lwz %r7,4(%r31)
+ 120 002c 0D7D     		se_cmpl %r29,%r7
+ 121 002e 7A010042 		e_ble %cr0,.L18
+ 122 0032 01FE     		se_mr %r30,%r31
+ 123              	.LVL12:
+ 124              	.L5:
+ 125              		.loc 1 142 0
+ 126 0034 C0FE     		se_lwz %r31,0(%r30)
+ 127              	.LVL13:
+ 128 0036 183FA800 		e_cmpi %cr1,%r31,0
+ 129 003a 7A06FFF0 		e_bne %cr1,.L9
+ 130              		.loc 1 167 0
+ 131 003e 78000001 		e_bl chMtxUnlock
+ 132              	.LVL14:
+ 133              		.loc 1 171 0
+ 134 0042 513C0000 		e_lwz %r9,0(%r28)
+ 135 0046 1829A800 		e_cmpi %cr1,%r9,0
+ 136 004a 7A160078 		e_beq %cr1,.L11
+ 137              		.loc 1 172 0
+ 138 004e 187D8008 		e_addi %r3,%r29,8
+ 139 0052 7D2903A6 		mtctr %r9
+ 140 0056 0007     		se_bctrl
+ 141              	.LVL15:
+ 142              		.loc 1 173 0
+ 143 0058 2A03     		se_cmpi %r3,0
+ 144 005a 7A120068 		e_beq %cr0,.L11
+ 145              		.loc 1 174 0
+ 146 005e D0C3     		se_stw %r28,0(%r3)
+ 147              		.loc 1 175 0
+ 148 0060 D1D3     		se_stw %r29,4(%r3)
+ 149              		.loc 1 176 0
+ 150 0062 2073     		se_addi %r3,8
+ 151              	.LVL16:
+ 152              	.L8:
+ 153              		.loc 1 181 0
+ 154 0064 C701     		se_lwz %r0,28(%r1)
+ 155 0066 0090     		se_mtlr %r0
+ 156              		.cfi_remember_state
+ 157              		.cfi_restore 65
+ 158 0068 1B810808 		e_lmw %r28,8(%r1)
+ 159              	.LVL17:
+ 160 006c 2171     		se_addi %r1,24
+ 161              	.LCFI1:
+ 162              		.cfi_restore 31
+ 163              		.cfi_restore 30
+ 164              		.cfi_restore 29
+ 165              		.cfi_restore 28
+ 166              		.cfi_def_cfa_offset 0
+ 167 006e 0004     		se_blr
+ 168              	.LVL18:
+ 169              	.L18:
+ 170              	.LCFI2:
+ 171              		.cfi_restore_state
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 4
+
+
+ 172              		.loc 1 145 0
+ 173 0070 18DD8008 		e_addi %r6,%r29,8
+ 174              		.loc 1 149 0
+ 175 0074 513F0000 		e_lwz %r9,0(%r31)
+ 176              		.loc 1 145 0
+ 177 0078 0D76     		se_cmpl %r6,%r7
+ 178 007a 7A01001E 		e_ble %cr0,.L6
+ 179              		.loc 1 149 0
+ 180 007e 553E0000 		e_stw %r9,0(%r30)
+ 181              	.L7:
+ 182              		.loc 1 159 0
+ 183 0082 D0CF     		se_stw %r28,0(%r31)
+ 184              		.loc 1 161 0
+ 185 0084 78000001 		e_bl chMtxUnlock
+ 186              	.LVL19:
+ 187              		.loc 1 181 0
+ 188 0088 C701     		se_lwz %r0,28(%r1)
+ 189 008a 0090     		se_mtlr %r0
+ 190              		.cfi_remember_state
+ 191              		.cfi_restore 65
+ 192              		.loc 1 162 0
+ 193 008c 187F8008 		e_addi %r3,%r31,8
+ 194              		.loc 1 181 0
+ 195 0090 1B810808 		e_lmw %r28,8(%r1)
+ 196              	.LVL20:
+ 197 0094 2171     		se_addi %r1,24
+ 198              	.LCFI3:
+ 199              		.cfi_restore 28
+ 200              		.cfi_restore 29
+ 201              		.cfi_restore 30
+ 202              		.cfi_restore 31
+ 203              		.cfi_def_cfa_offset 0
+ 204 0096 0004     		se_blr
+ 205              	.LVL21:
+ 206              	.L6:
+ 207              	.LCFI4:
+ 208              		.cfi_restore_state
+ 209              		.loc 1 154 0
+ 210 0098 7D3F312E 		stwx %r9,%r31,%r6
+ 211              		.loc 1 153 0
+ 212 009c 7D5F3214 		add %r10,%r31,%r6
+ 213              	.LVL22:
+ 214 00a0 193DB4F8 		e_subfic %r9, %r29, -8
+ 215              		.loc 1 155 0
+ 216 00a4 7CE93A14 		add %r7,%r9,%r7
+ 217 00a8 54EA0004 		e_stw %r7,4(%r10)
+ 218              		.loc 1 156 0
+ 219 00ac 555E0000 		e_stw %r10,0(%r30)
+ 220              		.loc 1 157 0
+ 221 00b0 D1DF     		se_stw %r29,4(%r31)
+ 222 00b2 79FFFFD0 		e_b .L7
+ 223              	.LVL23:
+ 224              	.L17:
+ 225              		.loc 1 136 0
+ 226 00b6 7380E000 		e_lis %r28,.LANCHOR0@ha
+ 227 00ba 1F9C0000 		e_la %r28,.LANCHOR0@l(%r28)
+ 228 00be 79FFFF56 		e_b .L4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 5
+
+
+ 229              	.LVL24:
+ 230              	.L11:
+ 231              		.loc 1 180 0
+ 232 00c2 4803     		se_li %r3,0
+ 233 00c4 79FFFFA0 		e_b .L8
+ 234              		.cfi_endproc
+ 235              	.LFE17:
+ 236              		.size	chHeapAlloc, .-chHeapAlloc
+ 237              		.section	.text.chHeapFree,"axv",@progbits
+ 238              		.align 1
+ 239              		.p2align 4,,15
+ 240              		.globl chHeapFree
+ 241              		.type	chHeapFree, @function
+ 242              	chHeapFree:
+ 243              	.LFB18:
+ 244              		.loc 1 194 0
+ 245              		.cfi_startproc
+ 246              	.LVL25:
+ 247 0000 182106E8 		e_stwu %r1,-24(%r1)
+ 248              	.LCFI5:
+ 249              		.cfi_def_cfa_offset 24
+ 250 0004 0080     		se_mflr %r0
+ 251 0006 1BA1090C 		e_stmw %r29,12(%r1)
+ 252 000a D701     		se_stw %r0,28(%r1)
+ 253              		.cfi_offset 65, 4
+ 254              		.cfi_offset 29, -12
+ 255              		.cfi_offset 30, -8
+ 256              		.cfi_offset 31, -4
+ 257              		.loc 1 194 0
+ 258 000c 013D     		se_mr %r29,%r3
+ 259              		.loc 1 201 0
+ 260 000e 5063FFF8 		e_lwz %r3,-8(%r3)
+ 261              	.LVL26:
+ 262              		.loc 1 200 0
+ 263 0012 1BFD84F8 		e_addi %r31,%r29,-8
+ 264              	.LVL27:
+ 265              		.loc 1 202 0
+ 266 0016 1BC38008 		e_addi %r30,%r3,8
+ 267              	.LVL28:
+ 268              		.loc 1 203 0
+ 269 001a 20F3     		se_addi %r3,16
+ 270              	.LVL29:
+ 271 001c 78000001 		e_bl chMtxLock
+ 272              	.LVL30:
+ 273              		.loc 1 202 0
+ 274 0020 01E7     		se_mr %r7,%r30
+ 275              	.LVL31:
+ 276              	.L26:
+ 277              		.loc 1 210 0
+ 278 0022 0DE7     		se_cmpl %r7,%r30
+ 279 0024 7A120012 		e_beq %cr0,.L20
+ 280              	.L31:
+ 281              		.loc 1 210 0 is_stmt 0 discriminator 2
+ 282 0028 0DF7     		se_cmpl %r7,%r31
+ 283 002a 7A10000C 		e_blt %cr0,.L20
+ 284 002e C077     		se_lwz %r7,0(%r7)
+ 285              	.LVL32:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 6
+
+
+ 286              		.loc 1 210 0
+ 287 0030 0DE7     		se_cmpl %r7,%r30
+ 288 0032 7A02FFF6 		e_bne %cr0,.L31
+ 289              	.L20:
+ 290              		.loc 1 211 0 is_stmt 1 discriminator 3
+ 291 0036 C067     		se_lwz %r6,0(%r7)
+ 292              		.loc 1 210 0 discriminator 3
+ 293 0038 1826A800 		e_cmpi %cr1,%r6,0
+ 294 003c 7A160010 		e_beq %cr1,.L22
+ 295              		.loc 1 211 0
+ 296 0040 0D6F     		se_cmpl %r31,%r6
+ 297 0042 7A10000A 		e_blt %cr0,.L22
+ 298 0046 0167     		se_mr %r7,%r6
+ 299              	.LVL33:
+ 300              		.loc 1 229 0
+ 301 0048 79FFFFDA 		e_b .L26
+ 302              	.LVL34:
+ 303              	.L22:
+ 304              		.loc 1 213 0
+ 305 004c 54DDFFF8 		e_stw %r6,-8(%r29)
+ 306              		.loc 1 216 0
+ 307 0050 513DFFFC 		e_lwz %r9,-4(%r29)
+ 308              		.loc 1 214 0
+ 309 0054 D0F7     		se_stw %r31,0(%r7)
+ 310              		.loc 1 216 0
+ 311 0056 19498008 		e_addi %r10,%r9,8
+ 312 005a 50DDFFF8 		e_lwz %r6,-8(%r29)
+ 313 005e 7CBF5214 		add %r5,%r31,%r10
+ 314 0062 0C65     		se_cmp %r5,%r6
+ 315 0064 7A120024 		e_beq %cr0,.L32
+ 316              		.loc 1 221 0
+ 317 0068 51270004 		e_lwz %r9,4(%r7)
+ 318 006c 18C98008 		e_addi %r6,%r9,8
+ 319 0070 7CC73214 		add %r6,%r7,%r6
+ 320 0074 0D6F     		se_cmpl %r31,%r6
+ 321 0076 7A12003C 		e_beq %cr0,.L33
+ 322              	.L25:
+ 323              		.loc 1 233 0
+ 324 007a C701     		se_lwz %r0,28(%r1)
+ 325 007c 1BA1080C 		e_lmw %r29,12(%r1)
+ 326              	.LVL35:
+ 327 0080 0090     		se_mtlr %r0
+ 328              		.cfi_remember_state
+ 329              		.cfi_restore 65
+ 330 0082 2171     		se_addi %r1,24
+ 331              	.LCFI6:
+ 332              		.cfi_restore 31
+ 333              		.cfi_restore 30
+ 334              		.cfi_restore 29
+ 335              		.cfi_def_cfa_offset 0
+ 336              		.loc 1 231 0
+ 337 0084 78000000 		e_b chMtxUnlock
+ 338              	.LVL36:
+ 339              	.L32:
+ 340              	.LCFI7:
+ 341              		.cfi_restore_state
+ 342              		.loc 1 218 0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 7
+
+
+ 343 0088 51050004 		e_lwz %r8,4(%r5)
+ 344              		.loc 1 219 0
+ 345 008c 7D5F502E 		lwzx %r10,%r31,%r10
+ 346              		.loc 1 218 0
+ 347 0090 7D294214 		add %r9,%r9,%r8
+ 348              		.loc 1 219 0
+ 349 0094 555DFFF8 		e_stw %r10,-8(%r29)
+ 350              		.loc 1 218 0
+ 351 0098 19298008 		e_addi %r9,%r9,8
+ 352 009c 553DFFFC 		e_stw %r9,-4(%r29)
+ 353              		.loc 1 221 0
+ 354 00a0 51270004 		e_lwz %r9,4(%r7)
+ 355 00a4 18C98008 		e_addi %r6,%r9,8
+ 356 00a8 7CC73214 		add %r6,%r7,%r6
+ 357 00ac 0D6F     		se_cmpl %r31,%r6
+ 358 00ae 7A02FFCC 		e_bne %cr0,.L25
+ 359              	.L33:
+ 360              		.loc 1 223 0
+ 361 00b2 511DFFFC 		e_lwz %r8,-4(%r29)
+ 362              		.loc 1 224 0
+ 363 00b6 515DFFF8 		e_lwz %r10,-8(%r29)
+ 364              		.loc 1 223 0
+ 365 00ba 7D294214 		add %r9,%r9,%r8
+ 366              		.loc 1 224 0
+ 367 00be 55470000 		e_stw %r10,0(%r7)
+ 368              		.loc 1 223 0
+ 369 00c2 19298008 		e_addi %r9,%r9,8
+ 370 00c6 55270004 		e_stw %r9,4(%r7)
+ 371              		.loc 1 233 0
+ 372 00ca C701     		se_lwz %r0,28(%r1)
+ 373 00cc 1BA1080C 		e_lmw %r29,12(%r1)
+ 374              	.LVL37:
+ 375 00d0 0090     		se_mtlr %r0
+ 376              		.cfi_restore 65
+ 377 00d2 2171     		se_addi %r1,24
+ 378              	.LCFI8:
+ 379              		.cfi_restore 29
+ 380              		.cfi_restore 30
+ 381              		.cfi_restore 31
+ 382              		.cfi_def_cfa_offset 0
+ 383              		.loc 1 231 0
+ 384 00d4 78000000 		e_b chMtxUnlock
+ 385              	.LVL38:
+ 386              		.cfi_endproc
+ 387              	.LFE18:
+ 388              		.size	chHeapFree, .-chHeapFree
+ 389              		.section	.text.chHeapStatus,"axv",@progbits
+ 390              		.align 1
+ 391              		.p2align 4,,15
+ 392              		.globl chHeapStatus
+ 393              		.type	chHeapStatus, @function
+ 394              	chHeapStatus:
+ 395              	.LFB19:
+ 396              		.loc 1 250 0
+ 397              		.cfi_startproc
+ 398              	.LVL39:
+ 399 0000 182106F0 		e_stwu %r1,-16(%r1)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 8
+
+
+ 400              	.LCFI9:
+ 401              		.cfi_def_cfa_offset 16
+ 402 0004 0080     		se_mflr %r0
+ 403 0006 1BC10908 		e_stmw %r30,8(%r1)
+ 404 000a D501     		se_stw %r0,20(%r1)
+ 405              		.cfi_offset 65, 4
+ 406              		.cfi_offset 30, -8
+ 407              		.cfi_offset 31, -4
+ 408              		.loc 1 254 0
+ 409 000c 013F     		se_mr %r31,%r3
+ 410              		.loc 1 250 0
+ 411 000e 014E     		se_mr %r30,%r4
+ 412              		.loc 1 254 0
+ 413 0010 2A0F     		se_cmpi %r31,0
+ 414 0012 7A120052 		e_beq %cr0,.L44
+ 415              	.L35:
+ 416              	.LVL40:
+ 417              		.loc 1 257 0
+ 418 0016 187F8010 		e_addi %r3,%r31,16
+ 419 001a 78000001 		e_bl chMtxLock
+ 420              	.LVL41:
+ 421              		.loc 1 260 0
+ 422 001e 513F0008 		e_lwz %r9,8(%r31)
+ 423 0022 71400000 		e_li %r10,0
+ 424 0026 480F     		se_li %r31,0
+ 425              	.LVL42:
+ 426 0028 1829A800 		e_cmpi %cr1,%r9,0
+ 427 002c 7A16001A 		e_beq %cr1,.L36
+ 428              	.LVL43:
+ 429              	.L37:
+ 430              		.loc 1 261 0 discriminator 3
+ 431 0030 51090004 		e_lwz %r8,4(%r9)
+ 432              		.loc 1 260 0 discriminator 3
+ 433 0034 200F     		se_addi %r31,1
+ 434              	.LVL44:
+ 435 0036 51290000 		e_lwz %r9,0(%r9)
+ 436              		.loc 1 261 0 discriminator 3
+ 437 003a 7D4A4214 		add %r10,%r10,%r8
+ 438              	.LVL45:
+ 439              		.loc 1 260 0 discriminator 3
+ 440 003e 1829A800 		e_cmpi %cr1,%r9,0
+ 441 0042 7A06FFEE 		e_bne %cr1,.L37
+ 442              	.LVL46:
+ 443              	.L36:
+ 444              		.loc 1 262 0
+ 445 0046 183EA800 		e_cmpi %cr1,%r30,0
+ 446 004a 7A160008 		e_beq %cr1,.L38
+ 447              		.loc 1 263 0
+ 448 004e 555E0000 		e_stw %r10,0(%r30)
+ 449              	.L38:
+ 450              		.loc 1 265 0
+ 451 0052 78000001 		e_bl chMtxUnlock
+ 452              	.LVL47:
+ 453              		.loc 1 267 0
+ 454 0056 C501     		se_lwz %r0,20(%r1)
+ 455 0058 0090     		se_mtlr %r0
+ 456              		.cfi_remember_state
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 9
+
+
+ 457              		.cfi_restore 65
+ 458 005a 01F3     		se_mr %r3,%r31
+ 459 005c 1BC10808 		e_lmw %r30,8(%r1)
+ 460              	.LVL48:
+ 461 0060 20F1     		se_addi %r1,16
+ 462              	.LCFI10:
+ 463              		.cfi_restore 31
+ 464              		.cfi_restore 30
+ 465              		.cfi_def_cfa_offset 0
+ 466 0062 0004     		se_blr
+ 467              	.LVL49:
+ 468              	.L44:
+ 469              	.LCFI11:
+ 470              		.cfi_restore_state
+ 471              		.loc 1 255 0
+ 472 0064 73E0E000 		e_lis %r31,.LANCHOR0@ha
+ 473 0068 1FFF0000 		e_la %r31,.LANCHOR0@l(%r31)
+ 474 006c 79FFFFAA 		e_b .L35
+ 475              		.cfi_endproc
+ 476              	.LFE19:
+ 477              		.size	chHeapStatus, .-chHeapStatus
+ 478              		.section	.bss.default_heap,"aw",@nobits
+ 479              		.align 3
+ 480              		.set	.LANCHOR0,. + 0
+ 481              		.type	default_heap, @object
+ 482              		.size	default_heap, 32
+ 483              	default_heap:
+ 484 0000 00000000 		.zero	32
+ 484      00000000 
+ 484      00000000 
+ 484      00000000 
+ 484      00000000 
+ 485              		.section	".text","axv"
+ 486              	.Letext0:
+ 487              		.file 2 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 488              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 489              		.file 4 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 490              		.file 5 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/include/chtypes.h"
+ 491              		.file 6 "./components/chibios_rt_portable_kernel_component/lib/include/chlists.h"
+ 492              		.file 7 "./components/chibios_rt_portable_kernel_component/lib/include/chthreads.h"
+ 493              		.file 8 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/include/chcore.h"
+ 494              		.file 9 "./components/chibios_rt_portable_kernel_component/lib/include/chmtx.h"
+ 495              		.file 10 "./components/chibios_rt_portable_kernel_component/lib/include/chmemcore.h"
+ 496              		.file 11 "./components/chibios_rt_portable_kernel_component/lib/include/chheap.h"
+ 497              		.section	.debug_info,"",@progbits
+ 498              	.Ldebug_info0:
+ 499 0000 00000813 		.4byte	0x813
+ 500 0004 0002     		.2byte	0x2
+ 501 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 502 000a 04       		.byte	0x4
+ 503 000b 01       		.uleb128 0x1
+ 504 000c 00000000 		.4byte	.LASF82
+ 505 0010 01       		.byte	0x1
+ 506 0011 00000000 		.4byte	.LASF83
+ 507 0015 00000000 		.4byte	.LASF84
+ 508 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 509 001d 00000000 		.4byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 10
+
+
+ 510 0021 00000000 		.4byte	0
+ 511 0025 00000000 		.4byte	.Ldebug_line0
+ 512 0029 02       		.uleb128 0x2
+ 513 002a 04       		.byte	0x4
+ 514 002b 05       		.byte	0x5
+ 515 002c 696E7400 		.string	"int"
+ 516 0030 03       		.uleb128 0x3
+ 517 0031 00000000 		.4byte	.LASF3
+ 518 0035 02       		.byte	0x2
+ 519 0036 D4       		.byte	0xd4
+ 520 0037 0000003B 		.4byte	0x3b
+ 521 003b 04       		.uleb128 0x4
+ 522 003c 04       		.byte	0x4
+ 523 003d 07       		.byte	0x7
+ 524 003e 00000000 		.4byte	.LASF0
+ 525 0042 04       		.uleb128 0x4
+ 526 0043 04       		.byte	0x4
+ 527 0044 05       		.byte	0x5
+ 528 0045 00000000 		.4byte	.LASF1
+ 529 0049 04       		.uleb128 0x4
+ 530 004a 01       		.byte	0x1
+ 531 004b 06       		.byte	0x6
+ 532 004c 00000000 		.4byte	.LASF2
+ 533 0050 03       		.uleb128 0x3
+ 534 0051 00000000 		.4byte	.LASF4
+ 535 0055 03       		.byte	0x3
+ 536 0056 1D       		.byte	0x1d
+ 537 0057 0000005B 		.4byte	0x5b
+ 538 005b 04       		.uleb128 0x4
+ 539 005c 01       		.byte	0x1
+ 540 005d 08       		.byte	0x8
+ 541 005e 00000000 		.4byte	.LASF5
+ 542 0062 04       		.uleb128 0x4
+ 543 0063 02       		.byte	0x2
+ 544 0064 05       		.byte	0x5
+ 545 0065 00000000 		.4byte	.LASF6
+ 546 0069 04       		.uleb128 0x4
+ 547 006a 02       		.byte	0x2
+ 548 006b 07       		.byte	0x7
+ 549 006c 00000000 		.4byte	.LASF7
+ 550 0070 03       		.uleb128 0x3
+ 551 0071 00000000 		.4byte	.LASF8
+ 552 0075 03       		.byte	0x3
+ 553 0076 3F       		.byte	0x3f
+ 554 0077 00000042 		.4byte	0x42
+ 555 007b 03       		.uleb128 0x3
+ 556 007c 00000000 		.4byte	.LASF9
+ 557 0080 03       		.byte	0x3
+ 558 0081 41       		.byte	0x41
+ 559 0082 00000086 		.4byte	0x86
+ 560 0086 04       		.uleb128 0x4
+ 561 0087 04       		.byte	0x4
+ 562 0088 07       		.byte	0x7
+ 563 0089 00000000 		.4byte	.LASF10
+ 564 008d 04       		.uleb128 0x4
+ 565 008e 08       		.byte	0x8
+ 566 008f 05       		.byte	0x5
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 11
+
+
+ 567 0090 00000000 		.4byte	.LASF11
+ 568 0094 04       		.uleb128 0x4
+ 569 0095 08       		.byte	0x8
+ 570 0096 07       		.byte	0x7
+ 571 0097 00000000 		.4byte	.LASF12
+ 572 009b 03       		.uleb128 0x3
+ 573 009c 00000000 		.4byte	.LASF13
+ 574 00a0 04       		.byte	0x4
+ 575 00a1 15       		.byte	0x15
+ 576 00a2 00000050 		.4byte	0x50
+ 577 00a6 03       		.uleb128 0x3
+ 578 00a7 00000000 		.4byte	.LASF14
+ 579 00ab 04       		.byte	0x4
+ 580 00ac 2C       		.byte	0x2c
+ 581 00ad 00000070 		.4byte	0x70
+ 582 00b1 03       		.uleb128 0x3
+ 583 00b2 00000000 		.4byte	.LASF15
+ 584 00b6 04       		.byte	0x4
+ 585 00b7 2D       		.byte	0x2d
+ 586 00b8 0000007B 		.4byte	0x7b
+ 587 00bc 04       		.uleb128 0x4
+ 588 00bd 01       		.byte	0x1
+ 589 00be 02       		.byte	0x2
+ 590 00bf 00000000 		.4byte	.LASF16
+ 591 00c3 03       		.uleb128 0x3
+ 592 00c4 00000000 		.4byte	.LASF17
+ 593 00c8 05       		.byte	0x5
+ 594 00c9 39       		.byte	0x39
+ 595 00ca 0000009B 		.4byte	0x9b
+ 596 00ce 03       		.uleb128 0x3
+ 597 00cf 00000000 		.4byte	.LASF18
+ 598 00d3 05       		.byte	0x5
+ 599 00d4 3A       		.byte	0x3a
+ 600 00d5 0000009B 		.4byte	0x9b
+ 601 00d9 03       		.uleb128 0x3
+ 602 00da 00000000 		.4byte	.LASF19
+ 603 00de 05       		.byte	0x5
+ 604 00df 3B       		.byte	0x3b
+ 605 00e0 0000009B 		.4byte	0x9b
+ 606 00e4 03       		.uleb128 0x3
+ 607 00e5 00000000 		.4byte	.LASF20
+ 608 00e9 05       		.byte	0x5
+ 609 00ea 3C       		.byte	0x3c
+ 610 00eb 0000009B 		.4byte	0x9b
+ 611 00ef 03       		.uleb128 0x3
+ 612 00f0 00000000 		.4byte	.LASF21
+ 613 00f4 05       		.byte	0x5
+ 614 00f5 3D       		.byte	0x3d
+ 615 00f6 000000B1 		.4byte	0xb1
+ 616 00fa 03       		.uleb128 0x3
+ 617 00fb 00000000 		.4byte	.LASF22
+ 618 00ff 05       		.byte	0x5
+ 619 0100 3E       		.byte	0x3e
+ 620 0101 000000A6 		.4byte	0xa6
+ 621 0105 03       		.uleb128 0x3
+ 622 0106 00000000 		.4byte	.LASF23
+ 623 010a 05       		.byte	0x5
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 12
+
+
+ 624 010b 40       		.byte	0x40
+ 625 010c 000000B1 		.4byte	0xb1
+ 626 0110 03       		.uleb128 0x3
+ 627 0111 00000000 		.4byte	.LASF24
+ 628 0115 05       		.byte	0x5
+ 629 0116 42       		.byte	0x42
+ 630 0117 000000B1 		.4byte	0xb1
+ 631 011b 03       		.uleb128 0x3
+ 632 011c 00000000 		.4byte	.LASF25
+ 633 0120 06       		.byte	0x6
+ 634 0121 2A       		.byte	0x2a
+ 635 0122 00000126 		.4byte	0x126
+ 636 0126 05       		.uleb128 0x5
+ 637 0127 00000000 		.4byte	.LASF25
+ 638 012b 48       		.byte	0x48
+ 639 012c 07       		.byte	0x7
+ 640 012d 5E       		.byte	0x5e
+ 641 012e 0000024B 		.4byte	0x24b
+ 642 0132 06       		.uleb128 0x6
+ 643 0133 00000000 		.4byte	.LASF26
+ 644 0137 07       		.byte	0x7
+ 645 0138 5F       		.byte	0x5f
+ 646 0139 00000270 		.4byte	0x270
+ 647 013d 02       		.byte	0x2
+ 648 013e 23       		.byte	0x23
+ 649 013f 00       		.uleb128 0
+ 650 0140 06       		.uleb128 0x6
+ 651 0141 00000000 		.4byte	.LASF27
+ 652 0145 07       		.byte	0x7
+ 653 0146 61       		.byte	0x61
+ 654 0147 00000270 		.4byte	0x270
+ 655 014b 02       		.byte	0x2
+ 656 014c 23       		.byte	0x23
+ 657 014d 04       		.uleb128 0x4
+ 658 014e 06       		.uleb128 0x6
+ 659 014f 00000000 		.4byte	.LASF28
+ 660 0153 07       		.byte	0x7
+ 661 0154 63       		.byte	0x63
+ 662 0155 000000EF 		.4byte	0xef
+ 663 0159 02       		.byte	0x2
+ 664 015a 23       		.byte	0x23
+ 665 015b 08       		.uleb128 0x8
+ 666 015c 06       		.uleb128 0x6
+ 667 015d 00000000 		.4byte	.LASF29
+ 668 0161 07       		.byte	0x7
+ 669 0162 64       		.byte	0x64
+ 670 0163 0000040B 		.4byte	0x40b
+ 671 0167 02       		.byte	0x2
+ 672 0168 23       		.byte	0x23
+ 673 0169 0C       		.uleb128 0xc
+ 674 016a 06       		.uleb128 0x6
+ 675 016b 00000000 		.4byte	.LASF30
+ 676 016f 07       		.byte	0x7
+ 677 0170 66       		.byte	0x66
+ 678 0171 00000270 		.4byte	0x270
+ 679 0175 02       		.byte	0x2
+ 680 0176 23       		.byte	0x23
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 13
+
+
+ 681 0177 10       		.uleb128 0x10
+ 682 0178 06       		.uleb128 0x6
+ 683 0179 00000000 		.4byte	.LASF31
+ 684 017d 07       		.byte	0x7
+ 685 017e 67       		.byte	0x67
+ 686 017f 00000270 		.4byte	0x270
+ 687 0183 02       		.byte	0x2
+ 688 0184 23       		.byte	0x23
+ 689 0185 14       		.uleb128 0x14
+ 690 0186 06       		.uleb128 0x6
+ 691 0187 00000000 		.4byte	.LASF32
+ 692 018b 07       		.byte	0x7
+ 693 018c 6E       		.byte	0x6e
+ 694 018d 0000057F 		.4byte	0x57f
+ 695 0191 02       		.byte	0x2
+ 696 0192 23       		.byte	0x23
+ 697 0193 18       		.uleb128 0x18
+ 698 0194 06       		.uleb128 0x6
+ 699 0195 00000000 		.4byte	.LASF33
+ 700 0199 07       		.byte	0x7
+ 701 019a 79       		.byte	0x79
+ 702 019b 000000CE 		.4byte	0xce
+ 703 019f 02       		.byte	0x2
+ 704 01a0 23       		.byte	0x23
+ 705 01a1 1C       		.uleb128 0x1c
+ 706 01a2 06       		.uleb128 0x6
+ 707 01a3 00000000 		.4byte	.LASF34
+ 708 01a7 07       		.byte	0x7
+ 709 01a8 7D       		.byte	0x7d
+ 710 01a9 000000C3 		.4byte	0xc3
+ 711 01ad 02       		.byte	0x2
+ 712 01ae 23       		.byte	0x23
+ 713 01af 1D       		.uleb128 0x1d
+ 714 01b0 06       		.uleb128 0x6
+ 715 01b1 00000000 		.4byte	.LASF35
+ 716 01b5 07       		.byte	0x7
+ 717 01b6 82       		.byte	0x82
+ 718 01b7 000000D9 		.4byte	0xd9
+ 719 01bb 02       		.byte	0x2
+ 720 01bc 23       		.byte	0x23
+ 721 01bd 1E       		.uleb128 0x1e
+ 722 01be 06       		.uleb128 0x6
+ 723 01bf 00000000 		.4byte	.LASF36
+ 724 01c3 07       		.byte	0x7
+ 725 01c4 88       		.byte	0x88
+ 726 01c5 000000E4 		.4byte	0xe4
+ 727 01c9 02       		.byte	0x2
+ 728 01ca 23       		.byte	0x23
+ 729 01cb 1F       		.uleb128 0x1f
+ 730 01cc 06       		.uleb128 0x6
+ 731 01cd 00000000 		.4byte	.LASF37
+ 732 01d1 07       		.byte	0x7
+ 733 01d2 8F       		.byte	0x8f
+ 734 01d3 0000042B 		.4byte	0x42b
+ 735 01d7 02       		.byte	0x2
+ 736 01d8 23       		.byte	0x23
+ 737 01d9 20       		.uleb128 0x20
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 14
+
+
+ 738 01da 07       		.uleb128 0x7
+ 739 01db 705F7500 		.string	"p_u"
+ 740 01df 07       		.byte	0x7
+ 741 01e0 B4       		.byte	0xb4
+ 742 01e1 0000054A 		.4byte	0x54a
+ 743 01e5 02       		.byte	0x2
+ 744 01e6 23       		.byte	0x23
+ 745 01e7 24       		.uleb128 0x24
+ 746 01e8 06       		.uleb128 0x6
+ 747 01e9 00000000 		.4byte	.LASF38
+ 748 01ed 07       		.byte	0x7
+ 749 01ee B9       		.byte	0xb9
+ 750 01ef 00000298 		.4byte	0x298
+ 751 01f3 02       		.byte	0x2
+ 752 01f4 23       		.byte	0x23
+ 753 01f5 28       		.uleb128 0x28
+ 754 01f6 06       		.uleb128 0x6
+ 755 01f7 00000000 		.4byte	.LASF39
+ 756 01fb 07       		.byte	0x7
+ 757 01fc BF       		.byte	0xbf
+ 758 01fd 00000276 		.4byte	0x276
+ 759 0201 02       		.byte	0x2
+ 760 0202 23       		.byte	0x23
+ 761 0203 2C       		.uleb128 0x2c
+ 762 0204 06       		.uleb128 0x6
+ 763 0205 00000000 		.4byte	.LASF40
+ 764 0209 07       		.byte	0x7
+ 765 020a C3       		.byte	0xc3
+ 766 020b 000000FA 		.4byte	0xfa
+ 767 020f 02       		.byte	0x2
+ 768 0210 23       		.byte	0x23
+ 769 0211 34       		.uleb128 0x34
+ 770 0212 06       		.uleb128 0x6
+ 771 0213 00000000 		.4byte	.LASF41
+ 772 0217 07       		.byte	0x7
+ 773 0218 C9       		.byte	0xc9
+ 774 0219 00000105 		.4byte	0x105
+ 775 021d 02       		.byte	0x2
+ 776 021e 23       		.byte	0x23
+ 777 021f 38       		.uleb128 0x38
+ 778 0220 06       		.uleb128 0x6
+ 779 0221 00000000 		.4byte	.LASF42
+ 780 0225 07       		.byte	0x7
+ 781 0226 D0       		.byte	0xd0
+ 782 0227 00000591 		.4byte	0x591
+ 783 022b 02       		.byte	0x2
+ 784 022c 23       		.byte	0x23
+ 785 022d 3C       		.uleb128 0x3c
+ 786 022e 06       		.uleb128 0x6
+ 787 022f 00000000 		.4byte	.LASF43
+ 788 0233 07       		.byte	0x7
+ 789 0234 D4       		.byte	0xd4
+ 790 0235 000000EF 		.4byte	0xef
+ 791 0239 02       		.byte	0x2
+ 792 023a 23       		.byte	0x23
+ 793 023b 40       		.uleb128 0x40
+ 794 023c 06       		.uleb128 0x6
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 15
+
+
+ 795 023d 00000000 		.4byte	.LASF44
+ 796 0241 07       		.byte	0x7
+ 797 0242 DA       		.byte	0xda
+ 798 0243 000002E5 		.4byte	0x2e5
+ 799 0247 02       		.byte	0x2
+ 800 0248 23       		.byte	0x23
+ 801 0249 44       		.uleb128 0x44
+ 802 024a 00       		.byte	0
+ 803 024b 08       		.uleb128 0x8
+ 804 024c 08       		.byte	0x8
+ 805 024d 06       		.byte	0x6
+ 806 024e 61       		.byte	0x61
+ 807 024f 00000270 		.4byte	0x270
+ 808 0253 06       		.uleb128 0x6
+ 809 0254 00000000 		.4byte	.LASF26
+ 810 0258 06       		.byte	0x6
+ 811 0259 62       		.byte	0x62
+ 812 025a 00000270 		.4byte	0x270
+ 813 025e 02       		.byte	0x2
+ 814 025f 23       		.byte	0x23
+ 815 0260 00       		.uleb128 0
+ 816 0261 06       		.uleb128 0x6
+ 817 0262 00000000 		.4byte	.LASF27
+ 818 0266 06       		.byte	0x6
+ 819 0267 64       		.byte	0x64
+ 820 0268 00000270 		.4byte	0x270
+ 821 026c 02       		.byte	0x2
+ 822 026d 23       		.byte	0x23
+ 823 026e 04       		.uleb128 0x4
+ 824 026f 00       		.byte	0
+ 825 0270 09       		.uleb128 0x9
+ 826 0271 04       		.byte	0x4
+ 827 0272 0000011B 		.4byte	0x11b
+ 828 0276 03       		.uleb128 0x3
+ 829 0277 00000000 		.4byte	.LASF45
+ 830 027b 06       		.byte	0x6
+ 831 027c 66       		.byte	0x66
+ 832 027d 0000024B 		.4byte	0x24b
+ 833 0281 08       		.uleb128 0x8
+ 834 0282 04       		.byte	0x4
+ 835 0283 06       		.byte	0x6
+ 836 0284 6B       		.byte	0x6b
+ 837 0285 00000298 		.4byte	0x298
+ 838 0289 06       		.uleb128 0x6
+ 839 028a 00000000 		.4byte	.LASF26
+ 840 028e 06       		.byte	0x6
+ 841 028f 6D       		.byte	0x6d
+ 842 0290 00000270 		.4byte	0x270
+ 843 0294 02       		.byte	0x2
+ 844 0295 23       		.byte	0x23
+ 845 0296 00       		.uleb128 0
+ 846 0297 00       		.byte	0
+ 847 0298 03       		.uleb128 0x3
+ 848 0299 00000000 		.4byte	.LASF46
+ 849 029d 06       		.byte	0x6
+ 850 029e 70       		.byte	0x70
+ 851 029f 00000281 		.4byte	0x281
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 16
+
+
+ 852 02a3 08       		.uleb128 0x8
+ 853 02a4 08       		.byte	0x8
+ 854 02a5 08       		.byte	0x8
+ 855 02a6 9C       		.byte	0x9c
+ 856 02a7 000002B8 		.4byte	0x2b8
+ 857 02ab 07       		.uleb128 0x7
+ 858 02ac 6100     		.string	"a"
+ 859 02ae 08       		.byte	0x8
+ 860 02af 9D       		.byte	0x9d
+ 861 02b0 000002B8 		.4byte	0x2b8
+ 862 02b4 02       		.byte	0x2
+ 863 02b5 23       		.byte	0x23
+ 864 02b6 00       		.uleb128 0
+ 865 02b7 00       		.byte	0
+ 866 02b8 0A       		.uleb128 0xa
+ 867 02b9 0000009B 		.4byte	0x9b
+ 868 02bd 000002C8 		.4byte	0x2c8
+ 869 02c1 0B       		.uleb128 0xb
+ 870 02c2 000002C8 		.4byte	0x2c8
+ 871 02c6 07       		.byte	0x7
+ 872 02c7 00       		.byte	0
+ 873 02c8 04       		.uleb128 0x4
+ 874 02c9 04       		.byte	0x4
+ 875 02ca 07       		.byte	0x7
+ 876 02cb 00000000 		.4byte	.LASF47
+ 877 02cf 03       		.uleb128 0x3
+ 878 02d0 00000000 		.4byte	.LASF48
+ 879 02d4 08       		.byte	0x8
+ 880 02d5 9E       		.byte	0x9e
+ 881 02d6 000002A3 		.4byte	0x2a3
+ 882 02da 03       		.uleb128 0x3
+ 883 02db 00000000 		.4byte	.LASF49
+ 884 02df 08       		.byte	0x8
+ 885 02e0 A3       		.byte	0xa3
+ 886 02e1 000002E5 		.4byte	0x2e5
+ 887 02e5 0C       		.uleb128 0xc
+ 888 02e6 04       		.byte	0x4
+ 889 02e7 05       		.uleb128 0x5
+ 890 02e8 00000000 		.4byte	.LASF50
+ 891 02ec 50       		.byte	0x50
+ 892 02ed 08       		.byte	0x8
+ 893 02ee D6       		.byte	0xd6
+ 894 02ef 0000040B 		.4byte	0x40b
+ 895 02f3 07       		.uleb128 0x7
+ 896 02f4 637200   		.string	"cr"
+ 897 02f7 08       		.byte	0x8
+ 898 02f8 D7       		.byte	0xd7
+ 899 02f9 000002DA 		.4byte	0x2da
+ 900 02fd 02       		.byte	0x2
+ 901 02fe 23       		.byte	0x23
+ 902 02ff 00       		.uleb128 0
+ 903 0300 07       		.uleb128 0x7
+ 904 0301 72313400 		.string	"r14"
+ 905 0305 08       		.byte	0x8
+ 906 0306 D8       		.byte	0xd8
+ 907 0307 000002DA 		.4byte	0x2da
+ 908 030b 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 17
+
+
+ 909 030c 23       		.byte	0x23
+ 910 030d 04       		.uleb128 0x4
+ 911 030e 07       		.uleb128 0x7
+ 912 030f 72313500 		.string	"r15"
+ 913 0313 08       		.byte	0x8
+ 914 0314 D9       		.byte	0xd9
+ 915 0315 000002DA 		.4byte	0x2da
+ 916 0319 02       		.byte	0x2
+ 917 031a 23       		.byte	0x23
+ 918 031b 08       		.uleb128 0x8
+ 919 031c 07       		.uleb128 0x7
+ 920 031d 72313600 		.string	"r16"
+ 921 0321 08       		.byte	0x8
+ 922 0322 DA       		.byte	0xda
+ 923 0323 000002DA 		.4byte	0x2da
+ 924 0327 02       		.byte	0x2
+ 925 0328 23       		.byte	0x23
+ 926 0329 0C       		.uleb128 0xc
+ 927 032a 07       		.uleb128 0x7
+ 928 032b 72313700 		.string	"r17"
+ 929 032f 08       		.byte	0x8
+ 930 0330 DB       		.byte	0xdb
+ 931 0331 000002DA 		.4byte	0x2da
+ 932 0335 02       		.byte	0x2
+ 933 0336 23       		.byte	0x23
+ 934 0337 10       		.uleb128 0x10
+ 935 0338 07       		.uleb128 0x7
+ 936 0339 72313800 		.string	"r18"
+ 937 033d 08       		.byte	0x8
+ 938 033e DC       		.byte	0xdc
+ 939 033f 000002DA 		.4byte	0x2da
+ 940 0343 02       		.byte	0x2
+ 941 0344 23       		.byte	0x23
+ 942 0345 14       		.uleb128 0x14
+ 943 0346 07       		.uleb128 0x7
+ 944 0347 72313900 		.string	"r19"
+ 945 034b 08       		.byte	0x8
+ 946 034c DD       		.byte	0xdd
+ 947 034d 000002DA 		.4byte	0x2da
+ 948 0351 02       		.byte	0x2
+ 949 0352 23       		.byte	0x23
+ 950 0353 18       		.uleb128 0x18
+ 951 0354 07       		.uleb128 0x7
+ 952 0355 72323000 		.string	"r20"
+ 953 0359 08       		.byte	0x8
+ 954 035a DE       		.byte	0xde
+ 955 035b 000002DA 		.4byte	0x2da
+ 956 035f 02       		.byte	0x2
+ 957 0360 23       		.byte	0x23
+ 958 0361 1C       		.uleb128 0x1c
+ 959 0362 07       		.uleb128 0x7
+ 960 0363 72323100 		.string	"r21"
+ 961 0367 08       		.byte	0x8
+ 962 0368 DF       		.byte	0xdf
+ 963 0369 000002DA 		.4byte	0x2da
+ 964 036d 02       		.byte	0x2
+ 965 036e 23       		.byte	0x23
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 18
+
+
+ 966 036f 20       		.uleb128 0x20
+ 967 0370 07       		.uleb128 0x7
+ 968 0371 72323200 		.string	"r22"
+ 969 0375 08       		.byte	0x8
+ 970 0376 E0       		.byte	0xe0
+ 971 0377 000002DA 		.4byte	0x2da
+ 972 037b 02       		.byte	0x2
+ 973 037c 23       		.byte	0x23
+ 974 037d 24       		.uleb128 0x24
+ 975 037e 07       		.uleb128 0x7
+ 976 037f 72323300 		.string	"r23"
+ 977 0383 08       		.byte	0x8
+ 978 0384 E1       		.byte	0xe1
+ 979 0385 000002DA 		.4byte	0x2da
+ 980 0389 02       		.byte	0x2
+ 981 038a 23       		.byte	0x23
+ 982 038b 28       		.uleb128 0x28
+ 983 038c 07       		.uleb128 0x7
+ 984 038d 72323400 		.string	"r24"
+ 985 0391 08       		.byte	0x8
+ 986 0392 E2       		.byte	0xe2
+ 987 0393 000002DA 		.4byte	0x2da
+ 988 0397 02       		.byte	0x2
+ 989 0398 23       		.byte	0x23
+ 990 0399 2C       		.uleb128 0x2c
+ 991 039a 07       		.uleb128 0x7
+ 992 039b 72323500 		.string	"r25"
+ 993 039f 08       		.byte	0x8
+ 994 03a0 E3       		.byte	0xe3
+ 995 03a1 000002DA 		.4byte	0x2da
+ 996 03a5 02       		.byte	0x2
+ 997 03a6 23       		.byte	0x23
+ 998 03a7 30       		.uleb128 0x30
+ 999 03a8 07       		.uleb128 0x7
+ 1000 03a9 72323600 		.string	"r26"
+ 1001 03ad 08       		.byte	0x8
+ 1002 03ae E4       		.byte	0xe4
+ 1003 03af 000002DA 		.4byte	0x2da
+ 1004 03b3 02       		.byte	0x2
+ 1005 03b4 23       		.byte	0x23
+ 1006 03b5 34       		.uleb128 0x34
+ 1007 03b6 07       		.uleb128 0x7
+ 1008 03b7 72323700 		.string	"r27"
+ 1009 03bb 08       		.byte	0x8
+ 1010 03bc E5       		.byte	0xe5
+ 1011 03bd 000002DA 		.4byte	0x2da
+ 1012 03c1 02       		.byte	0x2
+ 1013 03c2 23       		.byte	0x23
+ 1014 03c3 38       		.uleb128 0x38
+ 1015 03c4 07       		.uleb128 0x7
+ 1016 03c5 72323800 		.string	"r28"
+ 1017 03c9 08       		.byte	0x8
+ 1018 03ca E6       		.byte	0xe6
+ 1019 03cb 000002DA 		.4byte	0x2da
+ 1020 03cf 02       		.byte	0x2
+ 1021 03d0 23       		.byte	0x23
+ 1022 03d1 3C       		.uleb128 0x3c
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 19
+
+
+ 1023 03d2 07       		.uleb128 0x7
+ 1024 03d3 72323900 		.string	"r29"
+ 1025 03d7 08       		.byte	0x8
+ 1026 03d8 E7       		.byte	0xe7
+ 1027 03d9 000002DA 		.4byte	0x2da
+ 1028 03dd 02       		.byte	0x2
+ 1029 03de 23       		.byte	0x23
+ 1030 03df 40       		.uleb128 0x40
+ 1031 03e0 07       		.uleb128 0x7
+ 1032 03e1 72333000 		.string	"r30"
+ 1033 03e5 08       		.byte	0x8
+ 1034 03e6 E8       		.byte	0xe8
+ 1035 03e7 000002DA 		.4byte	0x2da
+ 1036 03eb 02       		.byte	0x2
+ 1037 03ec 23       		.byte	0x23
+ 1038 03ed 44       		.uleb128 0x44
+ 1039 03ee 07       		.uleb128 0x7
+ 1040 03ef 72333100 		.string	"r31"
+ 1041 03f3 08       		.byte	0x8
+ 1042 03f4 E9       		.byte	0xe9
+ 1043 03f5 000002DA 		.4byte	0x2da
+ 1044 03f9 02       		.byte	0x2
+ 1045 03fa 23       		.byte	0x23
+ 1046 03fb 48       		.uleb128 0x48
+ 1047 03fc 06       		.uleb128 0x6
+ 1048 03fd 00000000 		.4byte	.LASF51
+ 1049 0401 08       		.byte	0x8
+ 1050 0402 EA       		.byte	0xea
+ 1051 0403 000002DA 		.4byte	0x2da
+ 1052 0407 02       		.byte	0x2
+ 1053 0408 23       		.byte	0x23
+ 1054 0409 4C       		.uleb128 0x4c
+ 1055 040a 00       		.byte	0
+ 1056 040b 05       		.uleb128 0x5
+ 1057 040c 00000000 		.4byte	.LASF52
+ 1058 0410 04       		.byte	0x4
+ 1059 0411 08       		.byte	0x8
+ 1060 0412 F2       		.byte	0xf2
+ 1061 0413 00000425 		.4byte	0x425
+ 1062 0417 07       		.uleb128 0x7
+ 1063 0418 737000   		.string	"sp"
+ 1064 041b 08       		.byte	0x8
+ 1065 041c F3       		.byte	0xf3
+ 1066 041d 00000425 		.4byte	0x425
+ 1067 0421 02       		.byte	0x2
+ 1068 0422 23       		.byte	0x23
+ 1069 0423 00       		.uleb128 0
+ 1070 0424 00       		.byte	0
+ 1071 0425 09       		.uleb128 0x9
+ 1072 0426 04       		.byte	0x4
+ 1073 0427 000002E7 		.4byte	0x2e7
+ 1074 042b 0D       		.uleb128 0xd
+ 1075 042c 00000110 		.4byte	0x110
+ 1076 0430 05       		.uleb128 0x5
+ 1077 0431 00000000 		.4byte	.LASF53
+ 1078 0435 10       		.byte	0x10
+ 1079 0436 09       		.byte	0x9
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 20
+
+
+ 1080 0437 2C       		.byte	0x2c
+ 1081 0438 00000467 		.4byte	0x467
+ 1082 043c 06       		.uleb128 0x6
+ 1083 043d 00000000 		.4byte	.LASF54
+ 1084 0441 09       		.byte	0x9
+ 1085 0442 2D       		.byte	0x2d
+ 1086 0443 00000276 		.4byte	0x276
+ 1087 0447 02       		.byte	0x2
+ 1088 0448 23       		.byte	0x23
+ 1089 0449 00       		.uleb128 0
+ 1090 044a 06       		.uleb128 0x6
+ 1091 044b 00000000 		.4byte	.LASF55
+ 1092 044f 09       		.byte	0x9
+ 1093 0450 2F       		.byte	0x2f
+ 1094 0451 00000270 		.4byte	0x270
+ 1095 0455 02       		.byte	0x2
+ 1096 0456 23       		.byte	0x23
+ 1097 0457 08       		.uleb128 0x8
+ 1098 0458 06       		.uleb128 0x6
+ 1099 0459 00000000 		.4byte	.LASF56
+ 1100 045d 09       		.byte	0x9
+ 1101 045e 31       		.byte	0x31
+ 1102 045f 00000467 		.4byte	0x467
+ 1103 0463 02       		.byte	0x2
+ 1104 0464 23       		.byte	0x23
+ 1105 0465 0C       		.uleb128 0xc
+ 1106 0466 00       		.byte	0
+ 1107 0467 09       		.uleb128 0x9
+ 1108 0468 04       		.byte	0x4
+ 1109 0469 00000430 		.4byte	0x430
+ 1110 046d 03       		.uleb128 0x3
+ 1111 046e 00000000 		.4byte	.LASF53
+ 1112 0472 09       		.byte	0x9
+ 1113 0473 33       		.byte	0x33
+ 1114 0474 00000430 		.4byte	0x430
+ 1115 0478 03       		.uleb128 0x3
+ 1116 0479 00000000 		.4byte	.LASF57
+ 1117 047d 0A       		.byte	0xa
+ 1118 047e 2A       		.byte	0x2a
+ 1119 047f 00000483 		.4byte	0x483
+ 1120 0483 09       		.uleb128 0x9
+ 1121 0484 04       		.byte	0x4
+ 1122 0485 00000489 		.4byte	0x489
+ 1123 0489 0E       		.uleb128 0xe
+ 1124 048a 01       		.byte	0x1
+ 1125 048b 000002E5 		.4byte	0x2e5
+ 1126 048f 00000499 		.4byte	0x499
+ 1127 0493 0F       		.uleb128 0xf
+ 1128 0494 00000030 		.4byte	0x30
+ 1129 0498 00       		.byte	0
+ 1130 0499 03       		.uleb128 0x3
+ 1131 049a 00000000 		.4byte	.LASF58
+ 1132 049e 0B       		.byte	0xb
+ 1133 049f 34       		.byte	0x34
+ 1134 04a0 000004A4 		.4byte	0x4a4
+ 1135 04a4 05       		.uleb128 0x5
+ 1136 04a5 00000000 		.4byte	.LASF59
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 21
+
+
+ 1137 04a9 20       		.byte	0x20
+ 1138 04aa 0B       		.byte	0xb
+ 1139 04ab 47       		.byte	0x47
+ 1140 04ac 000004DB 		.4byte	0x4db
+ 1141 04b0 06       		.uleb128 0x6
+ 1142 04b1 00000000 		.4byte	.LASF60
+ 1143 04b5 0B       		.byte	0xb
+ 1144 04b6 48       		.byte	0x48
+ 1145 04b7 00000478 		.4byte	0x478
+ 1146 04bb 02       		.byte	0x2
+ 1147 04bc 23       		.byte	0x23
+ 1148 04bd 00       		.uleb128 0
+ 1149 04be 06       		.uleb128 0x6
+ 1150 04bf 00000000 		.4byte	.LASF61
+ 1151 04c3 0B       		.byte	0xb
+ 1152 04c4 4A       		.byte	0x4a
+ 1153 04c5 000004FA 		.4byte	0x4fa
+ 1154 04c9 02       		.byte	0x2
+ 1155 04ca 23       		.byte	0x23
+ 1156 04cb 08       		.uleb128 0x8
+ 1157 04cc 06       		.uleb128 0x6
+ 1158 04cd 00000000 		.4byte	.LASF62
+ 1159 04d1 0B       		.byte	0xb
+ 1160 04d2 4C       		.byte	0x4c
+ 1161 04d3 0000046D 		.4byte	0x46d
+ 1162 04d7 02       		.byte	0x2
+ 1163 04d8 23       		.byte	0x23
+ 1164 04d9 10       		.uleb128 0x10
+ 1165 04da 00       		.byte	0
+ 1166 04db 10       		.uleb128 0x10
+ 1167 04dc 04       		.byte	0x4
+ 1168 04dd 0B       		.byte	0xb
+ 1169 04de 3C       		.byte	0x3c
+ 1170 04df 000004FA 		.4byte	0x4fa
+ 1171 04e3 11       		.uleb128 0x11
+ 1172 04e4 00000000 		.4byte	.LASF63
+ 1173 04e8 0B       		.byte	0xb
+ 1174 04e9 3D       		.byte	0x3d
+ 1175 04ea 0000051B 		.4byte	0x51b
+ 1176 04ee 11       		.uleb128 0x11
+ 1177 04ef 00000000 		.4byte	.LASF64
+ 1178 04f3 0B       		.byte	0xb
+ 1179 04f4 3E       		.byte	0x3e
+ 1180 04f5 00000521 		.4byte	0x521
+ 1181 04f9 00       		.byte	0
+ 1182 04fa 12       		.uleb128 0x12
+ 1183 04fb 00000000 		.4byte	.LASF85
+ 1184 04ff 08       		.byte	0x8
+ 1185 0500 0B       		.byte	0xb
+ 1186 0501 39       		.byte	0x39
+ 1187 0502 0000051B 		.4byte	0x51b
+ 1188 0506 11       		.uleb128 0x11
+ 1189 0507 00000000 		.4byte	.LASF65
+ 1190 050b 0B       		.byte	0xb
+ 1191 050c 3A       		.byte	0x3a
+ 1192 050d 000002CF 		.4byte	0x2cf
+ 1193 0511 13       		.uleb128 0x13
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 22
+
+
+ 1194 0512 6800     		.string	"h"
+ 1195 0514 0B       		.byte	0xb
+ 1196 0515 41       		.byte	0x41
+ 1197 0516 00000527 		.4byte	0x527
+ 1198 051a 00       		.byte	0
+ 1199 051b 09       		.uleb128 0x9
+ 1200 051c 04       		.byte	0x4
+ 1201 051d 000004FA 		.4byte	0x4fa
+ 1202 0521 09       		.uleb128 0x9
+ 1203 0522 04       		.byte	0x4
+ 1204 0523 00000499 		.4byte	0x499
+ 1205 0527 08       		.uleb128 0x8
+ 1206 0528 08       		.byte	0x8
+ 1207 0529 0B       		.byte	0xb
+ 1208 052a 3B       		.byte	0x3b
+ 1209 052b 0000054A 		.4byte	0x54a
+ 1210 052f 07       		.uleb128 0x7
+ 1211 0530 7500     		.string	"u"
+ 1212 0532 0B       		.byte	0xb
+ 1213 0533 3F       		.byte	0x3f
+ 1214 0534 000004DB 		.4byte	0x4db
+ 1215 0538 02       		.byte	0x2
+ 1216 0539 23       		.byte	0x23
+ 1217 053a 00       		.uleb128 0
+ 1218 053b 06       		.uleb128 0x6
+ 1219 053c 00000000 		.4byte	.LASF66
+ 1220 0540 0B       		.byte	0xb
+ 1221 0541 40       		.byte	0x40
+ 1222 0542 00000030 		.4byte	0x30
+ 1223 0546 02       		.byte	0x2
+ 1224 0547 23       		.byte	0x23
+ 1225 0548 04       		.uleb128 0x4
+ 1226 0549 00       		.byte	0
+ 1227 054a 10       		.uleb128 0x10
+ 1228 054b 04       		.byte	0x4
+ 1229 054c 07       		.byte	0x7
+ 1230 054d 96       		.byte	0x96
+ 1231 054e 0000057F 		.4byte	0x57f
+ 1232 0552 11       		.uleb128 0x11
+ 1233 0553 00000000 		.4byte	.LASF67
+ 1234 0557 07       		.byte	0x7
+ 1235 0558 9D       		.byte	0x9d
+ 1236 0559 000000FA 		.4byte	0xfa
+ 1237 055d 11       		.uleb128 0x11
+ 1238 055e 00000000 		.4byte	.LASF68
+ 1239 0562 07       		.byte	0x7
+ 1240 0563 A4       		.byte	0xa4
+ 1241 0564 000000FA 		.4byte	0xfa
+ 1242 0568 11       		.uleb128 0x11
+ 1243 0569 00000000 		.4byte	.LASF69
+ 1244 056d 07       		.byte	0x7
+ 1245 056e AB       		.byte	0xab
+ 1246 056f 000002E5 		.4byte	0x2e5
+ 1247 0573 11       		.uleb128 0x11
+ 1248 0574 00000000 		.4byte	.LASF70
+ 1249 0578 07       		.byte	0x7
+ 1250 0579 B2       		.byte	0xb2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 23
+
+
+ 1251 057a 00000105 		.4byte	0x105
+ 1252 057e 00       		.byte	0
+ 1253 057f 09       		.uleb128 0x9
+ 1254 0580 04       		.byte	0x4
+ 1255 0581 00000585 		.4byte	0x585
+ 1256 0585 14       		.uleb128 0x14
+ 1257 0586 0000058A 		.4byte	0x58a
+ 1258 058a 04       		.uleb128 0x4
+ 1259 058b 01       		.byte	0x1
+ 1260 058c 08       		.byte	0x8
+ 1261 058d 00000000 		.4byte	.LASF71
+ 1262 0591 09       		.uleb128 0x9
+ 1263 0592 04       		.byte	0x4
+ 1264 0593 0000046D 		.4byte	0x46d
+ 1265 0597 15       		.uleb128 0x15
+ 1266 0598 01       		.byte	0x1
+ 1267 0599 00000000 		.4byte	.LASF72
+ 1268 059d 01       		.byte	0x1
+ 1269 059e 4B       		.byte	0x4b
+ 1270 059f 01       		.byte	0x1
+ 1271 05a0 00000000 		.4byte	.LFB15
+ 1272 05a4 00000000 		.4byte	.LFE15
+ 1273 05a8 02       		.byte	0x2
+ 1274 05a9 71       		.byte	0x71
+ 1275 05aa 00       		.sleb128 0
+ 1276 05ab 01       		.byte	0x1
+ 1277 05ac 000005C5 		.4byte	0x5c5
+ 1278 05b0 16       		.uleb128 0x16
+ 1279 05b1 00000000 		.4byte	.LVL0
+ 1280 05b5 01       		.byte	0x1
+ 1281 05b6 000007E0 		.4byte	0x7e0
+ 1282 05ba 17       		.uleb128 0x17
+ 1283 05bb 01       		.byte	0x1
+ 1284 05bc 53       		.byte	0x53
+ 1285 05bd 05       		.byte	0x5
+ 1286 05be 03       		.byte	0x3
+ 1287 05bf 00000000 		.4byte	.LANCHOR0+16
+ 1288 05c3 00       		.byte	0
+ 1289 05c4 00       		.byte	0
+ 1290 05c5 15       		.uleb128 0x15
+ 1291 05c6 01       		.byte	0x1
+ 1292 05c7 00000000 		.4byte	.LASF73
+ 1293 05cb 01       		.byte	0x1
+ 1294 05cc 63       		.byte	0x63
+ 1295 05cd 01       		.byte	0x1
+ 1296 05ce 00000000 		.4byte	.LFB16
+ 1297 05d2 00000000 		.4byte	.LFE16
+ 1298 05d6 02       		.byte	0x2
+ 1299 05d7 71       		.byte	0x71
+ 1300 05d8 00       		.sleb128 0
+ 1301 05d9 01       		.byte	0x1
+ 1302 05da 0000062E 		.4byte	0x62e
+ 1303 05de 18       		.uleb128 0x18
+ 1304 05df 00000000 		.4byte	.LASF74
+ 1305 05e3 01       		.byte	0x1
+ 1306 05e4 63       		.byte	0x63
+ 1307 05e5 00000521 		.4byte	0x521
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 24
+
+
+ 1308 05e9 00000000 		.4byte	.LLST0
+ 1309 05ed 19       		.uleb128 0x19
+ 1310 05ee 62756600 		.string	"buf"
+ 1311 05f2 01       		.byte	0x1
+ 1312 05f3 63       		.byte	0x63
+ 1313 05f4 000002E5 		.4byte	0x2e5
+ 1314 05f8 00000000 		.4byte	.LLST1
+ 1315 05fc 18       		.uleb128 0x18
+ 1316 05fd 00000000 		.4byte	.LASF66
+ 1317 0601 01       		.byte	0x1
+ 1318 0602 63       		.byte	0x63
+ 1319 0603 00000030 		.4byte	0x30
+ 1320 0607 00000000 		.4byte	.LLST2
+ 1321 060b 1A       		.uleb128 0x1a
+ 1322 060c 687000   		.string	"hp"
+ 1323 060f 01       		.byte	0x1
+ 1324 0610 64       		.byte	0x64
+ 1325 0611 0000051B 		.4byte	0x51b
+ 1326 0615 00000000 		.4byte	.LLST3
+ 1327 0619 16       		.uleb128 0x16
+ 1328 061a 00000000 		.4byte	.LVL5
+ 1329 061e 01       		.byte	0x1
+ 1330 061f 000007E0 		.4byte	0x7e0
+ 1331 0623 17       		.uleb128 0x17
+ 1332 0624 01       		.byte	0x1
+ 1333 0625 53       		.byte	0x53
+ 1334 0626 05       		.byte	0x5
+ 1335 0627 F3       		.byte	0xf3
+ 1336 0628 01       		.uleb128 0x1
+ 1337 0629 53       		.byte	0x53
+ 1338 062a 23       		.byte	0x23
+ 1339 062b 10       		.uleb128 0x10
+ 1340 062c 00       		.byte	0
+ 1341 062d 00       		.byte	0
+ 1342 062e 1B       		.uleb128 0x1b
+ 1343 062f 01       		.byte	0x1
+ 1344 0630 00000000 		.4byte	.LASF76
+ 1345 0634 01       		.byte	0x1
+ 1346 0635 84       		.byte	0x84
+ 1347 0636 01       		.byte	0x1
+ 1348 0637 000002E5 		.4byte	0x2e5
+ 1349 063b 00000000 		.4byte	.LFB17
+ 1350 063f 00000000 		.4byte	.LFE17
+ 1351 0643 00000000 		.4byte	.LLST4
+ 1352 0647 01       		.byte	0x1
+ 1353 0648 000006CB 		.4byte	0x6cb
+ 1354 064c 18       		.uleb128 0x18
+ 1355 064d 00000000 		.4byte	.LASF74
+ 1356 0651 01       		.byte	0x1
+ 1357 0652 84       		.byte	0x84
+ 1358 0653 00000521 		.4byte	0x521
+ 1359 0657 00000000 		.4byte	.LLST5
+ 1360 065b 18       		.uleb128 0x18
+ 1361 065c 00000000 		.4byte	.LASF66
+ 1362 0660 01       		.byte	0x1
+ 1363 0661 84       		.byte	0x84
+ 1364 0662 00000030 		.4byte	0x30
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 25
+
+
+ 1365 0666 00000000 		.4byte	.LLST6
+ 1366 066a 1A       		.uleb128 0x1a
+ 1367 066b 717000   		.string	"qp"
+ 1368 066e 01       		.byte	0x1
+ 1369 066f 85       		.byte	0x85
+ 1370 0670 0000051B 		.4byte	0x51b
+ 1371 0674 00000000 		.4byte	.LLST7
+ 1372 0678 1A       		.uleb128 0x1a
+ 1373 0679 687000   		.string	"hp"
+ 1374 067c 01       		.byte	0x1
+ 1375 067d 85       		.byte	0x85
+ 1376 067e 0000051B 		.4byte	0x51b
+ 1377 0682 00000000 		.4byte	.LLST8
+ 1378 0686 1A       		.uleb128 0x1a
+ 1379 0687 667000   		.string	"fp"
+ 1380 068a 01       		.byte	0x1
+ 1381 068b 85       		.byte	0x85
+ 1382 068c 0000051B 		.4byte	0x51b
+ 1383 0690 00000000 		.4byte	.LLST9
+ 1384 0694 1C       		.uleb128 0x1c
+ 1385 0695 00000000 		.4byte	.LVL10
+ 1386 0699 000007F4 		.4byte	0x7f4
+ 1387 069d 000006A8 		.4byte	0x6a8
+ 1388 06a1 17       		.uleb128 0x17
+ 1389 06a2 01       		.byte	0x1
+ 1390 06a3 53       		.byte	0x53
+ 1391 06a4 02       		.byte	0x2
+ 1392 06a5 8C       		.byte	0x8c
+ 1393 06a6 10       		.sleb128 16
+ 1394 06a7 00       		.byte	0
+ 1395 06a8 1D       		.uleb128 0x1d
+ 1396 06a9 00000000 		.4byte	.LVL14
+ 1397 06ad 00000808 		.4byte	0x808
+ 1398 06b1 1E       		.uleb128 0x1e
+ 1399 06b2 00000000 		.4byte	.LVL15
+ 1400 06b6 000006C1 		.4byte	0x6c1
+ 1401 06ba 17       		.uleb128 0x17
+ 1402 06bb 01       		.byte	0x1
+ 1403 06bc 53       		.byte	0x53
+ 1404 06bd 02       		.byte	0x2
+ 1405 06be 8D       		.byte	0x8d
+ 1406 06bf 08       		.sleb128 8
+ 1407 06c0 00       		.byte	0
+ 1408 06c1 1D       		.uleb128 0x1d
+ 1409 06c2 00000000 		.4byte	.LVL19
+ 1410 06c6 00000808 		.4byte	0x808
+ 1411 06ca 00       		.byte	0
+ 1412 06cb 1F       		.uleb128 0x1f
+ 1413 06cc 01       		.byte	0x1
+ 1414 06cd 00000000 		.4byte	.LASF75
+ 1415 06d1 01       		.byte	0x1
+ 1416 06d2 C2       		.byte	0xc2
+ 1417 06d3 01       		.byte	0x1
+ 1418 06d4 00000000 		.4byte	.LFB18
+ 1419 06d8 00000000 		.4byte	.LFE18
+ 1420 06dc 00000000 		.4byte	.LLST10
+ 1421 06e0 01       		.byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 26
+
+
+ 1422 06e1 00000746 		.4byte	0x746
+ 1423 06e5 19       		.uleb128 0x19
+ 1424 06e6 7000     		.string	"p"
+ 1425 06e8 01       		.byte	0x1
+ 1426 06e9 C2       		.byte	0xc2
+ 1427 06ea 000002E5 		.4byte	0x2e5
+ 1428 06ee 00000000 		.4byte	.LLST11
+ 1429 06f2 1A       		.uleb128 0x1a
+ 1430 06f3 717000   		.string	"qp"
+ 1431 06f6 01       		.byte	0x1
+ 1432 06f7 C3       		.byte	0xc3
+ 1433 06f8 0000051B 		.4byte	0x51b
+ 1434 06fc 00000000 		.4byte	.LLST12
+ 1435 0700 1A       		.uleb128 0x1a
+ 1436 0701 687000   		.string	"hp"
+ 1437 0704 01       		.byte	0x1
+ 1438 0705 C3       		.byte	0xc3
+ 1439 0706 0000051B 		.4byte	0x51b
+ 1440 070a 00000000 		.4byte	.LLST13
+ 1441 070e 20       		.uleb128 0x20
+ 1442 070f 00000000 		.4byte	.LASF74
+ 1443 0713 01       		.byte	0x1
+ 1444 0714 C4       		.byte	0xc4
+ 1445 0715 00000521 		.4byte	0x521
+ 1446 0719 00000000 		.4byte	.LLST14
+ 1447 071d 1C       		.uleb128 0x1c
+ 1448 071e 00000000 		.4byte	.LVL30
+ 1449 0722 000007F4 		.4byte	0x7f4
+ 1450 0726 00000731 		.4byte	0x731
+ 1451 072a 17       		.uleb128 0x17
+ 1452 072b 01       		.byte	0x1
+ 1453 072c 53       		.byte	0x53
+ 1454 072d 02       		.byte	0x2
+ 1455 072e 8E       		.byte	0x8e
+ 1456 072f 08       		.sleb128 8
+ 1457 0730 00       		.byte	0
+ 1458 0731 21       		.uleb128 0x21
+ 1459 0732 00000000 		.4byte	.LVL36
+ 1460 0736 01       		.byte	0x1
+ 1461 0737 00000808 		.4byte	0x808
+ 1462 073b 21       		.uleb128 0x21
+ 1463 073c 00000000 		.4byte	.LVL38
+ 1464 0740 01       		.byte	0x1
+ 1465 0741 00000808 		.4byte	0x808
+ 1466 0745 00       		.byte	0
+ 1467 0746 1B       		.uleb128 0x1b
+ 1468 0747 01       		.byte	0x1
+ 1469 0748 00000000 		.4byte	.LASF77
+ 1470 074c 01       		.byte	0x1
+ 1471 074d FA       		.byte	0xfa
+ 1472 074e 01       		.byte	0x1
+ 1473 074f 00000030 		.4byte	0x30
+ 1474 0753 00000000 		.4byte	.LFB19
+ 1475 0757 00000000 		.4byte	.LFE19
+ 1476 075b 00000000 		.4byte	.LLST15
+ 1477 075f 01       		.byte	0x1
+ 1478 0760 000007C9 		.4byte	0x7c9
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 27
+
+
+ 1479 0764 18       		.uleb128 0x18
+ 1480 0765 00000000 		.4byte	.LASF74
+ 1481 0769 01       		.byte	0x1
+ 1482 076a FA       		.byte	0xfa
+ 1483 076b 00000521 		.4byte	0x521
+ 1484 076f 00000000 		.4byte	.LLST16
+ 1485 0773 18       		.uleb128 0x18
+ 1486 0774 00000000 		.4byte	.LASF78
+ 1487 0778 01       		.byte	0x1
+ 1488 0779 FA       		.byte	0xfa
+ 1489 077a 000007C9 		.4byte	0x7c9
+ 1490 077e 00000000 		.4byte	.LLST17
+ 1491 0782 1A       		.uleb128 0x1a
+ 1492 0783 717000   		.string	"qp"
+ 1493 0786 01       		.byte	0x1
+ 1494 0787 FB       		.byte	0xfb
+ 1495 0788 0000051B 		.4byte	0x51b
+ 1496 078c 00000000 		.4byte	.LLST18
+ 1497 0790 1A       		.uleb128 0x1a
+ 1498 0791 6E00     		.string	"n"
+ 1499 0793 01       		.byte	0x1
+ 1500 0794 FC       		.byte	0xfc
+ 1501 0795 00000030 		.4byte	0x30
+ 1502 0799 00000000 		.4byte	.LLST19
+ 1503 079d 1A       		.uleb128 0x1a
+ 1504 079e 737A00   		.string	"sz"
+ 1505 07a1 01       		.byte	0x1
+ 1506 07a2 FC       		.byte	0xfc
+ 1507 07a3 00000030 		.4byte	0x30
+ 1508 07a7 00000000 		.4byte	.LLST20
+ 1509 07ab 1C       		.uleb128 0x1c
+ 1510 07ac 00000000 		.4byte	.LVL41
+ 1511 07b0 000007F4 		.4byte	0x7f4
+ 1512 07b4 000007BF 		.4byte	0x7bf
+ 1513 07b8 17       		.uleb128 0x17
+ 1514 07b9 01       		.byte	0x1
+ 1515 07ba 53       		.byte	0x53
+ 1516 07bb 02       		.byte	0x2
+ 1517 07bc 8F       		.byte	0x8f
+ 1518 07bd 10       		.sleb128 16
+ 1519 07be 00       		.byte	0
+ 1520 07bf 1D       		.uleb128 0x1d
+ 1521 07c0 00000000 		.4byte	.LVL47
+ 1522 07c4 00000808 		.4byte	0x808
+ 1523 07c8 00       		.byte	0
+ 1524 07c9 09       		.uleb128 0x9
+ 1525 07ca 04       		.byte	0x4
+ 1526 07cb 00000030 		.4byte	0x30
+ 1527 07cf 22       		.uleb128 0x22
+ 1528 07d0 00000000 		.4byte	.LASF79
+ 1529 07d4 01       		.byte	0x1
+ 1530 07d5 44       		.byte	0x44
+ 1531 07d6 00000499 		.4byte	0x499
+ 1532 07da 05       		.byte	0x5
+ 1533 07db 03       		.byte	0x3
+ 1534 07dc 00000000 		.4byte	default_heap
+ 1535 07e0 23       		.uleb128 0x23
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 28
+
+
+ 1536 07e1 01       		.byte	0x1
+ 1537 07e2 00000000 		.4byte	.LASF80
+ 1538 07e6 09       		.byte	0x9
+ 1539 07e7 38       		.byte	0x38
+ 1540 07e8 01       		.byte	0x1
+ 1541 07e9 01       		.byte	0x1
+ 1542 07ea 000007F4 		.4byte	0x7f4
+ 1543 07ee 0F       		.uleb128 0xf
+ 1544 07ef 00000591 		.4byte	0x591
+ 1545 07f3 00       		.byte	0
+ 1546 07f4 23       		.uleb128 0x23
+ 1547 07f5 01       		.byte	0x1
+ 1548 07f6 00000000 		.4byte	.LASF81
+ 1549 07fa 09       		.byte	0x9
+ 1550 07fb 39       		.byte	0x39
+ 1551 07fc 01       		.byte	0x1
+ 1552 07fd 01       		.byte	0x1
+ 1553 07fe 00000808 		.4byte	0x808
+ 1554 0802 0F       		.uleb128 0xf
+ 1555 0803 00000591 		.4byte	0x591
+ 1556 0807 00       		.byte	0
+ 1557 0808 24       		.uleb128 0x24
+ 1558 0809 01       		.byte	0x1
+ 1559 080a 00000000 		.4byte	.LASF86
+ 1560 080e 09       		.byte	0x9
+ 1561 080f 3D       		.byte	0x3d
+ 1562 0810 01       		.byte	0x1
+ 1563 0811 00000591 		.4byte	0x591
+ 1564 0815 01       		.byte	0x1
+ 1565 0816 00       		.byte	0
+ 1566              		.section	.debug_abbrev,"",@progbits
+ 1567              	.Ldebug_abbrev0:
+ 1568 0000 01       		.uleb128 0x1
+ 1569 0001 11       		.uleb128 0x11
+ 1570 0002 01       		.byte	0x1
+ 1571 0003 25       		.uleb128 0x25
+ 1572 0004 0E       		.uleb128 0xe
+ 1573 0005 13       		.uleb128 0x13
+ 1574 0006 0B       		.uleb128 0xb
+ 1575 0007 03       		.uleb128 0x3
+ 1576 0008 0E       		.uleb128 0xe
+ 1577 0009 1B       		.uleb128 0x1b
+ 1578 000a 0E       		.uleb128 0xe
+ 1579 000b 55       		.uleb128 0x55
+ 1580 000c 06       		.uleb128 0x6
+ 1581 000d 11       		.uleb128 0x11
+ 1582 000e 01       		.uleb128 0x1
+ 1583 000f 52       		.uleb128 0x52
+ 1584 0010 01       		.uleb128 0x1
+ 1585 0011 10       		.uleb128 0x10
+ 1586 0012 06       		.uleb128 0x6
+ 1587 0013 00       		.byte	0
+ 1588 0014 00       		.byte	0
+ 1589 0015 02       		.uleb128 0x2
+ 1590 0016 24       		.uleb128 0x24
+ 1591 0017 00       		.byte	0
+ 1592 0018 0B       		.uleb128 0xb
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 29
+
+
+ 1593 0019 0B       		.uleb128 0xb
+ 1594 001a 3E       		.uleb128 0x3e
+ 1595 001b 0B       		.uleb128 0xb
+ 1596 001c 03       		.uleb128 0x3
+ 1597 001d 08       		.uleb128 0x8
+ 1598 001e 00       		.byte	0
+ 1599 001f 00       		.byte	0
+ 1600 0020 03       		.uleb128 0x3
+ 1601 0021 16       		.uleb128 0x16
+ 1602 0022 00       		.byte	0
+ 1603 0023 03       		.uleb128 0x3
+ 1604 0024 0E       		.uleb128 0xe
+ 1605 0025 3A       		.uleb128 0x3a
+ 1606 0026 0B       		.uleb128 0xb
+ 1607 0027 3B       		.uleb128 0x3b
+ 1608 0028 0B       		.uleb128 0xb
+ 1609 0029 49       		.uleb128 0x49
+ 1610 002a 13       		.uleb128 0x13
+ 1611 002b 00       		.byte	0
+ 1612 002c 00       		.byte	0
+ 1613 002d 04       		.uleb128 0x4
+ 1614 002e 24       		.uleb128 0x24
+ 1615 002f 00       		.byte	0
+ 1616 0030 0B       		.uleb128 0xb
+ 1617 0031 0B       		.uleb128 0xb
+ 1618 0032 3E       		.uleb128 0x3e
+ 1619 0033 0B       		.uleb128 0xb
+ 1620 0034 03       		.uleb128 0x3
+ 1621 0035 0E       		.uleb128 0xe
+ 1622 0036 00       		.byte	0
+ 1623 0037 00       		.byte	0
+ 1624 0038 05       		.uleb128 0x5
+ 1625 0039 13       		.uleb128 0x13
+ 1626 003a 01       		.byte	0x1
+ 1627 003b 03       		.uleb128 0x3
+ 1628 003c 0E       		.uleb128 0xe
+ 1629 003d 0B       		.uleb128 0xb
+ 1630 003e 0B       		.uleb128 0xb
+ 1631 003f 3A       		.uleb128 0x3a
+ 1632 0040 0B       		.uleb128 0xb
+ 1633 0041 3B       		.uleb128 0x3b
+ 1634 0042 0B       		.uleb128 0xb
+ 1635 0043 01       		.uleb128 0x1
+ 1636 0044 13       		.uleb128 0x13
+ 1637 0045 00       		.byte	0
+ 1638 0046 00       		.byte	0
+ 1639 0047 06       		.uleb128 0x6
+ 1640 0048 0D       		.uleb128 0xd
+ 1641 0049 00       		.byte	0
+ 1642 004a 03       		.uleb128 0x3
+ 1643 004b 0E       		.uleb128 0xe
+ 1644 004c 3A       		.uleb128 0x3a
+ 1645 004d 0B       		.uleb128 0xb
+ 1646 004e 3B       		.uleb128 0x3b
+ 1647 004f 0B       		.uleb128 0xb
+ 1648 0050 49       		.uleb128 0x49
+ 1649 0051 13       		.uleb128 0x13
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 30
+
+
+ 1650 0052 38       		.uleb128 0x38
+ 1651 0053 0A       		.uleb128 0xa
+ 1652 0054 00       		.byte	0
+ 1653 0055 00       		.byte	0
+ 1654 0056 07       		.uleb128 0x7
+ 1655 0057 0D       		.uleb128 0xd
+ 1656 0058 00       		.byte	0
+ 1657 0059 03       		.uleb128 0x3
+ 1658 005a 08       		.uleb128 0x8
+ 1659 005b 3A       		.uleb128 0x3a
+ 1660 005c 0B       		.uleb128 0xb
+ 1661 005d 3B       		.uleb128 0x3b
+ 1662 005e 0B       		.uleb128 0xb
+ 1663 005f 49       		.uleb128 0x49
+ 1664 0060 13       		.uleb128 0x13
+ 1665 0061 38       		.uleb128 0x38
+ 1666 0062 0A       		.uleb128 0xa
+ 1667 0063 00       		.byte	0
+ 1668 0064 00       		.byte	0
+ 1669 0065 08       		.uleb128 0x8
+ 1670 0066 13       		.uleb128 0x13
+ 1671 0067 01       		.byte	0x1
+ 1672 0068 0B       		.uleb128 0xb
+ 1673 0069 0B       		.uleb128 0xb
+ 1674 006a 3A       		.uleb128 0x3a
+ 1675 006b 0B       		.uleb128 0xb
+ 1676 006c 3B       		.uleb128 0x3b
+ 1677 006d 0B       		.uleb128 0xb
+ 1678 006e 01       		.uleb128 0x1
+ 1679 006f 13       		.uleb128 0x13
+ 1680 0070 00       		.byte	0
+ 1681 0071 00       		.byte	0
+ 1682 0072 09       		.uleb128 0x9
+ 1683 0073 0F       		.uleb128 0xf
+ 1684 0074 00       		.byte	0
+ 1685 0075 0B       		.uleb128 0xb
+ 1686 0076 0B       		.uleb128 0xb
+ 1687 0077 49       		.uleb128 0x49
+ 1688 0078 13       		.uleb128 0x13
+ 1689 0079 00       		.byte	0
+ 1690 007a 00       		.byte	0
+ 1691 007b 0A       		.uleb128 0xa
+ 1692 007c 01       		.uleb128 0x1
+ 1693 007d 01       		.byte	0x1
+ 1694 007e 49       		.uleb128 0x49
+ 1695 007f 13       		.uleb128 0x13
+ 1696 0080 01       		.uleb128 0x1
+ 1697 0081 13       		.uleb128 0x13
+ 1698 0082 00       		.byte	0
+ 1699 0083 00       		.byte	0
+ 1700 0084 0B       		.uleb128 0xb
+ 1701 0085 21       		.uleb128 0x21
+ 1702 0086 00       		.byte	0
+ 1703 0087 49       		.uleb128 0x49
+ 1704 0088 13       		.uleb128 0x13
+ 1705 0089 2F       		.uleb128 0x2f
+ 1706 008a 0B       		.uleb128 0xb
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 31
+
+
+ 1707 008b 00       		.byte	0
+ 1708 008c 00       		.byte	0
+ 1709 008d 0C       		.uleb128 0xc
+ 1710 008e 0F       		.uleb128 0xf
+ 1711 008f 00       		.byte	0
+ 1712 0090 0B       		.uleb128 0xb
+ 1713 0091 0B       		.uleb128 0xb
+ 1714 0092 00       		.byte	0
+ 1715 0093 00       		.byte	0
+ 1716 0094 0D       		.uleb128 0xd
+ 1717 0095 35       		.uleb128 0x35
+ 1718 0096 00       		.byte	0
+ 1719 0097 49       		.uleb128 0x49
+ 1720 0098 13       		.uleb128 0x13
+ 1721 0099 00       		.byte	0
+ 1722 009a 00       		.byte	0
+ 1723 009b 0E       		.uleb128 0xe
+ 1724 009c 15       		.uleb128 0x15
+ 1725 009d 01       		.byte	0x1
+ 1726 009e 27       		.uleb128 0x27
+ 1727 009f 0C       		.uleb128 0xc
+ 1728 00a0 49       		.uleb128 0x49
+ 1729 00a1 13       		.uleb128 0x13
+ 1730 00a2 01       		.uleb128 0x1
+ 1731 00a3 13       		.uleb128 0x13
+ 1732 00a4 00       		.byte	0
+ 1733 00a5 00       		.byte	0
+ 1734 00a6 0F       		.uleb128 0xf
+ 1735 00a7 05       		.uleb128 0x5
+ 1736 00a8 00       		.byte	0
+ 1737 00a9 49       		.uleb128 0x49
+ 1738 00aa 13       		.uleb128 0x13
+ 1739 00ab 00       		.byte	0
+ 1740 00ac 00       		.byte	0
+ 1741 00ad 10       		.uleb128 0x10
+ 1742 00ae 17       		.uleb128 0x17
+ 1743 00af 01       		.byte	0x1
+ 1744 00b0 0B       		.uleb128 0xb
+ 1745 00b1 0B       		.uleb128 0xb
+ 1746 00b2 3A       		.uleb128 0x3a
+ 1747 00b3 0B       		.uleb128 0xb
+ 1748 00b4 3B       		.uleb128 0x3b
+ 1749 00b5 0B       		.uleb128 0xb
+ 1750 00b6 01       		.uleb128 0x1
+ 1751 00b7 13       		.uleb128 0x13
+ 1752 00b8 00       		.byte	0
+ 1753 00b9 00       		.byte	0
+ 1754 00ba 11       		.uleb128 0x11
+ 1755 00bb 0D       		.uleb128 0xd
+ 1756 00bc 00       		.byte	0
+ 1757 00bd 03       		.uleb128 0x3
+ 1758 00be 0E       		.uleb128 0xe
+ 1759 00bf 3A       		.uleb128 0x3a
+ 1760 00c0 0B       		.uleb128 0xb
+ 1761 00c1 3B       		.uleb128 0x3b
+ 1762 00c2 0B       		.uleb128 0xb
+ 1763 00c3 49       		.uleb128 0x49
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 32
+
+
+ 1764 00c4 13       		.uleb128 0x13
+ 1765 00c5 00       		.byte	0
+ 1766 00c6 00       		.byte	0
+ 1767 00c7 12       		.uleb128 0x12
+ 1768 00c8 17       		.uleb128 0x17
+ 1769 00c9 01       		.byte	0x1
+ 1770 00ca 03       		.uleb128 0x3
+ 1771 00cb 0E       		.uleb128 0xe
+ 1772 00cc 0B       		.uleb128 0xb
+ 1773 00cd 0B       		.uleb128 0xb
+ 1774 00ce 3A       		.uleb128 0x3a
+ 1775 00cf 0B       		.uleb128 0xb
+ 1776 00d0 3B       		.uleb128 0x3b
+ 1777 00d1 0B       		.uleb128 0xb
+ 1778 00d2 01       		.uleb128 0x1
+ 1779 00d3 13       		.uleb128 0x13
+ 1780 00d4 00       		.byte	0
+ 1781 00d5 00       		.byte	0
+ 1782 00d6 13       		.uleb128 0x13
+ 1783 00d7 0D       		.uleb128 0xd
+ 1784 00d8 00       		.byte	0
+ 1785 00d9 03       		.uleb128 0x3
+ 1786 00da 08       		.uleb128 0x8
+ 1787 00db 3A       		.uleb128 0x3a
+ 1788 00dc 0B       		.uleb128 0xb
+ 1789 00dd 3B       		.uleb128 0x3b
+ 1790 00de 0B       		.uleb128 0xb
+ 1791 00df 49       		.uleb128 0x49
+ 1792 00e0 13       		.uleb128 0x13
+ 1793 00e1 00       		.byte	0
+ 1794 00e2 00       		.byte	0
+ 1795 00e3 14       		.uleb128 0x14
+ 1796 00e4 26       		.uleb128 0x26
+ 1797 00e5 00       		.byte	0
+ 1798 00e6 49       		.uleb128 0x49
+ 1799 00e7 13       		.uleb128 0x13
+ 1800 00e8 00       		.byte	0
+ 1801 00e9 00       		.byte	0
+ 1802 00ea 15       		.uleb128 0x15
+ 1803 00eb 2E       		.uleb128 0x2e
+ 1804 00ec 01       		.byte	0x1
+ 1805 00ed 3F       		.uleb128 0x3f
+ 1806 00ee 0C       		.uleb128 0xc
+ 1807 00ef 03       		.uleb128 0x3
+ 1808 00f0 0E       		.uleb128 0xe
+ 1809 00f1 3A       		.uleb128 0x3a
+ 1810 00f2 0B       		.uleb128 0xb
+ 1811 00f3 3B       		.uleb128 0x3b
+ 1812 00f4 0B       		.uleb128 0xb
+ 1813 00f5 27       		.uleb128 0x27
+ 1814 00f6 0C       		.uleb128 0xc
+ 1815 00f7 11       		.uleb128 0x11
+ 1816 00f8 01       		.uleb128 0x1
+ 1817 00f9 12       		.uleb128 0x12
+ 1818 00fa 01       		.uleb128 0x1
+ 1819 00fb 40       		.uleb128 0x40
+ 1820 00fc 0A       		.uleb128 0xa
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 33
+
+
+ 1821 00fd 9742     		.uleb128 0x2117
+ 1822 00ff 0C       		.uleb128 0xc
+ 1823 0100 01       		.uleb128 0x1
+ 1824 0101 13       		.uleb128 0x13
+ 1825 0102 00       		.byte	0
+ 1826 0103 00       		.byte	0
+ 1827 0104 16       		.uleb128 0x16
+ 1828 0105 898201   		.uleb128 0x4109
+ 1829 0108 01       		.byte	0x1
+ 1830 0109 11       		.uleb128 0x11
+ 1831 010a 01       		.uleb128 0x1
+ 1832 010b 9542     		.uleb128 0x2115
+ 1833 010d 0C       		.uleb128 0xc
+ 1834 010e 31       		.uleb128 0x31
+ 1835 010f 13       		.uleb128 0x13
+ 1836 0110 00       		.byte	0
+ 1837 0111 00       		.byte	0
+ 1838 0112 17       		.uleb128 0x17
+ 1839 0113 8A8201   		.uleb128 0x410a
+ 1840 0116 00       		.byte	0
+ 1841 0117 02       		.uleb128 0x2
+ 1842 0118 0A       		.uleb128 0xa
+ 1843 0119 9142     		.uleb128 0x2111
+ 1844 011b 0A       		.uleb128 0xa
+ 1845 011c 00       		.byte	0
+ 1846 011d 00       		.byte	0
+ 1847 011e 18       		.uleb128 0x18
+ 1848 011f 05       		.uleb128 0x5
+ 1849 0120 00       		.byte	0
+ 1850 0121 03       		.uleb128 0x3
+ 1851 0122 0E       		.uleb128 0xe
+ 1852 0123 3A       		.uleb128 0x3a
+ 1853 0124 0B       		.uleb128 0xb
+ 1854 0125 3B       		.uleb128 0x3b
+ 1855 0126 0B       		.uleb128 0xb
+ 1856 0127 49       		.uleb128 0x49
+ 1857 0128 13       		.uleb128 0x13
+ 1858 0129 02       		.uleb128 0x2
+ 1859 012a 06       		.uleb128 0x6
+ 1860 012b 00       		.byte	0
+ 1861 012c 00       		.byte	0
+ 1862 012d 19       		.uleb128 0x19
+ 1863 012e 05       		.uleb128 0x5
+ 1864 012f 00       		.byte	0
+ 1865 0130 03       		.uleb128 0x3
+ 1866 0131 08       		.uleb128 0x8
+ 1867 0132 3A       		.uleb128 0x3a
+ 1868 0133 0B       		.uleb128 0xb
+ 1869 0134 3B       		.uleb128 0x3b
+ 1870 0135 0B       		.uleb128 0xb
+ 1871 0136 49       		.uleb128 0x49
+ 1872 0137 13       		.uleb128 0x13
+ 1873 0138 02       		.uleb128 0x2
+ 1874 0139 06       		.uleb128 0x6
+ 1875 013a 00       		.byte	0
+ 1876 013b 00       		.byte	0
+ 1877 013c 1A       		.uleb128 0x1a
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 34
+
+
+ 1878 013d 34       		.uleb128 0x34
+ 1879 013e 00       		.byte	0
+ 1880 013f 03       		.uleb128 0x3
+ 1881 0140 08       		.uleb128 0x8
+ 1882 0141 3A       		.uleb128 0x3a
+ 1883 0142 0B       		.uleb128 0xb
+ 1884 0143 3B       		.uleb128 0x3b
+ 1885 0144 0B       		.uleb128 0xb
+ 1886 0145 49       		.uleb128 0x49
+ 1887 0146 13       		.uleb128 0x13
+ 1888 0147 02       		.uleb128 0x2
+ 1889 0148 06       		.uleb128 0x6
+ 1890 0149 00       		.byte	0
+ 1891 014a 00       		.byte	0
+ 1892 014b 1B       		.uleb128 0x1b
+ 1893 014c 2E       		.uleb128 0x2e
+ 1894 014d 01       		.byte	0x1
+ 1895 014e 3F       		.uleb128 0x3f
+ 1896 014f 0C       		.uleb128 0xc
+ 1897 0150 03       		.uleb128 0x3
+ 1898 0151 0E       		.uleb128 0xe
+ 1899 0152 3A       		.uleb128 0x3a
+ 1900 0153 0B       		.uleb128 0xb
+ 1901 0154 3B       		.uleb128 0x3b
+ 1902 0155 0B       		.uleb128 0xb
+ 1903 0156 27       		.uleb128 0x27
+ 1904 0157 0C       		.uleb128 0xc
+ 1905 0158 49       		.uleb128 0x49
+ 1906 0159 13       		.uleb128 0x13
+ 1907 015a 11       		.uleb128 0x11
+ 1908 015b 01       		.uleb128 0x1
+ 1909 015c 12       		.uleb128 0x12
+ 1910 015d 01       		.uleb128 0x1
+ 1911 015e 40       		.uleb128 0x40
+ 1912 015f 06       		.uleb128 0x6
+ 1913 0160 9742     		.uleb128 0x2117
+ 1914 0162 0C       		.uleb128 0xc
+ 1915 0163 01       		.uleb128 0x1
+ 1916 0164 13       		.uleb128 0x13
+ 1917 0165 00       		.byte	0
+ 1918 0166 00       		.byte	0
+ 1919 0167 1C       		.uleb128 0x1c
+ 1920 0168 898201   		.uleb128 0x4109
+ 1921 016b 01       		.byte	0x1
+ 1922 016c 11       		.uleb128 0x11
+ 1923 016d 01       		.uleb128 0x1
+ 1924 016e 31       		.uleb128 0x31
+ 1925 016f 13       		.uleb128 0x13
+ 1926 0170 01       		.uleb128 0x1
+ 1927 0171 13       		.uleb128 0x13
+ 1928 0172 00       		.byte	0
+ 1929 0173 00       		.byte	0
+ 1930 0174 1D       		.uleb128 0x1d
+ 1931 0175 898201   		.uleb128 0x4109
+ 1932 0178 00       		.byte	0
+ 1933 0179 11       		.uleb128 0x11
+ 1934 017a 01       		.uleb128 0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 35
+
+
+ 1935 017b 31       		.uleb128 0x31
+ 1936 017c 13       		.uleb128 0x13
+ 1937 017d 00       		.byte	0
+ 1938 017e 00       		.byte	0
+ 1939 017f 1E       		.uleb128 0x1e
+ 1940 0180 898201   		.uleb128 0x4109
+ 1941 0183 01       		.byte	0x1
+ 1942 0184 11       		.uleb128 0x11
+ 1943 0185 01       		.uleb128 0x1
+ 1944 0186 01       		.uleb128 0x1
+ 1945 0187 13       		.uleb128 0x13
+ 1946 0188 00       		.byte	0
+ 1947 0189 00       		.byte	0
+ 1948 018a 1F       		.uleb128 0x1f
+ 1949 018b 2E       		.uleb128 0x2e
+ 1950 018c 01       		.byte	0x1
+ 1951 018d 3F       		.uleb128 0x3f
+ 1952 018e 0C       		.uleb128 0xc
+ 1953 018f 03       		.uleb128 0x3
+ 1954 0190 0E       		.uleb128 0xe
+ 1955 0191 3A       		.uleb128 0x3a
+ 1956 0192 0B       		.uleb128 0xb
+ 1957 0193 3B       		.uleb128 0x3b
+ 1958 0194 0B       		.uleb128 0xb
+ 1959 0195 27       		.uleb128 0x27
+ 1960 0196 0C       		.uleb128 0xc
+ 1961 0197 11       		.uleb128 0x11
+ 1962 0198 01       		.uleb128 0x1
+ 1963 0199 12       		.uleb128 0x12
+ 1964 019a 01       		.uleb128 0x1
+ 1965 019b 40       		.uleb128 0x40
+ 1966 019c 06       		.uleb128 0x6
+ 1967 019d 9742     		.uleb128 0x2117
+ 1968 019f 0C       		.uleb128 0xc
+ 1969 01a0 01       		.uleb128 0x1
+ 1970 01a1 13       		.uleb128 0x13
+ 1971 01a2 00       		.byte	0
+ 1972 01a3 00       		.byte	0
+ 1973 01a4 20       		.uleb128 0x20
+ 1974 01a5 34       		.uleb128 0x34
+ 1975 01a6 00       		.byte	0
+ 1976 01a7 03       		.uleb128 0x3
+ 1977 01a8 0E       		.uleb128 0xe
+ 1978 01a9 3A       		.uleb128 0x3a
+ 1979 01aa 0B       		.uleb128 0xb
+ 1980 01ab 3B       		.uleb128 0x3b
+ 1981 01ac 0B       		.uleb128 0xb
+ 1982 01ad 49       		.uleb128 0x49
+ 1983 01ae 13       		.uleb128 0x13
+ 1984 01af 02       		.uleb128 0x2
+ 1985 01b0 06       		.uleb128 0x6
+ 1986 01b1 00       		.byte	0
+ 1987 01b2 00       		.byte	0
+ 1988 01b3 21       		.uleb128 0x21
+ 1989 01b4 898201   		.uleb128 0x4109
+ 1990 01b7 00       		.byte	0
+ 1991 01b8 11       		.uleb128 0x11
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 36
+
+
+ 1992 01b9 01       		.uleb128 0x1
+ 1993 01ba 9542     		.uleb128 0x2115
+ 1994 01bc 0C       		.uleb128 0xc
+ 1995 01bd 31       		.uleb128 0x31
+ 1996 01be 13       		.uleb128 0x13
+ 1997 01bf 00       		.byte	0
+ 1998 01c0 00       		.byte	0
+ 1999 01c1 22       		.uleb128 0x22
+ 2000 01c2 34       		.uleb128 0x34
+ 2001 01c3 00       		.byte	0
+ 2002 01c4 03       		.uleb128 0x3
+ 2003 01c5 0E       		.uleb128 0xe
+ 2004 01c6 3A       		.uleb128 0x3a
+ 2005 01c7 0B       		.uleb128 0xb
+ 2006 01c8 3B       		.uleb128 0x3b
+ 2007 01c9 0B       		.uleb128 0xb
+ 2008 01ca 49       		.uleb128 0x49
+ 2009 01cb 13       		.uleb128 0x13
+ 2010 01cc 02       		.uleb128 0x2
+ 2011 01cd 0A       		.uleb128 0xa
+ 2012 01ce 00       		.byte	0
+ 2013 01cf 00       		.byte	0
+ 2014 01d0 23       		.uleb128 0x23
+ 2015 01d1 2E       		.uleb128 0x2e
+ 2016 01d2 01       		.byte	0x1
+ 2017 01d3 3F       		.uleb128 0x3f
+ 2018 01d4 0C       		.uleb128 0xc
+ 2019 01d5 03       		.uleb128 0x3
+ 2020 01d6 0E       		.uleb128 0xe
+ 2021 01d7 3A       		.uleb128 0x3a
+ 2022 01d8 0B       		.uleb128 0xb
+ 2023 01d9 3B       		.uleb128 0x3b
+ 2024 01da 0B       		.uleb128 0xb
+ 2025 01db 27       		.uleb128 0x27
+ 2026 01dc 0C       		.uleb128 0xc
+ 2027 01dd 3C       		.uleb128 0x3c
+ 2028 01de 0C       		.uleb128 0xc
+ 2029 01df 01       		.uleb128 0x1
+ 2030 01e0 13       		.uleb128 0x13
+ 2031 01e1 00       		.byte	0
+ 2032 01e2 00       		.byte	0
+ 2033 01e3 24       		.uleb128 0x24
+ 2034 01e4 2E       		.uleb128 0x2e
+ 2035 01e5 00       		.byte	0
+ 2036 01e6 3F       		.uleb128 0x3f
+ 2037 01e7 0C       		.uleb128 0xc
+ 2038 01e8 03       		.uleb128 0x3
+ 2039 01e9 0E       		.uleb128 0xe
+ 2040 01ea 3A       		.uleb128 0x3a
+ 2041 01eb 0B       		.uleb128 0xb
+ 2042 01ec 3B       		.uleb128 0x3b
+ 2043 01ed 0B       		.uleb128 0xb
+ 2044 01ee 27       		.uleb128 0x27
+ 2045 01ef 0C       		.uleb128 0xc
+ 2046 01f0 49       		.uleb128 0x49
+ 2047 01f1 13       		.uleb128 0x13
+ 2048 01f2 3C       		.uleb128 0x3c
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 37
+
+
+ 2049 01f3 0C       		.uleb128 0xc
+ 2050 01f4 00       		.byte	0
+ 2051 01f5 00       		.byte	0
+ 2052 01f6 00       		.byte	0
+ 2053              		.section	.debug_loc,"",@progbits
+ 2054              	.Ldebug_loc0:
+ 2055              	.LLST0:
+ 2056 0000 00000000 		.4byte	.LVL1
+ 2057 0004 00000000 		.4byte	.LVL4
+ 2058 0008 0001     		.2byte	0x1
+ 2059 000a 53       		.byte	0x53
+ 2060 000b 00000000 		.4byte	.LVL4
+ 2061 000f 00000000 		.4byte	.LVL5-1
+ 2062 0013 0003     		.2byte	0x3
+ 2063 0015 73       		.byte	0x73
+ 2064 0016 70       		.sleb128 -16
+ 2065 0017 9F       		.byte	0x9f
+ 2066 0018 00000000 		.4byte	.LVL5-1
+ 2067 001c 00000000 		.4byte	.LFE16
+ 2068 0020 0004     		.2byte	0x4
+ 2069 0022 F3       		.byte	0xf3
+ 2070 0023 01       		.uleb128 0x1
+ 2071 0024 53       		.byte	0x53
+ 2072 0025 9F       		.byte	0x9f
+ 2073 0026 00000000 		.4byte	0
+ 2074 002a 00000000 		.4byte	0
+ 2075              	.LLST1:
+ 2076 002e 00000000 		.4byte	.LVL1
+ 2077 0032 00000000 		.4byte	.LVL5-1
+ 2078 0036 0001     		.2byte	0x1
+ 2079 0038 54       		.byte	0x54
+ 2080 0039 00000000 		.4byte	.LVL5-1
+ 2081 003d 00000000 		.4byte	.LFE16
+ 2082 0041 0004     		.2byte	0x4
+ 2083 0043 F3       		.byte	0xf3
+ 2084 0044 01       		.uleb128 0x1
+ 2085 0045 54       		.byte	0x54
+ 2086 0046 9F       		.byte	0x9f
+ 2087 0047 00000000 		.4byte	0
+ 2088 004b 00000000 		.4byte	0
+ 2089              	.LLST2:
+ 2090 004f 00000000 		.4byte	.LVL1
+ 2091 0053 00000000 		.4byte	.LVL2
+ 2092 0057 0001     		.2byte	0x1
+ 2093 0059 55       		.byte	0x55
+ 2094 005a 00000000 		.4byte	.LVL2
+ 2095 005e 00000000 		.4byte	.LVL5-1
+ 2096 0062 0003     		.2byte	0x3
+ 2097 0064 75       		.byte	0x75
+ 2098 0065 08       		.sleb128 8
+ 2099 0066 9F       		.byte	0x9f
+ 2100 0067 00000000 		.4byte	.LVL5-1
+ 2101 006b 00000000 		.4byte	.LFE16
+ 2102 006f 0004     		.2byte	0x4
+ 2103 0071 F3       		.byte	0xf3
+ 2104 0072 01       		.uleb128 0x1
+ 2105 0073 55       		.byte	0x55
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 38
+
+
+ 2106 0074 9F       		.byte	0x9f
+ 2107 0075 00000000 		.4byte	0
+ 2108 0079 00000000 		.4byte	0
+ 2109              	.LLST3:
+ 2110 007d 00000000 		.4byte	.LVL3
+ 2111 0081 00000000 		.4byte	.LVL5-1
+ 2112 0085 0001     		.2byte	0x1
+ 2113 0087 54       		.byte	0x54
+ 2114 0088 00000000 		.4byte	.LVL5-1
+ 2115 008c 00000000 		.4byte	.LFE16
+ 2116 0090 0004     		.2byte	0x4
+ 2117 0092 F3       		.byte	0xf3
+ 2118 0093 01       		.uleb128 0x1
+ 2119 0094 54       		.byte	0x54
+ 2120 0095 9F       		.byte	0x9f
+ 2121 0096 00000000 		.4byte	0
+ 2122 009a 00000000 		.4byte	0
+ 2123              	.LLST4:
+ 2124 009e 00000000 		.4byte	.LFB17
+ 2125 00a2 00000000 		.4byte	.LCFI0
+ 2126 00a6 0002     		.2byte	0x2
+ 2127 00a8 71       		.byte	0x71
+ 2128 00a9 00       		.sleb128 0
+ 2129 00aa 00000000 		.4byte	.LCFI0
+ 2130 00ae 00000000 		.4byte	.LCFI1
+ 2131 00b2 0002     		.2byte	0x2
+ 2132 00b4 71       		.byte	0x71
+ 2133 00b5 18       		.sleb128 24
+ 2134 00b6 00000000 		.4byte	.LCFI1
+ 2135 00ba 00000000 		.4byte	.LCFI2
+ 2136 00be 0002     		.2byte	0x2
+ 2137 00c0 71       		.byte	0x71
+ 2138 00c1 00       		.sleb128 0
+ 2139 00c2 00000000 		.4byte	.LCFI2
+ 2140 00c6 00000000 		.4byte	.LCFI3
+ 2141 00ca 0002     		.2byte	0x2
+ 2142 00cc 71       		.byte	0x71
+ 2143 00cd 18       		.sleb128 24
+ 2144 00ce 00000000 		.4byte	.LCFI3
+ 2145 00d2 00000000 		.4byte	.LCFI4
+ 2146 00d6 0002     		.2byte	0x2
+ 2147 00d8 71       		.byte	0x71
+ 2148 00d9 00       		.sleb128 0
+ 2149 00da 00000000 		.4byte	.LCFI4
+ 2150 00de 00000000 		.4byte	.LFE17
+ 2151 00e2 0002     		.2byte	0x2
+ 2152 00e4 71       		.byte	0x71
+ 2153 00e5 18       		.sleb128 24
+ 2154 00e6 00000000 		.4byte	0
+ 2155 00ea 00000000 		.4byte	0
+ 2156              	.LLST5:
+ 2157 00ee 00000000 		.4byte	.LVL6
+ 2158 00f2 00000000 		.4byte	.LVL7
+ 2159 00f6 0001     		.2byte	0x1
+ 2160 00f8 53       		.byte	0x53
+ 2161 00f9 00000000 		.4byte	.LVL7
+ 2162 00fd 00000000 		.4byte	.LVL17
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 39
+
+
+ 2163 0101 0001     		.2byte	0x1
+ 2164 0103 6C       		.byte	0x6c
+ 2165 0104 00000000 		.4byte	.LVL18
+ 2166 0108 00000000 		.4byte	.LVL20
+ 2167 010c 0001     		.2byte	0x1
+ 2168 010e 6C       		.byte	0x6c
+ 2169 010f 00000000 		.4byte	.LVL21
+ 2170 0113 00000000 		.4byte	.LVL23
+ 2171 0117 0001     		.2byte	0x1
+ 2172 0119 6C       		.byte	0x6c
+ 2173 011a 00000000 		.4byte	.LVL23
+ 2174 011e 00000000 		.4byte	.LVL24
+ 2175 0122 0001     		.2byte	0x1
+ 2176 0124 53       		.byte	0x53
+ 2177 0125 00000000 		.4byte	.LVL24
+ 2178 0129 00000000 		.4byte	.LFE17
+ 2179 012d 0001     		.2byte	0x1
+ 2180 012f 6C       		.byte	0x6c
+ 2181 0130 00000000 		.4byte	0
+ 2182 0134 00000000 		.4byte	0
+ 2183              	.LLST6:
+ 2184 0138 00000000 		.4byte	.LVL6
+ 2185 013c 00000000 		.4byte	.LVL8
+ 2186 0140 0001     		.2byte	0x1
+ 2187 0142 54       		.byte	0x54
+ 2188 0143 00000000 		.4byte	.LVL8
+ 2189 0147 00000000 		.4byte	.LVL9
+ 2190 014b 0003     		.2byte	0x3
+ 2191 014d 74       		.byte	0x74
+ 2192 014e 79       		.sleb128 -7
+ 2193 014f 9F       		.byte	0x9f
+ 2194 0150 00000000 		.4byte	.LVL9
+ 2195 0154 00000000 		.4byte	.LVL17
+ 2196 0158 0001     		.2byte	0x1
+ 2197 015a 6D       		.byte	0x6d
+ 2198 015b 00000000 		.4byte	.LVL17
+ 2199 015f 00000000 		.4byte	.LVL18
+ 2200 0163 0009     		.2byte	0x9
+ 2201 0165 F3       		.byte	0xf3
+ 2202 0166 01       		.uleb128 0x1
+ 2203 0167 54       		.byte	0x54
+ 2204 0168 23       		.byte	0x23
+ 2205 0169 07       		.uleb128 0x7
+ 2206 016a 09       		.byte	0x9
+ 2207 016b F8       		.byte	0xf8
+ 2208 016c 1A       		.byte	0x1a
+ 2209 016d 9F       		.byte	0x9f
+ 2210 016e 00000000 		.4byte	.LVL18
+ 2211 0172 00000000 		.4byte	.LVL20
+ 2212 0176 0001     		.2byte	0x1
+ 2213 0178 6D       		.byte	0x6d
+ 2214 0179 00000000 		.4byte	.LVL20
+ 2215 017d 00000000 		.4byte	.LVL21
+ 2216 0181 0009     		.2byte	0x9
+ 2217 0183 F3       		.byte	0xf3
+ 2218 0184 01       		.uleb128 0x1
+ 2219 0185 54       		.byte	0x54
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 40
+
+
+ 2220 0186 23       		.byte	0x23
+ 2221 0187 07       		.uleb128 0x7
+ 2222 0188 09       		.byte	0x9
+ 2223 0189 F8       		.byte	0xf8
+ 2224 018a 1A       		.byte	0x1a
+ 2225 018b 9F       		.byte	0x9f
+ 2226 018c 00000000 		.4byte	.LVL21
+ 2227 0190 00000000 		.4byte	.LVL23
+ 2228 0194 0001     		.2byte	0x1
+ 2229 0196 6D       		.byte	0x6d
+ 2230 0197 00000000 		.4byte	.LVL23
+ 2231 019b 00000000 		.4byte	.LVL24
+ 2232 019f 0001     		.2byte	0x1
+ 2233 01a1 54       		.byte	0x54
+ 2234 01a2 00000000 		.4byte	.LVL24
+ 2235 01a6 00000000 		.4byte	.LFE17
+ 2236 01aa 0001     		.2byte	0x1
+ 2237 01ac 6D       		.byte	0x6d
+ 2238 01ad 00000000 		.4byte	0
+ 2239 01b1 00000000 		.4byte	0
+ 2240              	.LLST7:
+ 2241 01b5 00000000 		.4byte	.LVL9
+ 2242 01b9 00000000 		.4byte	.LVL17
+ 2243 01bd 0001     		.2byte	0x1
+ 2244 01bf 6E       		.byte	0x6e
+ 2245 01c0 00000000 		.4byte	.LVL18
+ 2246 01c4 00000000 		.4byte	.LVL20
+ 2247 01c8 0001     		.2byte	0x1
+ 2248 01ca 6E       		.byte	0x6e
+ 2249 01cb 00000000 		.4byte	.LVL21
+ 2250 01cf 00000000 		.4byte	.LVL23
+ 2251 01d3 0001     		.2byte	0x1
+ 2252 01d5 6E       		.byte	0x6e
+ 2253 01d6 00000000 		.4byte	.LVL24
+ 2254 01da 00000000 		.4byte	.LFE17
+ 2255 01de 0001     		.2byte	0x1
+ 2256 01e0 6E       		.byte	0x6e
+ 2257 01e1 00000000 		.4byte	0
+ 2258 01e5 00000000 		.4byte	0
+ 2259              	.LLST8:
+ 2260 01e9 00000000 		.4byte	.LVL11
+ 2261 01ed 00000000 		.4byte	.LVL12
+ 2262 01f1 0001     		.2byte	0x1
+ 2263 01f3 6F       		.byte	0x6f
+ 2264 01f4 00000000 		.4byte	.LVL13
+ 2265 01f8 00000000 		.4byte	.LVL15
+ 2266 01fc 0001     		.2byte	0x1
+ 2267 01fe 6F       		.byte	0x6f
+ 2268 01ff 00000000 		.4byte	.LVL15
+ 2269 0203 00000000 		.4byte	.LVL16
+ 2270 0207 0001     		.2byte	0x1
+ 2271 0209 53       		.byte	0x53
+ 2272 020a 00000000 		.4byte	.LVL18
+ 2273 020e 00000000 		.4byte	.LVL20
+ 2274 0212 0001     		.2byte	0x1
+ 2275 0214 6F       		.byte	0x6f
+ 2276 0215 00000000 		.4byte	.LVL20
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 41
+
+
+ 2277 0219 00000000 		.4byte	.LVL21
+ 2278 021d 0003     		.2byte	0x3
+ 2279 021f 73       		.byte	0x73
+ 2280 0220 78       		.sleb128 -8
+ 2281 0221 9F       		.byte	0x9f
+ 2282 0222 00000000 		.4byte	.LVL21
+ 2283 0226 00000000 		.4byte	.LVL23
+ 2284 022a 0001     		.2byte	0x1
+ 2285 022c 6F       		.byte	0x6f
+ 2286 022d 00000000 		.4byte	0
+ 2287 0231 00000000 		.4byte	0
+ 2288              	.LLST9:
+ 2289 0235 00000000 		.4byte	.LVL22
+ 2290 0239 00000000 		.4byte	.LVL23
+ 2291 023d 0001     		.2byte	0x1
+ 2292 023f 5A       		.byte	0x5a
+ 2293 0240 00000000 		.4byte	0
+ 2294 0244 00000000 		.4byte	0
+ 2295              	.LLST10:
+ 2296 0248 00000000 		.4byte	.LFB18
+ 2297 024c 00000000 		.4byte	.LCFI5
+ 2298 0250 0002     		.2byte	0x2
+ 2299 0252 71       		.byte	0x71
+ 2300 0253 00       		.sleb128 0
+ 2301 0254 00000000 		.4byte	.LCFI5
+ 2302 0258 00000000 		.4byte	.LCFI6
+ 2303 025c 0002     		.2byte	0x2
+ 2304 025e 71       		.byte	0x71
+ 2305 025f 18       		.sleb128 24
+ 2306 0260 00000000 		.4byte	.LCFI6
+ 2307 0264 00000000 		.4byte	.LCFI7
+ 2308 0268 0002     		.2byte	0x2
+ 2309 026a 71       		.byte	0x71
+ 2310 026b 00       		.sleb128 0
+ 2311 026c 00000000 		.4byte	.LCFI7
+ 2312 0270 00000000 		.4byte	.LCFI8
+ 2313 0274 0002     		.2byte	0x2
+ 2314 0276 71       		.byte	0x71
+ 2315 0277 18       		.sleb128 24
+ 2316 0278 00000000 		.4byte	.LCFI8
+ 2317 027c 00000000 		.4byte	.LFE18
+ 2318 0280 0002     		.2byte	0x2
+ 2319 0282 71       		.byte	0x71
+ 2320 0283 00       		.sleb128 0
+ 2321 0284 00000000 		.4byte	0
+ 2322 0288 00000000 		.4byte	0
+ 2323              	.LLST11:
+ 2324 028c 00000000 		.4byte	.LVL25
+ 2325 0290 00000000 		.4byte	.LVL26
+ 2326 0294 0001     		.2byte	0x1
+ 2327 0296 53       		.byte	0x53
+ 2328 0297 00000000 		.4byte	.LVL26
+ 2329 029b 00000000 		.4byte	.LVL35
+ 2330 029f 0001     		.2byte	0x1
+ 2331 02a1 6D       		.byte	0x6d
+ 2332 02a2 00000000 		.4byte	.LVL35
+ 2333 02a6 00000000 		.4byte	.LVL36
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 42
+
+
+ 2334 02aa 0004     		.2byte	0x4
+ 2335 02ac F3       		.byte	0xf3
+ 2336 02ad 01       		.uleb128 0x1
+ 2337 02ae 53       		.byte	0x53
+ 2338 02af 9F       		.byte	0x9f
+ 2339 02b0 00000000 		.4byte	.LVL36
+ 2340 02b4 00000000 		.4byte	.LVL37
+ 2341 02b8 0001     		.2byte	0x1
+ 2342 02ba 6D       		.byte	0x6d
+ 2343 02bb 00000000 		.4byte	.LVL37
+ 2344 02bf 00000000 		.4byte	.LFE18
+ 2345 02c3 0004     		.2byte	0x4
+ 2346 02c5 F3       		.byte	0xf3
+ 2347 02c6 01       		.uleb128 0x1
+ 2348 02c7 53       		.byte	0x53
+ 2349 02c8 9F       		.byte	0x9f
+ 2350 02c9 00000000 		.4byte	0
+ 2351 02cd 00000000 		.4byte	0
+ 2352              	.LLST12:
+ 2353 02d1 00000000 		.4byte	.LVL28
+ 2354 02d5 00000000 		.4byte	.LVL31
+ 2355 02d9 0001     		.2byte	0x1
+ 2356 02db 6E       		.byte	0x6e
+ 2357 02dc 00000000 		.4byte	.LVL31
+ 2358 02e0 00000000 		.4byte	.LVL33
+ 2359 02e4 0001     		.2byte	0x1
+ 2360 02e6 57       		.byte	0x57
+ 2361 02e7 00000000 		.4byte	.LVL34
+ 2362 02eb 00000000 		.4byte	.LVL36-1
+ 2363 02ef 0001     		.2byte	0x1
+ 2364 02f1 57       		.byte	0x57
+ 2365 02f2 00000000 		.4byte	.LVL36
+ 2366 02f6 00000000 		.4byte	.LVL38-1
+ 2367 02fa 0001     		.2byte	0x1
+ 2368 02fc 57       		.byte	0x57
+ 2369 02fd 00000000 		.4byte	0
+ 2370 0301 00000000 		.4byte	0
+ 2371              	.LLST13:
+ 2372 0305 00000000 		.4byte	.LVL27
+ 2373 0309 00000000 		.4byte	.LVL35
+ 2374 030d 0001     		.2byte	0x1
+ 2375 030f 6F       		.byte	0x6f
+ 2376 0310 00000000 		.4byte	.LVL35
+ 2377 0314 00000000 		.4byte	.LVL36
+ 2378 0318 0006     		.2byte	0x6
+ 2379 031a F3       		.byte	0xf3
+ 2380 031b 01       		.uleb128 0x1
+ 2381 031c 53       		.byte	0x53
+ 2382 031d 38       		.byte	0x38
+ 2383 031e 1C       		.byte	0x1c
+ 2384 031f 9F       		.byte	0x9f
+ 2385 0320 00000000 		.4byte	.LVL36
+ 2386 0324 00000000 		.4byte	.LVL37
+ 2387 0328 0001     		.2byte	0x1
+ 2388 032a 6F       		.byte	0x6f
+ 2389 032b 00000000 		.4byte	.LVL37
+ 2390 032f 00000000 		.4byte	.LFE18
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 43
+
+
+ 2391 0333 0006     		.2byte	0x6
+ 2392 0335 F3       		.byte	0xf3
+ 2393 0336 01       		.uleb128 0x1
+ 2394 0337 53       		.byte	0x53
+ 2395 0338 38       		.byte	0x38
+ 2396 0339 1C       		.byte	0x1c
+ 2397 033a 9F       		.byte	0x9f
+ 2398 033b 00000000 		.4byte	0
+ 2399 033f 00000000 		.4byte	0
+ 2400              	.LLST14:
+ 2401 0343 00000000 		.4byte	.LVL27
+ 2402 0347 00000000 		.4byte	.LVL29
+ 2403 034b 0001     		.2byte	0x1
+ 2404 034d 53       		.byte	0x53
+ 2405 034e 00000000 		.4byte	.LVL29
+ 2406 0352 00000000 		.4byte	.LVL30-1
+ 2407 0356 0002     		.2byte	0x2
+ 2408 0358 8F       		.byte	0x8f
+ 2409 0359 00       		.sleb128 0
+ 2410 035a 00000000 		.4byte	.LVL30-1
+ 2411 035e 00000000 		.4byte	.LVL35
+ 2412 0362 0003     		.2byte	0x3
+ 2413 0364 8E       		.byte	0x8e
+ 2414 0365 78       		.sleb128 -8
+ 2415 0366 9F       		.byte	0x9f
+ 2416 0367 00000000 		.4byte	.LVL36
+ 2417 036b 00000000 		.4byte	.LVL37
+ 2418 036f 0003     		.2byte	0x3
+ 2419 0371 8E       		.byte	0x8e
+ 2420 0372 78       		.sleb128 -8
+ 2421 0373 9F       		.byte	0x9f
+ 2422 0374 00000000 		.4byte	0
+ 2423 0378 00000000 		.4byte	0
+ 2424              	.LLST15:
+ 2425 037c 00000000 		.4byte	.LFB19
+ 2426 0380 00000000 		.4byte	.LCFI9
+ 2427 0384 0002     		.2byte	0x2
+ 2428 0386 71       		.byte	0x71
+ 2429 0387 00       		.sleb128 0
+ 2430 0388 00000000 		.4byte	.LCFI9
+ 2431 038c 00000000 		.4byte	.LCFI10
+ 2432 0390 0002     		.2byte	0x2
+ 2433 0392 71       		.byte	0x71
+ 2434 0393 10       		.sleb128 16
+ 2435 0394 00000000 		.4byte	.LCFI10
+ 2436 0398 00000000 		.4byte	.LCFI11
+ 2437 039c 0002     		.2byte	0x2
+ 2438 039e 71       		.byte	0x71
+ 2439 039f 00       		.sleb128 0
+ 2440 03a0 00000000 		.4byte	.LCFI11
+ 2441 03a4 00000000 		.4byte	.LFE19
+ 2442 03a8 0002     		.2byte	0x2
+ 2443 03aa 71       		.byte	0x71
+ 2444 03ab 10       		.sleb128 16
+ 2445 03ac 00000000 		.4byte	0
+ 2446 03b0 00000000 		.4byte	0
+ 2447              	.LLST16:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 44
+
+
+ 2448 03b4 00000000 		.4byte	.LVL39
+ 2449 03b8 00000000 		.4byte	.LVL40
+ 2450 03bc 0001     		.2byte	0x1
+ 2451 03be 53       		.byte	0x53
+ 2452 03bf 00000000 		.4byte	.LVL40
+ 2453 03c3 00000000 		.4byte	.LVL42
+ 2454 03c7 0001     		.2byte	0x1
+ 2455 03c9 6F       		.byte	0x6f
+ 2456 03ca 00000000 		.4byte	.LVL49
+ 2457 03ce 00000000 		.4byte	.LFE19
+ 2458 03d2 0001     		.2byte	0x1
+ 2459 03d4 53       		.byte	0x53
+ 2460 03d5 00000000 		.4byte	0
+ 2461 03d9 00000000 		.4byte	0
+ 2462              	.LLST17:
+ 2463 03dd 00000000 		.4byte	.LVL39
+ 2464 03e1 00000000 		.4byte	.LVL41-1
+ 2465 03e5 0001     		.2byte	0x1
+ 2466 03e7 54       		.byte	0x54
+ 2467 03e8 00000000 		.4byte	.LVL41-1
+ 2468 03ec 00000000 		.4byte	.LVL48
+ 2469 03f0 0001     		.2byte	0x1
+ 2470 03f2 6E       		.byte	0x6e
+ 2471 03f3 00000000 		.4byte	.LVL48
+ 2472 03f7 00000000 		.4byte	.LVL49
+ 2473 03fb 0004     		.2byte	0x4
+ 2474 03fd F3       		.byte	0xf3
+ 2475 03fe 01       		.uleb128 0x1
+ 2476 03ff 54       		.byte	0x54
+ 2477 0400 9F       		.byte	0x9f
+ 2478 0401 00000000 		.4byte	.LVL49
+ 2479 0405 00000000 		.4byte	.LFE19
+ 2480 0409 0001     		.2byte	0x1
+ 2481 040b 54       		.byte	0x54
+ 2482 040c 00000000 		.4byte	0
+ 2483 0410 00000000 		.4byte	0
+ 2484              	.LLST18:
+ 2485 0414 00000000 		.4byte	.LVL41
+ 2486 0418 00000000 		.4byte	.LVL42
+ 2487 041c 0003     		.2byte	0x3
+ 2488 041e 8F       		.byte	0x8f
+ 2489 041f 08       		.sleb128 8
+ 2490 0420 9F       		.byte	0x9f
+ 2491 0421 00000000 		.4byte	0
+ 2492 0425 00000000 		.4byte	0
+ 2493              	.LLST19:
+ 2494 0429 00000000 		.4byte	.LVL41
+ 2495 042d 00000000 		.4byte	.LVL43
+ 2496 0431 0002     		.2byte	0x2
+ 2497 0433 30       		.byte	0x30
+ 2498 0434 9F       		.byte	0x9f
+ 2499 0435 00000000 		.4byte	.LVL43
+ 2500 0439 00000000 		.4byte	.LVL44
+ 2501 043d 0001     		.2byte	0x1
+ 2502 043f 6F       		.byte	0x6f
+ 2503 0440 00000000 		.4byte	.LVL44
+ 2504 0444 00000000 		.4byte	.LVL45
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 45
+
+
+ 2505 0448 0003     		.2byte	0x3
+ 2506 044a 8F       		.byte	0x8f
+ 2507 044b 7F       		.sleb128 -1
+ 2508 044c 9F       		.byte	0x9f
+ 2509 044d 00000000 		.4byte	.LVL45
+ 2510 0451 00000000 		.4byte	.LVL46
+ 2511 0455 0001     		.2byte	0x1
+ 2512 0457 6F       		.byte	0x6f
+ 2513 0458 00000000 		.4byte	0
+ 2514 045c 00000000 		.4byte	0
+ 2515              	.LLST20:
+ 2516 0460 00000000 		.4byte	.LVL41
+ 2517 0464 00000000 		.4byte	.LVL43
+ 2518 0468 0002     		.2byte	0x2
+ 2519 046a 30       		.byte	0x30
+ 2520 046b 9F       		.byte	0x9f
+ 2521 046c 00000000 		.4byte	.LVL43
+ 2522 0470 00000000 		.4byte	.LVL46
+ 2523 0474 0001     		.2byte	0x1
+ 2524 0476 5A       		.byte	0x5a
+ 2525 0477 00000000 		.4byte	0
+ 2526 047b 00000000 		.4byte	0
+ 2527              		.section	.debug_aranges,"",@progbits
+ 2528 0000 0000003C 		.4byte	0x3c
+ 2529 0004 0002     		.2byte	0x2
+ 2530 0006 00000000 		.4byte	.Ldebug_info0
+ 2531 000a 04       		.byte	0x4
+ 2532 000b 00       		.byte	0
+ 2533 000c 0000     		.2byte	0
+ 2534 000e 0000     		.2byte	0
+ 2535 0010 00000000 		.4byte	.LFB15
+ 2536 0014 00000026 		.4byte	.LFE15-.LFB15
+ 2537 0018 00000000 		.4byte	.LFB16
+ 2538 001c 0000001E 		.4byte	.LFE16-.LFB16
+ 2539 0020 00000000 		.4byte	.LFB17
+ 2540 0024 000000C8 		.4byte	.LFE17-.LFB17
+ 2541 0028 00000000 		.4byte	.LFB18
+ 2542 002c 000000D8 		.4byte	.LFE18-.LFB18
+ 2543 0030 00000000 		.4byte	.LFB19
+ 2544 0034 00000070 		.4byte	.LFE19-.LFB19
+ 2545 0038 00000000 		.4byte	0
+ 2546 003c 00000000 		.4byte	0
+ 2547              		.section	.debug_ranges,"",@progbits
+ 2548              	.Ldebug_ranges0:
+ 2549 0000 00000000 		.4byte	.LFB15
+ 2550 0004 00000000 		.4byte	.LFE15
+ 2551 0008 00000000 		.4byte	.LFB16
+ 2552 000c 00000000 		.4byte	.LFE16
+ 2553 0010 00000000 		.4byte	.LFB17
+ 2554 0014 00000000 		.4byte	.LFE17
+ 2555 0018 00000000 		.4byte	.LFB18
+ 2556 001c 00000000 		.4byte	.LFE18
+ 2557 0020 00000000 		.4byte	.LFB19
+ 2558 0024 00000000 		.4byte	.LFE19
+ 2559 0028 00000000 		.4byte	0
+ 2560 002c 00000000 		.4byte	0
+ 2561              		.section	.debug_line,"",@progbits
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 46
+
+
+ 2562              	.Ldebug_line0:
+ 2563 0000 000003EF 		.section	.debug_str,"MS",@progbits,1
+ 2563      00020000 
+ 2563      02F80201 
+ 2563      FB0E0D00 
+ 2563      01010101 
+ 2564              	.LASF51:
+ 2565 0000 70616464 		.string	"padding"
+ 2565      696E6700 
+ 2566              	.LASF40:
+ 2567 0008 705F6D73 		.string	"p_msg"
+ 2567      6700
+ 2568              	.LASF56:
+ 2569 000e 6D5F6E65 		.string	"m_next"
+ 2569      787400
+ 2570              	.LASF3:
+ 2571 0015 73697A65 		.string	"size_t"
+ 2571      5F7400
+ 2572              	.LASF67:
+ 2573 001c 7264796D 		.string	"rdymsg"
+ 2573      736700
+ 2574              	.LASF4:
+ 2575 0023 5F5F7569 		.string	"__uint8_t"
+ 2575      6E74385F 
+ 2575      7400
+ 2576              	.LASF57:
+ 2577 002d 6D656D67 		.string	"memgetfunc_t"
+ 2577      65746675 
+ 2577      6E635F74 
+ 2577      00
+ 2578              	.LASF12:
+ 2579 003a 6C6F6E67 		.string	"long long unsigned int"
+ 2579      206C6F6E 
+ 2579      6720756E 
+ 2579      7369676E 
+ 2579      65642069 
+ 2580              	.LASF68:
+ 2581 0051 65786974 		.string	"exitcode"
+ 2581      636F6465 
+ 2581      00
+ 2582              	.LASF61:
+ 2583 005a 685F6672 		.string	"h_free"
+ 2583      656500
+ 2584              	.LASF74:
+ 2585 0061 68656170 		.string	"heapp"
+ 2585      7000
+ 2586              	.LASF86:
+ 2587 0067 63684D74 		.string	"chMtxUnlock"
+ 2587      78556E6C 
+ 2587      6F636B00 
+ 2588              	.LASF73:
+ 2589 0073 63684865 		.string	"chHeapInit"
+ 2589      6170496E 
+ 2589      697400
+ 2590              	.LASF63:
+ 2591 007e 6E657874 		.string	"next"
+ 2591      00
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 47
+
+
+ 2592              	.LASF28:
+ 2593 0083 705F7072 		.string	"p_prio"
+ 2593      696F00
+ 2594              	.LASF11:
+ 2595 008a 6C6F6E67 		.string	"long long int"
+ 2595      206C6F6E 
+ 2595      6720696E 
+ 2595      7400
+ 2596              	.LASF2:
+ 2597 0098 7369676E 		.string	"signed char"
+ 2597      65642063 
+ 2597      68617200 
+ 2598              	.LASF62:
+ 2599 00a4 685F6D74 		.string	"h_mtx"
+ 2599      7800
+ 2600              	.LASF44:
+ 2601 00aa 705F6D70 		.string	"p_mpool"
+ 2601      6F6F6C00 
+ 2602              	.LASF54:
+ 2603 00b2 6D5F7175 		.string	"m_queue"
+ 2603      65756500 
+ 2604              	.LASF75:
+ 2605 00ba 63684865 		.string	"chHeapFree"
+ 2605      61704672 
+ 2605      656500
+ 2606              	.LASF20:
+ 2607 00c5 74736C69 		.string	"tslices_t"
+ 2607      6365735F 
+ 2607      7400
+ 2608              	.LASF1:
+ 2609 00cf 6C6F6E67 		.string	"long int"
+ 2609      20696E74 
+ 2609      00
+ 2610              	.LASF18:
+ 2611 00d8 74737461 		.string	"tstate_t"
+ 2611      74655F74 
+ 2611      00
+ 2612              	.LASF30:
+ 2613 00e1 705F6E65 		.string	"p_newer"
+ 2613      77657200 
+ 2614              	.LASF9:
+ 2615 00e9 5F5F7569 		.string	"__uint32_t"
+ 2615      6E743332 
+ 2615      5F7400
+ 2616              	.LASF65:
+ 2617 00f4 616C6967 		.string	"align"
+ 2617      6E00
+ 2618              	.LASF0:
+ 2619 00fa 756E7369 		.string	"unsigned int"
+ 2619      676E6564 
+ 2619      20696E74 
+ 2619      00
+ 2620              	.LASF10:
+ 2621 0107 6C6F6E67 		.string	"long unsigned int"
+ 2621      20756E73 
+ 2621      69676E65 
+ 2621      6420696E 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 48
+
+
+ 2621      7400
+ 2622              	.LASF52:
+ 2623 0119 636F6E74 		.string	"context"
+ 2623      65787400 
+ 2624              	.LASF66:
+ 2625 0121 73697A65 		.string	"size"
+ 2625      00
+ 2626              	.LASF7:
+ 2627 0126 73686F72 		.string	"short unsigned int"
+ 2627      7420756E 
+ 2627      7369676E 
+ 2627      65642069 
+ 2627      6E7400
+ 2628              	.LASF22:
+ 2629 0139 6D73675F 		.string	"msg_t"
+ 2629      7400
+ 2630              	.LASF17:
+ 2631 013f 746D6F64 		.string	"tmode_t"
+ 2631      655F7400 
+ 2632              	.LASF80:
+ 2633 0147 63684D74 		.string	"chMtxInit"
+ 2633      78496E69 
+ 2633      7400
+ 2634              	.LASF46:
+ 2635 0151 54687265 		.string	"ThreadsList"
+ 2635      6164734C 
+ 2635      69737400 
+ 2636              	.LASF23:
+ 2637 015d 6576656E 		.string	"eventmask_t"
+ 2637      746D6173 
+ 2637      6B5F7400 
+ 2638              	.LASF53:
+ 2639 0169 4D757465 		.string	"Mutex"
+ 2639      7800
+ 2640              	.LASF48:
+ 2641 016f 73746B61 		.string	"stkalign_t"
+ 2641      6C69676E 
+ 2641      5F7400
+ 2642              	.LASF47:
+ 2643 017a 73697A65 		.string	"sizetype"
+ 2643      74797065 
+ 2643      00
+ 2644              	.LASF84:
+ 2645 0183 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 2645      50433553 
+ 2645      74756469 
+ 2645      6F5C776F 
+ 2645      726B7370 
+ 2646              	.LASF81:
+ 2647 01cb 63684D74 		.string	"chMtxLock"
+ 2647      784C6F63 
+ 2647      6B00
+ 2648              	.LASF31:
+ 2649 01d5 705F6F6C 		.string	"p_older"
+ 2649      64657200 
+ 2650              	.LASF45:
+ 2651 01dd 54687265 		.string	"ThreadsQueue"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 49
+
+
+ 2651      61647351 
+ 2651      75657565 
+ 2651      00
+ 2652              	.LASF58:
+ 2653 01ea 4D656D6F 		.string	"MemoryHeap"
+ 2653      72794865 
+ 2653      617000
+ 2654              	.LASF19:
+ 2655 01f5 74726566 		.string	"trefs_t"
+ 2655      735F7400 
+ 2656              	.LASF27:
+ 2657 01fd 705F7072 		.string	"p_prev"
+ 2657      657600
+ 2658              	.LASF21:
+ 2659 0204 74707269 		.string	"tprio_t"
+ 2659      6F5F7400 
+ 2660              	.LASF16:
+ 2661 020c 5F426F6F 		.string	"_Bool"
+ 2661      6C00
+ 2662              	.LASF14:
+ 2663 0212 696E7433 		.string	"int32_t"
+ 2663      325F7400 
+ 2664              	.LASF5:
+ 2665 021a 756E7369 		.string	"unsigned char"
+ 2665      676E6564 
+ 2665      20636861 
+ 2665      7200
+ 2666              	.LASF60:
+ 2667 0228 685F7072 		.string	"h_provider"
+ 2667      6F766964 
+ 2667      657200
+ 2668              	.LASF42:
+ 2669 0233 705F6D74 		.string	"p_mtxlist"
+ 2669      786C6973 
+ 2669      7400
+ 2670              	.LASF6:
+ 2671 023d 73686F72 		.string	"short int"
+ 2671      7420696E 
+ 2671      7400
+ 2672              	.LASF33:
+ 2673 0247 705F7374 		.string	"p_state"
+ 2673      61746500 
+ 2674              	.LASF36:
+ 2675 024f 705F7072 		.string	"p_preempt"
+ 2675      65656D70 
+ 2675      7400
+ 2676              	.LASF85:
+ 2677 0259 68656170 		.string	"heap_header"
+ 2677      5F686561 
+ 2677      64657200 
+ 2678              	.LASF70:
+ 2679 0265 65776D61 		.string	"ewmask"
+ 2679      736B00
+ 2680              	.LASF26:
+ 2681 026c 705F6E65 		.string	"p_next"
+ 2681      787400
+ 2682              	.LASF34:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 50
+
+
+ 2683 0273 705F666C 		.string	"p_flags"
+ 2683      61677300 
+ 2684              	.LASF25:
+ 2685 027b 54687265 		.string	"Thread"
+ 2685      616400
+ 2686              	.LASF76:
+ 2687 0282 63684865 		.string	"chHeapAlloc"
+ 2687      6170416C 
+ 2687      6C6F6300 
+ 2688              	.LASF41:
+ 2689 028e 705F6570 		.string	"p_epending"
+ 2689      656E6469 
+ 2689      6E6700
+ 2690              	.LASF15:
+ 2691 0299 75696E74 		.string	"uint32_t"
+ 2691      33325F74 
+ 2691      00
+ 2692              	.LASF49:
+ 2693 02a2 72656770 		.string	"regppc_t"
+ 2693      70635F74 
+ 2693      00
+ 2694              	.LASF64:
+ 2695 02ab 68656170 		.string	"heap"
+ 2695      00
+ 2696              	.LASF79:
+ 2697 02b0 64656661 		.string	"default_heap"
+ 2697      756C745F 
+ 2697      68656170 
+ 2697      00
+ 2698              	.LASF71:
+ 2699 02bd 63686172 		.string	"char"
+ 2699      00
+ 2700              	.LASF77:
+ 2701 02c2 63684865 		.string	"chHeapStatus"
+ 2701      61705374 
+ 2701      61747573 
+ 2701      00
+ 2702              	.LASF24:
+ 2703 02cf 73797374 		.string	"systime_t"
+ 2703      696D655F 
+ 2703      7400
+ 2704              	.LASF43:
+ 2705 02d9 705F7265 		.string	"p_realprio"
+ 2705      616C7072 
+ 2705      696F00
+ 2706              	.LASF8:
+ 2707 02e4 5F5F696E 		.string	"__int32_t"
+ 2707      7433325F 
+ 2707      7400
+ 2708              	.LASF83:
+ 2709 02ee 2E2F636F 		.string	"./components/chibios_rt_portable_kernel_component/lib/src/chheap.c"
+ 2709      6D706F6E 
+ 2709      656E7473 
+ 2709      2F636869 
+ 2709      62696F73 
+ 2710              	.LASF37:
+ 2711 0331 705F7469 		.string	"p_time"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 51
+
+
+ 2711      6D6500
+ 2712              	.LASF50:
+ 2713 0338 696E7463 		.string	"intctx"
+ 2713      747800
+ 2714              	.LASF39:
+ 2715 033f 705F6D73 		.string	"p_msgqueue"
+ 2715      67717565 
+ 2715      756500
+ 2716              	.LASF35:
+ 2717 034a 705F7265 		.string	"p_refs"
+ 2717      667300
+ 2718              	.LASF13:
+ 2719 0351 75696E74 		.string	"uint8_t"
+ 2719      385F7400 
+ 2720              	.LASF69:
+ 2721 0359 77746F62 		.string	"wtobjp"
+ 2721      6A7000
+ 2722              	.LASF78:
+ 2723 0360 73697A65 		.string	"sizep"
+ 2723      7000
+ 2724              	.LASF32:
+ 2725 0366 705F6E61 		.string	"p_name"
+ 2725      6D6500
+ 2726              	.LASF72:
+ 2727 036d 5F686561 		.string	"_heap_init"
+ 2727      705F696E 
+ 2727      697400
+ 2728              	.LASF82:
+ 2729 0378 47       		.ascii	"G"
+ 2730 0379 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 2730      20342E39 
+ 2730      2E322032 
+ 2730      30313431 
+ 2730      30333020 
+ 2731              	.LASF55:
+ 2732 047a 6D5F6F77 		.string	"m_owner"
+ 2732      6E657200 
+ 2733              	.LASF29:
+ 2734 0482 705F6374 		.string	"p_ctx"
+ 2734      7800
+ 2735              	.LASF38:
+ 2736 0488 705F7761 		.string	"p_waiting"
+ 2736      6974696E 
+ 2736      6700
+ 2737              	.LASF59:
+ 2738 0492 6D656D6F 		.string	"memory_heap"
+ 2738      72795F68 
+ 2738      65617000 
+ 2739              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s 			page 52
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chheap.c
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:10     .text._heap_init:00000000 _heap_init
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:44     .text.chHeapInit:00000000 chHeapInit
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:80     .text.chHeapAlloc:00000000 chHeapAlloc
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:242    .text.chHeapFree:00000000 chHeapFree
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:394    .text.chHeapStatus:00000000 chHeapStatus
+C:\Users\UTILIS~1\AppData\Local\Temp\ccWouAxM.s:483    .bss.default_heap:00000000 default_heap
+
+UNDEFINED SYMBOLS
+chCoreAlloc
+chMtxInit
+chMtxLock
+chMtxUnlock

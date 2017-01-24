@@ -1,0 +1,361 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 1
+
+
+   1              	# 1 "./components/spc560dxx_platform_component/lib/src/boot.s"
+   1              	/*
+   0              	
+   0              	
+   2              	    SPC5 HAL - Copyright (C) 2013 STMicroelectronics
+   3              	
+   4              	    Licensed under the Apache License, Version 2.0 (the "License");
+   5              	    you may not use this file except in compliance with the License.
+   6              	    You may obtain a copy of the License at
+   7              	
+   8              	        http://www.apache.org/licenses/LICENSE-2.0
+   9              	
+  10              	    Unless required by applicable law or agreed to in writing, software
+  11              	    distributed under the License is distributed on an "AS IS" BASIS,
+  12              	    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  13              	    See the License for the specific language governing permissions and
+  14              	    limitations under the License.
+  15              	*/
+  16              	
+  17              	/**
+  18              	 * @file    boot.s
+  19              	 * @brief   SPC560Dxx boot-related code.
+  20              	 *
+  21              	 * @addtogroup PPC_BOOT
+  22              	 * @{
+  23              	 */
+  24              	
+  25              	#include "boot.h"
+   1              	/*
+  26              	#include "checkCompiler.h"
+   1              	/*
+  27              	
+  28              	#if !defined(__DOXYGEN__)
+  29              	        /* BAM record.*/
+  30              	        .section    .boot, "axv"
+  31              	
+  32 0000 015A0000 	        .long       0x015A0000
+  33 0004 00000000 	        .long       _reset_address
+  34              	
+  35              	        .align      2
+  36              	        .globl      _reset_address
+  37              	        .type       _reset_address, @function
+  38              	_VLE
+  39              	_reset_address:
+  40              	#if defined(__ghs_asm)
+  41              	        .need _coreinit
+  42              	        .need _ivinit
+  43              	        .need _boot_address
+  44              	        .need IVORS
+  45              	        .need IVOR0
+  46              	        .need IVOR1
+  47              	        .need IVOR2
+  48              	        .need IVOR3
+  49              	        .need IVOR4
+  50              	        .need IVOR5
+  51              	        .need IVOR6
+  52              	        .need IVOR7
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 2
+
+
+  53              	        .need IVOR8
+  54              	        .need IVOR9
+  55              	        .need IVOR10
+  56              	        .need IVOR11
+  57              	        .need IVOR12
+  58              	        .need IVOR13
+  59              	        .need IVOR14
+  60              	        .need IVOR15
+  61              	        .need _IVOR0
+  62              	        .need _IVOR1
+  63              	        .need _IVOR2
+  64              	        .need _IVOR3
+  65              	        .need _IVOR4
+  66              	        .need _IVOR5
+  67              	        .need _IVOR6
+  68              	        .need _IVOR7
+  69              	        .need _IVOR8
+  70              	        .need _IVOR9
+  71              	        .need _IVOR10
+  72              	        .need _IVOR11
+  73              	        .need _IVOR12
+  74              	        .need _IVOR13
+  75              	        .need _IVOR14
+  76              	        .need _IVOR15
+  77              	        .need _unhandled_exception
+  78              	#endif
+  79              	#if BOOT_PERFORM_CORE_INIT
+  80 0008 E904     	        se_bl       _coreinit
+  81              	#endif
+  82 000a E959     	        se_bl       _ivinit
+  83              	
+  84              	#if BOOT_RELOCATE_IN_RAM
+  85              	        /*
+  86              	         * Image relocation in RAM.
+  87              	         */
+  88              	        e_lis       %r4, HI(__bss_start__)
+  89              	        e_or2i      %r4, LO(__bss_start__)
+  90              	
+  91              	        e_lis       %r4, HI(__ram_reloc_start__)
+  92              	        e_or2i      %r4, LO(__ram_reloc_start__)
+  93              	        e_lis       %r5, HI(__ram_reloc_dest__)
+  94              	        e_or2i      %r5, LO(__ram_reloc_dest__)
+  95              	        e_lis       %r6, HI(__ram_reloc_end__)
+  96              	        e_or2i      %r6, LO(__ram_reloc_end__)
+  97              	.relloop:
+  98              	_NOVLE
+  99              	        cmpl        cr0, %r4, %r6
+ 100              	_VLE
+ 101              	        se_bge      .relend
+ 102              	        se_lwz      %r7, 0(%r4)
+ 103              	        se_addi     %r4, 4
+ 104              	        se_stw      %r7, 0(%r5)
+ 105              	        se_addi     %r5, 4
+ 106              	        se_b        .relloop
+ 107              	.relend:
+ 108              	        e_lis       %r3, HI(_boot_address)
+ 109              	        e_or2i      %r3, LO(_boot_address)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 3
+
+
+ 110              	        mtctr       %r3
+ 111              	        se_bctrl
+ 112              	#else
+ 113 000c 78000000 	        e_b         _boot_address
+ 114              	#endif
+ 115              	
+ 116              	#if BOOT_PERFORM_CORE_INIT
+ 117              	        .align      2
+ 118              	_coreinit:
+ 119              	        /*
+ 120              	         * RAM clearing, this device requires a write to all RAM location in
+ 121              	         * order to initialize the ECC detection hardware, this is going to
+ 122              	         * slow down the startup but there is no way around.
+ 123              	         */
+ 124 0010 7C000278 	        xor         %r0, %r0, %r0
+ 125 0014 7C210A78 	        xor         %r1, %r1, %r1
+ 126 0018 7C421278 	        xor         %r2, %r2, %r2
+ 127 001c 7C631A78 	        xor         %r3, %r3, %r3
+ 128 0020 7C842278 	        xor         %r4, %r4, %r4
+ 129 0024 7CA52A78 	        xor         %r5, %r5, %r5
+ 130 0028 7CC63278 	        xor         %r6, %r6, %r6
+ 131 002c 7CE73A78 	        xor         %r7, %r7, %r7
+ 132 0030 7D084278 	        xor         %r8, %r8, %r8
+ 133 0034 7D294A78 	        xor         %r9, %r9, %r9
+ 134 0038 7D4A5278 	        xor         %r10, %r10, %r10
+ 135 003c 7D6B5A78 	        xor         %r11, %r11, %r11
+ 136 0040 7D8C6278 	        xor         %r12, %r12, %r12
+ 137 0044 7DAD6A78 	        xor         %r13, %r13, %r13
+ 138 0048 7DCE7278 	        xor         %r14, %r14, %r14
+ 139 004c 7DEF7A78 	        xor         %r15, %r15, %r15
+ 140 0050 7E108278 	        xor         %r16, %r16, %r16
+ 141 0054 7E318A78 	        xor         %r17, %r17, %r17
+ 142 0058 7E529278 	        xor         %r18, %r18, %r18
+ 143 005c 7E739A78 	        xor         %r19, %r19, %r19
+ 144 0060 7E94A278 	        xor         %r20, %r20, %r20
+ 145 0064 7EB5AA78 	        xor         %r21, %r21, %r21
+ 146 0068 7ED6B278 	        xor         %r22, %r22, %r22
+ 147 006c 7EF7BA78 	        xor         %r23, %r23, %r23
+ 148 0070 7F18C278 	        xor         %r24, %r24, %r24
+ 149 0074 7F39CA78 	        xor         %r25, %r25, %r25
+ 150 0078 7F5AD278 	        xor         %r26, %r26, %r26
+ 151 007c 7F7BDA78 	        xor         %r27, %r27, %r27
+ 152 0080 7F9CE278 	        xor         %r28, %r28, %r28
+ 153 0084 7FBDEA78 	        xor         %r29, %r29, %r29
+ 154 0088 7FDEF278 	        xor         %r30, %r30, %r30
+ 155 008c 7FFFFA78 	        xor         %r31, %r31, %r31
+ 156 0090 7080E000 	        e_lis       %r4, HI(__ram_start__)
+ 157 0094 7080C000 	        e_or2i      %r4, LO(__ram_start__)
+ 158 0098 70A0E000 	        e_lis       %r5, HI(__ram_end__)
+ 159 009c 70A0C000 	        e_or2i      %r5, LO(__ram_end__)
+ 160              	.cleareccloop:
+ 161              	_NOVLE
+ 162 00a0 7C042840 	        cmpl        cr0, %r4, %r5
+ 163              	_VLE
+ 164 00a4 E006     	        se_bge      .cleareccend
+ 165 00a6 1A040900 	        e_stmw      %r16, 0(%r4)
+ 166 00aa 18848040 	        e_addi      %r4, %r4, 64
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 4
+
+
+ 167 00ae E8F9     	        se_b        .cleareccloop
+ 168              	.cleareccend:
+ 169              	
+ 170              	        /*
+ 171              	         * Branch prediction enabled.
+ 172              	         */
+ 173 00b0 70600201 	        e_li        %r3, BUCSR_DEFAULT
+ 174 00b4 7C75FBA6 	        mtspr       1013, %r3       /* BUCSR */
+ 175              	
+ 176 00b8 0004     	        se_blr
+ 177              	#endif /* BOOT_PERFORM_CORE_INIT */
+ 178              	
+ 179              	        /*
+ 180              	         * Exception vectors initialization.
+ 181              	         */
+ 182 00ba 4400     	        .align      2
+ 183              	_ivinit:
+ 184              	        /* MSR initialization.*/
+ 185 00bc 7060E006 	        e_lis       %r3, HI(MSR_DEFAULT)
+ 186 00c0 7062C000 	        e_or2i      %r3, LO(MSR_DEFAULT)
+ 187 00c4 7C600124 	        mtMSR       %r3
+ 188              	
+ 189              	        /* IVPR initialization.*/
+ 190 00c8 7060E000 	        e_lis       %r3, HI(__ivpr_base__)
+ 191 00cc 7060C000 	        e_or2i      %r3, LO(__ivpr_base__)
+ 192 00d0 7C7F0BA6 	        mtIVPR      %r3
+ 193              	
+ 194 00d4 0004     	        se_blr
+ 195              	
+ 196              	        .section    .ivors, "axv"
+ 197              	
+ 198              	        .globl      IVORS
+ 199              	IVORS:
+ 200 0000 78000000 	IVOR0:  e_b           _IVOR0
+ 201 0004 44004400 	        .align      4
+ 201      44004400 
+ 201      44004400 
+ 202 0010 78000000 	IVOR1:  e_b           _IVOR1
+ 203 0014 44004400 	        .align      4
+ 203      44004400 
+ 203      44004400 
+ 204 0020 78000000 	IVOR2:  e_b           _IVOR2
+ 205 0024 44004400 	        .align      4
+ 205      44004400 
+ 205      44004400 
+ 206 0030 78000000 	IVOR3:  e_b           _IVOR3
+ 207 0034 44004400 	        .align      4
+ 207      44004400 
+ 207      44004400 
+ 208 0040 78000000 	IVOR4:  e_b           _IVOR4
+ 209 0044 44004400 	        .align      4
+ 209      44004400 
+ 209      44004400 
+ 210 0050 78000000 	IVOR5:  e_b           _IVOR5
+ 211 0054 44004400 	        .align      4
+ 211      44004400 
+ 211      44004400 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 5
+
+
+ 212 0060 78000000 	IVOR6:  e_b           _IVOR6
+ 213 0064 44004400 	        .align      4
+ 213      44004400 
+ 213      44004400 
+ 214 0070 78000000 	IVOR7:  e_b           _IVOR7
+ 215 0074 44004400 	        .align      4
+ 215      44004400 
+ 215      44004400 
+ 216 0080 78000000 	IVOR8:  e_b           _IVOR8
+ 217 0084 44004400 	        .align      4
+ 217      44004400 
+ 217      44004400 
+ 218 0090 78000000 	IVOR9:  e_b           _IVOR9
+ 219 0094 44004400 	        .align      4
+ 219      44004400 
+ 219      44004400 
+ 220 00a0 78000000 	IVOR10: e_b           _IVOR10
+ 221 00a4 44004400 	        .align      4
+ 221      44004400 
+ 221      44004400 
+ 222 00b0 78000000 	IVOR11: e_b           _IVOR11
+ 223 00b4 44004400 	        .align      4
+ 223      44004400 
+ 223      44004400 
+ 224 00c0 78000000 	IVOR12: e_b           _IVOR12
+ 225 00c4 44004400 	        .align      4
+ 225      44004400 
+ 225      44004400 
+ 226 00d0 78000000 	IVOR13: e_b           _IVOR13
+ 227 00d4 44004400 	        .align      4
+ 227      44004400 
+ 227      44004400 
+ 228 00e0 78000000 	IVOR14: e_b           _IVOR14
+ 229 00e4 44004400 	        .align      4
+ 229      44004400 
+ 229      44004400 
+ 230 00f0 78000000 	IVOR15: e_b           _IVOR15
+ 231              	
+ 232              	        .section    .handlers, "axv"
+ 233              	
+ 234              	        /*
+ 235              	         * Default IVOR handlers.
+ 236              	         */
+ 237              	        .align      2
+ 238              	        .weak       _IVOR0,  _IVOR1,  _IVOR2,  _IVOR3,  _IVOR4,  _IVOR5
+ 239              	        .weak       _IVOR6,  _IVOR7,  _IVOR8,  _IVOR9,  _IVOR10, _IVOR11
+ 240              	        .weak       _IVOR12, _IVOR13, _IVOR14, _IVOR15
+ 241              	        .weak       _unhandled_exception
+ 242              	_IVOR0:
+ 243              	_IVOR1:
+ 244              	_IVOR2:
+ 245              	_IVOR3:
+ 246              	_IVOR4:
+ 247              	_IVOR5:
+ 248              	_IVOR6:
+ 249              	_IVOR7:
+ 250              	_IVOR8:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 6
+
+
+ 251              	_IVOR9:
+ 252              	_IVOR10:
+ 253              	_IVOR11:
+ 254              	_IVOR12:
+ 255              	_IVOR13:
+ 256              	_IVOR14:
+ 257              	_IVOR15:
+ 258              	_unhandled_exception:
+ 259 0000 78000000 	        e_b         _unhandled_exception
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccodH29j.s 			page 7
+
+
+DEFINED SYMBOLS
+./components/spc560dxx_platform_component/lib/src/boot.s:39     .boot:00000008 _reset_address
+./components/spc560dxx_platform_component/lib/src/boot.s:118    .boot:00000010 _coreinit
+./components/spc560dxx_platform_component/lib/src/boot.s:183    .boot:000000bc _ivinit
+./components/spc560dxx_platform_component/lib/src/boot.s:160    .boot:000000a0 .cleareccloop
+./components/spc560dxx_platform_component/lib/src/boot.s:168    .boot:000000b0 .cleareccend
+./components/spc560dxx_platform_component/lib/src/boot.s:199    .ivors:00000000 IVORS
+./components/spc560dxx_platform_component/lib/src/boot.s:200    .ivors:00000000 IVOR0
+./components/spc560dxx_platform_component/lib/src/boot.s:242    .handlers:00000000 _IVOR0
+./components/spc560dxx_platform_component/lib/src/boot.s:202    .ivors:00000010 IVOR1
+./components/spc560dxx_platform_component/lib/src/boot.s:243    .handlers:00000000 _IVOR1
+./components/spc560dxx_platform_component/lib/src/boot.s:204    .ivors:00000020 IVOR2
+./components/spc560dxx_platform_component/lib/src/boot.s:244    .handlers:00000000 _IVOR2
+./components/spc560dxx_platform_component/lib/src/boot.s:206    .ivors:00000030 IVOR3
+./components/spc560dxx_platform_component/lib/src/boot.s:245    .handlers:00000000 _IVOR3
+./components/spc560dxx_platform_component/lib/src/boot.s:208    .ivors:00000040 IVOR4
+./components/spc560dxx_platform_component/lib/src/boot.s:246    .handlers:00000000 _IVOR4
+./components/spc560dxx_platform_component/lib/src/boot.s:210    .ivors:00000050 IVOR5
+./components/spc560dxx_platform_component/lib/src/boot.s:247    .handlers:00000000 _IVOR5
+./components/spc560dxx_platform_component/lib/src/boot.s:212    .ivors:00000060 IVOR6
+./components/spc560dxx_platform_component/lib/src/boot.s:248    .handlers:00000000 _IVOR6
+./components/spc560dxx_platform_component/lib/src/boot.s:214    .ivors:00000070 IVOR7
+./components/spc560dxx_platform_component/lib/src/boot.s:249    .handlers:00000000 _IVOR7
+./components/spc560dxx_platform_component/lib/src/boot.s:216    .ivors:00000080 IVOR8
+./components/spc560dxx_platform_component/lib/src/boot.s:250    .handlers:00000000 _IVOR8
+./components/spc560dxx_platform_component/lib/src/boot.s:218    .ivors:00000090 IVOR9
+./components/spc560dxx_platform_component/lib/src/boot.s:251    .handlers:00000000 _IVOR9
+./components/spc560dxx_platform_component/lib/src/boot.s:220    .ivors:000000a0 IVOR10
+./components/spc560dxx_platform_component/lib/src/boot.s:252    .handlers:00000000 _IVOR10
+./components/spc560dxx_platform_component/lib/src/boot.s:222    .ivors:000000b0 IVOR11
+./components/spc560dxx_platform_component/lib/src/boot.s:253    .handlers:00000000 _IVOR11
+./components/spc560dxx_platform_component/lib/src/boot.s:224    .ivors:000000c0 IVOR12
+./components/spc560dxx_platform_component/lib/src/boot.s:254    .handlers:00000000 _IVOR12
+./components/spc560dxx_platform_component/lib/src/boot.s:226    .ivors:000000d0 IVOR13
+./components/spc560dxx_platform_component/lib/src/boot.s:255    .handlers:00000000 _IVOR13
+./components/spc560dxx_platform_component/lib/src/boot.s:228    .ivors:000000e0 IVOR14
+./components/spc560dxx_platform_component/lib/src/boot.s:256    .handlers:00000000 _IVOR14
+./components/spc560dxx_platform_component/lib/src/boot.s:230    .ivors:000000f0 IVOR15
+./components/spc560dxx_platform_component/lib/src/boot.s:257    .handlers:00000000 _IVOR15
+./components/spc560dxx_platform_component/lib/src/boot.s:258    .handlers:00000000 _unhandled_exception
+
+UNDEFINED SYMBOLS
+_boot_address
+__ram_start__
+__ram_end__
+__ivpr_base__

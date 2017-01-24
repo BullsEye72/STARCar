@@ -39,7 +39,7 @@ msg_t ThreadGPS(void *arg) {
 
   while (bGpsRunning) {
     chprintf((BaseSequentialStream *)arg,
-             "$GPGGA,162431.531,%d,N,07602.498,W,0,00,,,M,,M,,*51\r\n", i);
+             "$GPGGA,48.002911,%d,N,0.199962,W,0,00,,,M,,M,,*51\r\n", i);
     i++;
     chThdSleepMilliseconds(100);
   }
@@ -58,4 +58,6 @@ const ShellCommand shell_commands_car[] = { {"startgps", startgps}, {"stopgps",
                                                "turn", turn},
                                            {"blink", blink}, {"startdemo",
                                                               startdemo},
-                                           {"stopdemo", stopdemo}, {NULL, NULL}};
+                                           {"stopdemo", stopdemo},
+										   {"light", light},{"rpm",rpm} ,
+										   {"mode",mode},{NULL, NULL} };

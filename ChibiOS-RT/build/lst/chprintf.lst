@@ -1,0 +1,3858 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 1
+
+
+   1              		.file	"chprintf.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text.long_to_string_with_divisor.constprop.0,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.type	long_to_string_with_divisor.constprop.0, @function
+   9              	long_to_string_with_divisor.constprop.0:
+  10              	.LFB20:
+  11              		.file 1 "./components/chibios_rt_portable_output_formatter_component/lib/src/chprintf.c"
+  12              		.loc 1 37 0
+  13              		.cfi_startproc
+  14              	.LVL0:
+  15              		.loc 1 52 0
+  16 0000 18C3800B 		e_addi %r6,%r3,11
+  17              	.LVL1:
+  18 0004 0240     		se_mtar %r8,%r4
+  19 0006 0262     		se_mtar %r10,%r6
+  20              	.LVL2:
+  21              	.L3:
+  22              		.loc 1 54 0
+  23 0008 7CE42B96 		divwu %r7,%r4,%r5
+  24 000c 7D2729D6 		mullw %r9,%r7,%r5
+  25 0010 7C892050 		subf %r4, %r9, %r4
+  26              	.LVL3:
+  27              		.loc 1 55 0
+  28 0014 19248030 		e_addi %r9,%r4,48
+  29              	.LVL4:
+  30              		.loc 1 56 0
+  31 0018 1829A839 		e_cmpi %cr1,%r9,57
+  32 001c 7A050008 		e_ble %cr1,.L2
+  33              		.loc 1 57 0
+  34 0020 19248037 		e_addi %r9,%r4,55
+  35              	.LVL5:
+  36              	.L2:
+  37              		.loc 1 60 0
+  38 0024 7D082B96 		divwu %r8,%r8,%r5
+  39              	.LVL6:
+  40              		.loc 1 58 0
+  41 0028 192A04FF 		e_stbu %r9,-1(%r10)
+  42              	.LVL7:
+  43              		.loc 1 59 0
+  44 002c 0174     		se_mr %r4,%r7
+  45              	.LVL8:
+  46              		.loc 1 60 0
+  47 002e 1828A800 		e_cmpi %cr1,%r8,0
+  48 0032 7A06FFD6 		e_bne %cr1,.L3
+  49              	.LVL9:
+  50              		.loc 1 62 0
+  51 0036 7CCA3050 		subf %r6, %r10, %r6
+  52              	.LVL10:
+  53 003a 190384FF 		e_addi %r8,%r3,-1
+  54              	.LVL11:
+  55 003e 00B6     		se_mtctr %r6
+  56 0040 78000008 		e_b .L5
+  57              	.LVL12:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 2
+
+
+  58              	.L10:
+  59 0044 192A0001 		e_lbzu %r9,1(%r10)
+  60              	.LVL13:
+  61              	.L5:
+  62              		.loc 1 64 0
+  63 0048 19280401 		e_stbu %r9,1(%r8)
+  64              	.LVL14:
+  65              		.loc 1 65 0
+  66 004c 7A20FFF8 		e_bdnz .L10
+  67              		.loc 1 68 0
+  68 0050 0463     		se_add %r3,%r6
+  69 0052 0004     		se_blr
+  70              		.cfi_endproc
+  71              	.LFE20:
+  72              		.size	long_to_string_with_divisor.constprop.0, .-long_to_string_with_divisor.constprop.0
+  73              		.section	.text.chvprintf,"axv",@progbits
+  74              		.align 1
+  75              		.p2align 4,,15
+  76              		.globl chvprintf
+  77              		.type	chvprintf, @function
+  78              	chvprintf:
+  79              	.LFB18:
+  80              		.loc 1 112 0
+  81              		.cfi_startproc
+  82              	.LVL15:
+  83 0000 182106A8 		e_stwu %r1,-88(%r1)
+  84              	.LCFI0:
+  85              		.cfi_def_cfa_offset 88
+  86 0004 0080     		se_mflr %r0
+  87 0006 1A21091C 		e_stmw %r17,28(%r1)
+  88 000a 7D800026 		mfcr %r12
+  89              		.cfi_register 65, 0
+  90              		.cfi_offset 17, -60
+  91              		.cfi_offset 18, -56
+  92              		.cfi_offset 19, -52
+  93              		.cfi_offset 20, -48
+  94              		.cfi_offset 21, -44
+  95              		.cfi_offset 22, -40
+  96              		.cfi_offset 23, -36
+  97              		.cfi_offset 24, -32
+  98              		.cfi_offset 25, -28
+  99              		.cfi_offset 26, -24
+ 100              		.cfi_offset 27, -20
+ 101              		.cfi_offset 28, -16
+ 102              		.cfi_offset 29, -12
+ 103              		.cfi_offset 30, -8
+ 104              		.cfi_offset 31, -4
+ 105 000e 1AE18009 		e_addi %r23,%r1,9
+ 106 0012 1B818008 		e_addi %r28,%r1,8
+ 107              		.loc 1 179 0
+ 108 0016 7340E000 		e_lis %r26,.L32@ha
+ 109              		.loc 1 187 0
+ 110 001a 7300E000 		e_lis %r24,.LC0@ha
+ 111              		.loc 1 179 0
+ 112 001e 7360E000 		e_lis %r27,.L39@ha
+ 113              		.loc 1 112 0
+ 114 0022 5401005C 		e_stw %r0,92(%r1)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 3
+
+
+ 115 0026 55810018 		e_stw %r12,24(%r1)
+ 116              		.cfi_offset 65, 4
+ 117              		.cfi_offset 70, -64
+ 118              		.loc 1 112 0
+ 119 002a 023D     		se_mtar %r21,%r3
+ 120 002c 024A     		se_mtar %r18,%r4
+ 121 002e 015E     		se_mr %r30,%r5
+ 122              		.loc 1 179 0
+ 123 0030 1F5A0000 		e_la %r26,.L32@l(%r26)
+ 124 0034 7F3CB850 		subf %r25, %r28, %r23
+ 125              		.loc 1 187 0
+ 126 0038 1E380000 		e_la %r17,.LC0@l(%r24)
+ 127              		.loc 1 179 0
+ 128 003c 1F7B0000 		e_la %r27,.L39@l(%r27)
+ 129              	.LVL16:
+ 130              	.L12:
+ 131              		.loc 1 125 0
+ 132 0040 30920000 		e_lbz %r4,0(%r18)
+ 133 0044 1AD28001 		e_addi %r22,%r18,1
+ 134              	.LVL17:
+ 135              		.loc 1 126 0
+ 136 0048 1824A800 		e_cmpi %cr1,%r4,0
+ 137 004c 7A160030 		e_beq %cr1,.L11
+ 138              	.LVL18:
+ 139              	.L107:
+ 140              		.loc 1 128 0
+ 141 0050 18A4A825 		e_cmpli %cr1,%r4,37
+ 142 0054 7A160040 		e_beq %cr1,.L14
+ 143              		.loc 1 129 0
+ 144 0058 51350000 		e_lwz %r9,0(%r21)
+ 145 005c 03D3     		se_mfar %r3,%r21
+ 146 005e 51290008 		e_lwz %r9,8(%r9)
+ 147 0062 7D2903A6 		mtctr %r9
+ 148              		.loc 1 125 0
+ 149 0066 7ED2B378 		mr %r18,%r22
+ 150 006a 1AD28001 		e_addi %r22,%r18,1
+ 151              	.LVL19:
+ 152              		.loc 1 129 0
+ 153 006e 0007     		se_bctrl
+ 154              	.LVL20:
+ 155              		.loc 1 125 0
+ 156 0070 30920000 		e_lbz %r4,0(%r18)
+ 157              	.LVL21:
+ 158              		.loc 1 126 0
+ 159 0074 1824A800 		e_cmpi %cr1,%r4,0
+ 160 0078 7A06FFD8 		e_bne %cr1,.L107
+ 161              	.LVL22:
+ 162              	.L11:
+ 163              		.loc 1 261 0
+ 164 007c 5001005C 		e_lwz %r0,92(%r1)
+ 165 0080 0090     		se_mtlr %r0
+ 166              		.cfi_remember_state
+ 167              		.cfi_restore 65
+ 168 0082 51810018 		e_lwz %r12,24(%r1)
+ 169              		.cfi_register 70, 12
+ 170 0086 1A21081C 		e_lmw %r17,28(%r1)
+ 171              	.LVL23:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 4
+
+
+ 172 008a 7D810120 		mtcrf 16,%r12
+ 173              		.cfi_restore 70
+ 174 008e 18218058 		e_addi %r1,%r1,88
+ 175              	.LCFI1:
+ 176              		.cfi_restore 31
+ 177              		.cfi_restore 30
+ 178              		.cfi_restore 29
+ 179              		.cfi_restore 28
+ 180              		.cfi_restore 27
+ 181              		.cfi_restore 26
+ 182              		.cfi_restore 25
+ 183              		.cfi_restore 24
+ 184              		.cfi_restore 23
+ 185              		.cfi_restore 22
+ 186              		.cfi_restore 21
+ 187              		.cfi_restore 20
+ 188              		.cfi_restore 19
+ 189              		.cfi_restore 18
+ 190              		.cfi_restore 17
+ 191              		.cfi_def_cfa_offset 0
+ 192 0092 0004     		se_blr
+ 193              	.LVL24:
+ 194              	.L14:
+ 195              	.LCFI2:
+ 196              		.cfi_restore_state
+ 197              		.loc 1 135 0
+ 198 0094 31120001 		e_lbz %r8,1(%r18)
+ 199              		.loc 1 134 0
+ 200 0098 72800000 		e_li %r20,0
+ 201              		.loc 1 135 0
+ 202 009c 18A8A82D 		e_cmpli %cr1,%r8,45
+ 203 00a0 7A16035E 		e_beq %cr1,.L108
+ 204              	.LVL25:
+ 205              	.L16:
+ 206              		.loc 1 140 0
+ 207 00a4 192884D2 		e_addi %r9,%r8,-46
+ 208              		.loc 1 139 0
+ 209 00a8 4A0D     		se_li %r29,32
+ 210              		.loc 1 140 0
+ 211 00aa 7120C8FD 		e_and2i. %r9,253
+ 212 00ae 7A12005C 		e_beq %cr0,.L109
+ 213              	.LVL26:
+ 214              	.L17:
+ 215              		.loc 1 144 0
+ 216 00b2 480F     		se_li %r31,0
+ 217              	.LVL27:
+ 218              	.L22:
+ 219              		.loc 1 147 0
+ 220 00b4 192884D0 		e_addi %r9,%r8,-48
+ 221              		.loc 1 146 0
+ 222 00b8 1AD68001 		e_addi %r22,%r22,1
+ 223              	.LVL28:
+ 224              		.loc 1 147 0
+ 225 00bc 7529063F 		e_rlwinm %r9,%r9,0,0xff
+ 226 00c0 18A9A809 		e_cmpli %cr1,%r9,9
+ 227 00c4 7A050030 		e_ble %cr1,.L18
+ 228              		.loc 1 149 0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 5
+
+
+ 229 00c8 18A8A82A 		e_cmpli %cr1,%r8,42
+ 230 00cc 7A06005C 		e_bne %cr1,.L19
+ 231              		.loc 1 150 0
+ 232 00d0 313E0000 		e_lbz %r9,0(%r30)
+ 233 00d4 18A9A808 		e_cmpli %cr1,%r9,8
+ 234 00d8 7A040040 		e_bge %cr1,.L20
+ 235              		.loc 1 150 0 is_stmt 0 discriminator 2
+ 236 00dc 19098001 		e_addi %r8,%r9,1
+ 237              	.LVL29:
+ 238 00e0 515E0008 		e_lwz %r10,8(%r30)
+ 239 00e4 7D291070 		e_slwi %r9,%r9,2
+ 240 00e8 351E0000 		e_stb %r8,0(%r30)
+ 241 00ec 7D2A4A14 		add %r9,%r10,%r9
+ 242              	.L21:
+ 243              		.loc 1 150 0 discriminator 4
+ 244 00f0 31290003 		e_lbz %r9,3(%r9)
+ 245              	.LVL30:
+ 246              	.L18:
+ 247              		.loc 1 153 0 is_stmt 1
+ 248 00f4 7FEA0870 		e_slwi %r10,%r31,1
+ 249 00f8 31160000 		e_lbz %r8,0(%r22)
+ 250 00fc 6C3F     		se_slwi %r31, 3
+ 251              	.LVL31:
+ 252 00fe 7FEAFA14 		add %r31,%r10,%r31
+ 253 0102 7FFF4A14 		add %r31,%r31,%r9
+ 254              	.LVL32:
+ 255              		.loc 1 154 0
+ 256 0106 79FFFFAE 		e_b .L22
+ 257              	.LVL33:
+ 258              	.L109:
+ 259 010a 31160001 		e_lbz %r8,1(%r22)
+ 260              		.loc 1 142 0
+ 261 010e 4B0D     		se_li %r29,48
+ 262              		.loc 1 141 0
+ 263 0110 1AD68001 		e_addi %r22,%r22,1
+ 264              	.LVL34:
+ 265 0114 79FFFF9E 		e_b .L17
+ 266              	.LVL35:
+ 267              	.L20:
+ 268              		.loc 1 150 0 discriminator 1
+ 269 0118 513E0004 		e_lwz %r9,4(%r30)
+ 270 011c 19498004 		e_addi %r10,%r9,4
+ 271 0120 555E0004 		e_stw %r10,4(%r30)
+ 272 0124 79FFFFCC 		e_b .L21
+ 273              	.L19:
+ 274              	.LVL36:
+ 275              		.loc 1 155 0
+ 276 0128 71200000 		e_li %r9,0
+ 277              		.loc 1 156 0
+ 278 012c 18A8A82E 		e_cmpli %cr1,%r8,46
+ 279 0130 7A16004A 		e_beq %cr1,.L27
+ 280              	.LVL37:
+ 281              	.L23:
+ 282              		.loc 1 170 0
+ 283 0134 190AC0DF 		e_andi %r10,%r8,223
+ 284 0138 182AA84C 		e_cmpi %cr1,%r10,76
+ 285 013c 7A160290 		e_beq %cr1,.L110
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 6
+
+
+ 286              		.loc 1 179 0
+ 287 0140 18E884BC 		e_addi %r7,%r8,-68
+ 288 0144 00C7     		se_extzb %r7
+ 289              	.LVL38:
+ 290 0146 18A7A834 		e_cmpli %cr1,%r7,52
+ 291 014a 7A15026E 		e_bgt %cr1,.L30
+ 292 014e 6C27     		se_slwi %r7, 2
+ 293 0150 7CFB382E 		lwzx %r7,%r27,%r7
+ 294 0154 04B7     		se_add %r7,%r27
+ 295 0156 00B7     		se_mtctr %r7
+ 296 0158 0006     		se_bctr
+ 297              		.section	.rodata.chvprintf,"a",@progbits
+ 298              		.align 2
+ 299              		.align 2
+ 300              	.L39:
+ 301 0000 00000000 		.long .L51-.L39
+ 302 0004 00000000 		.long .L30-.L39
+ 303 0008 00000000 		.long .L30-.L39
+ 304 000c 00000000 		.long .L30-.L39
+ 305 0010 00000000 		.long .L30-.L39
+ 306 0014 00000000 		.long .L51-.L39
+ 307 0018 00000000 		.long .L30-.L39
+ 308 001c 00000000 		.long .L30-.L39
+ 309 0020 00000000 		.long .L30-.L39
+ 310 0024 00000000 		.long .L30-.L39
+ 311 0028 00000000 		.long .L30-.L39
+ 312 002c 00000000 		.long .L33-.L39
+ 313 0030 00000000 		.long .L30-.L39
+ 314 0034 00000000 		.long .L30-.L39
+ 315 0038 00000000 		.long .L30-.L39
+ 316 003c 00000000 		.long .L30-.L39
+ 317 0040 00000000 		.long .L30-.L39
+ 318 0044 00000000 		.long .L34-.L39
+ 319 0048 00000000 		.long .L30-.L39
+ 320 004c 00000000 		.long .L30-.L39
+ 321 0050 00000000 		.long .L84-.L39
+ 322 0054 00000000 		.long .L30-.L39
+ 323 0058 00000000 		.long .L30-.L39
+ 324 005c 00000000 		.long .L30-.L39
+ 325 0060 00000000 		.long .L30-.L39
+ 326 0064 00000000 		.long .L30-.L39
+ 327 0068 00000000 		.long .L30-.L39
+ 328 006c 00000000 		.long .L30-.L39
+ 329 0070 00000000 		.long .L30-.L39
+ 330 0074 00000000 		.long .L30-.L39
+ 331 0078 00000000 		.long .L30-.L39
+ 332 007c 00000000 		.long .L36-.L39
+ 333 0080 00000000 		.long .L51-.L39
+ 334 0084 00000000 		.long .L30-.L39
+ 335 0088 00000000 		.long .L30-.L39
+ 336 008c 00000000 		.long .L30-.L39
+ 337 0090 00000000 		.long .L30-.L39
+ 338 0094 00000000 		.long .L51-.L39
+ 339 0098 00000000 		.long .L30-.L39
+ 340 009c 00000000 		.long .L30-.L39
+ 341 00a0 00000000 		.long .L30-.L39
+ 342 00a4 00000000 		.long .L30-.L39
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 7
+
+
+ 343 00a8 00000000 		.long .L30-.L39
+ 344 00ac 00000000 		.long .L33-.L39
+ 345 00b0 00000000 		.long .L30-.L39
+ 346 00b4 00000000 		.long .L30-.L39
+ 347 00b8 00000000 		.long .L30-.L39
+ 348 00bc 00000000 		.long .L37-.L39
+ 349 00c0 00000000 		.long .L30-.L39
+ 350 00c4 00000000 		.long .L34-.L39
+ 351 00c8 00000000 		.long .L30-.L39
+ 352 00cc 00000000 		.long .L30-.L39
+ 353 00d0 00000000 		.long .L84-.L39
+ 354              		.section	.text.chvprintf
+ 355              	.LVL39:
+ 356              	.L25:
+ 357              		.loc 1 162 0 discriminator 1
+ 358 015a 515E0004 		e_lwz %r10,4(%r30)
+ 359 015e 190A8004 		e_addi %r8,%r10,4
+ 360 0162 551E0004 		e_stw %r8,4(%r30)
+ 361              	.LVL40:
+ 362              	.L26:
+ 363              		.loc 1 162 0 is_stmt 0 discriminator 4
+ 364 0166 314A0003 		e_lbz %r10,3(%r10)
+ 365              	.LVL41:
+ 366              	.L24:
+ 367              		.loc 1 165 0 is_stmt 1
+ 368 016a 7D280870 		e_slwi %r8,%r9,1
+ 369 016e 7D291870 		e_slwi %r9,%r9,3
+ 370              	.LVL42:
+ 371 0172 7D284A14 		add %r9,%r8,%r9
+ 372              	.LVL43:
+ 373              		.loc 1 166 0
+ 374 0176 7D2A4A14 		add %r9,%r10,%r9
+ 375              	.LVL44:
+ 376              	.L27:
+ 377              		.loc 1 158 0
+ 378 017a 1AD68001 		e_addi %r22,%r22,1
+ 379              	.LVL45:
+ 380 017e 3116FFFF 		e_lbz %r8,-1(%r22)
+ 381              	.LVL46:
+ 382              		.loc 1 159 0
+ 383 0182 194884D0 		e_addi %r10,%r8,-48
+ 384 0186 754A063F 		e_rlwinm %r10,%r10,0,0xff
+ 385 018a 18AAA809 		e_cmpli %cr1,%r10,9
+ 386 018e 7A05FFDC 		e_ble %cr1,.L24
+ 387              		.loc 1 161 0
+ 388 0192 18A8A82A 		e_cmpli %cr1,%r8,42
+ 389 0196 7A06FF9E 		e_bne %cr1,.L23
+ 390              		.loc 1 162 0
+ 391 019a 315E0000 		e_lbz %r10,0(%r30)
+ 392 019e 18AAA808 		e_cmpli %cr1,%r10,8
+ 393 01a2 7A04FFB8 		e_bge %cr1,.L25
+ 394              		.loc 1 162 0 is_stmt 0 discriminator 2
+ 395 01a6 18EA8001 		e_addi %r7,%r10,1
+ 396 01aa 511E0008 		e_lwz %r8,8(%r30)
+ 397 01ae 7D4A1070 		e_slwi %r10,%r10,2
+ 398 01b2 907E     		se_stb %r7,0(%r30)
+ 399              	.LVL47:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 8
+
+
+ 400 01b4 7D485214 		add %r10,%r8,%r10
+ 401 01b8 79FFFFAE 		e_b .L26
+ 402              	.L37:
+ 403              	.LVL48:
+ 404              		.loc 1 186 0 is_stmt 1
+ 405 01bc 315E0000 		e_lbz %r10,0(%r30)
+ 406 01c0 18AAA808 		e_cmpli %cr1,%r10,8
+ 407 01c4 7A040292 		e_bge %cr1,.L44
+ 408              		.loc 1 186 0 is_stmt 0 discriminator 2
+ 409 01c8 18EA8001 		e_addi %r7,%r10,1
+ 410 01cc 511E0008 		e_lwz %r8,8(%r30)
+ 411 01d0 7D4A1070 		e_slwi %r10,%r10,2
+ 412 01d4 907E     		se_stb %r7,0(%r30)
+ 413 01d6 7D485214 		add %r10,%r8,%r10
+ 414 01da 526A0000 		e_lwz %r19,0(%r10)
+ 415              	.LVL49:
+ 416 01de 1833A800 		e_cmpi %cr1,%r19,0
+ 417 01e2 7A16028C 		e_beq %cr1,.L111
+ 418              	.L46:
+ 419              		.loc 1 190 0 is_stmt 1
+ 420 01e6 31530000 		e_lbz %r10,0(%r19)
+ 421              		.loc 1 188 0
+ 422 01ea 1829A800 		e_cmpi %cr1,%r9,0
+ 423 01ee 7A060290 		e_bne %cr1,.L112
+ 424              	.L47:
+ 425              	.LVL50:
+ 426              		.loc 1 190 0
+ 427 01f2 712F07FE 		e_li %r9,32766
+ 428 01f6 182AA800 		e_cmpi %cr1,%r10,0
+ 429 01fa 7A1602C4 		e_beq %cr1,.L48
+ 430              	.LVL51:
+ 431              	.L73:
+ 432              		.loc 1 190 0 is_stmt 0 discriminator 4
+ 433 01fe 19298001 		e_addi %r9,%r9,1
+ 434              	.LVL52:
+ 435 0202 03B3     		se_mfar %r3,%r19
+ 436 0204 7D2903A6 		mtctr %r9
+ 437 0208 78000008 		e_b .L50
+ 438              	.LVL53:
+ 439              	.L113:
+ 440              		.loc 1 190 0 discriminator 3
+ 441 020c 7A300010 		e_bdz .L101
+ 442              	.LVL54:
+ 443              	.L50:
+ 444              		.loc 1 190 0 discriminator 4
+ 445 0210 19230001 		e_lbzu %r9,1(%r3)
+ 446              	.LVL55:
+ 447 0214 1829A800 		e_cmpi %cr1,%r9,0
+ 448 0218 7A06FFF4 		e_bne %cr1,.L113
+ 449              	.L101:
+ 450 021c 7C731850 		subf %r3, %r19, %r3
+ 451              	.LVL56:
+ 452              		.loc 1 190 0
+ 453 0220 7ED2B378 		mr %r18,%r22
+ 454 0224 18E384FF 		e_addi %r7,%r3,-1
+ 455 0228 7D23F851 		subf. %r9,%r3,%r31
+ 456              		.loc 1 185 0 is_stmt 1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 9
+
+
+ 457 022c 4A0D     		se_li %r29,32
+ 458              	.LVL57:
+ 459 022e 0178     		se_mr %r24,%r7
+ 460              		.loc 1 242 0
+ 461 0230 1834A800 		e_cmpi %cr1,%r20,0
+ 462 0234 7FE0481E 		isel %r31,0,%r9,0
+ 463              	.LVL58:
+ 464 0238 7A1600DA 		e_beq %cr1,.L75
+ 465              	.LVL59:
+ 466              	.L64:
+ 467 023c 187FA800 		e_cmpi %cr3,%r31,0
+ 468              		.loc 1 253 0
+ 469 0240 2A08     		se_cmpi %r24,0
+ 470 0242 7A100028 		e_blt %cr0,.L69
+ 471              	.L74:
+ 472 0246 1A9384FF 		e_addi %r20,%r19,-1
+ 473              	.LVL60:
+ 474              	.L70:
+ 475              		.loc 1 254 0
+ 476 024a 51350000 		e_lwz %r9,0(%r21)
+ 477 024e 03D3     		se_mfar %r3,%r21
+ 478 0250 51290008 		e_lwz %r9,8(%r9)
+ 479 0254 18940001 		e_lbzu %r4,1(%r20)
+ 480              	.LVL61:
+ 481 0258 7D2903A6 		mtctr %r9
+ 482              		.loc 1 253 0
+ 483 025c 1B1884FF 		e_addi %r24,%r24,-1
+ 484              	.LVL62:
+ 485              		.loc 1 254 0
+ 486 0260 0007     		se_bctrl
+ 487              	.LVL63:
+ 488              		.loc 1 253 0
+ 489 0262 1838ACFF 		e_cmpi %cr1,%r24,-1
+ 490 0266 7A06FFE4 		e_bne %cr1,.L70
+ 491              	.LVL64:
+ 492              	.L69:
+ 493              		.loc 1 256 0
+ 494 026a 7A1EFDD6 		e_beq %cr3,.L12
+ 495              	.LVL65:
+ 496              	.L71:
+ 497              		.loc 1 257 0
+ 498 026e 51350000 		e_lwz %r9,0(%r21)
+ 499 0272 03D3     		se_mfar %r3,%r21
+ 500 0274 51290008 		e_lwz %r9,8(%r9)
+ 501 0278 01D4     		se_mr %r4,%r29
+ 502 027a 7D2903A6 		mtctr %r9
+ 503              		.loc 1 256 0
+ 504 027e 1BFF84FF 		e_addi %r31,%r31,-1
+ 505              	.LVL66:
+ 506              		.loc 1 257 0
+ 507 0282 0007     		se_bctrl
+ 508              	.LVL67:
+ 509              		.loc 1 256 0
+ 510 0284 2A0F     		se_cmpi %r31,0
+ 511 0286 7A02FFE8 		e_bne %cr0,.L71
+ 512 028a 79FFFDB6 		e_b .L12
+ 513              	.LVL68:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 10
+
+
+ 514              	.L36:
+ 515              		.loc 1 182 0
+ 516 028e 313E0000 		e_lbz %r9,0(%r30)
+ 517              	.LVL69:
+ 518 0292 18A9A808 		e_cmpli %cr1,%r9,8
+ 519 0296 7A0401B0 		e_bge %cr1,.L41
+ 520              		.loc 1 182 0 is_stmt 0 discriminator 2
+ 521 029a 19098001 		e_addi %r8,%r9,1
+ 522 029e 515E0008 		e_lwz %r10,8(%r30)
+ 523 02a2 7D291070 		e_slwi %r9,%r9,2
+ 524 02a6 351E0000 		e_stb %r8,0(%r30)
+ 525 02aa 7D2A4A14 		add %r9,%r10,%r9
+ 526              	.L42:
+ 527              		.loc 1 182 0 discriminator 4
+ 528 02ae 51290000 		e_lwz %r9,0(%r9)
+ 529 02b2 0193     		se_mr %r3,%r25
+ 530 02b4 35210008 		e_stb %r9,8(%r1)
+ 531 02b8 18F984FF 		e_addi %r7,%r25,-1
+ 532              		.loc 1 183 0 is_stmt 1 discriminator 4
+ 533 02bc 7ED2B378 		mr %r18,%r22
+ 534              		.loc 1 181 0 discriminator 4
+ 535 02c0 4A0D     		se_li %r29,32
+ 536              		.loc 1 133 0 discriminator 4
+ 537 02c2 02CB     		se_mtar %r19,%r28
+ 538              		.loc 1 183 0 discriminator 4
+ 539 02c4 7800003C 		e_b .L43
+ 540              	.LVL70:
+ 541              	.L34:
+ 542              		.loc 1 224 0
+ 543 02c8 7ED2B378 		mr %r18,%r22
+ 544 02cc 48A5     		se_li %r5,10
+ 545              	.L40:
+ 546              	.LVL71:
+ 547              	.L58:
+ 548              		.loc 1 232 0
+ 549 02ce 313E0000 		e_lbz %r9,0(%r30)
+ 550              	.LVL72:
+ 551 02d2 18A9A808 		e_cmpli %cr1,%r9,8
+ 552 02d6 7A04008C 		e_bge %cr1,.L62
+ 553              	.L115:
+ 554              		.loc 1 232 0 is_stmt 0 discriminator 2
+ 555 02da 19098001 		e_addi %r8,%r9,1
+ 556 02de 515E0008 		e_lwz %r10,8(%r30)
+ 557 02e2 7D291070 		e_slwi %r9,%r9,2
+ 558 02e6 351E0000 		e_stb %r8,0(%r30)
+ 559 02ea 7D2A4A14 		add %r9,%r10,%r9
+ 560              	.L63:
+ 561              		.loc 1 232 0 discriminator 4
+ 562 02ee 50890000 		e_lwz %r4,0(%r9)
+ 563              	.LVL73:
+ 564              	.LBB6:
+ 565              	.LBB7:
+ 566              		.loc 1 72 0 is_stmt 1 discriminator 4
+ 567 02f2 01C3     		se_mr %r3,%r28
+ 568              	.LBE7:
+ 569              	.LBE6:
+ 570              		.loc 1 133 0 discriminator 4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 11
+
+
+ 571 02f4 02CB     		se_mtar %r19,%r28
+ 572              	.LBB9:
+ 573              	.LBB8:
+ 574              		.loc 1 72 0 discriminator 4
+ 575 02f6 78000001 		e_bl long_to_string_with_divisor.constprop.0
+ 576              	.LVL74:
+ 577 02fa 06C3     		se_sub %r3, %r28
+ 578 02fc 18E384FF 		e_addi %r7,%r3,-1
+ 579              	.LVL75:
+ 580              	.L43:
+ 581 0300 7D23F851 		subf. %r9,%r3,%r31
+ 582              	.LVL76:
+ 583              	.LBE8:
+ 584              	.LBE9:
+ 585 0304 0178     		se_mr %r24,%r7
+ 586              		.loc 1 242 0
+ 587 0306 1834A800 		e_cmpi %cr1,%r20,0
+ 588 030a 7FE0481E 		isel %r31,0,%r9,0
+ 589              	.LVL77:
+ 590 030e 7A06FF2E 		e_bne %cr1,.L64
+ 591              	.LVL78:
+ 592              	.L75:
+ 593              		.loc 1 244 0
+ 594 0312 003F     		se_neg %r31
+ 595              	.LVL79:
+ 596 0314 187FA800 		e_cmpi %cr3,%r31,0
+ 597 0318 7A1E002C 		e_beq %cr3,.L65
+ 598              		.loc 1 245 0
+ 599 031c 31330000 		e_lbz %r9,0(%r19)
+ 600 0320 1829A82D 		e_cmpi %cr1,%r9,45
+ 601 0324 7A16016A 		e_beq %cr1,.L114
+ 602              	.LVL80:
+ 603              	.L67:
+ 604              		.loc 1 250 0 discriminator 1
+ 605 0328 51350000 		e_lwz %r9,0(%r21)
+ 606 032c 03D3     		se_mfar %r3,%r21
+ 607 032e 51290008 		e_lwz %r9,8(%r9)
+ 608 0332 01D4     		se_mr %r4,%r29
+ 609 0334 7D2903A6 		mtctr %r9
+ 610              		.loc 1 251 0 discriminator 1
+ 611 0338 200F     		se_addi %r31,1
+ 612              	.LVL81:
+ 613 033a 187FA800 		e_cmpi %cr3,%r31,0
+ 614              		.loc 1 250 0 discriminator 1
+ 615 033e 0007     		se_bctrl
+ 616              	.LVL82:
+ 617              		.loc 1 251 0 discriminator 1
+ 618 0340 7A0EFFE8 		e_bne %cr3,.L67
+ 619              	.L65:
+ 620              	.LVL83:
+ 621              		.loc 1 253 0
+ 622 0344 1838A800 		e_cmpi %cr1,%r24,0
+ 623 0348 7A04FEFE 		e_bge %cr1,.L74
+ 624 034c 79FFFCF4 		e_b .L12
+ 625              	.LVL84:
+ 626              	.L33:
+ 627              		.loc 1 232 0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 12
+
+
+ 628 0350 313E0000 		e_lbz %r9,0(%r30)
+ 629              	.LVL85:
+ 630 0354 7ED2B378 		mr %r18,%r22
+ 631 0358 4885     		se_li %r5,8
+ 632 035a 18A9A808 		e_cmpli %cr1,%r9,8
+ 633 035e 7A14FF7C 		e_blt %cr1,.L115
+ 634              	.LVL86:
+ 635              	.L62:
+ 636              		.loc 1 232 0 is_stmt 0 discriminator 1
+ 637 0362 513E0004 		e_lwz %r9,4(%r30)
+ 638 0366 19498004 		e_addi %r10,%r9,4
+ 639 036a 555E0004 		e_stw %r10,4(%r30)
+ 640 036e 79FFFF80 		e_b .L63
+ 641              	.LVL87:
+ 642              	.L51:
+ 643              		.loc 1 200 0 is_stmt 1
+ 644 0372 313E0000 		e_lbz %r9,0(%r30)
+ 645              	.LVL88:
+ 646 0376 18A9A808 		e_cmpli %cr1,%r9,8
+ 647 037a 7A04009E 		e_bge %cr1,.L55
+ 648              		.loc 1 200 0 is_stmt 0 discriminator 2
+ 649 037e 19098001 		e_addi %r8,%r9,1
+ 650 0382 515E0008 		e_lwz %r10,8(%r30)
+ 651 0386 7D291070 		e_slwi %r9,%r9,2
+ 652 038a 351E0000 		e_stb %r8,0(%r30)
+ 653 038e 7D2A4A14 		add %r9,%r10,%r9
+ 654 0392 7ED2B378 		mr %r18,%r22
+ 655 0396 50890000 		e_lwz %r4,0(%r9)
+ 656              	.LVL89:
+ 657              		.loc 1 132 0 is_stmt 1 discriminator 2
+ 658 039a 01C3     		se_mr %r3,%r28
+ 659              		.loc 1 201 0 discriminator 2
+ 660 039c 1824A800 		e_cmpi %cr1,%r4,0
+ 661 03a0 7A140096 		e_blt %cr1,.L116
+ 662              	.LVL90:
+ 663              	.L57:
+ 664              	.LBB10:
+ 665              	.LBB11:
+ 666              		.loc 1 72 0
+ 667 03a4 48A5     		se_li %r5,10
+ 668              	.LBE11:
+ 669              	.LBE10:
+ 670              		.loc 1 133 0
+ 671 03a6 02CB     		se_mtar %r19,%r28
+ 672              	.LBB13:
+ 673              	.LBB12:
+ 674              		.loc 1 72 0
+ 675 03a8 78000001 		e_bl long_to_string_with_divisor.constprop.0
+ 676              	.LVL91:
+ 677 03ac 06C3     		se_sub %r3, %r28
+ 678 03ae 18E384FF 		e_addi %r7,%r3,-1
+ 679              	.LBE12:
+ 680              	.LBE13:
+ 681              		.loc 1 206 0
+ 682 03b2 79FFFF4E 		e_b .L43
+ 683              	.LVL92:
+ 684              	.L81:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 13
+
+
+ 685              		.loc 1 179 0
+ 686 03b6 0270     		se_mtar %r8,%r7
+ 687              	.LVL93:
+ 688              	.L30:
+ 689              		.loc 1 236 0
+ 690 03b8 35010008 		e_stb %r8,8(%r1)
+ 691 03bc 0193     		se_mr %r3,%r25
+ 692 03be 18F984FF 		e_addi %r7,%r25,-1
+ 693              		.loc 1 237 0
+ 694 03c2 7ED2B378 		mr %r18,%r22
+ 695              		.loc 1 133 0
+ 696 03c6 02CB     		se_mtar %r19,%r28
+ 697              		.loc 1 237 0
+ 698 03c8 79FFFF38 		e_b .L43
+ 699              	.LVL94:
+ 700              	.L110:
+ 701              		.loc 1 172 0
+ 702 03cc 30F60000 		e_lbz %r7,0(%r22)
+ 703 03d0 1827A800 		e_cmpi %cr1,%r7,0
+ 704 03d4 7A16FFE4 		e_beq %cr1,.L30
+ 705              		.loc 1 179 0
+ 706 03d8 194784BC 		e_addi %r10,%r7,-68
+ 707              		.loc 1 173 0
+ 708 03dc 1AD68001 		e_addi %r22,%r22,1
+ 709              	.LVL95:
+ 710              		.loc 1 179 0
+ 711 03e0 754A063F 		e_rlwinm %r10,%r10,0,0xff
+ 712 03e4 18AAA834 		e_cmpli %cr1,%r10,52
+ 713 03e8 7A15FFCE 		e_bgt %cr1,.L81
+ 714 03ec 7D4A1070 		e_slwi %r10,%r10,2
+ 715 03f0 7D5A502E 		lwzx %r10,%r26,%r10
+ 716 03f4 7D4AD214 		add %r10,%r10,%r26
+ 717 03f8 7D4903A6 		mtctr %r10
+ 718 03fc 0006     		se_bctr
+ 719              		.section	.rodata.chvprintf
+ 720              		.align 2
+ 721              		.align 2
+ 722              	.L32:
+ 723 00d4 00000000 		.long .L51-.L32
+ 724 00d8 00000000 		.long .L81-.L32
+ 725 00dc 00000000 		.long .L81-.L32
+ 726 00e0 00000000 		.long .L81-.L32
+ 727 00e4 00000000 		.long .L81-.L32
+ 728 00e8 00000000 		.long .L51-.L32
+ 729 00ec 00000000 		.long .L81-.L32
+ 730 00f0 00000000 		.long .L81-.L32
+ 731 00f4 00000000 		.long .L81-.L32
+ 732 00f8 00000000 		.long .L81-.L32
+ 733 00fc 00000000 		.long .L81-.L32
+ 734 0100 00000000 		.long .L33-.L32
+ 735 0104 00000000 		.long .L81-.L32
+ 736 0108 00000000 		.long .L81-.L32
+ 737 010c 00000000 		.long .L81-.L32
+ 738 0110 00000000 		.long .L81-.L32
+ 739 0114 00000000 		.long .L81-.L32
+ 740 0118 00000000 		.long .L34-.L32
+ 741 011c 00000000 		.long .L81-.L32
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 14
+
+
+ 742 0120 00000000 		.long .L81-.L32
+ 743 0124 00000000 		.long .L35-.L32
+ 744 0128 00000000 		.long .L81-.L32
+ 745 012c 00000000 		.long .L81-.L32
+ 746 0130 00000000 		.long .L81-.L32
+ 747 0134 00000000 		.long .L81-.L32
+ 748 0138 00000000 		.long .L81-.L32
+ 749 013c 00000000 		.long .L81-.L32
+ 750 0140 00000000 		.long .L81-.L32
+ 751 0144 00000000 		.long .L81-.L32
+ 752 0148 00000000 		.long .L81-.L32
+ 753 014c 00000000 		.long .L81-.L32
+ 754 0150 00000000 		.long .L36-.L32
+ 755 0154 00000000 		.long .L51-.L32
+ 756 0158 00000000 		.long .L81-.L32
+ 757 015c 00000000 		.long .L81-.L32
+ 758 0160 00000000 		.long .L81-.L32
+ 759 0164 00000000 		.long .L81-.L32
+ 760 0168 00000000 		.long .L51-.L32
+ 761 016c 00000000 		.long .L81-.L32
+ 762 0170 00000000 		.long .L81-.L32
+ 763 0174 00000000 		.long .L81-.L32
+ 764 0178 00000000 		.long .L81-.L32
+ 765 017c 00000000 		.long .L81-.L32
+ 766 0180 00000000 		.long .L33-.L32
+ 767 0184 00000000 		.long .L81-.L32
+ 768 0188 00000000 		.long .L81-.L32
+ 769 018c 00000000 		.long .L81-.L32
+ 770 0190 00000000 		.long .L37-.L32
+ 771 0194 00000000 		.long .L81-.L32
+ 772 0198 00000000 		.long .L34-.L32
+ 773 019c 00000000 		.long .L81-.L32
+ 774 01a0 00000000 		.long .L81-.L32
+ 775 01a4 00000000 		.long .L35-.L32
+ 776              		.section	.text.chvprintf
+ 777              	.LVL96:
+ 778              	.L108:
+ 779              		.loc 1 136 0
+ 780 03fe 1AD28002 		e_addi %r22,%r18,2
+ 781              	.LVL97:
+ 782 0402 31120002 		e_lbz %r8,2(%r18)
+ 783              		.loc 1 137 0
+ 784 0406 72800001 		e_li %r20,1
+ 785 040a 79FFFC9A 		e_b .L16
+ 786              	.LVL98:
+ 787              	.L84:
+ 788              		.loc 1 179 0
+ 789 040e 7ED2B378 		mr %r18,%r22
+ 790 0412 4905     		se_li %r5,16
+ 791              	.LVL99:
+ 792 0414 79FFFEBA 		e_b .L58
+ 793              	.LVL100:
+ 794              	.L55:
+ 795              		.loc 1 200 0 discriminator 1
+ 796 0418 513E0004 		e_lwz %r9,4(%r30)
+ 797 041c 7ED2B378 		mr %r18,%r22
+ 798 0420 19498004 		e_addi %r10,%r9,4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 15
+
+
+ 799              		.loc 1 132 0 discriminator 1
+ 800 0424 01C3     		se_mr %r3,%r28
+ 801              		.loc 1 200 0 discriminator 1
+ 802 0426 555E0004 		e_stw %r10,4(%r30)
+ 803 042a 50890000 		e_lwz %r4,0(%r9)
+ 804              	.LVL101:
+ 805              		.loc 1 201 0 discriminator 1
+ 806 042e 1824A800 		e_cmpi %cr1,%r4,0
+ 807 0432 7A04FF72 		e_bge %cr1,.L57
+ 808              	.LVL102:
+ 809              	.L116:
+ 810              		.loc 1 202 0
+ 811 0436 7120002D 		e_li %r9,45
+ 812              		.loc 1 203 0
+ 813 043a 0034     		se_neg %r4
+ 814              	.LVL103:
+ 815              		.loc 1 202 0
+ 816 043c 35210008 		e_stb %r9,8(%r1)
+ 817 0440 03F3     		se_mfar %r3,%r23
+ 818              	.LVL104:
+ 819 0442 79FFFF62 		e_b .L57
+ 820              	.LVL105:
+ 821              	.L41:
+ 822              		.loc 1 182 0 discriminator 1
+ 823 0446 513E0004 		e_lwz %r9,4(%r30)
+ 824 044a 19498004 		e_addi %r10,%r9,4
+ 825 044e 555E0004 		e_stw %r10,4(%r30)
+ 826 0452 79FFFE5C 		e_b .L42
+ 827              	.LVL106:
+ 828              	.L44:
+ 829              		.loc 1 186 0 discriminator 1
+ 830 0456 515E0004 		e_lwz %r10,4(%r30)
+ 831 045a 190A8004 		e_addi %r8,%r10,4
+ 832 045e 551E0004 		e_stw %r8,4(%r30)
+ 833 0462 526A0000 		e_lwz %r19,0(%r10)
+ 834              	.LVL107:
+ 835 0466 1833A800 		e_cmpi %cr1,%r19,0
+ 836 046a 7A06FD7C 		e_bne %cr1,.L46
+ 837              	.L111:
+ 838              		.loc 1 187 0
+ 839 046e 7E338B78 		mr %r19,%r17
+ 840              	.LVL108:
+ 841              		.loc 1 188 0
+ 842 0472 1829A800 		e_cmpi %cr1,%r9,0
+ 843              		.loc 1 190 0
+ 844 0476 31530000 		e_lbz %r10,0(%r19)
+ 845              		.loc 1 188 0
+ 846 047a 7A16FD78 		e_beq %cr1,.L47
+ 847              	.L112:
+ 848              	.LVL109:
+ 849              		.loc 1 190 0 discriminator 1
+ 850 047e 182AA800 		e_cmpi %cr1,%r10,0
+ 851 0482 7A16003C 		e_beq %cr1,.L48
+ 852              		.loc 1 190 0 is_stmt 0
+ 853 0486 192984FF 		e_addi %r9,%r9,-1
+ 854              	.LVL110:
+ 855 048a 79FFFD74 		e_b .L73
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 16
+
+
+ 856              	.LVL111:
+ 857              	.L114:
+ 858              		.loc 1 245 0 is_stmt 1 discriminator 1
+ 859 048e 18BDA830 		e_cmpli %cr1,%r29,48
+ 860 0492 7A06FE96 		e_bne %cr1,.L67
+ 861              		.loc 1 246 0
+ 862 0496 51350000 		e_lwz %r9,0(%r21)
+ 863 049a 03D3     		se_mfar %r3,%r21
+ 864 049c 51290008 		e_lwz %r9,8(%r9)
+ 865 04a0 4AD4     		se_li %r4,45
+ 866 04a2 7D2903A6 		mtctr %r9
+ 867 04a6 1A738001 		e_addi %r19,%r19,1
+ 868              	.LVL112:
+ 869 04aa 1B1884FF 		e_addi %r24,%r24,-1
+ 870 04ae 0007     		se_bctrl
+ 871              	.LVL113:
+ 872 04b0 79FFFE78 		e_b .L67
+ 873              	.LVL114:
+ 874              	.L35:
+ 875              		.loc 1 179 0
+ 876 04b4 4905     		se_li %r5,16
+ 877              	.LVL115:
+ 878              		.loc 1 173 0
+ 879 04b6 7ED2B378 		mr %r18,%r22
+ 880 04ba 79FFFE14 		e_b .L58
+ 881              	.LVL116:
+ 882              	.L48:
+ 883 04be 183FA800 		e_cmpi %cr1,%r31,0
+ 884              		.loc 1 242 0
+ 885 04c2 7ED2B378 		mr %r18,%r22
+ 886 04c6 70149800 		e_cmp16i %r20,0
+ 887 04ca 7FE0F91E 		isel %r31,0,%r31,4
+ 888              	.LVL117:
+ 889 04ce 7A02000C 		e_bne %cr0,.L87
+ 890              	.LVL118:
+ 891 04d2 2C08     		se_bmaski %r24,0
+ 892 04d4 4A0D     		se_li %r29,32
+ 893 04d6 79FFFE3C 		e_b .L75
+ 894              	.L87:
+ 895 04da 4A0D     		se_li %r29,32
+ 896 04dc 187FA800 		e_cmpi %cr3,%r31,0
+ 897 04e0 79FFFD8A 		e_b .L69
+ 898              		.cfi_endproc
+ 899              	.LFE18:
+ 900              		.size	chvprintf, .-chvprintf
+ 901              		.section	.text.chsnprintf,"axv",@progbits
+ 902              		.align 1
+ 903              		.p2align 4,,15
+ 904              		.globl chsnprintf
+ 905              		.type	chsnprintf, @function
+ 906              	chsnprintf:
+ 907              	.LFB19:
+ 908              		.loc 1 288 0
+ 909              		.cfi_startproc
+ 910              	.LVL119:
+ 911 0000 182106B0 		e_stwu %r1,-80(%r1)
+ 912              	.LCFI3:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 17
+
+
+ 913              		.cfi_def_cfa_offset 80
+ 914 0004 0080     		se_mflr %r0
+ 915 0006 1BA10944 		e_stmw %r29,68(%r1)
+ 916 000a 54010054 		e_stw %r0,84(%r1)
+ 917              		.cfi_offset 65, 4
+ 918              		.cfi_offset 29, -12
+ 919              		.cfi_offset 30, -8
+ 920              		.cfi_offset 31, -4
+ 921              		.loc 1 288 0
+ 922 000e 013F     		se_mr %r31,%r3
+ 923 0010 015D     		se_mr %r29,%r5
+ 924 0012 DB61     		se_stw %r6,44(%r1)
+ 925 0014 DC71     		se_stw %r7,48(%r1)
+ 926 0016 55010034 		e_stw %r8,52(%r1)
+ 927 001a 55210038 		e_stw %r9,56(%r1)
+ 928 001e 5541003C 		e_stw %r10,60(%r1)
+ 929              		.loc 1 295 0
+ 930 0022 18A484FF 		e_addi %r5,%r4,-1
+ 931              	.LVL120:
+ 932              		.loc 1 299 0
+ 933 0026 480E     		se_li %r30,0
+ 934              		.loc 1 295 0
+ 935 0028 0134     		se_mr %r4,%r3
+ 936              	.LVL121:
+ 937 002a 4806     		se_li %r6,0
+ 938 002c 18618008 		e_addi %r3,%r1,8
+ 939              	.LVL122:
+ 940 0030 78000001 		e_bl msObjectInit
+ 941              	.LVL123:
+ 942              		.loc 1 299 0
+ 943 0034 0211     		se_mtar %r9,%r1
+ 944              		.loc 1 300 0
+ 945 0036 18618008 		e_addi %r3,%r1,8
+ 946              	.LVL124:
+ 947              		.loc 1 299 0
+ 948 003a 37C1001D 		e_stb %r30,29(%r1)
+ 949 003e 71400003 		e_li %r10,3
+ 950              		.loc 1 300 0
+ 951 0042 01D4     		se_mr %r4,%r29
+ 952              		.loc 1 299 0
+ 953 0044 3541001C 		e_stb %r10,28(%r1)
+ 954              		.loc 1 300 0
+ 955 0048 18A1801C 		e_addi %r5,%r1,28
+ 956              		.loc 1 299 0
+ 957 004c 19418058 		e_addi %r10,%r1,88
+ 958 0050 19490620 		e_stwu %r10,32(%r9)
+ 959 0054 55210024 		e_stw %r9,36(%r1)
+ 960              		.loc 1 300 0
+ 961 0058 78000001 		e_bl chvprintf
+ 962              	.LVL125:
+ 963              		.loc 1 304 0
+ 964 005c C531     		se_lwz %r3,20(%r1)
+ 965 005e 7FDF19AE 		stbx %r30,%r31,%r3
+ 966              		.loc 1 306 0
+ 967 0062 50010054 		e_lwz %r0,84(%r1)
+ 968 0066 0090     		se_mtlr %r0
+ 969              		.cfi_restore 65
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 18
+
+
+ 970 0068 1BA10844 		e_lmw %r29,68(%r1)
+ 971              	.LVL126:
+ 972 006c 18218050 		e_addi %r1,%r1,80
+ 973              	.LCFI4:
+ 974              		.cfi_restore 31
+ 975              		.cfi_restore 30
+ 976              		.cfi_restore 29
+ 977              		.cfi_def_cfa_offset 0
+ 978              	.LVL127:
+ 979 0070 0004     		se_blr
+ 980              		.cfi_endproc
+ 981              	.LFE19:
+ 982              		.size	chsnprintf, .-chsnprintf
+ 983              		.section	.rodata.str1.4,"aMS",@progbits,1
+ 984              		.align 2
+ 985              	.LC0:
+ 986 0000 286E756C 		.string	"(null)"
+ 986      6C2900
+ 987              		.section	".text","axv"
+ 988              	.Letext0:
+ 989              		.file 2 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 990              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 991              		.file 4 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 992              		.file 5 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/include/chtypes.h"
+ 993              		.file 6 "./components/chibios_rt_portable_kernel_component/lib/include/chstreams.h"
+ 994              		.file 7 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 995              		.file 8 "<built-in>"
+ 996              		.file 9 "./components/chibios_rt_portable_output_formatter_component/lib/include/memstreams.h"
+ 997              		.section	.debug_info,"",@progbits
+ 998              	.Ldebug_info0:
+ 999 0000 000006B4 		.4byte	0x6b4
+ 1000 0004 0002     		.2byte	0x2
+ 1001 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1002 000a 04       		.byte	0x4
+ 1003 000b 01       		.uleb128 0x1
+ 1004 000c 00000000 		.4byte	.LASF44
+ 1005 0010 01       		.byte	0x1
+ 1006 0011 00000000 		.4byte	.LASF45
+ 1007 0015 00000000 		.4byte	.LASF46
+ 1008 0019 00000000 		.4byte	.Ldebug_ranges0+0x30
+ 1009 001d 00000000 		.4byte	0
+ 1010 0021 00000000 		.4byte	0
+ 1011 0025 00000000 		.4byte	.Ldebug_line0
+ 1012 0029 02       		.uleb128 0x2
+ 1013 002a 04       		.byte	0x4
+ 1014 002b 05       		.byte	0x5
+ 1015 002c 696E7400 		.string	"int"
+ 1016 0030 03       		.uleb128 0x3
+ 1017 0031 00000000 		.4byte	.LASF3
+ 1018 0035 02       		.byte	0x2
+ 1019 0036 D4       		.byte	0xd4
+ 1020 0037 0000003B 		.4byte	0x3b
+ 1021 003b 04       		.uleb128 0x4
+ 1022 003c 04       		.byte	0x4
+ 1023 003d 07       		.byte	0x7
+ 1024 003e 00000000 		.4byte	.LASF0
+ 1025 0042 04       		.uleb128 0x4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 19
+
+
+ 1026 0043 04       		.byte	0x4
+ 1027 0044 05       		.byte	0x5
+ 1028 0045 00000000 		.4byte	.LASF1
+ 1029 0049 04       		.uleb128 0x4
+ 1030 004a 01       		.byte	0x1
+ 1031 004b 06       		.byte	0x6
+ 1032 004c 00000000 		.4byte	.LASF2
+ 1033 0050 03       		.uleb128 0x3
+ 1034 0051 00000000 		.4byte	.LASF4
+ 1035 0055 03       		.byte	0x3
+ 1036 0056 1D       		.byte	0x1d
+ 1037 0057 0000005B 		.4byte	0x5b
+ 1038 005b 04       		.uleb128 0x4
+ 1039 005c 01       		.byte	0x1
+ 1040 005d 08       		.byte	0x8
+ 1041 005e 00000000 		.4byte	.LASF5
+ 1042 0062 04       		.uleb128 0x4
+ 1043 0063 02       		.byte	0x2
+ 1044 0064 05       		.byte	0x5
+ 1045 0065 00000000 		.4byte	.LASF6
+ 1046 0069 04       		.uleb128 0x4
+ 1047 006a 02       		.byte	0x2
+ 1048 006b 07       		.byte	0x7
+ 1049 006c 00000000 		.4byte	.LASF7
+ 1050 0070 03       		.uleb128 0x3
+ 1051 0071 00000000 		.4byte	.LASF8
+ 1052 0075 03       		.byte	0x3
+ 1053 0076 3F       		.byte	0x3f
+ 1054 0077 00000042 		.4byte	0x42
+ 1055 007b 04       		.uleb128 0x4
+ 1056 007c 04       		.byte	0x4
+ 1057 007d 07       		.byte	0x7
+ 1058 007e 00000000 		.4byte	.LASF9
+ 1059 0082 04       		.uleb128 0x4
+ 1060 0083 08       		.byte	0x8
+ 1061 0084 05       		.byte	0x5
+ 1062 0085 00000000 		.4byte	.LASF10
+ 1063 0089 04       		.uleb128 0x4
+ 1064 008a 08       		.byte	0x8
+ 1065 008b 07       		.byte	0x7
+ 1066 008c 00000000 		.4byte	.LASF11
+ 1067 0090 03       		.uleb128 0x3
+ 1068 0091 00000000 		.4byte	.LASF12
+ 1069 0095 04       		.byte	0x4
+ 1070 0096 15       		.byte	0x15
+ 1071 0097 00000050 		.4byte	0x50
+ 1072 009b 03       		.uleb128 0x3
+ 1073 009c 00000000 		.4byte	.LASF13
+ 1074 00a0 04       		.byte	0x4
+ 1075 00a1 2C       		.byte	0x2c
+ 1076 00a2 00000070 		.4byte	0x70
+ 1077 00a6 03       		.uleb128 0x3
+ 1078 00a7 00000000 		.4byte	.LASF14
+ 1079 00ab 05       		.byte	0x5
+ 1080 00ac 38       		.byte	0x38
+ 1081 00ad 000000B1 		.4byte	0xb1
+ 1082 00b1 04       		.uleb128 0x4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 20
+
+
+ 1083 00b2 01       		.byte	0x1
+ 1084 00b3 02       		.byte	0x2
+ 1085 00b4 00000000 		.4byte	.LASF15
+ 1086 00b8 03       		.uleb128 0x3
+ 1087 00b9 00000000 		.4byte	.LASF16
+ 1088 00bd 05       		.byte	0x5
+ 1089 00be 3E       		.byte	0x3e
+ 1090 00bf 0000009B 		.4byte	0x9b
+ 1091 00c3 04       		.uleb128 0x4
+ 1092 00c4 04       		.byte	0x4
+ 1093 00c5 07       		.byte	0x7
+ 1094 00c6 00000000 		.4byte	.LASF17
+ 1095 00ca 05       		.uleb128 0x5
+ 1096 00cb 04       		.byte	0x4
+ 1097 00cc 06       		.uleb128 0x6
+ 1098 00cd 04       		.byte	0x4
+ 1099 00ce 000000D2 		.4byte	0xd2
+ 1100 00d2 07       		.uleb128 0x7
+ 1101 00d3 000000D7 		.4byte	0xd7
+ 1102 00d7 04       		.uleb128 0x4
+ 1103 00d8 01       		.byte	0x1
+ 1104 00d9 08       		.byte	0x8
+ 1105 00da 00000000 		.4byte	.LASF18
+ 1106 00de 06       		.uleb128 0x6
+ 1107 00df 04       		.byte	0x4
+ 1108 00e0 000000E4 		.4byte	0xe4
+ 1109 00e4 08       		.uleb128 0x8
+ 1110 00e5 01       		.byte	0x1
+ 1111 00e6 000000B8 		.4byte	0xb8
+ 1112 00ea 000000F4 		.4byte	0xf4
+ 1113 00ee 09       		.uleb128 0x9
+ 1114 00ef 000000CA 		.4byte	0xca
+ 1115 00f3 00       		.byte	0
+ 1116 00f4 06       		.uleb128 0x6
+ 1117 00f5 04       		.byte	0x4
+ 1118 00f6 00000090 		.4byte	0x90
+ 1119 00fa 0A       		.uleb128 0xa
+ 1120 00fb 00000000 		.4byte	.LASF23
+ 1121 00ff 10       		.byte	0x10
+ 1122 0100 06       		.byte	0x6
+ 1123 0101 48       		.byte	0x48
+ 1124 0102 0000013F 		.4byte	0x13f
+ 1125 0106 0B       		.uleb128 0xb
+ 1126 0107 00000000 		.4byte	.LASF19
+ 1127 010b 06       		.byte	0x6
+ 1128 010c 49       		.byte	0x49
+ 1129 010d 00000164 		.4byte	0x164
+ 1130 0111 02       		.byte	0x2
+ 1131 0112 23       		.byte	0x23
+ 1132 0113 00       		.uleb128 0
+ 1133 0114 0B       		.uleb128 0xb
+ 1134 0115 00000000 		.4byte	.LASF20
+ 1135 0119 06       		.byte	0x6
+ 1136 011a 49       		.byte	0x49
+ 1137 011b 00000184 		.4byte	0x184
+ 1138 011f 02       		.byte	0x2
+ 1139 0120 23       		.byte	0x23
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 21
+
+
+ 1140 0121 04       		.uleb128 0x4
+ 1141 0122 0C       		.uleb128 0xc
+ 1142 0123 70757400 		.string	"put"
+ 1143 0127 06       		.byte	0x6
+ 1144 0128 49       		.byte	0x49
+ 1145 0129 0000019F 		.4byte	0x19f
+ 1146 012d 02       		.byte	0x2
+ 1147 012e 23       		.byte	0x23
+ 1148 012f 08       		.uleb128 0x8
+ 1149 0130 0C       		.uleb128 0xc
+ 1150 0131 67657400 		.string	"get"
+ 1151 0135 06       		.byte	0x6
+ 1152 0136 49       		.byte	0x49
+ 1153 0137 000000DE 		.4byte	0xde
+ 1154 013b 02       		.byte	0x2
+ 1155 013c 23       		.byte	0x23
+ 1156 013d 0C       		.uleb128 0xc
+ 1157 013e 00       		.byte	0
+ 1158 013f 08       		.uleb128 0x8
+ 1159 0140 01       		.byte	0x1
+ 1160 0141 00000030 		.4byte	0x30
+ 1161 0145 00000159 		.4byte	0x159
+ 1162 0149 09       		.uleb128 0x9
+ 1163 014a 000000CA 		.4byte	0xca
+ 1164 014e 09       		.uleb128 0x9
+ 1165 014f 00000159 		.4byte	0x159
+ 1166 0153 09       		.uleb128 0x9
+ 1167 0154 00000030 		.4byte	0x30
+ 1168 0158 00       		.byte	0
+ 1169 0159 06       		.uleb128 0x6
+ 1170 015a 04       		.byte	0x4
+ 1171 015b 0000015F 		.4byte	0x15f
+ 1172 015f 07       		.uleb128 0x7
+ 1173 0160 00000090 		.4byte	0x90
+ 1174 0164 06       		.uleb128 0x6
+ 1175 0165 04       		.byte	0x4
+ 1176 0166 0000013F 		.4byte	0x13f
+ 1177 016a 08       		.uleb128 0x8
+ 1178 016b 01       		.byte	0x1
+ 1179 016c 00000030 		.4byte	0x30
+ 1180 0170 00000184 		.4byte	0x184
+ 1181 0174 09       		.uleb128 0x9
+ 1182 0175 000000CA 		.4byte	0xca
+ 1183 0179 09       		.uleb128 0x9
+ 1184 017a 000000F4 		.4byte	0xf4
+ 1185 017e 09       		.uleb128 0x9
+ 1186 017f 00000030 		.4byte	0x30
+ 1187 0183 00       		.byte	0
+ 1188 0184 06       		.uleb128 0x6
+ 1189 0185 04       		.byte	0x4
+ 1190 0186 0000016A 		.4byte	0x16a
+ 1191 018a 08       		.uleb128 0x8
+ 1192 018b 01       		.byte	0x1
+ 1193 018c 000000B8 		.4byte	0xb8
+ 1194 0190 0000019F 		.4byte	0x19f
+ 1195 0194 09       		.uleb128 0x9
+ 1196 0195 000000CA 		.4byte	0xca
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 22
+
+
+ 1197 0199 09       		.uleb128 0x9
+ 1198 019a 00000090 		.4byte	0x90
+ 1199 019e 00       		.byte	0
+ 1200 019f 06       		.uleb128 0x6
+ 1201 01a0 04       		.byte	0x4
+ 1202 01a1 0000018A 		.4byte	0x18a
+ 1203 01a5 0D       		.uleb128 0xd
+ 1204 01a6 04       		.byte	0x4
+ 1205 01a7 06       		.byte	0x6
+ 1206 01a8 51       		.byte	0x51
+ 1207 01a9 000001BC 		.4byte	0x1bc
+ 1208 01ad 0C       		.uleb128 0xc
+ 1209 01ae 766D7400 		.string	"vmt"
+ 1210 01b2 06       		.byte	0x6
+ 1211 01b3 53       		.byte	0x53
+ 1212 01b4 000001BC 		.4byte	0x1bc
+ 1213 01b8 02       		.byte	0x2
+ 1214 01b9 23       		.byte	0x23
+ 1215 01ba 00       		.uleb128 0
+ 1216 01bb 00       		.byte	0
+ 1217 01bc 06       		.uleb128 0x6
+ 1218 01bd 04       		.byte	0x4
+ 1219 01be 000001C2 		.4byte	0x1c2
+ 1220 01c2 07       		.uleb128 0x7
+ 1221 01c3 000000FA 		.4byte	0xfa
+ 1222 01c7 03       		.uleb128 0x3
+ 1223 01c8 00000000 		.4byte	.LASF21
+ 1224 01cc 06       		.byte	0x6
+ 1225 01cd 55       		.byte	0x55
+ 1226 01ce 000001A5 		.4byte	0x1a5
+ 1227 01d2 03       		.uleb128 0x3
+ 1228 01d3 00000000 		.4byte	.LASF22
+ 1229 01d7 07       		.byte	0x7
+ 1230 01d8 28       		.byte	0x28
+ 1231 01d9 000001DD 		.4byte	0x1dd
+ 1232 01dd 0E       		.uleb128 0xe
+ 1233 01de 000001ED 		.4byte	0x1ed
+ 1234 01e2 000001ED 		.4byte	0x1ed
+ 1235 01e6 0F       		.uleb128 0xf
+ 1236 01e7 000000C3 		.4byte	0xc3
+ 1237 01eb 00       		.byte	0
+ 1238 01ec 00       		.byte	0
+ 1239 01ed 0A       		.uleb128 0xa
+ 1240 01ee 00000000 		.4byte	.LASF24
+ 1241 01f2 0C       		.byte	0xc
+ 1242 01f3 08       		.byte	0x8
+ 1243 01f4 00       		.byte	0
+ 1244 01f5 00000240 		.4byte	0x240
+ 1245 01f9 0C       		.uleb128 0xc
+ 1246 01fa 67707200 		.string	"gpr"
+ 1247 01fe 08       		.byte	0x8
+ 1248 01ff 00       		.byte	0
+ 1249 0200 0000005B 		.4byte	0x5b
+ 1250 0204 02       		.byte	0x2
+ 1251 0205 23       		.byte	0x23
+ 1252 0206 00       		.uleb128 0
+ 1253 0207 0C       		.uleb128 0xc
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 23
+
+
+ 1254 0208 66707200 		.string	"fpr"
+ 1255 020c 08       		.byte	0x8
+ 1256 020d 00       		.byte	0
+ 1257 020e 0000005B 		.4byte	0x5b
+ 1258 0212 02       		.byte	0x2
+ 1259 0213 23       		.byte	0x23
+ 1260 0214 01       		.uleb128 0x1
+ 1261 0215 0B       		.uleb128 0xb
+ 1262 0216 00000000 		.4byte	.LASF25
+ 1263 021a 08       		.byte	0x8
+ 1264 021b 00       		.byte	0
+ 1265 021c 00000069 		.4byte	0x69
+ 1266 0220 02       		.byte	0x2
+ 1267 0221 23       		.byte	0x23
+ 1268 0222 02       		.uleb128 0x2
+ 1269 0223 0B       		.uleb128 0xb
+ 1270 0224 00000000 		.4byte	.LASF26
+ 1271 0228 08       		.byte	0x8
+ 1272 0229 00       		.byte	0
+ 1273 022a 000000CA 		.4byte	0xca
+ 1274 022e 02       		.byte	0x2
+ 1275 022f 23       		.byte	0x23
+ 1276 0230 04       		.uleb128 0x4
+ 1277 0231 0B       		.uleb128 0xb
+ 1278 0232 00000000 		.4byte	.LASF27
+ 1279 0236 08       		.byte	0x8
+ 1280 0237 00       		.byte	0
+ 1281 0238 000000CA 		.4byte	0xca
+ 1282 023c 02       		.byte	0x2
+ 1283 023d 23       		.byte	0x23
+ 1284 023e 08       		.uleb128 0x8
+ 1285 023f 00       		.byte	0
+ 1286 0240 03       		.uleb128 0x3
+ 1287 0241 00000000 		.4byte	.LASF28
+ 1288 0245 07       		.byte	0x7
+ 1289 0246 62       		.byte	0x62
+ 1290 0247 000001D2 		.4byte	0x1d2
+ 1291 024b 0A       		.uleb128 0xa
+ 1292 024c 00000000 		.4byte	.LASF29
+ 1293 0250 10       		.byte	0x10
+ 1294 0251 09       		.byte	0x9
+ 1295 0252 3D       		.byte	0x3d
+ 1296 0253 00000290 		.4byte	0x290
+ 1297 0257 0B       		.uleb128 0xb
+ 1298 0258 00000000 		.4byte	.LASF19
+ 1299 025c 09       		.byte	0x9
+ 1300 025d 3E       		.byte	0x3e
+ 1301 025e 00000164 		.4byte	0x164
+ 1302 0262 02       		.byte	0x2
+ 1303 0263 23       		.byte	0x23
+ 1304 0264 00       		.uleb128 0
+ 1305 0265 0B       		.uleb128 0xb
+ 1306 0266 00000000 		.4byte	.LASF20
+ 1307 026a 09       		.byte	0x9
+ 1308 026b 3E       		.byte	0x3e
+ 1309 026c 00000184 		.4byte	0x184
+ 1310 0270 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 24
+
+
+ 1311 0271 23       		.byte	0x23
+ 1312 0272 04       		.uleb128 0x4
+ 1313 0273 0C       		.uleb128 0xc
+ 1314 0274 70757400 		.string	"put"
+ 1315 0278 09       		.byte	0x9
+ 1316 0279 3E       		.byte	0x3e
+ 1317 027a 0000019F 		.4byte	0x19f
+ 1318 027e 02       		.byte	0x2
+ 1319 027f 23       		.byte	0x23
+ 1320 0280 08       		.uleb128 0x8
+ 1321 0281 0C       		.uleb128 0xc
+ 1322 0282 67657400 		.string	"get"
+ 1323 0286 09       		.byte	0x9
+ 1324 0287 3E       		.byte	0x3e
+ 1325 0288 000000DE 		.4byte	0xde
+ 1326 028c 02       		.byte	0x2
+ 1327 028d 23       		.byte	0x23
+ 1328 028e 0C       		.uleb128 0xc
+ 1329 028f 00       		.byte	0
+ 1330 0290 0D       		.uleb128 0xd
+ 1331 0291 14       		.byte	0x14
+ 1332 0292 09       		.byte	0x9
+ 1333 0293 46       		.byte	0x46
+ 1334 0294 000002DF 		.4byte	0x2df
+ 1335 0298 0C       		.uleb128 0xc
+ 1336 0299 766D7400 		.string	"vmt"
+ 1337 029d 09       		.byte	0x9
+ 1338 029e 48       		.byte	0x48
+ 1339 029f 000002DF 		.4byte	0x2df
+ 1340 02a3 02       		.byte	0x2
+ 1341 02a4 23       		.byte	0x23
+ 1342 02a5 00       		.uleb128 0
+ 1343 02a6 0B       		.uleb128 0xb
+ 1344 02a7 00000000 		.4byte	.LASF30
+ 1345 02ab 09       		.byte	0x9
+ 1346 02ac 49       		.byte	0x49
+ 1347 02ad 000000F4 		.4byte	0xf4
+ 1348 02b1 02       		.byte	0x2
+ 1349 02b2 23       		.byte	0x23
+ 1350 02b3 04       		.uleb128 0x4
+ 1351 02b4 0B       		.uleb128 0xb
+ 1352 02b5 00000000 		.4byte	.LASF31
+ 1353 02b9 09       		.byte	0x9
+ 1354 02ba 49       		.byte	0x49
+ 1355 02bb 00000030 		.4byte	0x30
+ 1356 02bf 02       		.byte	0x2
+ 1357 02c0 23       		.byte	0x23
+ 1358 02c1 08       		.uleb128 0x8
+ 1359 02c2 0C       		.uleb128 0xc
+ 1360 02c3 656F7300 		.string	"eos"
+ 1361 02c7 09       		.byte	0x9
+ 1362 02c8 49       		.byte	0x49
+ 1363 02c9 00000030 		.4byte	0x30
+ 1364 02cd 02       		.byte	0x2
+ 1365 02ce 23       		.byte	0x23
+ 1366 02cf 0C       		.uleb128 0xc
+ 1367 02d0 0B       		.uleb128 0xb
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 25
+
+
+ 1368 02d1 00000000 		.4byte	.LASF32
+ 1369 02d5 09       		.byte	0x9
+ 1370 02d6 49       		.byte	0x49
+ 1371 02d7 00000030 		.4byte	0x30
+ 1372 02db 02       		.byte	0x2
+ 1373 02dc 23       		.byte	0x23
+ 1374 02dd 10       		.uleb128 0x10
+ 1375 02de 00       		.byte	0
+ 1376 02df 06       		.uleb128 0x6
+ 1377 02e0 04       		.byte	0x4
+ 1378 02e1 000002E5 		.4byte	0x2e5
+ 1379 02e5 07       		.uleb128 0x7
+ 1380 02e6 0000024B 		.4byte	0x24b
+ 1381 02ea 03       		.uleb128 0x3
+ 1382 02eb 00000000 		.4byte	.LASF33
+ 1383 02ef 09       		.byte	0x9
+ 1384 02f0 4A       		.byte	0x4a
+ 1385 02f1 00000290 		.4byte	0x290
+ 1386 02f5 10       		.uleb128 0x10
+ 1387 02f6 00000000 		.4byte	.LASF35
+ 1388 02fa 01       		.byte	0x1
+ 1389 02fb 46       		.byte	0x46
+ 1390 02fc 01       		.byte	0x1
+ 1391 02fd 00000326 		.4byte	0x326
+ 1392 0301 01       		.byte	0x1
+ 1393 0302 00000326 		.4byte	0x326
+ 1394 0306 11       		.uleb128 0x11
+ 1395 0307 7000     		.string	"p"
+ 1396 0309 01       		.byte	0x1
+ 1397 030a 46       		.byte	0x46
+ 1398 030b 00000326 		.4byte	0x326
+ 1399 030f 11       		.uleb128 0x11
+ 1400 0310 6E756D00 		.string	"num"
+ 1401 0314 01       		.byte	0x1
+ 1402 0315 46       		.byte	0x46
+ 1403 0316 00000042 		.4byte	0x42
+ 1404 031a 12       		.uleb128 0x12
+ 1405 031b 00000000 		.4byte	.LASF34
+ 1406 031f 01       		.byte	0x1
+ 1407 0320 46       		.byte	0x46
+ 1408 0321 0000003B 		.4byte	0x3b
+ 1409 0325 00       		.byte	0
+ 1410 0326 06       		.uleb128 0x6
+ 1411 0327 04       		.byte	0x4
+ 1412 0328 000000D7 		.4byte	0xd7
+ 1413 032c 10       		.uleb128 0x10
+ 1414 032d 00000000 		.4byte	.LASF36
+ 1415 0331 01       		.byte	0x1
+ 1416 0332 25       		.byte	0x25
+ 1417 0333 01       		.byte	0x1
+ 1418 0334 00000326 		.4byte	0x326
+ 1419 0338 01       		.byte	0x1
+ 1420 0339 0000038D 		.4byte	0x38d
+ 1421 033d 11       		.uleb128 0x11
+ 1422 033e 7000     		.string	"p"
+ 1423 0340 01       		.byte	0x1
+ 1424 0341 25       		.byte	0x25
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 26
+
+
+ 1425 0342 00000326 		.4byte	0x326
+ 1426 0346 11       		.uleb128 0x11
+ 1427 0347 6E756D00 		.string	"num"
+ 1428 034b 01       		.byte	0x1
+ 1429 034c 26       		.byte	0x26
+ 1430 034d 00000042 		.4byte	0x42
+ 1431 0351 12       		.uleb128 0x12
+ 1432 0352 00000000 		.4byte	.LASF34
+ 1433 0356 01       		.byte	0x1
+ 1434 0357 27       		.byte	0x27
+ 1435 0358 0000003B 		.4byte	0x3b
+ 1436 035c 12       		.uleb128 0x12
+ 1437 035d 00000000 		.4byte	.LASF37
+ 1438 0361 01       		.byte	0x1
+ 1439 0362 28       		.byte	0x28
+ 1440 0363 00000042 		.4byte	0x42
+ 1441 0367 13       		.uleb128 0x13
+ 1442 0368 6900     		.string	"i"
+ 1443 036a 01       		.byte	0x1
+ 1444 036b 29       		.byte	0x29
+ 1445 036c 00000029 		.4byte	0x29
+ 1446 0370 13       		.uleb128 0x13
+ 1447 0371 7100     		.string	"q"
+ 1448 0373 01       		.byte	0x1
+ 1449 0374 2A       		.byte	0x2a
+ 1450 0375 00000326 		.4byte	0x326
+ 1451 0379 13       		.uleb128 0x13
+ 1452 037a 6C00     		.string	"l"
+ 1453 037c 01       		.byte	0x1
+ 1454 037d 2B       		.byte	0x2b
+ 1455 037e 00000042 		.4byte	0x42
+ 1456 0382 13       		.uleb128 0x13
+ 1457 0383 6C6C00   		.string	"ll"
+ 1458 0386 01       		.byte	0x1
+ 1459 0387 2B       		.byte	0x2b
+ 1460 0388 00000042 		.4byte	0x42
+ 1461 038c 00       		.byte	0
+ 1462 038d 14       		.uleb128 0x14
+ 1463 038e 0000032C 		.4byte	0x32c
+ 1464 0392 00000000 		.4byte	.LFB20
+ 1465 0396 00000000 		.4byte	.LFE20
+ 1466 039a 02       		.byte	0x2
+ 1467 039b 71       		.byte	0x71
+ 1468 039c 00       		.sleb128 0
+ 1469 039d 01       		.byte	0x1
+ 1470 039e 000003E6 		.4byte	0x3e6
+ 1471 03a2 15       		.uleb128 0x15
+ 1472 03a3 0000033D 		.4byte	0x33d
+ 1473 03a7 00000000 		.4byte	.LLST0
+ 1474 03ab 15       		.uleb128 0x15
+ 1475 03ac 00000346 		.4byte	0x346
+ 1476 03b0 00000000 		.4byte	.LLST1
+ 1477 03b4 16       		.uleb128 0x16
+ 1478 03b5 00000351 		.4byte	0x351
+ 1479 03b9 01       		.byte	0x1
+ 1480 03ba 55       		.byte	0x55
+ 1481 03bb 17       		.uleb128 0x17
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 27
+
+
+ 1482 03bc 00000367 		.4byte	0x367
+ 1483 03c0 00000000 		.4byte	.LLST2
+ 1484 03c4 17       		.uleb128 0x17
+ 1485 03c5 00000370 		.4byte	0x370
+ 1486 03c9 00000000 		.4byte	.LLST3
+ 1487 03cd 17       		.uleb128 0x17
+ 1488 03ce 00000379 		.4byte	0x379
+ 1489 03d2 00000000 		.4byte	.LLST4
+ 1490 03d6 17       		.uleb128 0x17
+ 1491 03d7 00000382 		.4byte	0x382
+ 1492 03db 00000000 		.4byte	.LLST5
+ 1493 03df 18       		.uleb128 0x18
+ 1494 03e0 0000035C 		.4byte	0x35c
+ 1495 03e4 00       		.byte	0
+ 1496 03e5 00       		.byte	0
+ 1497 03e6 19       		.uleb128 0x19
+ 1498 03e7 01       		.byte	0x1
+ 1499 03e8 00000000 		.4byte	.LASF47
+ 1500 03ec 01       		.byte	0x1
+ 1501 03ed 70       		.byte	0x70
+ 1502 03ee 01       		.byte	0x1
+ 1503 03ef 00000000 		.4byte	.LFB18
+ 1504 03f3 00000000 		.4byte	.LFE18
+ 1505 03f7 00000000 		.4byte	.LLST6
+ 1506 03fb 01       		.byte	0x1
+ 1507 03fc 000005AE 		.4byte	0x5ae
+ 1508 0400 1A       		.uleb128 0x1a
+ 1509 0401 63687000 		.string	"chp"
+ 1510 0405 01       		.byte	0x1
+ 1511 0406 70       		.byte	0x70
+ 1512 0407 000005AE 		.4byte	0x5ae
+ 1513 040b 00000000 		.4byte	.LLST7
+ 1514 040f 1A       		.uleb128 0x1a
+ 1515 0410 666D7400 		.string	"fmt"
+ 1516 0414 01       		.byte	0x1
+ 1517 0415 70       		.byte	0x70
+ 1518 0416 000000CC 		.4byte	0xcc
+ 1519 041a 00000000 		.4byte	.LLST8
+ 1520 041e 1A       		.uleb128 0x1a
+ 1521 041f 617000   		.string	"ap"
+ 1522 0422 01       		.byte	0x1
+ 1523 0423 70       		.byte	0x70
+ 1524 0424 000005B4 		.4byte	0x5b4
+ 1525 0428 00000000 		.4byte	.LLST9
+ 1526 042c 1B       		.uleb128 0x1b
+ 1527 042d 7000     		.string	"p"
+ 1528 042f 01       		.byte	0x1
+ 1529 0430 71       		.byte	0x71
+ 1530 0431 00000326 		.4byte	0x326
+ 1531 0435 00000000 		.4byte	.LLST10
+ 1532 0439 1B       		.uleb128 0x1b
+ 1533 043a 7300     		.string	"s"
+ 1534 043c 01       		.byte	0x1
+ 1535 043d 71       		.byte	0x71
+ 1536 043e 00000326 		.4byte	0x326
+ 1537 0442 00000000 		.4byte	.LLST11
+ 1538 0446 1B       		.uleb128 0x1b
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 28
+
+
+ 1539 0447 6300     		.string	"c"
+ 1540 0449 01       		.byte	0x1
+ 1541 044a 71       		.byte	0x71
+ 1542 044b 000000D7 		.4byte	0xd7
+ 1543 044f 00000000 		.4byte	.LLST12
+ 1544 0453 1C       		.uleb128 0x1c
+ 1545 0454 00000000 		.4byte	.LASF38
+ 1546 0458 01       		.byte	0x1
+ 1547 0459 71       		.byte	0x71
+ 1548 045a 000000D7 		.4byte	0xd7
+ 1549 045e 00000000 		.4byte	.LLST13
+ 1550 0462 1B       		.uleb128 0x1b
+ 1551 0463 6900     		.string	"i"
+ 1552 0465 01       		.byte	0x1
+ 1553 0466 72       		.byte	0x72
+ 1554 0467 00000029 		.4byte	0x29
+ 1555 046b 00000000 		.4byte	.LLST14
+ 1556 046f 1C       		.uleb128 0x1c
+ 1557 0470 00000000 		.4byte	.LASF39
+ 1558 0474 01       		.byte	0x1
+ 1559 0475 72       		.byte	0x72
+ 1560 0476 00000029 		.4byte	0x29
+ 1561 047a 00000000 		.4byte	.LLST15
+ 1562 047e 1C       		.uleb128 0x1c
+ 1563 047f 00000000 		.4byte	.LASF40
+ 1564 0483 01       		.byte	0x1
+ 1565 0484 72       		.byte	0x72
+ 1566 0485 00000029 		.4byte	0x29
+ 1567 0489 00000000 		.4byte	.LLST16
+ 1568 048d 1C       		.uleb128 0x1c
+ 1569 048e 00000000 		.4byte	.LASF41
+ 1570 0492 01       		.byte	0x1
+ 1571 0493 73       		.byte	0x73
+ 1572 0494 000000A6 		.4byte	0xa6
+ 1573 0498 00000000 		.4byte	.LLST17
+ 1574 049c 1C       		.uleb128 0x1c
+ 1575 049d 00000000 		.4byte	.LASF42
+ 1576 04a1 01       		.byte	0x1
+ 1577 04a2 73       		.byte	0x73
+ 1578 04a3 000000A6 		.4byte	0xa6
+ 1579 04a7 00000000 		.4byte	.LLST18
+ 1580 04ab 1B       		.uleb128 0x1b
+ 1581 04ac 6C00     		.string	"l"
+ 1582 04ae 01       		.byte	0x1
+ 1583 04af 74       		.byte	0x74
+ 1584 04b0 00000042 		.4byte	0x42
+ 1585 04b4 00000000 		.4byte	.LLST19
+ 1586 04b8 1D       		.uleb128 0x1d
+ 1587 04b9 00000000 		.4byte	.LASF43
+ 1588 04bd 01       		.byte	0x1
+ 1589 04be 79       		.byte	0x79
+ 1590 04bf 000005BA 		.4byte	0x5ba
+ 1591 04c3 03       		.byte	0x3
+ 1592 04c4 91       		.byte	0x91
+ 1593 04c5 B07F     		.sleb128 -80
+ 1594 04c7 1E       		.uleb128 0x1e
+ 1595 04c8 00000000 		.4byte	.LASF48
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 29
+
+
+ 1596 04cc 01       		.byte	0x1
+ 1597 04cd E4       		.byte	0xe4
+ 1598 04ce 00000000 		.4byte	.L40
+ 1599 04d2 1F       		.uleb128 0x1f
+ 1600 04d3 000002F5 		.4byte	0x2f5
+ 1601 04d7 00000000 		.4byte	.LBB6
+ 1602 04db 00000000 		.4byte	.Ldebug_ranges0+0
+ 1603 04df 01       		.byte	0x1
+ 1604 04e0 E9       		.byte	0xe9
+ 1605 04e1 00000511 		.4byte	0x511
+ 1606 04e5 15       		.uleb128 0x15
+ 1607 04e6 0000031A 		.4byte	0x31a
+ 1608 04ea 00000000 		.4byte	.LLST20
+ 1609 04ee 15       		.uleb128 0x15
+ 1610 04ef 0000030F 		.4byte	0x30f
+ 1611 04f3 00000000 		.4byte	.LLST21
+ 1612 04f7 15       		.uleb128 0x15
+ 1613 04f8 00000306 		.4byte	0x306
+ 1614 04fc 00000000 		.4byte	.LLST22
+ 1615 0500 20       		.uleb128 0x20
+ 1616 0501 00000000 		.4byte	.LVL74
+ 1617 0505 0000038D 		.4byte	0x38d
+ 1618 0509 21       		.uleb128 0x21
+ 1619 050a 01       		.byte	0x1
+ 1620 050b 53       		.byte	0x53
+ 1621 050c 02       		.byte	0x2
+ 1622 050d 83       		.byte	0x83
+ 1623 050e 00       		.sleb128 0
+ 1624 050f 00       		.byte	0
+ 1625 0510 00       		.byte	0
+ 1626 0511 1F       		.uleb128 0x1f
+ 1627 0512 000002F5 		.4byte	0x2f5
+ 1628 0516 00000000 		.4byte	.LBB10
+ 1629 051a 00000000 		.4byte	.Ldebug_ranges0+0x18
+ 1630 051e 01       		.byte	0x1
+ 1631 051f CD       		.byte	0xcd
+ 1632 0520 0000054F 		.4byte	0x54f
+ 1633 0524 15       		.uleb128 0x15
+ 1634 0525 0000031A 		.4byte	0x31a
+ 1635 0529 00000000 		.4byte	.LLST23
+ 1636 052d 15       		.uleb128 0x15
+ 1637 052e 0000030F 		.4byte	0x30f
+ 1638 0532 00000000 		.4byte	.LLST24
+ 1639 0536 15       		.uleb128 0x15
+ 1640 0537 00000306 		.4byte	0x306
+ 1641 053b 00000000 		.4byte	.LLST25
+ 1642 053f 20       		.uleb128 0x20
+ 1643 0540 00000000 		.4byte	.LVL91
+ 1644 0544 0000038D 		.4byte	0x38d
+ 1645 0548 21       		.uleb128 0x21
+ 1646 0549 01       		.byte	0x1
+ 1647 054a 55       		.byte	0x55
+ 1648 054b 01       		.byte	0x1
+ 1649 054c 3A       		.byte	0x3a
+ 1650 054d 00       		.byte	0
+ 1651 054e 00       		.byte	0
+ 1652 054f 22       		.uleb128 0x22
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 30
+
+
+ 1653 0550 00000000 		.4byte	.LVL20
+ 1654 0554 0000055F 		.4byte	0x55f
+ 1655 0558 21       		.uleb128 0x21
+ 1656 0559 01       		.byte	0x1
+ 1657 055a 53       		.byte	0x53
+ 1658 055b 02       		.byte	0x2
+ 1659 055c 85       		.byte	0x85
+ 1660 055d 00       		.sleb128 0
+ 1661 055e 00       		.byte	0
+ 1662 055f 22       		.uleb128 0x22
+ 1663 0560 00000000 		.4byte	.LVL63
+ 1664 0564 0000056F 		.4byte	0x56f
+ 1665 0568 21       		.uleb128 0x21
+ 1666 0569 01       		.byte	0x1
+ 1667 056a 53       		.byte	0x53
+ 1668 056b 02       		.byte	0x2
+ 1669 056c 85       		.byte	0x85
+ 1670 056d 00       		.sleb128 0
+ 1671 056e 00       		.byte	0
+ 1672 056f 22       		.uleb128 0x22
+ 1673 0570 00000000 		.4byte	.LVL67
+ 1674 0574 00000585 		.4byte	0x585
+ 1675 0578 21       		.uleb128 0x21
+ 1676 0579 01       		.byte	0x1
+ 1677 057a 54       		.byte	0x54
+ 1678 057b 02       		.byte	0x2
+ 1679 057c 8D       		.byte	0x8d
+ 1680 057d 00       		.sleb128 0
+ 1681 057e 21       		.uleb128 0x21
+ 1682 057f 01       		.byte	0x1
+ 1683 0580 53       		.byte	0x53
+ 1684 0581 02       		.byte	0x2
+ 1685 0582 85       		.byte	0x85
+ 1686 0583 00       		.sleb128 0
+ 1687 0584 00       		.byte	0
+ 1688 0585 22       		.uleb128 0x22
+ 1689 0586 00000000 		.4byte	.LVL82
+ 1690 058a 0000059B 		.4byte	0x59b
+ 1691 058e 21       		.uleb128 0x21
+ 1692 058f 01       		.byte	0x1
+ 1693 0590 54       		.byte	0x54
+ 1694 0591 02       		.byte	0x2
+ 1695 0592 8D       		.byte	0x8d
+ 1696 0593 00       		.sleb128 0
+ 1697 0594 21       		.uleb128 0x21
+ 1698 0595 01       		.byte	0x1
+ 1699 0596 53       		.byte	0x53
+ 1700 0597 02       		.byte	0x2
+ 1701 0598 85       		.byte	0x85
+ 1702 0599 00       		.sleb128 0
+ 1703 059a 00       		.byte	0
+ 1704 059b 23       		.uleb128 0x23
+ 1705 059c 00000000 		.4byte	.LVL113
+ 1706 05a0 21       		.uleb128 0x21
+ 1707 05a1 01       		.byte	0x1
+ 1708 05a2 54       		.byte	0x54
+ 1709 05a3 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 31
+
+
+ 1710 05a4 08       		.byte	0x8
+ 1711 05a5 2D       		.byte	0x2d
+ 1712 05a6 21       		.uleb128 0x21
+ 1713 05a7 01       		.byte	0x1
+ 1714 05a8 53       		.byte	0x53
+ 1715 05a9 02       		.byte	0x2
+ 1716 05aa 85       		.byte	0x85
+ 1717 05ab 00       		.sleb128 0
+ 1718 05ac 00       		.byte	0
+ 1719 05ad 00       		.byte	0
+ 1720 05ae 06       		.uleb128 0x6
+ 1721 05af 04       		.byte	0x4
+ 1722 05b0 000001C7 		.4byte	0x1c7
+ 1723 05b4 06       		.uleb128 0x6
+ 1724 05b5 04       		.byte	0x4
+ 1725 05b6 000001ED 		.4byte	0x1ed
+ 1726 05ba 0E       		.uleb128 0xe
+ 1727 05bb 000000D7 		.4byte	0xd7
+ 1728 05bf 000005CA 		.4byte	0x5ca
+ 1729 05c3 0F       		.uleb128 0xf
+ 1730 05c4 000000C3 		.4byte	0xc3
+ 1731 05c8 0B       		.byte	0xb
+ 1732 05c9 00       		.byte	0
+ 1733 05ca 24       		.uleb128 0x24
+ 1734 05cb 01       		.byte	0x1
+ 1735 05cc 00000000 		.4byte	.LASF49
+ 1736 05d0 01       		.byte	0x1
+ 1737 05d1 0120     		.2byte	0x120
+ 1738 05d3 01       		.byte	0x1
+ 1739 05d4 00000029 		.4byte	0x29
+ 1740 05d8 00000000 		.4byte	.LFB19
+ 1741 05dc 00000000 		.4byte	.LFE19
+ 1742 05e0 00000000 		.4byte	.LLST26
+ 1743 05e4 01       		.byte	0x1
+ 1744 05e5 0000068E 		.4byte	0x68e
+ 1745 05e9 25       		.uleb128 0x25
+ 1746 05ea 73747200 		.string	"str"
+ 1747 05ee 01       		.byte	0x1
+ 1748 05ef 0120     		.2byte	0x120
+ 1749 05f1 00000326 		.4byte	0x326
+ 1750 05f5 00000000 		.4byte	.LLST27
+ 1751 05f9 26       		.uleb128 0x26
+ 1752 05fa 00000000 		.4byte	.LASF31
+ 1753 05fe 01       		.byte	0x1
+ 1754 05ff 0120     		.2byte	0x120
+ 1755 0601 00000030 		.4byte	0x30
+ 1756 0605 00000000 		.4byte	.LLST28
+ 1757 0609 25       		.uleb128 0x25
+ 1758 060a 666D7400 		.string	"fmt"
+ 1759 060e 01       		.byte	0x1
+ 1760 060f 0120     		.2byte	0x120
+ 1761 0611 000000CC 		.4byte	0xcc
+ 1762 0615 00000000 		.4byte	.LLST29
+ 1763 0619 27       		.uleb128 0x27
+ 1764 061a 28       		.uleb128 0x28
+ 1765 061b 617000   		.string	"ap"
+ 1766 061e 01       		.byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 32
+
+
+ 1767 061f 0121     		.2byte	0x121
+ 1768 0621 00000240 		.4byte	0x240
+ 1769 0625 02       		.byte	0x2
+ 1770 0626 91       		.byte	0x91
+ 1771 0627 4C       		.sleb128 -52
+ 1772 0628 28       		.uleb128 0x28
+ 1773 0629 6D7300   		.string	"ms"
+ 1774 062c 01       		.byte	0x1
+ 1775 062d 0122     		.2byte	0x122
+ 1776 062f 000002EA 		.4byte	0x2ea
+ 1777 0633 03       		.byte	0x3
+ 1778 0634 91       		.byte	0x91
+ 1779 0635 B87F     		.sleb128 -72
+ 1780 0637 29       		.uleb128 0x29
+ 1781 0638 63687000 		.string	"chp"
+ 1782 063c 01       		.byte	0x1
+ 1783 063d 0123     		.2byte	0x123
+ 1784 063f 000005AE 		.4byte	0x5ae
+ 1785 0643 00000000 		.4byte	.LLST30
+ 1786 0647 2A       		.uleb128 0x2a
+ 1787 0648 00000000 		.4byte	.LVL123
+ 1788 064c 0000068E 		.4byte	0x68e
+ 1789 0650 00000670 		.4byte	0x670
+ 1790 0654 21       		.uleb128 0x21
+ 1791 0655 01       		.byte	0x1
+ 1792 0656 56       		.byte	0x56
+ 1793 0657 01       		.byte	0x1
+ 1794 0658 30       		.byte	0x30
+ 1795 0659 21       		.uleb128 0x21
+ 1796 065a 01       		.byte	0x1
+ 1797 065b 55       		.byte	0x55
+ 1798 065c 05       		.byte	0x5
+ 1799 065d F3       		.byte	0xf3
+ 1800 065e 01       		.uleb128 0x1
+ 1801 065f 54       		.byte	0x54
+ 1802 0660 31       		.byte	0x31
+ 1803 0661 1C       		.byte	0x1c
+ 1804 0662 21       		.uleb128 0x21
+ 1805 0663 01       		.byte	0x1
+ 1806 0664 54       		.byte	0x54
+ 1807 0665 02       		.byte	0x2
+ 1808 0666 8F       		.byte	0x8f
+ 1809 0667 00       		.sleb128 0
+ 1810 0668 21       		.uleb128 0x21
+ 1811 0669 01       		.byte	0x1
+ 1812 066a 53       		.byte	0x53
+ 1813 066b 03       		.byte	0x3
+ 1814 066c 91       		.byte	0x91
+ 1815 066d B87F     		.sleb128 -72
+ 1816 066f 00       		.byte	0
+ 1817 0670 20       		.uleb128 0x20
+ 1818 0671 00000000 		.4byte	.LVL125
+ 1819 0675 000003E6 		.4byte	0x3e6
+ 1820 0679 21       		.uleb128 0x21
+ 1821 067a 01       		.byte	0x1
+ 1822 067b 55       		.byte	0x55
+ 1823 067c 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 33
+
+
+ 1824 067d 91       		.byte	0x91
+ 1825 067e 4C       		.sleb128 -52
+ 1826 067f 21       		.uleb128 0x21
+ 1827 0680 01       		.byte	0x1
+ 1828 0681 54       		.byte	0x54
+ 1829 0682 02       		.byte	0x2
+ 1830 0683 8D       		.byte	0x8d
+ 1831 0684 00       		.sleb128 0
+ 1832 0685 21       		.uleb128 0x21
+ 1833 0686 01       		.byte	0x1
+ 1834 0687 53       		.byte	0x53
+ 1835 0688 03       		.byte	0x3
+ 1836 0689 91       		.byte	0x91
+ 1837 068a B87F     		.sleb128 -72
+ 1838 068c 00       		.byte	0
+ 1839 068d 00       		.byte	0
+ 1840 068e 2B       		.uleb128 0x2b
+ 1841 068f 01       		.byte	0x1
+ 1842 0690 00000000 		.4byte	.LASF50
+ 1843 0694 09       		.byte	0x9
+ 1844 0695 57       		.byte	0x57
+ 1845 0696 01       		.byte	0x1
+ 1846 0697 01       		.byte	0x1
+ 1847 0698 000006B1 		.4byte	0x6b1
+ 1848 069c 09       		.uleb128 0x9
+ 1849 069d 000006B1 		.4byte	0x6b1
+ 1850 06a1 09       		.uleb128 0x9
+ 1851 06a2 000000F4 		.4byte	0xf4
+ 1852 06a6 09       		.uleb128 0x9
+ 1853 06a7 00000030 		.4byte	0x30
+ 1854 06ab 09       		.uleb128 0x9
+ 1855 06ac 00000030 		.4byte	0x30
+ 1856 06b0 00       		.byte	0
+ 1857 06b1 06       		.uleb128 0x6
+ 1858 06b2 04       		.byte	0x4
+ 1859 06b3 000002EA 		.4byte	0x2ea
+ 1860 06b7 00       		.byte	0
+ 1861              		.section	.debug_abbrev,"",@progbits
+ 1862              	.Ldebug_abbrev0:
+ 1863 0000 01       		.uleb128 0x1
+ 1864 0001 11       		.uleb128 0x11
+ 1865 0002 01       		.byte	0x1
+ 1866 0003 25       		.uleb128 0x25
+ 1867 0004 0E       		.uleb128 0xe
+ 1868 0005 13       		.uleb128 0x13
+ 1869 0006 0B       		.uleb128 0xb
+ 1870 0007 03       		.uleb128 0x3
+ 1871 0008 0E       		.uleb128 0xe
+ 1872 0009 1B       		.uleb128 0x1b
+ 1873 000a 0E       		.uleb128 0xe
+ 1874 000b 55       		.uleb128 0x55
+ 1875 000c 06       		.uleb128 0x6
+ 1876 000d 11       		.uleb128 0x11
+ 1877 000e 01       		.uleb128 0x1
+ 1878 000f 52       		.uleb128 0x52
+ 1879 0010 01       		.uleb128 0x1
+ 1880 0011 10       		.uleb128 0x10
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 34
+
+
+ 1881 0012 06       		.uleb128 0x6
+ 1882 0013 00       		.byte	0
+ 1883 0014 00       		.byte	0
+ 1884 0015 02       		.uleb128 0x2
+ 1885 0016 24       		.uleb128 0x24
+ 1886 0017 00       		.byte	0
+ 1887 0018 0B       		.uleb128 0xb
+ 1888 0019 0B       		.uleb128 0xb
+ 1889 001a 3E       		.uleb128 0x3e
+ 1890 001b 0B       		.uleb128 0xb
+ 1891 001c 03       		.uleb128 0x3
+ 1892 001d 08       		.uleb128 0x8
+ 1893 001e 00       		.byte	0
+ 1894 001f 00       		.byte	0
+ 1895 0020 03       		.uleb128 0x3
+ 1896 0021 16       		.uleb128 0x16
+ 1897 0022 00       		.byte	0
+ 1898 0023 03       		.uleb128 0x3
+ 1899 0024 0E       		.uleb128 0xe
+ 1900 0025 3A       		.uleb128 0x3a
+ 1901 0026 0B       		.uleb128 0xb
+ 1902 0027 3B       		.uleb128 0x3b
+ 1903 0028 0B       		.uleb128 0xb
+ 1904 0029 49       		.uleb128 0x49
+ 1905 002a 13       		.uleb128 0x13
+ 1906 002b 00       		.byte	0
+ 1907 002c 00       		.byte	0
+ 1908 002d 04       		.uleb128 0x4
+ 1909 002e 24       		.uleb128 0x24
+ 1910 002f 00       		.byte	0
+ 1911 0030 0B       		.uleb128 0xb
+ 1912 0031 0B       		.uleb128 0xb
+ 1913 0032 3E       		.uleb128 0x3e
+ 1914 0033 0B       		.uleb128 0xb
+ 1915 0034 03       		.uleb128 0x3
+ 1916 0035 0E       		.uleb128 0xe
+ 1917 0036 00       		.byte	0
+ 1918 0037 00       		.byte	0
+ 1919 0038 05       		.uleb128 0x5
+ 1920 0039 0F       		.uleb128 0xf
+ 1921 003a 00       		.byte	0
+ 1922 003b 0B       		.uleb128 0xb
+ 1923 003c 0B       		.uleb128 0xb
+ 1924 003d 00       		.byte	0
+ 1925 003e 00       		.byte	0
+ 1926 003f 06       		.uleb128 0x6
+ 1927 0040 0F       		.uleb128 0xf
+ 1928 0041 00       		.byte	0
+ 1929 0042 0B       		.uleb128 0xb
+ 1930 0043 0B       		.uleb128 0xb
+ 1931 0044 49       		.uleb128 0x49
+ 1932 0045 13       		.uleb128 0x13
+ 1933 0046 00       		.byte	0
+ 1934 0047 00       		.byte	0
+ 1935 0048 07       		.uleb128 0x7
+ 1936 0049 26       		.uleb128 0x26
+ 1937 004a 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 35
+
+
+ 1938 004b 49       		.uleb128 0x49
+ 1939 004c 13       		.uleb128 0x13
+ 1940 004d 00       		.byte	0
+ 1941 004e 00       		.byte	0
+ 1942 004f 08       		.uleb128 0x8
+ 1943 0050 15       		.uleb128 0x15
+ 1944 0051 01       		.byte	0x1
+ 1945 0052 27       		.uleb128 0x27
+ 1946 0053 0C       		.uleb128 0xc
+ 1947 0054 49       		.uleb128 0x49
+ 1948 0055 13       		.uleb128 0x13
+ 1949 0056 01       		.uleb128 0x1
+ 1950 0057 13       		.uleb128 0x13
+ 1951 0058 00       		.byte	0
+ 1952 0059 00       		.byte	0
+ 1953 005a 09       		.uleb128 0x9
+ 1954 005b 05       		.uleb128 0x5
+ 1955 005c 00       		.byte	0
+ 1956 005d 49       		.uleb128 0x49
+ 1957 005e 13       		.uleb128 0x13
+ 1958 005f 00       		.byte	0
+ 1959 0060 00       		.byte	0
+ 1960 0061 0A       		.uleb128 0xa
+ 1961 0062 13       		.uleb128 0x13
+ 1962 0063 01       		.byte	0x1
+ 1963 0064 03       		.uleb128 0x3
+ 1964 0065 0E       		.uleb128 0xe
+ 1965 0066 0B       		.uleb128 0xb
+ 1966 0067 0B       		.uleb128 0xb
+ 1967 0068 3A       		.uleb128 0x3a
+ 1968 0069 0B       		.uleb128 0xb
+ 1969 006a 3B       		.uleb128 0x3b
+ 1970 006b 0B       		.uleb128 0xb
+ 1971 006c 01       		.uleb128 0x1
+ 1972 006d 13       		.uleb128 0x13
+ 1973 006e 00       		.byte	0
+ 1974 006f 00       		.byte	0
+ 1975 0070 0B       		.uleb128 0xb
+ 1976 0071 0D       		.uleb128 0xd
+ 1977 0072 00       		.byte	0
+ 1978 0073 03       		.uleb128 0x3
+ 1979 0074 0E       		.uleb128 0xe
+ 1980 0075 3A       		.uleb128 0x3a
+ 1981 0076 0B       		.uleb128 0xb
+ 1982 0077 3B       		.uleb128 0x3b
+ 1983 0078 0B       		.uleb128 0xb
+ 1984 0079 49       		.uleb128 0x49
+ 1985 007a 13       		.uleb128 0x13
+ 1986 007b 38       		.uleb128 0x38
+ 1987 007c 0A       		.uleb128 0xa
+ 1988 007d 00       		.byte	0
+ 1989 007e 00       		.byte	0
+ 1990 007f 0C       		.uleb128 0xc
+ 1991 0080 0D       		.uleb128 0xd
+ 1992 0081 00       		.byte	0
+ 1993 0082 03       		.uleb128 0x3
+ 1994 0083 08       		.uleb128 0x8
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 36
+
+
+ 1995 0084 3A       		.uleb128 0x3a
+ 1996 0085 0B       		.uleb128 0xb
+ 1997 0086 3B       		.uleb128 0x3b
+ 1998 0087 0B       		.uleb128 0xb
+ 1999 0088 49       		.uleb128 0x49
+ 2000 0089 13       		.uleb128 0x13
+ 2001 008a 38       		.uleb128 0x38
+ 2002 008b 0A       		.uleb128 0xa
+ 2003 008c 00       		.byte	0
+ 2004 008d 00       		.byte	0
+ 2005 008e 0D       		.uleb128 0xd
+ 2006 008f 13       		.uleb128 0x13
+ 2007 0090 01       		.byte	0x1
+ 2008 0091 0B       		.uleb128 0xb
+ 2009 0092 0B       		.uleb128 0xb
+ 2010 0093 3A       		.uleb128 0x3a
+ 2011 0094 0B       		.uleb128 0xb
+ 2012 0095 3B       		.uleb128 0x3b
+ 2013 0096 0B       		.uleb128 0xb
+ 2014 0097 01       		.uleb128 0x1
+ 2015 0098 13       		.uleb128 0x13
+ 2016 0099 00       		.byte	0
+ 2017 009a 00       		.byte	0
+ 2018 009b 0E       		.uleb128 0xe
+ 2019 009c 01       		.uleb128 0x1
+ 2020 009d 01       		.byte	0x1
+ 2021 009e 49       		.uleb128 0x49
+ 2022 009f 13       		.uleb128 0x13
+ 2023 00a0 01       		.uleb128 0x1
+ 2024 00a1 13       		.uleb128 0x13
+ 2025 00a2 00       		.byte	0
+ 2026 00a3 00       		.byte	0
+ 2027 00a4 0F       		.uleb128 0xf
+ 2028 00a5 21       		.uleb128 0x21
+ 2029 00a6 00       		.byte	0
+ 2030 00a7 49       		.uleb128 0x49
+ 2031 00a8 13       		.uleb128 0x13
+ 2032 00a9 2F       		.uleb128 0x2f
+ 2033 00aa 0B       		.uleb128 0xb
+ 2034 00ab 00       		.byte	0
+ 2035 00ac 00       		.byte	0
+ 2036 00ad 10       		.uleb128 0x10
+ 2037 00ae 2E       		.uleb128 0x2e
+ 2038 00af 01       		.byte	0x1
+ 2039 00b0 03       		.uleb128 0x3
+ 2040 00b1 0E       		.uleb128 0xe
+ 2041 00b2 3A       		.uleb128 0x3a
+ 2042 00b3 0B       		.uleb128 0xb
+ 2043 00b4 3B       		.uleb128 0x3b
+ 2044 00b5 0B       		.uleb128 0xb
+ 2045 00b6 27       		.uleb128 0x27
+ 2046 00b7 0C       		.uleb128 0xc
+ 2047 00b8 49       		.uleb128 0x49
+ 2048 00b9 13       		.uleb128 0x13
+ 2049 00ba 20       		.uleb128 0x20
+ 2050 00bb 0B       		.uleb128 0xb
+ 2051 00bc 01       		.uleb128 0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 37
+
+
+ 2052 00bd 13       		.uleb128 0x13
+ 2053 00be 00       		.byte	0
+ 2054 00bf 00       		.byte	0
+ 2055 00c0 11       		.uleb128 0x11
+ 2056 00c1 05       		.uleb128 0x5
+ 2057 00c2 00       		.byte	0
+ 2058 00c3 03       		.uleb128 0x3
+ 2059 00c4 08       		.uleb128 0x8
+ 2060 00c5 3A       		.uleb128 0x3a
+ 2061 00c6 0B       		.uleb128 0xb
+ 2062 00c7 3B       		.uleb128 0x3b
+ 2063 00c8 0B       		.uleb128 0xb
+ 2064 00c9 49       		.uleb128 0x49
+ 2065 00ca 13       		.uleb128 0x13
+ 2066 00cb 00       		.byte	0
+ 2067 00cc 00       		.byte	0
+ 2068 00cd 12       		.uleb128 0x12
+ 2069 00ce 05       		.uleb128 0x5
+ 2070 00cf 00       		.byte	0
+ 2071 00d0 03       		.uleb128 0x3
+ 2072 00d1 0E       		.uleb128 0xe
+ 2073 00d2 3A       		.uleb128 0x3a
+ 2074 00d3 0B       		.uleb128 0xb
+ 2075 00d4 3B       		.uleb128 0x3b
+ 2076 00d5 0B       		.uleb128 0xb
+ 2077 00d6 49       		.uleb128 0x49
+ 2078 00d7 13       		.uleb128 0x13
+ 2079 00d8 00       		.byte	0
+ 2080 00d9 00       		.byte	0
+ 2081 00da 13       		.uleb128 0x13
+ 2082 00db 34       		.uleb128 0x34
+ 2083 00dc 00       		.byte	0
+ 2084 00dd 03       		.uleb128 0x3
+ 2085 00de 08       		.uleb128 0x8
+ 2086 00df 3A       		.uleb128 0x3a
+ 2087 00e0 0B       		.uleb128 0xb
+ 2088 00e1 3B       		.uleb128 0x3b
+ 2089 00e2 0B       		.uleb128 0xb
+ 2090 00e3 49       		.uleb128 0x49
+ 2091 00e4 13       		.uleb128 0x13
+ 2092 00e5 00       		.byte	0
+ 2093 00e6 00       		.byte	0
+ 2094 00e7 14       		.uleb128 0x14
+ 2095 00e8 2E       		.uleb128 0x2e
+ 2096 00e9 01       		.byte	0x1
+ 2097 00ea 31       		.uleb128 0x31
+ 2098 00eb 13       		.uleb128 0x13
+ 2099 00ec 11       		.uleb128 0x11
+ 2100 00ed 01       		.uleb128 0x1
+ 2101 00ee 12       		.uleb128 0x12
+ 2102 00ef 01       		.uleb128 0x1
+ 2103 00f0 40       		.uleb128 0x40
+ 2104 00f1 0A       		.uleb128 0xa
+ 2105 00f2 9742     		.uleb128 0x2117
+ 2106 00f4 0C       		.uleb128 0xc
+ 2107 00f5 01       		.uleb128 0x1
+ 2108 00f6 13       		.uleb128 0x13
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 38
+
+
+ 2109 00f7 00       		.byte	0
+ 2110 00f8 00       		.byte	0
+ 2111 00f9 15       		.uleb128 0x15
+ 2112 00fa 05       		.uleb128 0x5
+ 2113 00fb 00       		.byte	0
+ 2114 00fc 31       		.uleb128 0x31
+ 2115 00fd 13       		.uleb128 0x13
+ 2116 00fe 02       		.uleb128 0x2
+ 2117 00ff 06       		.uleb128 0x6
+ 2118 0100 00       		.byte	0
+ 2119 0101 00       		.byte	0
+ 2120 0102 16       		.uleb128 0x16
+ 2121 0103 05       		.uleb128 0x5
+ 2122 0104 00       		.byte	0
+ 2123 0105 31       		.uleb128 0x31
+ 2124 0106 13       		.uleb128 0x13
+ 2125 0107 02       		.uleb128 0x2
+ 2126 0108 0A       		.uleb128 0xa
+ 2127 0109 00       		.byte	0
+ 2128 010a 00       		.byte	0
+ 2129 010b 17       		.uleb128 0x17
+ 2130 010c 34       		.uleb128 0x34
+ 2131 010d 00       		.byte	0
+ 2132 010e 31       		.uleb128 0x31
+ 2133 010f 13       		.uleb128 0x13
+ 2134 0110 02       		.uleb128 0x2
+ 2135 0111 06       		.uleb128 0x6
+ 2136 0112 00       		.byte	0
+ 2137 0113 00       		.byte	0
+ 2138 0114 18       		.uleb128 0x18
+ 2139 0115 05       		.uleb128 0x5
+ 2140 0116 00       		.byte	0
+ 2141 0117 31       		.uleb128 0x31
+ 2142 0118 13       		.uleb128 0x13
+ 2143 0119 1C       		.uleb128 0x1c
+ 2144 011a 0B       		.uleb128 0xb
+ 2145 011b 00       		.byte	0
+ 2146 011c 00       		.byte	0
+ 2147 011d 19       		.uleb128 0x19
+ 2148 011e 2E       		.uleb128 0x2e
+ 2149 011f 01       		.byte	0x1
+ 2150 0120 3F       		.uleb128 0x3f
+ 2151 0121 0C       		.uleb128 0xc
+ 2152 0122 03       		.uleb128 0x3
+ 2153 0123 0E       		.uleb128 0xe
+ 2154 0124 3A       		.uleb128 0x3a
+ 2155 0125 0B       		.uleb128 0xb
+ 2156 0126 3B       		.uleb128 0x3b
+ 2157 0127 0B       		.uleb128 0xb
+ 2158 0128 27       		.uleb128 0x27
+ 2159 0129 0C       		.uleb128 0xc
+ 2160 012a 11       		.uleb128 0x11
+ 2161 012b 01       		.uleb128 0x1
+ 2162 012c 12       		.uleb128 0x12
+ 2163 012d 01       		.uleb128 0x1
+ 2164 012e 40       		.uleb128 0x40
+ 2165 012f 06       		.uleb128 0x6
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 39
+
+
+ 2166 0130 9742     		.uleb128 0x2117
+ 2167 0132 0C       		.uleb128 0xc
+ 2168 0133 01       		.uleb128 0x1
+ 2169 0134 13       		.uleb128 0x13
+ 2170 0135 00       		.byte	0
+ 2171 0136 00       		.byte	0
+ 2172 0137 1A       		.uleb128 0x1a
+ 2173 0138 05       		.uleb128 0x5
+ 2174 0139 00       		.byte	0
+ 2175 013a 03       		.uleb128 0x3
+ 2176 013b 08       		.uleb128 0x8
+ 2177 013c 3A       		.uleb128 0x3a
+ 2178 013d 0B       		.uleb128 0xb
+ 2179 013e 3B       		.uleb128 0x3b
+ 2180 013f 0B       		.uleb128 0xb
+ 2181 0140 49       		.uleb128 0x49
+ 2182 0141 13       		.uleb128 0x13
+ 2183 0142 02       		.uleb128 0x2
+ 2184 0143 06       		.uleb128 0x6
+ 2185 0144 00       		.byte	0
+ 2186 0145 00       		.byte	0
+ 2187 0146 1B       		.uleb128 0x1b
+ 2188 0147 34       		.uleb128 0x34
+ 2189 0148 00       		.byte	0
+ 2190 0149 03       		.uleb128 0x3
+ 2191 014a 08       		.uleb128 0x8
+ 2192 014b 3A       		.uleb128 0x3a
+ 2193 014c 0B       		.uleb128 0xb
+ 2194 014d 3B       		.uleb128 0x3b
+ 2195 014e 0B       		.uleb128 0xb
+ 2196 014f 49       		.uleb128 0x49
+ 2197 0150 13       		.uleb128 0x13
+ 2198 0151 02       		.uleb128 0x2
+ 2199 0152 06       		.uleb128 0x6
+ 2200 0153 00       		.byte	0
+ 2201 0154 00       		.byte	0
+ 2202 0155 1C       		.uleb128 0x1c
+ 2203 0156 34       		.uleb128 0x34
+ 2204 0157 00       		.byte	0
+ 2205 0158 03       		.uleb128 0x3
+ 2206 0159 0E       		.uleb128 0xe
+ 2207 015a 3A       		.uleb128 0x3a
+ 2208 015b 0B       		.uleb128 0xb
+ 2209 015c 3B       		.uleb128 0x3b
+ 2210 015d 0B       		.uleb128 0xb
+ 2211 015e 49       		.uleb128 0x49
+ 2212 015f 13       		.uleb128 0x13
+ 2213 0160 02       		.uleb128 0x2
+ 2214 0161 06       		.uleb128 0x6
+ 2215 0162 00       		.byte	0
+ 2216 0163 00       		.byte	0
+ 2217 0164 1D       		.uleb128 0x1d
+ 2218 0165 34       		.uleb128 0x34
+ 2219 0166 00       		.byte	0
+ 2220 0167 03       		.uleb128 0x3
+ 2221 0168 0E       		.uleb128 0xe
+ 2222 0169 3A       		.uleb128 0x3a
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 40
+
+
+ 2223 016a 0B       		.uleb128 0xb
+ 2224 016b 3B       		.uleb128 0x3b
+ 2225 016c 0B       		.uleb128 0xb
+ 2226 016d 49       		.uleb128 0x49
+ 2227 016e 13       		.uleb128 0x13
+ 2228 016f 02       		.uleb128 0x2
+ 2229 0170 0A       		.uleb128 0xa
+ 2230 0171 00       		.byte	0
+ 2231 0172 00       		.byte	0
+ 2232 0173 1E       		.uleb128 0x1e
+ 2233 0174 0A       		.uleb128 0xa
+ 2234 0175 00       		.byte	0
+ 2235 0176 03       		.uleb128 0x3
+ 2236 0177 0E       		.uleb128 0xe
+ 2237 0178 3A       		.uleb128 0x3a
+ 2238 0179 0B       		.uleb128 0xb
+ 2239 017a 3B       		.uleb128 0x3b
+ 2240 017b 0B       		.uleb128 0xb
+ 2241 017c 11       		.uleb128 0x11
+ 2242 017d 01       		.uleb128 0x1
+ 2243 017e 00       		.byte	0
+ 2244 017f 00       		.byte	0
+ 2245 0180 1F       		.uleb128 0x1f
+ 2246 0181 1D       		.uleb128 0x1d
+ 2247 0182 01       		.byte	0x1
+ 2248 0183 31       		.uleb128 0x31
+ 2249 0184 13       		.uleb128 0x13
+ 2250 0185 52       		.uleb128 0x52
+ 2251 0186 01       		.uleb128 0x1
+ 2252 0187 55       		.uleb128 0x55
+ 2253 0188 06       		.uleb128 0x6
+ 2254 0189 58       		.uleb128 0x58
+ 2255 018a 0B       		.uleb128 0xb
+ 2256 018b 59       		.uleb128 0x59
+ 2257 018c 0B       		.uleb128 0xb
+ 2258 018d 01       		.uleb128 0x1
+ 2259 018e 13       		.uleb128 0x13
+ 2260 018f 00       		.byte	0
+ 2261 0190 00       		.byte	0
+ 2262 0191 20       		.uleb128 0x20
+ 2263 0192 898201   		.uleb128 0x4109
+ 2264 0195 01       		.byte	0x1
+ 2265 0196 11       		.uleb128 0x11
+ 2266 0197 01       		.uleb128 0x1
+ 2267 0198 31       		.uleb128 0x31
+ 2268 0199 13       		.uleb128 0x13
+ 2269 019a 00       		.byte	0
+ 2270 019b 00       		.byte	0
+ 2271 019c 21       		.uleb128 0x21
+ 2272 019d 8A8201   		.uleb128 0x410a
+ 2273 01a0 00       		.byte	0
+ 2274 01a1 02       		.uleb128 0x2
+ 2275 01a2 0A       		.uleb128 0xa
+ 2276 01a3 9142     		.uleb128 0x2111
+ 2277 01a5 0A       		.uleb128 0xa
+ 2278 01a6 00       		.byte	0
+ 2279 01a7 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 41
+
+
+ 2280 01a8 22       		.uleb128 0x22
+ 2281 01a9 898201   		.uleb128 0x4109
+ 2282 01ac 01       		.byte	0x1
+ 2283 01ad 11       		.uleb128 0x11
+ 2284 01ae 01       		.uleb128 0x1
+ 2285 01af 01       		.uleb128 0x1
+ 2286 01b0 13       		.uleb128 0x13
+ 2287 01b1 00       		.byte	0
+ 2288 01b2 00       		.byte	0
+ 2289 01b3 23       		.uleb128 0x23
+ 2290 01b4 898201   		.uleb128 0x4109
+ 2291 01b7 01       		.byte	0x1
+ 2292 01b8 11       		.uleb128 0x11
+ 2293 01b9 01       		.uleb128 0x1
+ 2294 01ba 00       		.byte	0
+ 2295 01bb 00       		.byte	0
+ 2296 01bc 24       		.uleb128 0x24
+ 2297 01bd 2E       		.uleb128 0x2e
+ 2298 01be 01       		.byte	0x1
+ 2299 01bf 3F       		.uleb128 0x3f
+ 2300 01c0 0C       		.uleb128 0xc
+ 2301 01c1 03       		.uleb128 0x3
+ 2302 01c2 0E       		.uleb128 0xe
+ 2303 01c3 3A       		.uleb128 0x3a
+ 2304 01c4 0B       		.uleb128 0xb
+ 2305 01c5 3B       		.uleb128 0x3b
+ 2306 01c6 05       		.uleb128 0x5
+ 2307 01c7 27       		.uleb128 0x27
+ 2308 01c8 0C       		.uleb128 0xc
+ 2309 01c9 49       		.uleb128 0x49
+ 2310 01ca 13       		.uleb128 0x13
+ 2311 01cb 11       		.uleb128 0x11
+ 2312 01cc 01       		.uleb128 0x1
+ 2313 01cd 12       		.uleb128 0x12
+ 2314 01ce 01       		.uleb128 0x1
+ 2315 01cf 40       		.uleb128 0x40
+ 2316 01d0 06       		.uleb128 0x6
+ 2317 01d1 9742     		.uleb128 0x2117
+ 2318 01d3 0C       		.uleb128 0xc
+ 2319 01d4 01       		.uleb128 0x1
+ 2320 01d5 13       		.uleb128 0x13
+ 2321 01d6 00       		.byte	0
+ 2322 01d7 00       		.byte	0
+ 2323 01d8 25       		.uleb128 0x25
+ 2324 01d9 05       		.uleb128 0x5
+ 2325 01da 00       		.byte	0
+ 2326 01db 03       		.uleb128 0x3
+ 2327 01dc 08       		.uleb128 0x8
+ 2328 01dd 3A       		.uleb128 0x3a
+ 2329 01de 0B       		.uleb128 0xb
+ 2330 01df 3B       		.uleb128 0x3b
+ 2331 01e0 05       		.uleb128 0x5
+ 2332 01e1 49       		.uleb128 0x49
+ 2333 01e2 13       		.uleb128 0x13
+ 2334 01e3 02       		.uleb128 0x2
+ 2335 01e4 06       		.uleb128 0x6
+ 2336 01e5 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 42
+
+
+ 2337 01e6 00       		.byte	0
+ 2338 01e7 26       		.uleb128 0x26
+ 2339 01e8 05       		.uleb128 0x5
+ 2340 01e9 00       		.byte	0
+ 2341 01ea 03       		.uleb128 0x3
+ 2342 01eb 0E       		.uleb128 0xe
+ 2343 01ec 3A       		.uleb128 0x3a
+ 2344 01ed 0B       		.uleb128 0xb
+ 2345 01ee 3B       		.uleb128 0x3b
+ 2346 01ef 05       		.uleb128 0x5
+ 2347 01f0 49       		.uleb128 0x49
+ 2348 01f1 13       		.uleb128 0x13
+ 2349 01f2 02       		.uleb128 0x2
+ 2350 01f3 06       		.uleb128 0x6
+ 2351 01f4 00       		.byte	0
+ 2352 01f5 00       		.byte	0
+ 2353 01f6 27       		.uleb128 0x27
+ 2354 01f7 18       		.uleb128 0x18
+ 2355 01f8 00       		.byte	0
+ 2356 01f9 00       		.byte	0
+ 2357 01fa 00       		.byte	0
+ 2358 01fb 28       		.uleb128 0x28
+ 2359 01fc 34       		.uleb128 0x34
+ 2360 01fd 00       		.byte	0
+ 2361 01fe 03       		.uleb128 0x3
+ 2362 01ff 08       		.uleb128 0x8
+ 2363 0200 3A       		.uleb128 0x3a
+ 2364 0201 0B       		.uleb128 0xb
+ 2365 0202 3B       		.uleb128 0x3b
+ 2366 0203 05       		.uleb128 0x5
+ 2367 0204 49       		.uleb128 0x49
+ 2368 0205 13       		.uleb128 0x13
+ 2369 0206 02       		.uleb128 0x2
+ 2370 0207 0A       		.uleb128 0xa
+ 2371 0208 00       		.byte	0
+ 2372 0209 00       		.byte	0
+ 2373 020a 29       		.uleb128 0x29
+ 2374 020b 34       		.uleb128 0x34
+ 2375 020c 00       		.byte	0
+ 2376 020d 03       		.uleb128 0x3
+ 2377 020e 08       		.uleb128 0x8
+ 2378 020f 3A       		.uleb128 0x3a
+ 2379 0210 0B       		.uleb128 0xb
+ 2380 0211 3B       		.uleb128 0x3b
+ 2381 0212 05       		.uleb128 0x5
+ 2382 0213 49       		.uleb128 0x49
+ 2383 0214 13       		.uleb128 0x13
+ 2384 0215 02       		.uleb128 0x2
+ 2385 0216 06       		.uleb128 0x6
+ 2386 0217 00       		.byte	0
+ 2387 0218 00       		.byte	0
+ 2388 0219 2A       		.uleb128 0x2a
+ 2389 021a 898201   		.uleb128 0x4109
+ 2390 021d 01       		.byte	0x1
+ 2391 021e 11       		.uleb128 0x11
+ 2392 021f 01       		.uleb128 0x1
+ 2393 0220 31       		.uleb128 0x31
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 43
+
+
+ 2394 0221 13       		.uleb128 0x13
+ 2395 0222 01       		.uleb128 0x1
+ 2396 0223 13       		.uleb128 0x13
+ 2397 0224 00       		.byte	0
+ 2398 0225 00       		.byte	0
+ 2399 0226 2B       		.uleb128 0x2b
+ 2400 0227 2E       		.uleb128 0x2e
+ 2401 0228 01       		.byte	0x1
+ 2402 0229 3F       		.uleb128 0x3f
+ 2403 022a 0C       		.uleb128 0xc
+ 2404 022b 03       		.uleb128 0x3
+ 2405 022c 0E       		.uleb128 0xe
+ 2406 022d 3A       		.uleb128 0x3a
+ 2407 022e 0B       		.uleb128 0xb
+ 2408 022f 3B       		.uleb128 0x3b
+ 2409 0230 0B       		.uleb128 0xb
+ 2410 0231 27       		.uleb128 0x27
+ 2411 0232 0C       		.uleb128 0xc
+ 2412 0233 3C       		.uleb128 0x3c
+ 2413 0234 0C       		.uleb128 0xc
+ 2414 0235 01       		.uleb128 0x1
+ 2415 0236 13       		.uleb128 0x13
+ 2416 0237 00       		.byte	0
+ 2417 0238 00       		.byte	0
+ 2418 0239 00       		.byte	0
+ 2419              		.section	.debug_loc,"",@progbits
+ 2420              	.Ldebug_loc0:
+ 2421              	.LLST0:
+ 2422 0000 00000000 		.4byte	.LVL0
+ 2423 0004 00000000 		.4byte	.LVL12
+ 2424 0008 0001     		.2byte	0x1
+ 2425 000a 53       		.byte	0x53
+ 2426 000b 00000000 		.4byte	.LVL12
+ 2427 000f 00000000 		.4byte	.LVL13
+ 2428 0013 0003     		.2byte	0x3
+ 2429 0015 78       		.byte	0x78
+ 2430 0016 01       		.sleb128 1
+ 2431 0017 9F       		.byte	0x9f
+ 2432 0018 00000000 		.4byte	.LVL13
+ 2433 001c 00000000 		.4byte	.LVL14
+ 2434 0020 0003     		.2byte	0x3
+ 2435 0022 78       		.byte	0x78
+ 2436 0023 02       		.sleb128 2
+ 2437 0024 9F       		.byte	0x9f
+ 2438 0025 00000000 		.4byte	.LVL14
+ 2439 0029 00000000 		.4byte	.LFE20
+ 2440 002d 0003     		.2byte	0x3
+ 2441 002f 78       		.byte	0x78
+ 2442 0030 01       		.sleb128 1
+ 2443 0031 9F       		.byte	0x9f
+ 2444 0032 00000000 		.4byte	0
+ 2445 0036 00000000 		.4byte	0
+ 2446              	.LLST1:
+ 2447 003a 00000000 		.4byte	.LVL0
+ 2448 003e 00000000 		.4byte	.LVL2
+ 2449 0042 0001     		.2byte	0x1
+ 2450 0044 54       		.byte	0x54
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 44
+
+
+ 2451 0045 00000000 		.4byte	.LVL2
+ 2452 0049 00000000 		.4byte	.LFE20
+ 2453 004d 0004     		.2byte	0x4
+ 2454 004f F3       		.byte	0xf3
+ 2455 0050 01       		.uleb128 0x1
+ 2456 0051 54       		.byte	0x54
+ 2457 0052 9F       		.byte	0x9f
+ 2458 0053 00000000 		.4byte	0
+ 2459 0057 00000000 		.4byte	0
+ 2460              	.LLST2:
+ 2461 005b 00000000 		.4byte	.LVL3
+ 2462 005f 00000000 		.4byte	.LVL4
+ 2463 0063 0001     		.2byte	0x1
+ 2464 0065 54       		.byte	0x54
+ 2465 0066 00000000 		.4byte	.LVL4
+ 2466 006a 00000000 		.4byte	.LVL9
+ 2467 006e 0001     		.2byte	0x1
+ 2468 0070 59       		.byte	0x59
+ 2469 0071 00000000 		.4byte	.LVL9
+ 2470 0075 00000000 		.4byte	.LVL10
+ 2471 0079 0006     		.2byte	0x6
+ 2472 007b 76       		.byte	0x76
+ 2473 007c 00       		.sleb128 0
+ 2474 007d 7A       		.byte	0x7a
+ 2475 007e 00       		.sleb128 0
+ 2476 007f 1C       		.byte	0x1c
+ 2477 0080 9F       		.byte	0x9f
+ 2478 0081 00000000 		.4byte	.LVL10
+ 2479 0085 00000000 		.4byte	.LVL12
+ 2480 0089 0008     		.2byte	0x8
+ 2481 008b 73       		.byte	0x73
+ 2482 008c 00       		.sleb128 0
+ 2483 008d 7A       		.byte	0x7a
+ 2484 008e 00       		.sleb128 0
+ 2485 008f 1C       		.byte	0x1c
+ 2486 0090 23       		.byte	0x23
+ 2487 0091 0B       		.uleb128 0xb
+ 2488 0092 9F       		.byte	0x9f
+ 2489 0093 00000000 		.4byte	0
+ 2490 0097 00000000 		.4byte	0
+ 2491              	.LLST3:
+ 2492 009b 00000000 		.4byte	.LVL1
+ 2493 009f 00000000 		.4byte	.LVL2
+ 2494 00a3 0001     		.2byte	0x1
+ 2495 00a5 56       		.byte	0x56
+ 2496 00a6 00000000 		.4byte	.LVL2
+ 2497 00aa 00000000 		.4byte	.LVL5
+ 2498 00ae 0001     		.2byte	0x1
+ 2499 00b0 5A       		.byte	0x5a
+ 2500 00b1 00000000 		.4byte	.LVL5
+ 2501 00b5 00000000 		.4byte	.LVL7
+ 2502 00b9 0003     		.2byte	0x3
+ 2503 00bb 7A       		.byte	0x7a
+ 2504 00bc 7F       		.sleb128 -1
+ 2505 00bd 9F       		.byte	0x9f
+ 2506 00be 00000000 		.4byte	.LVL7
+ 2507 00c2 00000000 		.4byte	.LVL12
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 45
+
+
+ 2508 00c6 0001     		.2byte	0x1
+ 2509 00c8 5A       		.byte	0x5a
+ 2510 00c9 00000000 		.4byte	0
+ 2511 00cd 00000000 		.4byte	0
+ 2512              	.LLST4:
+ 2513 00d1 00000000 		.4byte	.LVL0
+ 2514 00d5 00000000 		.4byte	.LVL3
+ 2515 00d9 0001     		.2byte	0x1
+ 2516 00db 54       		.byte	0x54
+ 2517 00dc 00000000 		.4byte	.LVL8
+ 2518 00e0 00000000 		.4byte	.LVL9
+ 2519 00e4 0001     		.2byte	0x1
+ 2520 00e6 57       		.byte	0x57
+ 2521 00e7 00000000 		.4byte	.LVL9
+ 2522 00eb 00000000 		.4byte	.LFE20
+ 2523 00ef 0001     		.2byte	0x1
+ 2524 00f1 54       		.byte	0x54
+ 2525 00f2 00000000 		.4byte	0
+ 2526 00f6 00000000 		.4byte	0
+ 2527              	.LLST5:
+ 2528 00fa 00000000 		.4byte	.LVL0
+ 2529 00fe 00000000 		.4byte	.LVL2
+ 2530 0102 0001     		.2byte	0x1
+ 2531 0104 54       		.byte	0x54
+ 2532 0105 00000000 		.4byte	.LVL2
+ 2533 0109 00000000 		.4byte	.LVL6
+ 2534 010d 0001     		.2byte	0x1
+ 2535 010f 58       		.byte	0x58
+ 2536 0110 00000000 		.4byte	.LVL8
+ 2537 0114 00000000 		.4byte	.LVL11
+ 2538 0118 0001     		.2byte	0x1
+ 2539 011a 58       		.byte	0x58
+ 2540 011b 00000000 		.4byte	0
+ 2541 011f 00000000 		.4byte	0
+ 2542              	.LLST6:
+ 2543 0123 00000000 		.4byte	.LFB18
+ 2544 0127 00000000 		.4byte	.LCFI0
+ 2545 012b 0002     		.2byte	0x2
+ 2546 012d 71       		.byte	0x71
+ 2547 012e 00       		.sleb128 0
+ 2548 012f 00000000 		.4byte	.LCFI0
+ 2549 0133 00000000 		.4byte	.LCFI1
+ 2550 0137 0003     		.2byte	0x3
+ 2551 0139 71       		.byte	0x71
+ 2552 013a D800     		.sleb128 88
+ 2553 013c 00000000 		.4byte	.LCFI1
+ 2554 0140 00000000 		.4byte	.LCFI2
+ 2555 0144 0002     		.2byte	0x2
+ 2556 0146 71       		.byte	0x71
+ 2557 0147 00       		.sleb128 0
+ 2558 0148 00000000 		.4byte	.LCFI2
+ 2559 014c 00000000 		.4byte	.LFE18
+ 2560 0150 0003     		.2byte	0x3
+ 2561 0152 71       		.byte	0x71
+ 2562 0153 D800     		.sleb128 88
+ 2563 0155 00000000 		.4byte	0
+ 2564 0159 00000000 		.4byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 46
+
+
+ 2565              	.LLST7:
+ 2566 015d 00000000 		.4byte	.LVL15
+ 2567 0161 00000000 		.4byte	.LVL16
+ 2568 0165 0001     		.2byte	0x1
+ 2569 0167 53       		.byte	0x53
+ 2570 0168 00000000 		.4byte	.LVL16
+ 2571 016c 00000000 		.4byte	.LVL23
+ 2572 0170 0001     		.2byte	0x1
+ 2573 0172 65       		.byte	0x65
+ 2574 0173 00000000 		.4byte	.LVL23
+ 2575 0177 00000000 		.4byte	.LVL24
+ 2576 017b 0004     		.2byte	0x4
+ 2577 017d F3       		.byte	0xf3
+ 2578 017e 01       		.uleb128 0x1
+ 2579 017f 53       		.byte	0x53
+ 2580 0180 9F       		.byte	0x9f
+ 2581 0181 00000000 		.4byte	.LVL24
+ 2582 0185 00000000 		.4byte	.LFE18
+ 2583 0189 0001     		.2byte	0x1
+ 2584 018b 65       		.byte	0x65
+ 2585 018c 00000000 		.4byte	0
+ 2586 0190 00000000 		.4byte	0
+ 2587              	.LLST8:
+ 2588 0194 00000000 		.4byte	.LVL15
+ 2589 0198 00000000 		.4byte	.LVL16
+ 2590 019c 0001     		.2byte	0x1
+ 2591 019e 54       		.byte	0x54
+ 2592 019f 00000000 		.4byte	.LVL16
+ 2593 01a3 00000000 		.4byte	.LVL17
+ 2594 01a7 0001     		.2byte	0x1
+ 2595 01a9 62       		.byte	0x62
+ 2596 01aa 00000000 		.4byte	.LVL17
+ 2597 01ae 00000000 		.4byte	.LVL19
+ 2598 01b2 0001     		.2byte	0x1
+ 2599 01b4 66       		.byte	0x66
+ 2600 01b5 00000000 		.4byte	.LVL19
+ 2601 01b9 00000000 		.4byte	.LVL20
+ 2602 01bd 0001     		.2byte	0x1
+ 2603 01bf 62       		.byte	0x62
+ 2604 01c0 00000000 		.4byte	.LVL20
+ 2605 01c4 00000000 		.4byte	.LVL23
+ 2606 01c8 0001     		.2byte	0x1
+ 2607 01ca 66       		.byte	0x66
+ 2608 01cb 00000000 		.4byte	.LVL24
+ 2609 01cf 00000000 		.4byte	.LVL33
+ 2610 01d3 0001     		.2byte	0x1
+ 2611 01d5 66       		.byte	0x66
+ 2612 01d6 00000000 		.4byte	.LVL33
+ 2613 01da 00000000 		.4byte	.LVL34
+ 2614 01de 0003     		.2byte	0x3
+ 2615 01e0 86       		.byte	0x86
+ 2616 01e1 01       		.sleb128 1
+ 2617 01e2 9F       		.byte	0x9f
+ 2618 01e3 00000000 		.4byte	.LVL34
+ 2619 01e7 00000000 		.4byte	.LVL59
+ 2620 01eb 0001     		.2byte	0x1
+ 2621 01ed 66       		.byte	0x66
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 47
+
+
+ 2622 01ee 00000000 		.4byte	.LVL59
+ 2623 01f2 00000000 		.4byte	.LVL68
+ 2624 01f6 0001     		.2byte	0x1
+ 2625 01f8 62       		.byte	0x62
+ 2626 01f9 00000000 		.4byte	.LVL68
+ 2627 01fd 00000000 		.4byte	.LVL71
+ 2628 0201 0001     		.2byte	0x1
+ 2629 0203 66       		.byte	0x66
+ 2630 0204 00000000 		.4byte	.LVL71
+ 2631 0208 00000000 		.4byte	.LVL84
+ 2632 020c 0001     		.2byte	0x1
+ 2633 020e 62       		.byte	0x62
+ 2634 020f 00000000 		.4byte	.LVL84
+ 2635 0213 00000000 		.4byte	.LVL86
+ 2636 0217 0001     		.2byte	0x1
+ 2637 0219 66       		.byte	0x66
+ 2638 021a 00000000 		.4byte	.LVL86
+ 2639 021e 00000000 		.4byte	.LVL87
+ 2640 0222 0001     		.2byte	0x1
+ 2641 0224 62       		.byte	0x62
+ 2642 0225 00000000 		.4byte	.LVL87
+ 2643 0229 00000000 		.4byte	.LVL90
+ 2644 022d 0001     		.2byte	0x1
+ 2645 022f 66       		.byte	0x66
+ 2646 0230 00000000 		.4byte	.LVL90
+ 2647 0234 00000000 		.4byte	.LVL92
+ 2648 0238 0001     		.2byte	0x1
+ 2649 023a 62       		.byte	0x62
+ 2650 023b 00000000 		.4byte	.LVL92
+ 2651 023f 00000000 		.4byte	.LVL102
+ 2652 0243 0001     		.2byte	0x1
+ 2653 0245 66       		.byte	0x66
+ 2654 0246 00000000 		.4byte	.LVL102
+ 2655 024a 00000000 		.4byte	.LVL105
+ 2656 024e 0001     		.2byte	0x1
+ 2657 0250 62       		.byte	0x62
+ 2658 0251 00000000 		.4byte	.LVL105
+ 2659 0255 00000000 		.4byte	.LVL111
+ 2660 0259 0001     		.2byte	0x1
+ 2661 025b 66       		.byte	0x66
+ 2662 025c 00000000 		.4byte	.LVL111
+ 2663 0260 00000000 		.4byte	.LVL114
+ 2664 0264 0001     		.2byte	0x1
+ 2665 0266 62       		.byte	0x62
+ 2666 0267 00000000 		.4byte	.LVL114
+ 2667 026b 00000000 		.4byte	.LVL118
+ 2668 026f 0001     		.2byte	0x1
+ 2669 0271 66       		.byte	0x66
+ 2670 0272 00000000 		.4byte	.LVL118
+ 2671 0276 00000000 		.4byte	.LFE18
+ 2672 027a 0001     		.2byte	0x1
+ 2673 027c 62       		.byte	0x62
+ 2674 027d 00000000 		.4byte	0
+ 2675 0281 00000000 		.4byte	0
+ 2676              	.LLST9:
+ 2677 0285 00000000 		.4byte	.LVL15
+ 2678 0289 00000000 		.4byte	.LVL16
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 48
+
+
+ 2679 028d 0001     		.2byte	0x1
+ 2680 028f 55       		.byte	0x55
+ 2681 0290 00000000 		.4byte	.LVL16
+ 2682 0294 00000000 		.4byte	.LVL23
+ 2683 0298 0001     		.2byte	0x1
+ 2684 029a 6E       		.byte	0x6e
+ 2685 029b 00000000 		.4byte	.LVL23
+ 2686 029f 00000000 		.4byte	.LVL24
+ 2687 02a3 0004     		.2byte	0x4
+ 2688 02a5 F3       		.byte	0xf3
+ 2689 02a6 01       		.uleb128 0x1
+ 2690 02a7 55       		.byte	0x55
+ 2691 02a8 9F       		.byte	0x9f
+ 2692 02a9 00000000 		.4byte	.LVL24
+ 2693 02ad 00000000 		.4byte	.LFE18
+ 2694 02b1 0001     		.2byte	0x1
+ 2695 02b3 6E       		.byte	0x6e
+ 2696 02b4 00000000 		.4byte	0
+ 2697 02b8 00000000 		.4byte	0
+ 2698              	.LLST10:
+ 2699 02bc 00000000 		.4byte	.LVL24
+ 2700 02c0 00000000 		.4byte	.LVL50
+ 2701 02c4 0001     		.2byte	0x1
+ 2702 02c6 6C       		.byte	0x6c
+ 2703 02c7 00000000 		.4byte	.LVL50
+ 2704 02cb 00000000 		.4byte	.LVL53
+ 2705 02cf 0001     		.2byte	0x1
+ 2706 02d1 63       		.byte	0x63
+ 2707 02d2 00000000 		.4byte	.LVL53
+ 2708 02d6 00000000 		.4byte	.LVL54
+ 2709 02da 0003     		.2byte	0x3
+ 2710 02dc 73       		.byte	0x73
+ 2711 02dd 7F       		.sleb128 -1
+ 2712 02de 9F       		.byte	0x9f
+ 2713 02df 00000000 		.4byte	.LVL54
+ 2714 02e3 00000000 		.4byte	.LVL55
+ 2715 02e7 0001     		.2byte	0x1
+ 2716 02e9 53       		.byte	0x53
+ 2717 02ea 00000000 		.4byte	.LVL55
+ 2718 02ee 00000000 		.4byte	.LVL56
+ 2719 02f2 0003     		.2byte	0x3
+ 2720 02f4 73       		.byte	0x73
+ 2721 02f5 7F       		.sleb128 -1
+ 2722 02f6 9F       		.byte	0x9f
+ 2723 02f7 00000000 		.4byte	.LVL68
+ 2724 02fb 00000000 		.4byte	.LVL70
+ 2725 02ff 0001     		.2byte	0x1
+ 2726 0301 67       		.byte	0x67
+ 2727 0302 00000000 		.4byte	.LVL70
+ 2728 0306 00000000 		.4byte	.LVL74
+ 2729 030a 0001     		.2byte	0x1
+ 2730 030c 6C       		.byte	0x6c
+ 2731 030d 00000000 		.4byte	.LVL84
+ 2732 0311 00000000 		.4byte	.LVL90
+ 2733 0315 0001     		.2byte	0x1
+ 2734 0317 6C       		.byte	0x6c
+ 2735 0318 00000000 		.4byte	.LVL90
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 49
+
+
+ 2736 031c 00000000 		.4byte	.LVL91-1
+ 2737 0320 0001     		.2byte	0x1
+ 2738 0322 53       		.byte	0x53
+ 2739 0323 00000000 		.4byte	.LVL92
+ 2740 0327 00000000 		.4byte	.LVL93
+ 2741 032b 0001     		.2byte	0x1
+ 2742 032d 6C       		.byte	0x6c
+ 2743 032e 00000000 		.4byte	.LVL93
+ 2744 0332 00000000 		.4byte	.LVL94
+ 2745 0336 0001     		.2byte	0x1
+ 2746 0338 67       		.byte	0x67
+ 2747 0339 00000000 		.4byte	.LVL94
+ 2748 033d 00000000 		.4byte	.LVL102
+ 2749 0341 0001     		.2byte	0x1
+ 2750 0343 6C       		.byte	0x6c
+ 2751 0344 00000000 		.4byte	.LVL102
+ 2752 0348 00000000 		.4byte	.LVL106
+ 2753 034c 0001     		.2byte	0x1
+ 2754 034e 67       		.byte	0x67
+ 2755 034f 00000000 		.4byte	.LVL106
+ 2756 0353 00000000 		.4byte	.LVL109
+ 2757 0357 0001     		.2byte	0x1
+ 2758 0359 6C       		.byte	0x6c
+ 2759 035a 00000000 		.4byte	.LVL109
+ 2760 035e 00000000 		.4byte	.LVL111
+ 2761 0362 0001     		.2byte	0x1
+ 2762 0364 63       		.byte	0x63
+ 2763 0365 00000000 		.4byte	.LVL114
+ 2764 0369 00000000 		.4byte	.LVL116
+ 2765 036d 0001     		.2byte	0x1
+ 2766 036f 6C       		.byte	0x6c
+ 2767 0370 00000000 		.4byte	0
+ 2768 0374 00000000 		.4byte	0
+ 2769              	.LLST11:
+ 2770 0378 00000000 		.4byte	.LVL24
+ 2771 037c 00000000 		.4byte	.LVL49
+ 2772 0380 0001     		.2byte	0x1
+ 2773 0382 6C       		.byte	0x6c
+ 2774 0383 00000000 		.4byte	.LVL49
+ 2775 0387 00000000 		.4byte	.LVL60
+ 2776 038b 0001     		.2byte	0x1
+ 2777 038d 63       		.byte	0x63
+ 2778 038e 00000000 		.4byte	.LVL60
+ 2779 0392 00000000 		.4byte	.LVL61
+ 2780 0396 0003     		.2byte	0x3
+ 2781 0398 84       		.byte	0x84
+ 2782 0399 02       		.sleb128 2
+ 2783 039a 9F       		.byte	0x9f
+ 2784 039b 00000000 		.4byte	.LVL61
+ 2785 039f 00000000 		.4byte	.LVL64
+ 2786 03a3 0003     		.2byte	0x3
+ 2787 03a5 84       		.byte	0x84
+ 2788 03a6 01       		.sleb128 1
+ 2789 03a7 9F       		.byte	0x9f
+ 2790 03a8 00000000 		.4byte	.LVL68
+ 2791 03ac 00000000 		.4byte	.LVL75
+ 2792 03b0 0001     		.2byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 50
+
+
+ 2793 03b2 6C       		.byte	0x6c
+ 2794 03b3 00000000 		.4byte	.LVL75
+ 2795 03b7 00000000 		.4byte	.LVL80
+ 2796 03bb 0001     		.2byte	0x1
+ 2797 03bd 63       		.byte	0x63
+ 2798 03be 00000000 		.4byte	.LVL83
+ 2799 03c2 00000000 		.4byte	.LVL84
+ 2800 03c6 0001     		.2byte	0x1
+ 2801 03c8 63       		.byte	0x63
+ 2802 03c9 00000000 		.4byte	.LVL84
+ 2803 03cd 00000000 		.4byte	.LVL102
+ 2804 03d1 0001     		.2byte	0x1
+ 2805 03d3 6C       		.byte	0x6c
+ 2806 03d4 00000000 		.4byte	.LVL102
+ 2807 03d8 00000000 		.4byte	.LVL104
+ 2808 03dc 0001     		.2byte	0x1
+ 2809 03de 53       		.byte	0x53
+ 2810 03df 00000000 		.4byte	.LVL104
+ 2811 03e3 00000000 		.4byte	.LVL107
+ 2812 03e7 0001     		.2byte	0x1
+ 2813 03e9 6C       		.byte	0x6c
+ 2814 03ea 00000000 		.4byte	.LVL107
+ 2815 03ee 00000000 		.4byte	.LVL114
+ 2816 03f2 0001     		.2byte	0x1
+ 2817 03f4 63       		.byte	0x63
+ 2818 03f5 00000000 		.4byte	.LVL114
+ 2819 03f9 00000000 		.4byte	.LVL116
+ 2820 03fd 0001     		.2byte	0x1
+ 2821 03ff 6C       		.byte	0x6c
+ 2822 0400 00000000 		.4byte	.LVL116
+ 2823 0404 00000000 		.4byte	.LFE18
+ 2824 0408 0001     		.2byte	0x1
+ 2825 040a 63       		.byte	0x63
+ 2826 040b 00000000 		.4byte	0
+ 2827 040f 00000000 		.4byte	0
+ 2828              	.LLST12:
+ 2829 0413 00000000 		.4byte	.LVL17
+ 2830 0417 00000000 		.4byte	.LVL18
+ 2831 041b 0002     		.2byte	0x2
+ 2832 041d 82       		.byte	0x82
+ 2833 041e 00       		.sleb128 0
+ 2834 041f 00000000 		.4byte	.LVL21
+ 2835 0423 00000000 		.4byte	.LVL22
+ 2836 0427 0002     		.2byte	0x2
+ 2837 0429 82       		.byte	0x82
+ 2838 042a 00       		.sleb128 0
+ 2839 042b 00000000 		.4byte	.LVL28
+ 2840 042f 00000000 		.4byte	.LVL29
+ 2841 0433 0001     		.2byte	0x1
+ 2842 0435 58       		.byte	0x58
+ 2843 0436 00000000 		.4byte	.LVL30
+ 2844 043a 00000000 		.4byte	.LVL33
+ 2845 043e 0001     		.2byte	0x1
+ 2846 0440 59       		.byte	0x59
+ 2847 0441 00000000 		.4byte	.LVL35
+ 2848 0445 00000000 		.4byte	.LVL39
+ 2849 0449 0001     		.2byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 51
+
+
+ 2850 044b 58       		.byte	0x58
+ 2851 044c 00000000 		.4byte	.LVL39
+ 2852 0450 00000000 		.4byte	.LVL40
+ 2853 0454 0002     		.2byte	0x2
+ 2854 0456 86       		.byte	0x86
+ 2855 0457 7F       		.sleb128 -1
+ 2856 0458 00000000 		.4byte	.LVL41
+ 2857 045c 00000000 		.4byte	.LVL44
+ 2858 0460 0001     		.2byte	0x1
+ 2859 0462 5A       		.byte	0x5a
+ 2860 0463 00000000 		.4byte	.LVL46
+ 2861 0467 00000000 		.4byte	.LVL47
+ 2862 046b 0002     		.2byte	0x2
+ 2863 046d 86       		.byte	0x86
+ 2864 046e 7F       		.sleb128 -1
+ 2865 046f 00000000 		.4byte	.LVL70
+ 2866 0473 00000000 		.4byte	.LVL71
+ 2867 0477 0002     		.2byte	0x2
+ 2868 0479 3A       		.byte	0x3a
+ 2869 047a 9F       		.byte	0x9f
+ 2870 047b 00000000 		.4byte	.LVL84
+ 2871 047f 00000000 		.4byte	.LVL86
+ 2872 0483 0002     		.2byte	0x2
+ 2873 0485 38       		.byte	0x38
+ 2874 0486 9F       		.byte	0x9f
+ 2875 0487 00000000 		.4byte	.LVL92
+ 2876 048b 00000000 		.4byte	.LVL93
+ 2877 048f 0002     		.2byte	0x2
+ 2878 0491 86       		.byte	0x86
+ 2879 0492 7F       		.sleb128 -1
+ 2880 0493 00000000 		.4byte	.LVL94
+ 2881 0497 00000000 		.4byte	.LVL95
+ 2882 049b 0001     		.2byte	0x1
+ 2883 049d 58       		.byte	0x58
+ 2884 049e 00000000 		.4byte	.LVL95
+ 2885 04a2 00000000 		.4byte	.LVL96
+ 2886 04a6 0002     		.2byte	0x2
+ 2887 04a8 86       		.byte	0x86
+ 2888 04a9 7F       		.sleb128 -1
+ 2889 04aa 00000000 		.4byte	.LVL98
+ 2890 04ae 00000000 		.4byte	.LVL99
+ 2891 04b2 0001     		.2byte	0x1
+ 2892 04b4 58       		.byte	0x58
+ 2893 04b5 00000000 		.4byte	.LVL114
+ 2894 04b9 00000000 		.4byte	.LVL115
+ 2895 04bd 0002     		.2byte	0x2
+ 2896 04bf 86       		.byte	0x86
+ 2897 04c0 7F       		.sleb128 -1
+ 2898 04c1 00000000 		.4byte	0
+ 2899 04c5 00000000 		.4byte	0
+ 2900              	.LLST13:
+ 2901 04c9 00000000 		.4byte	.LVL25
+ 2902 04cd 00000000 		.4byte	.LVL26
+ 2903 04d1 0003     		.2byte	0x3
+ 2904 04d3 08       		.byte	0x8
+ 2905 04d4 20       		.byte	0x20
+ 2906 04d5 9F       		.byte	0x9f
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 52
+
+
+ 2907 04d6 00000000 		.4byte	.LVL26
+ 2908 04da 00000000 		.4byte	.LVL33
+ 2909 04de 0001     		.2byte	0x1
+ 2910 04e0 6D       		.byte	0x6d
+ 2911 04e1 00000000 		.4byte	.LVL33
+ 2912 04e5 00000000 		.4byte	.LVL35
+ 2913 04e9 0003     		.2byte	0x3
+ 2914 04eb 08       		.byte	0x8
+ 2915 04ec 30       		.byte	0x30
+ 2916 04ed 9F       		.byte	0x9f
+ 2917 04ee 00000000 		.4byte	.LVL35
+ 2918 04f2 00000000 		.4byte	.LVL48
+ 2919 04f6 0001     		.2byte	0x1
+ 2920 04f8 6D       		.byte	0x6d
+ 2921 04f9 00000000 		.4byte	.LVL48
+ 2922 04fd 00000000 		.4byte	.LVL57
+ 2923 0501 0003     		.2byte	0x3
+ 2924 0503 08       		.byte	0x8
+ 2925 0504 20       		.byte	0x20
+ 2926 0505 9F       		.byte	0x9f
+ 2927 0506 00000000 		.4byte	.LVL57
+ 2928 050a 00000000 		.4byte	.LVL59
+ 2929 050e 0001     		.2byte	0x1
+ 2930 0510 6D       		.byte	0x6d
+ 2931 0511 00000000 		.4byte	.LVL68
+ 2932 0515 00000000 		.4byte	.LVL70
+ 2933 0519 0003     		.2byte	0x3
+ 2934 051b 08       		.byte	0x8
+ 2935 051c 20       		.byte	0x20
+ 2936 051d 9F       		.byte	0x9f
+ 2937 051e 00000000 		.4byte	.LVL70
+ 2938 0522 00000000 		.4byte	.LVL78
+ 2939 0526 0001     		.2byte	0x1
+ 2940 0528 6D       		.byte	0x6d
+ 2941 0529 00000000 		.4byte	.LVL84
+ 2942 052d 00000000 		.4byte	.LVL96
+ 2943 0531 0001     		.2byte	0x1
+ 2944 0533 6D       		.byte	0x6d
+ 2945 0534 00000000 		.4byte	.LVL98
+ 2946 0538 00000000 		.4byte	.LVL105
+ 2947 053c 0001     		.2byte	0x1
+ 2948 053e 6D       		.byte	0x6d
+ 2949 053f 00000000 		.4byte	.LVL105
+ 2950 0543 00000000 		.4byte	.LVL111
+ 2951 0547 0003     		.2byte	0x3
+ 2952 0549 08       		.byte	0x8
+ 2953 054a 20       		.byte	0x20
+ 2954 054b 9F       		.byte	0x9f
+ 2955 054c 00000000 		.4byte	.LVL114
+ 2956 0550 00000000 		.4byte	.LVL116
+ 2957 0554 0001     		.2byte	0x1
+ 2958 0556 6D       		.byte	0x6d
+ 2959 0557 00000000 		.4byte	.LVL116
+ 2960 055b 00000000 		.4byte	.LFE18
+ 2961 055f 0003     		.2byte	0x3
+ 2962 0561 08       		.byte	0x8
+ 2963 0562 20       		.byte	0x20
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 53
+
+
+ 2964 0563 9F       		.byte	0x9f
+ 2965 0564 00000000 		.4byte	0
+ 2966 0568 00000000 		.4byte	0
+ 2967              	.LLST14:
+ 2968 056c 00000000 		.4byte	.LVL57
+ 2969 0570 00000000 		.4byte	.LVL59
+ 2970 0574 0001     		.2byte	0x1
+ 2971 0576 53       		.byte	0x53
+ 2972 0577 00000000 		.4byte	.LVL60
+ 2973 057b 00000000 		.4byte	.LVL62
+ 2974 057f 0001     		.2byte	0x1
+ 2975 0581 68       		.byte	0x68
+ 2976 0582 00000000 		.4byte	.LVL62
+ 2977 0586 00000000 		.4byte	.LVL63
+ 2978 058a 0003     		.2byte	0x3
+ 2979 058c 88       		.byte	0x88
+ 2980 058d 01       		.sleb128 1
+ 2981 058e 9F       		.byte	0x9f
+ 2982 058f 00000000 		.4byte	.LVL63
+ 2983 0593 00000000 		.4byte	.LVL64
+ 2984 0597 0001     		.2byte	0x1
+ 2985 0599 68       		.byte	0x68
+ 2986 059a 00000000 		.4byte	.LVL75
+ 2987 059e 00000000 		.4byte	.LVL78
+ 2988 05a2 0001     		.2byte	0x1
+ 2989 05a4 53       		.byte	0x53
+ 2990 05a5 00000000 		.4byte	.LVL83
+ 2991 05a9 00000000 		.4byte	.LVL84
+ 2992 05ad 0001     		.2byte	0x1
+ 2993 05af 68       		.byte	0x68
+ 2994 05b0 00000000 		.4byte	.LVL116
+ 2995 05b4 00000000 		.4byte	.LFE18
+ 2996 05b8 0002     		.2byte	0x2
+ 2997 05ba 30       		.byte	0x30
+ 2998 05bb 9F       		.byte	0x9f
+ 2999 05bc 00000000 		.4byte	0
+ 3000 05c0 00000000 		.4byte	0
+ 3001              	.LLST15:
+ 3002 05c4 00000000 		.4byte	.LVL36
+ 3003 05c8 00000000 		.4byte	.LVL37
+ 3004 05cc 0002     		.2byte	0x2
+ 3005 05ce 30       		.byte	0x30
+ 3006 05cf 9F       		.byte	0x9f
+ 3007 05d0 00000000 		.4byte	.LVL37
+ 3008 05d4 00000000 		.4byte	.LVL42
+ 3009 05d8 0001     		.2byte	0x1
+ 3010 05da 59       		.byte	0x59
+ 3011 05db 00000000 		.4byte	.LVL43
+ 3012 05df 00000000 		.4byte	.LVL50
+ 3013 05e3 0001     		.2byte	0x1
+ 3014 05e5 59       		.byte	0x59
+ 3015 05e6 00000000 		.4byte	.LVL50
+ 3016 05ea 00000000 		.4byte	.LVL51
+ 3017 05ee 0004     		.2byte	0x4
+ 3018 05f0 0A       		.byte	0xa
+ 3019 05f1 7FFF     		.2byte	0x7fff
+ 3020 05f3 9F       		.byte	0x9f
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 54
+
+
+ 3021 05f4 00000000 		.4byte	.LVL51
+ 3022 05f8 00000000 		.4byte	.LVL52
+ 3023 05fc 0001     		.2byte	0x1
+ 3024 05fe 59       		.byte	0x59
+ 3025 05ff 00000000 		.4byte	.LVL52
+ 3026 0603 00000000 		.4byte	.LVL53
+ 3027 0607 0003     		.2byte	0x3
+ 3028 0609 79       		.byte	0x79
+ 3029 060a 7F       		.sleb128 -1
+ 3030 060b 9F       		.byte	0x9f
+ 3031 060c 00000000 		.4byte	.LVL68
+ 3032 0610 00000000 		.4byte	.LVL69
+ 3033 0614 0001     		.2byte	0x1
+ 3034 0616 59       		.byte	0x59
+ 3035 0617 00000000 		.4byte	.LVL70
+ 3036 061b 00000000 		.4byte	.LVL72
+ 3037 061f 0001     		.2byte	0x1
+ 3038 0621 59       		.byte	0x59
+ 3039 0622 00000000 		.4byte	.LVL84
+ 3040 0626 00000000 		.4byte	.LVL85
+ 3041 062a 0001     		.2byte	0x1
+ 3042 062c 59       		.byte	0x59
+ 3043 062d 00000000 		.4byte	.LVL87
+ 3044 0631 00000000 		.4byte	.LVL88
+ 3045 0635 0001     		.2byte	0x1
+ 3046 0637 59       		.byte	0x59
+ 3047 0638 00000000 		.4byte	.LVL92
+ 3048 063c 00000000 		.4byte	.LVL96
+ 3049 0640 0001     		.2byte	0x1
+ 3050 0642 59       		.byte	0x59
+ 3051 0643 00000000 		.4byte	.LVL98
+ 3052 0647 00000000 		.4byte	.LVL100
+ 3053 064b 0001     		.2byte	0x1
+ 3054 064d 59       		.byte	0x59
+ 3055 064e 00000000 		.4byte	.LVL106
+ 3056 0652 00000000 		.4byte	.LVL111
+ 3057 0656 0001     		.2byte	0x1
+ 3058 0658 59       		.byte	0x59
+ 3059 0659 00000000 		.4byte	.LVL114
+ 3060 065d 00000000 		.4byte	.LVL116
+ 3061 0661 0001     		.2byte	0x1
+ 3062 0663 59       		.byte	0x59
+ 3063 0664 00000000 		.4byte	0
+ 3064 0668 00000000 		.4byte	0
+ 3065              	.LLST16:
+ 3066 066c 00000000 		.4byte	.LVL26
+ 3067 0670 00000000 		.4byte	.LVL27
+ 3068 0674 0002     		.2byte	0x2
+ 3069 0676 30       		.byte	0x30
+ 3070 0677 9F       		.byte	0x9f
+ 3071 0678 00000000 		.4byte	.LVL27
+ 3072 067c 00000000 		.4byte	.LVL31
+ 3073 0680 0001     		.2byte	0x1
+ 3074 0682 6F       		.byte	0x6f
+ 3075 0683 00000000 		.4byte	.LVL32
+ 3076 0687 00000000 		.4byte	.LVL33
+ 3077 068b 0001     		.2byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 55
+
+
+ 3078 068d 6F       		.byte	0x6f
+ 3079 068e 00000000 		.4byte	.LVL35
+ 3080 0692 00000000 		.4byte	.LVL57
+ 3081 0696 0001     		.2byte	0x1
+ 3082 0698 6F       		.byte	0x6f
+ 3083 0699 00000000 		.4byte	.LVL57
+ 3084 069d 00000000 		.4byte	.LVL58
+ 3085 06a1 0001     		.2byte	0x1
+ 3086 06a3 59       		.byte	0x59
+ 3087 06a4 00000000 		.4byte	.LVL58
+ 3088 06a8 00000000 		.4byte	.LVL60
+ 3089 06ac 0001     		.2byte	0x1
+ 3090 06ae 6F       		.byte	0x6f
+ 3091 06af 00000000 		.4byte	.LVL64
+ 3092 06b3 00000000 		.4byte	.LVL66
+ 3093 06b7 0001     		.2byte	0x1
+ 3094 06b9 6F       		.byte	0x6f
+ 3095 06ba 00000000 		.4byte	.LVL66
+ 3096 06be 00000000 		.4byte	.LVL67
+ 3097 06c2 0003     		.2byte	0x3
+ 3098 06c4 8F       		.byte	0x8f
+ 3099 06c5 01       		.sleb128 1
+ 3100 06c6 9F       		.byte	0x9f
+ 3101 06c7 00000000 		.4byte	.LVL68
+ 3102 06cb 00000000 		.4byte	.LVL75
+ 3103 06cf 0001     		.2byte	0x1
+ 3104 06d1 6F       		.byte	0x6f
+ 3105 06d2 00000000 		.4byte	.LVL75
+ 3106 06d6 00000000 		.4byte	.LVL76
+ 3107 06da 0006     		.2byte	0x6
+ 3108 06dc 8F       		.byte	0x8f
+ 3109 06dd 00       		.sleb128 0
+ 3110 06de 73       		.byte	0x73
+ 3111 06df 00       		.sleb128 0
+ 3112 06e0 1C       		.byte	0x1c
+ 3113 06e1 9F       		.byte	0x9f
+ 3114 06e2 00000000 		.4byte	.LVL76
+ 3115 06e6 00000000 		.4byte	.LVL77
+ 3116 06ea 0001     		.2byte	0x1
+ 3117 06ec 59       		.byte	0x59
+ 3118 06ed 00000000 		.4byte	.LVL77
+ 3119 06f1 00000000 		.4byte	.LVL78
+ 3120 06f5 0001     		.2byte	0x1
+ 3121 06f7 6F       		.byte	0x6f
+ 3122 06f8 00000000 		.4byte	.LVL78
+ 3123 06fc 00000000 		.4byte	.LVL79
+ 3124 0700 0004     		.2byte	0x4
+ 3125 0702 8F       		.byte	0x8f
+ 3126 0703 00       		.sleb128 0
+ 3127 0704 1F       		.byte	0x1f
+ 3128 0705 9F       		.byte	0x9f
+ 3129 0706 00000000 		.4byte	.LVL79
+ 3130 070a 00000000 		.4byte	.LVL81
+ 3131 070e 0001     		.2byte	0x1
+ 3132 0710 6F       		.byte	0x6f
+ 3133 0711 00000000 		.4byte	.LVL81
+ 3134 0715 00000000 		.4byte	.LVL82
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 56
+
+
+ 3135 0719 0003     		.2byte	0x3
+ 3136 071b 8F       		.byte	0x8f
+ 3137 071c 7F       		.sleb128 -1
+ 3138 071d 9F       		.byte	0x9f
+ 3139 071e 00000000 		.4byte	.LVL83
+ 3140 0722 00000000 		.4byte	.LVL96
+ 3141 0726 0001     		.2byte	0x1
+ 3142 0728 6F       		.byte	0x6f
+ 3143 0729 00000000 		.4byte	.LVL98
+ 3144 072d 00000000 		.4byte	.LFE18
+ 3145 0731 0001     		.2byte	0x1
+ 3146 0733 6F       		.byte	0x6f
+ 3147 0734 00000000 		.4byte	0
+ 3148 0738 00000000 		.4byte	0
+ 3149              	.LLST17:
+ 3150 073c 00000000 		.4byte	.LVL38
+ 3151 0740 00000000 		.4byte	.LVL39
+ 3152 0744 0011     		.2byte	0x11
+ 3153 0746 78       		.byte	0x78
+ 3154 0747 BF7F     		.sleb128 -65
+ 3155 0749 08       		.byte	0x8
+ 3156 074a FF       		.byte	0xff
+ 3157 074b 1A       		.byte	0x1a
+ 3158 074c 40       		.byte	0x40
+ 3159 074d 4B       		.byte	0x4b
+ 3160 074e 24       		.byte	0x24
+ 3161 074f 22       		.byte	0x22
+ 3162 0750 0C       		.byte	0xc
+ 3163 0751 80000019 		.4byte	0x80000019
+ 3164 0755 2C       		.byte	0x2c
+ 3165 0756 9F       		.byte	0x9f
+ 3166 0757 00000000 		.4byte	.LVL92
+ 3167 075b 00000000 		.4byte	.LVL93
+ 3168 075f 0002     		.2byte	0x2
+ 3169 0761 31       		.byte	0x31
+ 3170 0762 9F       		.byte	0x9f
+ 3171 0763 00000000 		.4byte	.LVL94
+ 3172 0767 00000000 		.4byte	.LVL96
+ 3173 076b 0002     		.2byte	0x2
+ 3174 076d 31       		.byte	0x31
+ 3175 076e 9F       		.byte	0x9f
+ 3176 076f 00000000 		.4byte	.LVL98
+ 3177 0773 00000000 		.4byte	.LVL100
+ 3178 0777 0011     		.2byte	0x11
+ 3179 0779 78       		.byte	0x78
+ 3180 077a BF7F     		.sleb128 -65
+ 3181 077c 08       		.byte	0x8
+ 3182 077d FF       		.byte	0xff
+ 3183 077e 1A       		.byte	0x1a
+ 3184 077f 40       		.byte	0x40
+ 3185 0780 4B       		.byte	0x4b
+ 3186 0781 24       		.byte	0x24
+ 3187 0782 22       		.byte	0x22
+ 3188 0783 0C       		.byte	0xc
+ 3189 0784 80000019 		.4byte	0x80000019
+ 3190 0788 2C       		.byte	0x2c
+ 3191 0789 9F       		.byte	0x9f
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 57
+
+
+ 3192 078a 00000000 		.4byte	.LVL114
+ 3193 078e 00000000 		.4byte	.LVL116
+ 3194 0792 0002     		.2byte	0x2
+ 3195 0794 31       		.byte	0x31
+ 3196 0795 9F       		.byte	0x9f
+ 3197 0796 00000000 		.4byte	0
+ 3198 079a 00000000 		.4byte	0
+ 3199              	.LLST18:
+ 3200 079e 00000000 		.4byte	.LVL24
+ 3201 07a2 00000000 		.4byte	.LVL25
+ 3202 07a6 0002     		.2byte	0x2
+ 3203 07a8 30       		.byte	0x30
+ 3204 07a9 9F       		.byte	0x9f
+ 3205 07aa 00000000 		.4byte	.LVL25
+ 3206 07ae 00000000 		.4byte	.LVL60
+ 3207 07b2 0001     		.2byte	0x1
+ 3208 07b4 64       		.byte	0x64
+ 3209 07b5 00000000 		.4byte	.LVL68
+ 3210 07b9 00000000 		.4byte	.LVL96
+ 3211 07bd 0001     		.2byte	0x1
+ 3212 07bf 64       		.byte	0x64
+ 3213 07c0 00000000 		.4byte	.LVL96
+ 3214 07c4 00000000 		.4byte	.LVL97
+ 3215 07c8 0002     		.2byte	0x2
+ 3216 07ca 30       		.byte	0x30
+ 3217 07cb 9F       		.byte	0x9f
+ 3218 07cc 00000000 		.4byte	.LVL97
+ 3219 07d0 00000000 		.4byte	.LVL98
+ 3220 07d4 0002     		.2byte	0x2
+ 3221 07d6 31       		.byte	0x31
+ 3222 07d7 9F       		.byte	0x9f
+ 3223 07d8 00000000 		.4byte	.LVL98
+ 3224 07dc 00000000 		.4byte	.LFE18
+ 3225 07e0 0001     		.2byte	0x1
+ 3226 07e2 64       		.byte	0x64
+ 3227 07e3 00000000 		.4byte	0
+ 3228 07e7 00000000 		.4byte	0
+ 3229              	.LLST19:
+ 3230 07eb 00000000 		.4byte	.LVL73
+ 3231 07ef 00000000 		.4byte	.LVL74-1
+ 3232 07f3 0001     		.2byte	0x1
+ 3233 07f5 54       		.byte	0x54
+ 3234 07f6 00000000 		.4byte	.LVL89
+ 3235 07fa 00000000 		.4byte	.LVL91-1
+ 3236 07fe 0001     		.2byte	0x1
+ 3237 0800 54       		.byte	0x54
+ 3238 0801 00000000 		.4byte	.LVL101
+ 3239 0805 00000000 		.4byte	.LVL105
+ 3240 0809 0001     		.2byte	0x1
+ 3241 080b 54       		.byte	0x54
+ 3242 080c 00000000 		.4byte	0
+ 3243 0810 00000000 		.4byte	0
+ 3244              	.LLST20:
+ 3245 0814 00000000 		.4byte	.LVL73
+ 3246 0818 00000000 		.4byte	.LVL74-1
+ 3247 081c 0001     		.2byte	0x1
+ 3248 081e 55       		.byte	0x55
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 58
+
+
+ 3249 081f 00000000 		.4byte	0
+ 3250 0823 00000000 		.4byte	0
+ 3251              	.LLST21:
+ 3252 0827 00000000 		.4byte	.LVL73
+ 3253 082b 00000000 		.4byte	.LVL74-1
+ 3254 082f 0001     		.2byte	0x1
+ 3255 0831 54       		.byte	0x54
+ 3256 0832 00000000 		.4byte	0
+ 3257 0836 00000000 		.4byte	0
+ 3258              	.LLST22:
+ 3259 083a 00000000 		.4byte	.LVL73
+ 3260 083e 00000000 		.4byte	.LVL75
+ 3261 0842 0001     		.2byte	0x1
+ 3262 0844 6C       		.byte	0x6c
+ 3263 0845 00000000 		.4byte	0
+ 3264 0849 00000000 		.4byte	0
+ 3265              	.LLST23:
+ 3266 084d 00000000 		.4byte	.LVL90
+ 3267 0851 00000000 		.4byte	.LVL92
+ 3268 0855 0002     		.2byte	0x2
+ 3269 0857 3A       		.byte	0x3a
+ 3270 0858 9F       		.byte	0x9f
+ 3271 0859 00000000 		.4byte	0
+ 3272 085d 00000000 		.4byte	0
+ 3273              	.LLST24:
+ 3274 0861 00000000 		.4byte	.LVL90
+ 3275 0865 00000000 		.4byte	.LVL91-1
+ 3276 0869 0001     		.2byte	0x1
+ 3277 086b 54       		.byte	0x54
+ 3278 086c 00000000 		.4byte	0
+ 3279 0870 00000000 		.4byte	0
+ 3280              	.LLST25:
+ 3281 0874 00000000 		.4byte	.LVL90
+ 3282 0878 00000000 		.4byte	.LVL91-1
+ 3283 087c 0001     		.2byte	0x1
+ 3284 087e 53       		.byte	0x53
+ 3285 087f 00000000 		.4byte	0
+ 3286 0883 00000000 		.4byte	0
+ 3287              	.LLST26:
+ 3288 0887 00000000 		.4byte	.LFB19
+ 3289 088b 00000000 		.4byte	.LCFI3
+ 3290 088f 0002     		.2byte	0x2
+ 3291 0891 71       		.byte	0x71
+ 3292 0892 00       		.sleb128 0
+ 3293 0893 00000000 		.4byte	.LCFI3
+ 3294 0897 00000000 		.4byte	.LCFI4
+ 3295 089b 0003     		.2byte	0x3
+ 3296 089d 71       		.byte	0x71
+ 3297 089e D000     		.sleb128 80
+ 3298 08a0 00000000 		.4byte	.LCFI4
+ 3299 08a4 00000000 		.4byte	.LFE19
+ 3300 08a8 0002     		.2byte	0x2
+ 3301 08aa 71       		.byte	0x71
+ 3302 08ab 00       		.sleb128 0
+ 3303 08ac 00000000 		.4byte	0
+ 3304 08b0 00000000 		.4byte	0
+ 3305              	.LLST27:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 59
+
+
+ 3306 08b4 00000000 		.4byte	.LVL119
+ 3307 08b8 00000000 		.4byte	.LVL122
+ 3308 08bc 0001     		.2byte	0x1
+ 3309 08be 53       		.byte	0x53
+ 3310 08bf 00000000 		.4byte	.LVL122
+ 3311 08c3 00000000 		.4byte	.LVL123-1
+ 3312 08c7 0001     		.2byte	0x1
+ 3313 08c9 54       		.byte	0x54
+ 3314 08ca 00000000 		.4byte	.LVL123-1
+ 3315 08ce 00000000 		.4byte	.LVL126
+ 3316 08d2 0001     		.2byte	0x1
+ 3317 08d4 6F       		.byte	0x6f
+ 3318 08d5 00000000 		.4byte	.LVL126
+ 3319 08d9 00000000 		.4byte	.LFE19
+ 3320 08dd 0004     		.2byte	0x4
+ 3321 08df F3       		.byte	0xf3
+ 3322 08e0 01       		.uleb128 0x1
+ 3323 08e1 53       		.byte	0x53
+ 3324 08e2 9F       		.byte	0x9f
+ 3325 08e3 00000000 		.4byte	0
+ 3326 08e7 00000000 		.4byte	0
+ 3327              	.LLST28:
+ 3328 08eb 00000000 		.4byte	.LVL119
+ 3329 08ef 00000000 		.4byte	.LVL121
+ 3330 08f3 0001     		.2byte	0x1
+ 3331 08f5 54       		.byte	0x54
+ 3332 08f6 00000000 		.4byte	.LVL121
+ 3333 08fa 00000000 		.4byte	.LVL123-1
+ 3334 08fe 0003     		.2byte	0x3
+ 3335 0900 75       		.byte	0x75
+ 3336 0901 01       		.sleb128 1
+ 3337 0902 9F       		.byte	0x9f
+ 3338 0903 00000000 		.4byte	.LVL123-1
+ 3339 0907 00000000 		.4byte	.LFE19
+ 3340 090b 0004     		.2byte	0x4
+ 3341 090d F3       		.byte	0xf3
+ 3342 090e 01       		.uleb128 0x1
+ 3343 090f 54       		.byte	0x54
+ 3344 0910 9F       		.byte	0x9f
+ 3345 0911 00000000 		.4byte	0
+ 3346 0915 00000000 		.4byte	0
+ 3347              	.LLST29:
+ 3348 0919 00000000 		.4byte	.LVL119
+ 3349 091d 00000000 		.4byte	.LVL120
+ 3350 0921 0001     		.2byte	0x1
+ 3351 0923 55       		.byte	0x55
+ 3352 0924 00000000 		.4byte	.LVL120
+ 3353 0928 00000000 		.4byte	.LVL126
+ 3354 092c 0001     		.2byte	0x1
+ 3355 092e 6D       		.byte	0x6d
+ 3356 092f 00000000 		.4byte	.LVL126
+ 3357 0933 00000000 		.4byte	.LFE19
+ 3358 0937 0004     		.2byte	0x4
+ 3359 0939 F3       		.byte	0xf3
+ 3360 093a 01       		.uleb128 0x1
+ 3361 093b 55       		.byte	0x55
+ 3362 093c 9F       		.byte	0x9f
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 60
+
+
+ 3363 093d 00000000 		.4byte	0
+ 3364 0941 00000000 		.4byte	0
+ 3365              	.LLST30:
+ 3366 0945 00000000 		.4byte	.LVL123
+ 3367 0949 00000000 		.4byte	.LVL124
+ 3368 094d 0004     		.2byte	0x4
+ 3369 094f 91       		.byte	0x91
+ 3370 0950 B87F     		.sleb128 -72
+ 3371 0952 9F       		.byte	0x9f
+ 3372 0953 00000000 		.4byte	.LVL124
+ 3373 0957 00000000 		.4byte	.LVL125-1
+ 3374 095b 0001     		.2byte	0x1
+ 3375 095d 53       		.byte	0x53
+ 3376 095e 00000000 		.4byte	.LVL125-1
+ 3377 0962 00000000 		.4byte	.LVL127
+ 3378 0966 0004     		.2byte	0x4
+ 3379 0968 91       		.byte	0x91
+ 3380 0969 B87F     		.sleb128 -72
+ 3381 096b 9F       		.byte	0x9f
+ 3382 096c 00000000 		.4byte	.LVL127
+ 3383 0970 00000000 		.4byte	.LFE19
+ 3384 0974 0004     		.2byte	0x4
+ 3385 0976 71       		.byte	0x71
+ 3386 0977 B87F     		.sleb128 -72
+ 3387 0979 9F       		.byte	0x9f
+ 3388 097a 00000000 		.4byte	0
+ 3389 097e 00000000 		.4byte	0
+ 3390              		.section	.debug_aranges,"",@progbits
+ 3391 0000 0000002C 		.4byte	0x2c
+ 3392 0004 0002     		.2byte	0x2
+ 3393 0006 00000000 		.4byte	.Ldebug_info0
+ 3394 000a 04       		.byte	0x4
+ 3395 000b 00       		.byte	0
+ 3396 000c 0000     		.2byte	0
+ 3397 000e 0000     		.2byte	0
+ 3398 0010 00000000 		.4byte	.LFB20
+ 3399 0014 00000054 		.4byte	.LFE20-.LFB20
+ 3400 0018 00000000 		.4byte	.LFB18
+ 3401 001c 000004E4 		.4byte	.LFE18-.LFB18
+ 3402 0020 00000000 		.4byte	.LFB19
+ 3403 0024 00000072 		.4byte	.LFE19-.LFB19
+ 3404 0028 00000000 		.4byte	0
+ 3405 002c 00000000 		.4byte	0
+ 3406              		.section	.debug_ranges,"",@progbits
+ 3407              	.Ldebug_ranges0:
+ 3408 0000 00000000 		.4byte	.LBB6
+ 3409 0004 00000000 		.4byte	.LBE6
+ 3410 0008 00000000 		.4byte	.LBB9
+ 3411 000c 00000000 		.4byte	.LBE9
+ 3412 0010 00000000 		.4byte	0
+ 3413 0014 00000000 		.4byte	0
+ 3414 0018 00000000 		.4byte	.LBB10
+ 3415 001c 00000000 		.4byte	.LBE10
+ 3416 0020 00000000 		.4byte	.LBB13
+ 3417 0024 00000000 		.4byte	.LBE13
+ 3418 0028 00000000 		.4byte	0
+ 3419 002c 00000000 		.4byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 61
+
+
+ 3420 0030 00000000 		.4byte	.LFB20
+ 3421 0034 00000000 		.4byte	.LFE20
+ 3422 0038 00000000 		.4byte	.LFB18
+ 3423 003c 00000000 		.4byte	.LFE18
+ 3424 0040 00000000 		.4byte	.LFB19
+ 3425 0044 00000000 		.4byte	.LFE19
+ 3426 0048 00000000 		.4byte	0
+ 3427 004c 00000000 		.4byte	0
+ 3428              		.section	.debug_line,"",@progbits
+ 3429              	.Ldebug_line0:
+ 3430 0000 0000052B 		.section	.debug_str,"MS",@progbits,1
+ 3430      00020000 
+ 3430      03370201 
+ 3430      FB0E0D00 
+ 3430      01010101 
+ 3431              	.LASF3:
+ 3432 0000 73697A65 		.string	"size_t"
+ 3432      5F7400
+ 3433              	.LASF4:
+ 3434 0007 5F5F7569 		.string	"__uint8_t"
+ 3434      6E74385F 
+ 3434      7400
+ 3435              	.LASF28:
+ 3436 0011 76615F6C 		.string	"va_list"
+ 3436      69737400 
+ 3437              	.LASF11:
+ 3438 0019 6C6F6E67 		.string	"long long unsigned int"
+ 3438      206C6F6E 
+ 3438      6720756E 
+ 3438      7369676E 
+ 3438      65642069 
+ 3439              	.LASF10:
+ 3440 0030 6C6F6E67 		.string	"long long int"
+ 3440      206C6F6E 
+ 3440      6720696E 
+ 3440      7400
+ 3441              	.LASF2:
+ 3442 003e 7369676E 		.string	"signed char"
+ 3442      65642063 
+ 3442      68617200 
+ 3443              	.LASF14:
+ 3444 004a 626F6F6C 		.string	"bool_t"
+ 3444      5F7400
+ 3445              	.LASF43:
+ 3446 0051 746D7062 		.string	"tmpbuf"
+ 3446      756600
+ 3447              	.LASF1:
+ 3448 0058 6C6F6E67 		.string	"long int"
+ 3448      20696E74 
+ 3448      00
+ 3449              	.LASF49:
+ 3450 0061 6368736E 		.string	"chsnprintf"
+ 3450      7072696E 
+ 3450      746600
+ 3451              	.LASF30:
+ 3452 006c 62756666 		.string	"buffer"
+ 3452      657200
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 62
+
+
+ 3453              	.LASF38:
+ 3454 0073 66696C6C 		.string	"filler"
+ 3454      657200
+ 3455              	.LASF25:
+ 3456 007a 72657365 		.string	"reserved"
+ 3456      72766564 
+ 3456      00
+ 3457              	.LASF41:
+ 3458 0083 69735F6C 		.string	"is_long"
+ 3458      6F6E6700 
+ 3459              	.LASF21:
+ 3460 008b 42617365 		.string	"BaseSequentialStream"
+ 3460      53657175 
+ 3460      656E7469 
+ 3460      616C5374 
+ 3460      7265616D 
+ 3461              	.LASF0:
+ 3462 00a0 756E7369 		.string	"unsigned int"
+ 3462      676E6564 
+ 3462      20696E74 
+ 3462      00
+ 3463              	.LASF26:
+ 3464 00ad 6F766572 		.string	"overflow_arg_area"
+ 3464      666C6F77 
+ 3464      5F617267 
+ 3464      5F617265 
+ 3464      6100
+ 3465              	.LASF9:
+ 3466 00bf 6C6F6E67 		.string	"long unsigned int"
+ 3466      20756E73 
+ 3466      69676E65 
+ 3466      6420696E 
+ 3466      7400
+ 3467              	.LASF42:
+ 3468 00d1 6C656674 		.string	"left_align"
+ 3468      5F616C69 
+ 3468      676E00
+ 3469              	.LASF40:
+ 3470 00dc 77696474 		.string	"width"
+ 3470      6800
+ 3471              	.LASF31:
+ 3472 00e2 73697A65 		.string	"size"
+ 3472      00
+ 3473              	.LASF7:
+ 3474 00e7 73686F72 		.string	"short unsigned int"
+ 3474      7420756E 
+ 3474      7369676E 
+ 3474      65642069 
+ 3474      6E7400
+ 3475              	.LASF16:
+ 3476 00fa 6D73675F 		.string	"msg_t"
+ 3476      7400
+ 3477              	.LASF35:
+ 3478 0100 6C746F61 		.string	"ltoa"
+ 3478      00
+ 3479              	.LASF50:
+ 3480 0105 6D734F62 		.string	"msObjectInit"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 63
+
+
+ 3480      6A656374 
+ 3480      496E6974 
+ 3480      00
+ 3481              	.LASF19:
+ 3482 0112 77726974 		.string	"write"
+ 3482      6500
+ 3483              	.LASF17:
+ 3484 0118 73697A65 		.string	"sizetype"
+ 3484      74797065 
+ 3484      00
+ 3485              	.LASF48:
+ 3486 0121 756E7369 		.string	"unsigned_common"
+ 3486      676E6564 
+ 3486      5F636F6D 
+ 3486      6D6F6E00 
+ 3487              	.LASF37:
+ 3488 0131 64697669 		.string	"divisor"
+ 3488      736F7200 
+ 3489              	.LASF22:
+ 3490 0139 5F5F676E 		.string	"__gnuc_va_list"
+ 3490      75635F76 
+ 3490      615F6C69 
+ 3490      737400
+ 3491              	.LASF46:
+ 3492 0148 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 3492      50433553 
+ 3492      74756469 
+ 3492      6F5C776F 
+ 3492      726B7370 
+ 3493              	.LASF29:
+ 3494 0190 4D656D53 		.string	"MemStreamVMT"
+ 3494      74726561 
+ 3494      6D564D54 
+ 3494      00
+ 3495              	.LASF33:
+ 3496 019d 4D656D6F 		.string	"MemoryStream"
+ 3496      72795374 
+ 3496      7265616D 
+ 3496      00
+ 3497              	.LASF15:
+ 3498 01aa 5F426F6F 		.string	"_Bool"
+ 3498      6C00
+ 3499              	.LASF13:
+ 3500 01b0 696E7433 		.string	"int32_t"
+ 3500      325F7400 
+ 3501              	.LASF5:
+ 3502 01b8 756E7369 		.string	"unsigned char"
+ 3502      676E6564 
+ 3502      20636861 
+ 3502      7200
+ 3503              	.LASF6:
+ 3504 01c6 73686F72 		.string	"short int"
+ 3504      7420696E 
+ 3504      7400
+ 3505              	.LASF23:
+ 3506 01d0 42617365 		.string	"BaseSequentialStreamVMT"
+ 3506      53657175 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 64
+
+
+ 3506      656E7469 
+ 3506      616C5374 
+ 3506      7265616D 
+ 3507              	.LASF34:
+ 3508 01e8 72616469 		.string	"radix"
+ 3508      7800
+ 3509              	.LASF27:
+ 3510 01ee 7265675F 		.string	"reg_save_area"
+ 3510      73617665 
+ 3510      5F617265 
+ 3510      6100
+ 3511              	.LASF18:
+ 3512 01fc 63686172 		.string	"char"
+ 3512      00
+ 3513              	.LASF39:
+ 3514 0201 70726563 		.string	"precision"
+ 3514      6973696F 
+ 3514      6E00
+ 3515              	.LASF8:
+ 3516 020b 5F5F696E 		.string	"__int32_t"
+ 3516      7433325F 
+ 3516      7400
+ 3517              	.LASF32:
+ 3518 0215 6F666673 		.string	"offset"
+ 3518      657400
+ 3519              	.LASF12:
+ 3520 021c 75696E74 		.string	"uint8_t"
+ 3520      385F7400 
+ 3521              	.LASF47:
+ 3522 0224 63687670 		.string	"chvprintf"
+ 3522      72696E74 
+ 3522      6600
+ 3523              	.LASF20:
+ 3524 022e 72656164 		.string	"read"
+ 3524      00
+ 3525              	.LASF36:
+ 3526 0233 6C6F6E67 		.string	"long_to_string_with_divisor"
+ 3526      5F746F5F 
+ 3526      73747269 
+ 3526      6E675F77 
+ 3526      6974685F 
+ 3527              	.LASF45:
+ 3528 024f 2E2F636F 		.string	"./components/chibios_rt_portable_output_formatter_component/lib/src/chprintf.c"
+ 3528      6D706F6E 
+ 3528      656E7473 
+ 3528      2F636869 
+ 3528      62696F73 
+ 3529              	.LASF44:
+ 3530 029e 47       		.ascii	"G"
+ 3531 029f 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 3531      20342E39 
+ 3531      2E322032 
+ 3531      30313431 
+ 3531      30333020 
+ 3532              	.LASF24:
+ 3533 03a0 5F5F7661 		.string	"__va_list_tag"
+ 3533      5F6C6973 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 65
+
+
+ 3533      745F7461 
+ 3533      6700
+ 3534              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+ 3535              		.gnu_attribute 4, 2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s 			page 66
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chprintf.c
+C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s:9      .text.long_to_string_with_divisor.constprop.0:00000000 long_to_string_with_divisor.constprop.0
+C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s:78     .text.chvprintf:00000000 chvprintf
+C:\Users\UTILIS~1\AppData\Local\Temp\ccQbQpRf.s:906    .text.chsnprintf:00000000 chsnprintf
+
+UNDEFINED SYMBOLS
+msObjectInit

@@ -25,6 +25,9 @@
 #include "pwm_lld_cfg.h"
 
 bool_t bLightOn = false;
+int nBlinkers = 0;
+int nWiper = 0;
+int carMode = 0;
 
 /*
  * Shell configuration structure, the first field is the serial port used by
@@ -46,83 +49,23 @@ static const ShellConfig shell_cfg_car = { (BaseSequentialStream *) &SD2,
  * LEDs blinker thread, times are in milliseconds.
  */
 static WORKING_AREA(waThread1, 128);
-static msg_t Thread1(void *arg) {
+static WORKING_AREA(waThread2, 128);
+
+static msg_t ThreadBlinkers(void *arg) {
 
 	(void) arg;
 	chRegSetThreadName("blinker");
 
 	while (TRUE) {
 
-		if (bLightOn) {
-			unsigned i;
-			for (i = 0; i < 4; i++) {
-				palClearPad(PORT_C, PC_LEDBLEU);
-				osalThreadSleepMilliseconds(100);
-				palClearPad(PORT_B, PB_LEDBLANCHE);
-				osalThreadSleepMilliseconds(100);
-				palClearPad(PORT_A, PA_LEDJAUNE1);
-				osalThreadSleepMilliseconds(100);
-				palClearPad(PORT_A, PA_LEDJAUNE2);
-				osalThreadSleepMilliseconds(100);
-				palClearPad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(100);
-				palSetPad(PORT_C, PC_LEDBLEU);
-				osalThreadSleepMilliseconds(100);
-				palSetPad(PORT_B, PB_LEDBLANCHE);
-				osalThreadSleepMilliseconds(100);
-				palSetPad(PORT_A, PA_LEDJAUNE1);
-				osalThreadSleepMilliseconds(100);
-				palSetPad(PORT_A, PA_LEDJAUNE2);
-				osalThreadSleepMilliseconds(100);
-				palSetPad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(100);
+		if (nBlinkers==1) {
+			// LEFT BLINKER MODE (JAUNE1)
 
-			}
+			palTogglePad(PORT_A, PA_LEDJAUNE1);
+			palClearPad(PORT_A, PA_LEDJAUNE2);
+			osalThreadSleepMilliseconds(500);
 
-			for (i = 0; i < 4; i++) {
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-				palTogglePad(PORT_C, PC_LEDBLEU);
-				palTogglePad(PORT_B, PB_LEDBLANCHE);
-				palTogglePad(PORT_A, PA_LEDJAUNE1);
-				palTogglePad(PORT_A, PA_LEDJAUNE2);
-				palTogglePad(PORT_C, PC_LEDROUGE);
-				osalThreadSleepMilliseconds(250);
-			}
-
-			palSetPort(PORT_C,
+			/*palSetPort(PORT_C,
 					PAL_PORT_BIT(PC_LEDBLEU) | PAL_PORT_BIT(PB_LEDBLANCHE)
 							| PAL_PORT_BIT(PA_LEDJAUNE1)
 							| PAL_PORT_BIT(PA_LEDJAUNE2)
@@ -132,11 +75,52 @@ static msg_t Thread1(void *arg) {
 			palClearPad(PORT_B, PB_LEDBLANCHE);
 			palClearPad(PORT_A, PA_LEDJAUNE1);
 			palClearPad(PORT_A, PA_LEDJAUNE2);
-			palClearPad(PORT_C, PC_LEDROUGE);
-		} else {
+			palClearPad(PORT_C, PC_LEDROUGE);*/
+		}
+		else if (nBlinkers==2) {
+			// RIGHT BLINKER MODE (JAUNE2)
+			palClearPad(PORT_A, PA_LEDJAUNE1);
+			palTogglePad(PORT_A, PA_LEDJAUNE2);
+			osalThreadSleepMilliseconds(500);
+		}
+		else if (nBlinkers==3) {
+			// BLINKERS WARNING MODE (JAUNE1+2)
+			palTogglePad(PORT_A, PA_LEDJAUNE1);
+			palTogglePad(PORT_A, PA_LEDJAUNE2);
+			osalThreadSleepMilliseconds(500);
+		}
+		else {
+			// THOU SHALT NOT BLINK
+			palClearPad(PORT_A, PA_LEDJAUNE1);
+			palClearPad(PORT_A, PA_LEDJAUNE2);
 			osalThreadSleepMilliseconds(1000);
 		}
+	}
 
+	palClearPad(PORT_A, PA_LEDJAUNE1);
+	palClearPad(PORT_A, PA_LEDJAUNE2);
+
+	return 0;
+}
+
+static msg_t ThreadWiper(void *arg) {
+
+	(void) arg;
+	chRegSetThreadName("wiper");
+
+	while (TRUE) {
+
+		if (nWiper==1) {
+			// WIPE THAT WINDSCREEN
+
+			palTogglePad(PORT_C, PC_LEDBLEU);
+			osalThreadSleepMilliseconds(250);
+		}
+		else {
+			// THOU SHALT NOT WIPE
+			palClearPad(PORT_C, PC_LEDBLEU);
+			osalThreadSleepMilliseconds(1000);
+		}
 	}
 
 	return 0;
@@ -179,14 +163,19 @@ int main(void) {
 	/*
 	 * Creates the blinker thread. (to see if the car is alive)
 	 */
-	chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
+	chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, ThreadBlinkers, NULL);
+
+	/*
+	 * Creates the blinker thread. (to see if the car is alive)
+	 */
+	chThdCreateStatic(waThread2, sizeof(waThread2), NORMALPRIO, ThreadWiper, NULL);
 
 	/*
 	 * Creates the Full Demo thread. (it does not exist)
 	 */
-	bFullDemoRunning = true;
-	chThdCreateStatic(waThreadFullDemo, sizeof(waThreadFullDemo), NORMALPRIO,
-			ThreadFullDemo, NULL);
+	//bFullDemoRunning = true;
+	//chThdCreateStatic(waThreadFullDemo, sizeof(waThreadFullDemo), NORMALPRIO,
+	//		ThreadFullDemo, NULL);
 
 	/* Application main loop.*/
 	while (1) {

@@ -1,0 +1,559 @@
+
+build/out.elf:     file format elf32-powerpc
+build/out.elf
+architecture: powerpc:common, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000008
+
+Program Header:
+    LOAD off    0x00010000 vaddr 0x00000000 paddr 0x00000000 align 2**16
+         filesz 0x00006a6e memsz 0x00006a6e flags r-x
+    LOAD off    0x00016a70 vaddr 0x00006a70 paddr 0x00006a70 align 2**16
+         filesz 0x00000f54 memsz 0x00000f54 flags r-x
+    LOAD off    0x00020800 vaddr 0x40000800 paddr 0x000079d0 align 2**16
+         filesz 0x0000043c memsz 0x00001468 flags rw-
+    LOAD off    0x00030000 vaddr 0x40000000 paddr 0x40000000 align 2**16
+         filesz 0x00000000 memsz 0x00000800 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .boot0        000001dc  00000000  00000000  00010000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE, VLE
+  1 .boot1        00000f14  000001e0  000001e0  000101e0  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE, VLE
+  2 .text         0000596e  00001100  00001100  00011100  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE, VLE
+  3 .rodata       00000f54  00006a70  00006a70  00016a70  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .stacks       00000800  40000000  40000000  00030000  2**4
+                  ALLOC
+  5 .data         0000043c  40000800  000079d0  00020800  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .bss          00001028  40000c40  00007e10  00020c3c  2**3
+                  ALLOC
+  7 .PPC.EMB.apuinfo 0000001c  00000000  00000000  00020c3c  2**0
+                  CONTENTS, READONLY
+  8 .comment      00000054  00000000  00000000  00020c58  2**0
+                  CONTENTS, READONLY
+  9 .gnu.attributes 00000010  00000000  00000000  00020cac  2**0
+                  CONTENTS, READONLY
+ 10 .debug_info   0002f561  00000000  00000000  00020cbc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_abbrev 00006ee5  00000000  00000000  0005021d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    0000b087  00000000  00000000  00057102  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_aranges 00000dd0  00000000  00000000  00062189  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_ranges 000014d0  00000000  00000000  00062f59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_line   0000bc0e  00000000  00000000  00064429  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_str    00004c34  00000000  00000000  00070037  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_frame  00002988  00000000  00000000  00074c6c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+00000000 l    d  .boot0	00000000 .boot0
+000001e0 l    d  .boot1	00000000 .boot1
+00001100 l    d  .text	00000000 .text
+00006a70 l    d  .rodata	00000000 .rodata
+40000000 l    d  .stacks	00000000 .stacks
+40000800 l    d  .data	00000000 .data
+40000c40 l    d  .bss	00000000 .bss
+00000000 l    d  .PPC.EMB.apuinfo	00000000 .PPC.EMB.apuinfo
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .gnu.attributes	00000000 .gnu.attributes
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 build/obj/boot.o
+00000010 l       .boot0	00000000 _coreinit
+000000bc l       .boot0	00000000 _ivinit
+000000a0 l       .boot0	00000000 .cleareccloop
+000000b0 l       .boot0	00000000 .cleareccend
+00001000 l       .boot1	00000000 IVOR0
+00001010 l       .boot1	00000000 IVOR1
+00001020 l       .boot1	00000000 IVOR2
+00001030 l       .boot1	00000000 IVOR3
+00001040 l       .boot1	00000000 IVOR4
+00001050 l       .boot1	00000000 IVOR5
+00001060 l       .boot1	00000000 IVOR6
+00001070 l       .boot1	00000000 IVOR7
+00001080 l       .boot1	00000000 IVOR8
+00001090 l       .boot1	00000000 IVOR9
+000010a0 l       .boot1	00000000 IVOR10
+000010b0 l       .boot1	00000000 IVOR11
+000010c0 l       .boot1	00000000 IVOR12
+000010d0 l       .boot1	00000000 IVOR13
+000010e0 l       .boot1	00000000 IVOR14
+000010f0 l       .boot1	00000000 IVOR15
+00000000 l    df *ABS*	00000000 build/obj/ivor.o
+fff48010 l       *ABS*	00000000 INTC_IACKR
+fff48018 l       *ABS*	00000000 INTC_EOIR
+00000000 l    df *ABS*	00000000 build/obj/crt0.o
+00000194 l       .boot0	00000000 .bssloop
+000001a0 l       .boot0	00000000 .bssend
+000001b8 l       .boot0	00000000 .dataloop
+000001c8 l       .boot0	00000000 .dataend
+00000000 l    df *ABS*	00000000 atoi.c
+00000000 l    df *ABS*	00000000 strcasecmp.c
+00000000 l    df *ABS*	00000000 strlen.c
+00000000 l    df *ABS*	00000000 strpbrk.c
+00000000 l    df *ABS*	00000000 strspn.c
+00000000 l    df *ABS*	00000000 strtol.c
+00000000 l    df *ABS*	00000000 hal.c
+00000000 l    df *ABS*	00000000 pwm.c
+00000000 l    df *ABS*	00000000 serial.c
+00001610 l     F .text	00000006 readt
+00001620 l     F .text	00000008 read
+00001630 l     F .text	00000008 writet
+00001640 l     F .text	0000000a write
+00001650 l     F .text	00000006 gett
+00001660 l     F .text	00000008 get
+00001670 l     F .text	00000008 putt
+00001680 l     F .text	0000000a put
+00006b80 l     O .rodata	00000020 vmt
+00000000 l    df *ABS*	00000000 hal_lld.c
+00000000 l    df *ABS*	00000000 spc5_edma.c
+00006ba0 l     O .rodata	00000010 g0
+40000c40 l     O .bss	00000040 channels
+00000000 l    df *ABS*	00000000 spc5_emios.c
+40000c80 l     O .bss	00000004 emios0_active_channels
+00000000 l    df *ABS*	00000000 pal_lld.c
+00000000 l    df *ABS*	00000000 pwm_lld.c
+000026a0 l     F .text	00000076 pwm_lld_serve_interrupt2.constprop.1
+00000000 l    df *ABS*	00000000 serial_lld.c
+00002c60 l     F .text	00000030 spc5xx_serve_err_interrupt
+00002c90 l     F .text	00000086 spc5xx_serve_rxi_interrupt
+00002d20 l     F .text	00000060 spc5xx_serve_txi_interrupt
+00002d80 l     F .text	00000060 notify2
+00002de0 l     F .text	00000060 notify1
+00006bb0 l     O .rodata	00000008 default_config
+00000000 l    df *ABS*	00000000 chsys.c
+40000d84 l     O .bss	00000048 mainthread.2127
+00000000 l    df *ABS*	00000000 chvt.c
+00000000 l    df *ABS*	00000000 chschd.c
+00003230 l     F .text	00000088 wakeup
+00000000 l    df *ABS*	00000000 chthreads.c
+00000000 l    df *ABS*	00000000 chdynamic.c
+00000000 l    df *ABS*	00000000 chregistry.c
+00000000 l    df *ABS*	00000000 chmtx.c
+00000000 l    df *ABS*	00000000 chevents.c
+00000000 l    df *ABS*	00000000 chqueues.c
+00003c10 l     F .text	00000034 qwait
+00000000 l    df *ABS*	00000000 chmemcore.c
+40001004 l     O .bss	00000004 endmem
+40001008 l     O .bss	00000004 nextmem
+00000000 l    df *ABS*	00000000 chheap.c
+40001010 l     O .bss	00000020 default_heap
+00000000 l    df *ABS*	00000000 chmempools.c
+00000000 l    df *ABS*	00000000 chcore.c
+00000000 l    df *ABS*	00000000 osal.c
+00000000 l    df *ABS*	00000000 shell.c
+00004420 l     F .text	0000004c chprintf
+00004470 l     F .text	00000034 cmd_systime
+000044b0 l     F .text	000000f6 cmd_info
+000045b0 l     F .text	000000a0 _strtok.constprop.2
+000047e0 l     F .text	000002fe shell_thread
+40000c18 l     O .data	00000018 local_commands
+00000000 l    df *ABS*	00000000 chprintf.c
+00004ae0 l     F .text	00000054 long_to_string_with_divisor.constprop.0
+00000000 l    df *ABS*	00000000 board.c
+00007030 l     O .rodata	000000d0 spc_siu_init
+00007110 l     O .rodata	0000003f spc_padsels_init
+00000000 l    df *ABS*	00000000 osal_cfg.c
+00000000 l    df *ABS*	00000000 main.c
+00005060 l     F .text	0000006a ThreadWiper
+000050d0 l     F .text	000000c2 ThreadBlinkers
+40001038 l     O .bss	00000268 waThread1
+400012a0 l     O .bss	00000268 waThread2
+000071a0 l     O .rodata	00000008 shell_cfg_car
+000071c0 l     O .rodata	00000008 shell_cfg1
+00000000 l    df *ABS*	00000000 shellcmd.c
+00005420 l     F .text	0000004c chprintf
+00005a40 l     F .text	00000070 cmd_at
+00005ab0 l     F .text	00000056 serialprintf.constprop.13
+000071d0 l     O .rodata	0000003c states.9392
+00000000 l    df *ABS*	00000000 shellbt.c
+00005c90 l     F .text	00000054 chprintf.constprop.0
+00000000 l    df *ABS*	00000000 serialprintf.c
+00005d70 l     F .text	00000054 long_to_string_with_divisor.constprop.0
+00000000 l    df *ABS*	00000000 serial_input.c
+00006330 l     F .text	0000004e serialprintf
+00000000 l    df *ABS*	00000000 speedsensor.c
+00000000 l    df *ABS*	00000000 carcommand.c
+00000000 l    df *ABS*	00000000 components.c
+00000000 l    df *ABS*	00000000 ctype_.c
+00000000 l    df *ABS*	00000000 pwm_lld_cfg.c
+00000000 l    df *ABS*	00000000 impure.c
+40000800 l     O .data	00000418 impure_data
+00000000 l    df *ABS*	00000000 pal.c
+00000000 l    df *ABS*	00000000 chsem.c
+00000000 l    df *ABS*	00000000 chcond.c
+00000000 l    df *ABS*	00000000 chmsg.c
+00000000 l    df *ABS*	00000000 chmboxes.c
+00000000 l    df *ABS*	00000000 memstreams.c
+00000000 l    df *ABS*	00000000 memcpy.c
+00000000 l    df *ABS*	00000000 
+00040000 l       *ABS*	00000000 __flash_size__
+00000000 l       *ABS*	00000000 __irq_stack_size__
+00040000 l       *ABS*	00000000 __flash_end__
+00004000 l       *ABS*	00000000 __ram_size__
+00000000 l       .boot0	00000000 __flash_start__
+00000800 l       *ABS*	00000000 __process_stack_size__
+00007100 g     O .rodata	0000000c pal_default_config
+00001100  w      .text	00000000 vector119
+00001100  w      .text	00000000 vector87
+00001100  w      .text	00000000 vector86
+00004360 g     F .text	00000002 port_init
+00003790 g     F .text	00000008 chThdExit
+000030b0 g     F .text	000000a4 chSysTimerHandlerI
+40001784 g     O .bss	00000001 bFullDemoRunning
+00003bc0 g     F .text	00000044 chEvtBroadcastFlagsI
+00003370 g     F .text	00000082 chSchGoSleepTimeoutS
+00001100  w    F .text	00000000 _unhandled_irq
+00001100  w      .text	00000000 vector91
+00001100  w      .text	00000000 vector33
+00001100  w      .text	00000000 vector108
+00001100  w      .text	00000000 vector43
+00005640 g     F .text	0000008e cmd_threads
+00003910 g     F .text	00000170 chMtxLockS
+000043e0 g     F .text	00000034 osalInit
+40000800 g       .data	00000000 __data_start__
+00001100  w      .text	00000000 vector115
+00001100  w      .text	00000000 vector122
+000041f0 g     F .text	000000d8 chHeapFree
+40008c30 g       .data	00000000 __sdata_start__
+00001100  w      .text	00000000 vector7
+00001100  w      .text	00000000 vector61
+00002300 g     F .text	00000076 vector24
+00001100  w      .text	00000000 vector111
+00001100  w      .text	00000000 vector67
+00001100  w      .text	00000000 vector138
+00001100  w      .text	00000000 vector74
+00001590 g     F .text	00000046 pwmStart
+000066f0 g     F .text	000000ba initEvents
+00001100  w      .text	00000000 vector57
+000000e0  w      .boot0	00000000 _IVOR1
+00000800 g       .boot1	00000000 _vectors
+00005cf0 g     F .text	00000072 ThreadGPS
+00002e70 g     F .text	0000000c vector99
+00001100  w      .text	00000000 vector141
+00003330 g     F .text	00000038 chSchGoSleepS
+0000f9d0 g       .rodata	00000000 __sdata2_start__
+00000008 g     F .boot0	00000000 _reset_address
+00001100  w      .text	00000000 vector3
+00001100  w      .text	00000000 vector2
+00002910 g     F .text	000002ac pwm_lld_start
+000000e0  w      .boot0	00000000 _IVOR12
+40001c68 g       .bss	00000000 __heap_base__
+00003640 g     F .text	00000084 chThdCreateI
+00006490 g     F .text	0000022c vector41
+00002180 g     F .text	00000076 vector21
+00006880 g     F .text	000000a8 drivecmd
+00001100  w      .text	00000000 vector118
+00003400 g     F .text	00000080 chSchWakeupS
+00001100  w      .text	00000000 vector70
+00001100  w      .text	00000000 vector69
+00001740 g     F .text	00000068 sdIncomingDataI
+00001100  w      .text	00000000 vector64
+00001100  w      .text	00000000 vector27
+00003f00 g     F .text	00000086 chOQGetI
+000032c0 g     F .text	00000022 _scheduler_init
+00001100  w      .text	00000000 vector132
+000036d0 g     F .text	0000002a chThdCreateStatic
+00003590 g     F .text	00000024 chSchRescheduleS
+00005bd0 g     F .text	000000be ThreadCarBlinker
+000079d0 g       .rodata	00000000 __romdata_start__
+00001100  w      .text	00000000 vector1
+00001100  w      .text	00000000 vector38
+00007720 g     O .rodata	00000060 shell_commands_car
+00001100  w      .text	00000000 vector133
+00001100  w      .text	00000000 vector73
+00000140 g       .boot0	00000000 _ivor_exit
+00001100  w      .text	00000000 vector144
+40000d0c g     O .bss	00000078 SD2
+000032f0 g     F .text	0000003a chSchReadyI
+400019f0 g     O .bss	00000001 bGpsRunning
+00004370 g     F .text	00000008 port_halt
+40000800 g       .stacks	00000000 __main_thread_stack_end__
+00003160 g     F .text	00000022 _vt_init
+00002e90 g     F .text	0000000c vector101
+000040f0 g     F .text	00000026 _heap_init
+000000e0  w      .boot0	00000000 _IVOR8
+00001100  w      .text	00000000 vector128
+00001530 g     F .text	0000002a halInit
+00002e60 g     F .text	0000000c vector81
+00001d80 g     F .text	00000076 vector13
+00001100  w      .text	00000000 vector51
+00001f00 g     F .text	00000076 vector16
+000034c0 g     F .text	00000066 chSchDoRescheduleBehind
+40001510 g     O .bss	00000004 nWiper
+00001100  w      .text	00000000 vector54
+00002080 g     F .text	00000076 vector19
+40004000 g       *ABS*	00000000 __heap_end__
+40000c3c g       .data	00000000 __bss_start__
+000000e0  w      .boot0	00000000 _IVOR3
+00003830 g     F .text	00000058 chThdCreateFromHeap
+00001100  w      .text	00000000 vector92
+000076a0 g     O .rodata	00000078 shell_commands
+00001100  w      .text	00000000 vector140
+00001100  w      .text	00000000 vector45
+00002e40 g     F .text	0000000c vector79
+00003d80 g     F .text	000000b6 chIQReadTimeout
+00001100  w      .text	00000000 vector39
+000042d0 g     F .text	00000070 chHeapStatus
+00001100  w      .text	00000000 vector35
+00001100  w      .text	00000000 vector113
+00001100  w      .text	00000000 vector125
+40001514 g     O .bss	00000004 nBlinkers
+00001820 g     F .text	0000011e hal_lld_init
+000000e0  w      .boot0	00000000 _IVOR6
+00002530 g     F .text	0000008a pwm_active_emios0_clock
+00003720 g     F .text	0000006e chThdExitS
+00001100  w      .text	00000000 vector63
+00002400 g     F .text	00000076 vector26
+40000c34 g     O .data	00000004 _global_impure_ptr
+00005760 g     F .text	00000054 startdemo
+00001100  w      .text	00000000 vector4
+00005830 g     F .text	00000032 turn
+00001100  w      .text	00000000 vector136
+00001bf0 g     F .text	00000088 vector10
+40001030 g     O .bss	00000004 shell_terminated
+00006930 g     F .text	000000f2 switchlightcmd
+00001800 g     F .text	00000020 vector59
+00001100  w      .text	00000000 vector85
+00001100  w      .text	00000000 vector84
+00004b40 g     F .text	000004e4 chvprintf
+00004650 g     F .text	0000000e shellInit
+00001100  w      .text	00000000 vector47
+0000151c g     F .text	00000014 strtol
+00001100  w      .text	00000000 vector42
+00001100  w      .text	00000000 vector114
+00001100  w      .text	00000000 vector143
+000000e0  w      .boot0	00000000 _IVOR5
+00003190 g     F .text	00000056 chVTSetI
+00001100  w      .text	00000000 vector130
+00005510 g     F .text	00000080 stopgps
+00001100  w      .text	00000000 vector9
+00001100  w      .text	00000000 vector142
+00002e80 g     F .text	0000000c vector100
+400019f8 g     O .bss	00000268 waThreadGPS
+00005b10 g     F .text	000000b6 light
+00002ea0 g     F .text	00000096 sd_lld_init
+00001100  w      .text	00000000 vector60
+00002280 g     F .text	00000076 vector23
+00001100  w      .text	00000000 vector66
+00001100  w      .text	00000000 vector29
+00001100  w      .text	00000000 vector135
+00003a80 g     F .text	0000001c chMtxLock
+00001100  w      .text	00000000 vector77
+00006380 g     F .text	0000010a get_string
+00002480 g     F .text	00000064 edmaInit
+000040d0 g     F .text	00000016 chCoreStatus
+000035c0 g     F .text	0000001c chSchDoReschedule
+00003030 g     F .text	00000074 chSysInit
+00001100  w      .text	00000000 vector98
+00001100  w      .text	00000000 vector97
+40001508 g     O .bss	00000004 carMode
+00004380 g     F .text	0000003c port_dummy1
+00005870 g     F .text	00000052 blink
+00001100  w      .text	00000000 vector32
+00003700 g     F .text	00000020 chThdSleep
+00003c50 g     F .text	0000001e chIQInit
+000017b0 g     F .text	00000044 sdRequestDataI
+00001100  w      .text	00000000 vector131
+000058d0 g     F .text	00000166 mode
+00001118 g     F .text	00000008 _atoi_r
+40000c3c g       .data	00000000 __data_end__
+00001100  w      .text	00000000 vector0
+000000e0  w      .boot0	00000000 _IVOR13
+00002510 g     F .text	00000012 increase_emios0_active_channels
+00002720 g     F .text	0000009c vector145
+000025c0 g     F .text	000000d8 _pal_lld_init
+40001c68 g       .bss	00000000 __bss_end__
+00001100  w      .text	00000000 vector107
+00001100  w      .text	00000000 vector40
+00001690 g     F .text	00000004 sdInit
+00001100  w      .text	00000000 vector102
+00001100  w      .text	00000000 vector56
+00004060 g     F .text	0000002e _core_init
+000028b0 g     F .text	0000005a pwm_lld_init
+00001100  w      .text	00000000 vector68
+00001100  w      .text	00000000 vector6
+00001100  w      .text	00000000 vector129
+00001700 g     F .text	0000003c sdStart
+00001100  w      .text	00000000 vector152
+000015e0 g     F .text	00000022 pwmEnableChannel
+00001100  w      .text	00000000 vector37
+00004380 g       .text	00000000 _port_switch
+00001100  w      .text	00000000 vector71
+00001120 g     F .text	00000080 strcasecmp
+000001da  w    F .boot0	00000000 __late_init
+000067b0 g     F .text	000000cc turncmd
+40000fd8 g     O .bss	00000010 vtlist
+00001100  w      .text	00000000 vector112
+00004090 g     F .text	0000003a chCoreAlloc
+00004690 g     F .text	00000010 shellCreate
+00001b80 g     F .text	0000002e halSPCSetPeripheralClockMode
+00004120 g     F .text	000000c8 chHeapAlloc
+000055c0 g     F .text	00000080 rpm
+00001d00 g     F .text	00000076 vector12
+00001100  w      .text	00000000 vector109
+00002100 g     F .text	00000076 vector20
+00001560 g     F .text	00000004 pwmInit
+00001100  w      .text	00000000 vector53
+00002000 g     F .text	00000076 vector18
+00001100  w      .text	00000000 vector95
+000024f0 g     F .text	0000000e reset_emios0_active_channels
+40001c64 g     O .bss	00000004 counter
+00001100  w      .text	00000000 vector49
+00001100  w      .text	00000000 vector44
+00001100  w      .text	00000000 vector78
+00001100  w      .text	00000000 vector117
+00001100  w      .text	00000000 vector82
+00001100  w      .text	00000000 vector8
+00001100  w      .text	00000000 vector149
+000000e0  w      .boot0	00000000 _IVOR7
+000056d0 g     F .text	0000008a startgps
+000000e0  w      .boot0	00000000 _IVOR2
+000051a0 g     F .text	0000014e main
+00001100  w      .text	00000000 vector106
+40000fe8 g     O .bss	0000001c rlist
+00001100  w      .text	00000000 vector90
+00003890 g     F .text	0000001e chRegFirstThread
+00005470 g     F .text	0000001c stopdemo
+00001100  w      .text	00000000 vector62
+00002380 g     F .text	00000076 vector25
+00001100  w      .text	00000000 vector120
+00000160 g     F .boot0	00000000 _boot_address
+00001340 g     F .text	000001dc _strtol_r
+00002bc0 g     F .text	000000a0 pwm_lld_enable_channel
+40000c84 g     O .bss	00000010 PWMD1
+00001100  w      .text	00000000 vector50
+00001e80 g     F .text	00000076 vector15
+00001100  w      .text	00000000 vector151
+00001100  w      .text	00000000 vector83
+00003900 g     F .text	0000000e chMtxInit
+00001100  w      .text	00000000 vector89
+00001100  w      .text	00000000 vector88
+00001000 g       .boot1	00000000 __ivpr_base__
+00003010 g     F .text	00000018 _idle_thread
+00003f90 g     F .text	000000c4 chOQWriteTimeout
+00001570 g     F .text	00000012 pwmObjectInit
+00006c10 g     O .rodata	00000016 ch_debug
+00001100  w      .text	00000000 vector34
+00001100  w      .text	00000000 vector46
+00003b50 g     F .text	00000068 chEvtSignalI
+00001100  w      .text	00000000 vector134
+40000000 g       .boot0	00000000 __ram_start__
+000043c0 g       .text	00000000 _port_thread_start
+000000e0  w      .boot0	00000000 _IVOR11
+40001518 g     O .bss	00000268 waThreadFullDemo
+00003530 g     F .text	00000060 chSchDoRescheduleAhead
+000052f0 g     F .text	00000122 ThreadFullDemo
+40000000 g       .stacks	00000000 __process_stack_base__
+000000e0  w      .boot0	00000000 _IVOR15
+00001100  w      .text	00000000 vector30
+000000f0 g     F .boot0	00000000 _IVOR4
+40000c38 g     O .data	00000004 _impure_ptr
+00001100  w      .text	00000000 vector127
+40001c60 g     O .bss	00000004 tpgps
+000046a0 g     F .text	00000136 shellGetLine
+40001788 g     O .bss	00000268 waThreadCarBlinker
+000037a0 g     F .text	00000084 chThdRelease
+00001100  w      .text	00000000 vector76
+00001100  w      .text	00000000 vector75
+00001100  w      .text	00000000 vector150
+00001100  w      .text	00000000 vector58
+00005590 g     F .text	00000028 speed
+40000dd0 g     O .bss	00000208 _idle_thread_wa
+000000e0  w      .boot0	00000000 _IVOR0
+00003e40 g     F .text	0000001a chOQInit
+00001100  w      .text	00000000 vector123
+00003d00 g     F .text	0000007e chIQGetTimeout
+00001100  w      .text	00000000 vector96
+000057c0 g     F .text	0000006e drive
+00004340 g     F .text	00000014 chPoolFree
+00001100  w      .text	00000000 vector31
+00001100  w      .text	00000000 vector139
+00001940 g     F .text	00000232 spc_clock_init
+00001100  w      .text	00000000 vector153
+00003c70 g     F .text	00000086 chIQPutI
+00001100  w      .text	00000000 vector121
+00001100  w      .text	00000000 vector5
+00003aa0 g     F .text	000000ac chMtxUnlock
+00001100  w      .text	00000000 vector124
+00001100  w      .text	00000000 vector110
+40000000 g       .stacks	00000000 __irq_stack_end__
+00001100  w      .text	00000000 vector137
+000000e0  w      .boot0	00000000 _IVOR14
+00005dd0 g     F .text	00000558 serialvprintf
+40004000 g       *ABS*	00000000 __ram_end__
+00002200 g     F .text	00000076 vector22
+00001100  w      .text	00000000 vector72
+00001100  w      .text	00000000 vector55
+000031f0 g     F .text	0000003e chVTResetI
+00001100  w      .text	00000000 vector126
+00002500 g     F .text	0000000a get_emios0_active_channels
+00001100  w      .text	00000000 vector65
+00001100  w      .text	00000000 vector28
+000000e0  w      .boot0	00000000 _unhandled_exception
+00004660 g     F .text	0000002c shellExit
+000016a0 g     F .text	00000058 sdObjectInit
+000000e0  w      .boot0	00000000 _IVOR9
+40000000 g       .stacks	00000000 __irq_stack_base__
+40000000 g       .stacks	00000000 __main_thread_stack_base__
+000000e0  w      .boot0	00000000 _IVOR10
+00002810 g     F .text	00000044 vector147
+40000c30 g     O .data	00000004 __ctype_ptr__
+000066c0 g     F .text	00000030 initSpeedSensor
+00005050 g     F .text	00000002 osal_cfg_init
+00001100  w      .text	00000000 vector104
+00001110 g     F .text	00000008 atoi
+000043c0 g     F .text	00000014 port_dummy2
+00001100  w      .text	00000000 vector116
+00006a70 g     O .rodata	00000101 _ctype_
+00003480 g     F .text	0000003e chSchIsPreemptionRequired
+00005490 g     F .text	0000007a cmd_mem
+40000c94 g     O .bss	00000078 SD1
+000012d0 g     F .text	00000066 strspn
+000035e0 g     F .text	00000060 _thread_init
+00001100  w      .text	00000000 vector52
+00001f80 g     F .text	00000076 vector17
+000011a0 g     F .text	0000009a strlen
+00006a30 g     F .text	0000001a stopcmd
+000038b0 g     F .text	00000046 chRegNextThread
+40001780 g     O .bss	00000004 iCarBlinker
+00001100  w      .text	00000000 vector94
+00001100  w      .text	00000000 vector93
+00003e60 g     F .text	00000098 chOQPutTimeout
+00006a50 g     F .text	0000001e componentsInit
+00001100  w      .text	00000000 vector48
+00005040 g     F .text	00000002 boardInit
+00002f40 g     F .text	000000c6 sd_lld_start
+00002860 g     F .text	00000044 vector148
+000001d4  w    F .boot0	00000000 _main_exit_handler
+00002e50 g     F .text	0000000c vector80
+00001100  w      .text	00000000 vector154
+00001bb0 g     F .text	0000003a halSPCGetSystemClock
+00001100  w      .text	00000000 vector36
+4000150c g     O .bss	00000001 bLightOn
+00001100  w      .text	00000000 vector105
+40000800 g       .stacks	00000000 __process_stack_end__
+00005030 g     F .text	00000004 __early_init
+000027c0 g     F .text	00000044 vector146
+00001100  w      .text	00000000 vector103
+00001000 g       .boot1	00000000 IVORS
+00001240 g     F .text	00000082 strpbrk
+00001c80 g     F .text	00000072 vector11
+00007150 g     O .rodata	00000048 pwm_config_cfgmotor
+00001e00 g     F .text	00000076 vector14
+
+

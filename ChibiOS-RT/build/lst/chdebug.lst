@@ -1,0 +1,221 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccHpFG0a.s 			page 1
+
+
+   1              		.file	"chdebug.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              	.Letext0:
+   6              		.section	.debug_info,"",@progbits
+   7              	.Ldebug_info0:
+   8 0000 00000075 		.4byte	0x75
+   9 0004 0002     		.2byte	0x2
+  10 0006 00000000 		.4byte	.Ldebug_abbrev0
+  11 000a 04       		.byte	0x4
+  12 000b 01       		.uleb128 0x1
+  13 000c 00000000 		.4byte	.LASF12
+  14 0010 01       		.byte	0x1
+  15 0011 00000000 		.4byte	.LASF13
+  16 0015 00000000 		.4byte	.LASF14
+  17 0019 00000000 		.4byte	.Ldebug_line0
+  18 001d 02       		.uleb128 0x2
+  19 001e 04       		.byte	0x4
+  20 001f 05       		.byte	0x5
+  21 0020 696E7400 		.string	"int"
+  22 0024 03       		.uleb128 0x3
+  23 0025 04       		.byte	0x4
+  24 0026 07       		.byte	0x7
+  25 0027 00000000 		.4byte	.LASF0
+  26 002b 03       		.uleb128 0x3
+  27 002c 04       		.byte	0x4
+  28 002d 05       		.byte	0x5
+  29 002e 00000000 		.4byte	.LASF1
+  30 0032 03       		.uleb128 0x3
+  31 0033 01       		.byte	0x1
+  32 0034 06       		.byte	0x6
+  33 0035 00000000 		.4byte	.LASF2
+  34 0039 03       		.uleb128 0x3
+  35 003a 01       		.byte	0x1
+  36 003b 08       		.byte	0x8
+  37 003c 00000000 		.4byte	.LASF3
+  38 0040 03       		.uleb128 0x3
+  39 0041 02       		.byte	0x2
+  40 0042 05       		.byte	0x5
+  41 0043 00000000 		.4byte	.LASF4
+  42 0047 03       		.uleb128 0x3
+  43 0048 02       		.byte	0x2
+  44 0049 07       		.byte	0x7
+  45 004a 00000000 		.4byte	.LASF5
+  46 004e 03       		.uleb128 0x3
+  47 004f 04       		.byte	0x4
+  48 0050 07       		.byte	0x7
+  49 0051 00000000 		.4byte	.LASF6
+  50 0055 03       		.uleb128 0x3
+  51 0056 08       		.byte	0x8
+  52 0057 05       		.byte	0x5
+  53 0058 00000000 		.4byte	.LASF7
+  54 005c 03       		.uleb128 0x3
+  55 005d 08       		.byte	0x8
+  56 005e 07       		.byte	0x7
+  57 005f 00000000 		.4byte	.LASF8
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccHpFG0a.s 			page 2
+
+
+  58 0063 03       		.uleb128 0x3
+  59 0064 01       		.byte	0x1
+  60 0065 02       		.byte	0x2
+  61 0066 00000000 		.4byte	.LASF9
+  62 006a 03       		.uleb128 0x3
+  63 006b 04       		.byte	0x4
+  64 006c 07       		.byte	0x7
+  65 006d 00000000 		.4byte	.LASF10
+  66 0071 03       		.uleb128 0x3
+  67 0072 01       		.byte	0x1
+  68 0073 08       		.byte	0x8
+  69 0074 00000000 		.4byte	.LASF11
+  70 0078 00       		.byte	0
+  71              		.section	.debug_abbrev,"",@progbits
+  72              	.Ldebug_abbrev0:
+  73 0000 01       		.uleb128 0x1
+  74 0001 11       		.uleb128 0x11
+  75 0002 01       		.byte	0x1
+  76 0003 25       		.uleb128 0x25
+  77 0004 0E       		.uleb128 0xe
+  78 0005 13       		.uleb128 0x13
+  79 0006 0B       		.uleb128 0xb
+  80 0007 03       		.uleb128 0x3
+  81 0008 0E       		.uleb128 0xe
+  82 0009 1B       		.uleb128 0x1b
+  83 000a 0E       		.uleb128 0xe
+  84 000b 10       		.uleb128 0x10
+  85 000c 06       		.uleb128 0x6
+  86 000d 00       		.byte	0
+  87 000e 00       		.byte	0
+  88 000f 02       		.uleb128 0x2
+  89 0010 24       		.uleb128 0x24
+  90 0011 00       		.byte	0
+  91 0012 0B       		.uleb128 0xb
+  92 0013 0B       		.uleb128 0xb
+  93 0014 3E       		.uleb128 0x3e
+  94 0015 0B       		.uleb128 0xb
+  95 0016 03       		.uleb128 0x3
+  96 0017 08       		.uleb128 0x8
+  97 0018 00       		.byte	0
+  98 0019 00       		.byte	0
+  99 001a 03       		.uleb128 0x3
+ 100 001b 24       		.uleb128 0x24
+ 101 001c 00       		.byte	0
+ 102 001d 0B       		.uleb128 0xb
+ 103 001e 0B       		.uleb128 0xb
+ 104 001f 3E       		.uleb128 0x3e
+ 105 0020 0B       		.uleb128 0xb
+ 106 0021 03       		.uleb128 0x3
+ 107 0022 0E       		.uleb128 0xe
+ 108 0023 00       		.byte	0
+ 109 0024 00       		.byte	0
+ 110 0025 00       		.byte	0
+ 111              		.section	.debug_aranges,"",@progbits
+ 112 0000 00000014 		.4byte	0x14
+ 113 0004 0002     		.2byte	0x2
+ 114 0006 00000000 		.4byte	.Ldebug_info0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccHpFG0a.s 			page 3
+
+
+ 115 000a 04       		.byte	0x4
+ 116 000b 00       		.byte	0
+ 117 000c 0000     		.2byte	0
+ 118 000e 0000     		.2byte	0
+ 119 0010 00000000 		.4byte	0
+ 120 0014 00000000 		.4byte	0
+ 121              		.section	.debug_line,"",@progbits
+ 122              	.Ldebug_line0:
+ 123 0000 00000019 		.section	.debug_str,"MS",@progbits,1
+ 123      00020000 
+ 123      00130201 
+ 123      FB0E0D00 
+ 123      01010101 
+ 124              	.LASF7:
+ 125 0000 6C6F6E67 		.string	"long long int"
+ 125      206C6F6E 
+ 125      6720696E 
+ 125      7400
+ 126              	.LASF0:
+ 127 000e 756E7369 		.string	"unsigned int"
+ 127      676E6564 
+ 127      20696E74 
+ 127      00
+ 128              	.LASF13:
+ 129 001b 2E2F636F 		.string	"./components/chibios_rt_portable_kernel_component/lib/src/chdebug.c"
+ 129      6D706F6E 
+ 129      656E7473 
+ 129      2F636869 
+ 129      62696F73 
+ 130              	.LASF6:
+ 131 005f 6C6F6E67 		.string	"long unsigned int"
+ 131      20756E73 
+ 131      69676E65 
+ 131      6420696E 
+ 131      7400
+ 132              	.LASF8:
+ 133 0071 6C6F6E67 		.string	"long long unsigned int"
+ 133      206C6F6E 
+ 133      6720756E 
+ 133      7369676E 
+ 133      65642069 
+ 134              	.LASF12:
+ 135 0088 47       		.ascii	"G"
+ 136 0089 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 136      20342E39 
+ 136      2E322032 
+ 136      30313431 
+ 136      30333020 
+ 137              	.LASF14:
+ 138 018a 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 138      50433553 
+ 138      74756469 
+ 138      6F5C776F 
+ 138      726B7370 
+ 139              	.LASF3:
+ 140 01d2 756E7369 		.string	"unsigned char"
+ 140      676E6564 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccHpFG0a.s 			page 4
+
+
+ 140      20636861 
+ 140      7200
+ 141              	.LASF11:
+ 142 01e0 63686172 		.string	"char"
+ 142      00
+ 143              	.LASF1:
+ 144 01e5 6C6F6E67 		.string	"long int"
+ 144      20696E74 
+ 144      00
+ 145              	.LASF9:
+ 146 01ee 5F426F6F 		.string	"_Bool"
+ 146      6C00
+ 147              	.LASF5:
+ 148 01f4 73686F72 		.string	"short unsigned int"
+ 148      7420756E 
+ 148      7369676E 
+ 148      65642069 
+ 148      6E7400
+ 149              	.LASF2:
+ 150 0207 7369676E 		.string	"signed char"
+ 150      65642063 
+ 150      68617200 
+ 151              	.LASF4:
+ 152 0213 73686F72 		.string	"short int"
+ 152      7420696E 
+ 152      7400
+ 153              	.LASF10:
+ 154 021d 73697A65 		.string	"sizetype"
+ 154      74797065 
+ 154      00
+ 155              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccHpFG0a.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chdebug.c
+
+NO UNDEFINED SYMBOLS

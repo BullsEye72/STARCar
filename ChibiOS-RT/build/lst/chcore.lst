@@ -1,0 +1,593 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 1
+
+
+   1              		.file	"chcore.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text.port_init,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl port_init
+   9              		.type	port_init, @function
+  10              	port_init:
+  11              	.LFB15:
+  12              		.file 1 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c"
+  13              		.loc 1 42 0
+  14              		.cfi_startproc
+  15 0000 0004     		se_blr
+  16              		.cfi_endproc
+  17              	.LFE15:
+  18              		.size	port_init, .-port_init
+  19              		.section	.text.port_halt,"axv",@progbits
+  20              		.align 1
+  21              		.p2align 4,,15
+  22              		.globl port_halt
+  23              		.type	port_halt, @function
+  24              	port_halt:
+  25              	.LFB16:
+  26              		.loc 1 67 0
+  27              		.cfi_startproc
+  28              		.loc 1 69 0
+  29              	 # 69 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  30 0000 7C000146 		wrteei  0
+  31              	 # 0 "" 2
+  32              	.L3:
+  33              		.loc 1 71 0 discriminator 1
+  34 0004 78000000 		e_b .L3
+  35              		.cfi_endproc
+  36              	.LFE16:
+  37              		.size	port_halt, .-port_halt
+  38              		.section	.text.port_dummy1,"axv",@progbits
+  39              		.align 1
+  40              		.p2align 4,,15
+  41              		.globl port_dummy1
+  42              		.type	port_dummy1, @function
+  43              	port_dummy1:
+  44              	.LFB17:
+  45              		.loc 1 131 0
+  46              		.cfi_startproc
+  47              		.loc 1 133 0
+  48              	 # 133 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  49              		.global _port_switch
+  50              	 # 0 "" 2
+  51              		.loc 1 134 0
+  52              	 # 134 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  53              		_port_switch:
+  54              	 # 0 "" 2
+  55              		.loc 1 135 0
+  56              	 # 135 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  57 0000 182184B0 		e_subi      %sp, %sp, 80
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 2
+
+
+  58              	 # 0 "" 2
+  59              		.loc 1 136 0
+  60              	 # 136 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  61 0004 7C0802A6 		mflr        %r0
+  62              	 # 0 "" 2
+  63              		.loc 1 137 0
+  64              	 # 137 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  65 0008 54010054 		e_stw       %r0, 84(%sp)
+  66              	 # 0 "" 2
+  67              		.loc 1 138 0
+  68              	 # 138 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  69 000c 7C000026 		mfcr        %r0
+  70              	 # 0 "" 2
+  71              		.loc 1 139 0
+  72              	 # 139 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  73 0010 54010000 		e_stw       %r0, 0(%sp)
+  74              	 # 0 "" 2
+  75              		.loc 1 140 0
+  76              	 # 140 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  77 0014 19C10904 		e_stmw      %r14, 4(%sp)
+  78              	 # 0 "" 2
+  79              		.loc 1 142 0
+  80              	 # 142 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  81 0018 5424000C 		e_stw       %sp, 12(%r4)
+  82              	 # 0 "" 2
+  83              		.loc 1 143 0
+  84              	 # 143 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  85 001c 5023000C 		e_lwz       %sp, 12(%r3)
+  86              	 # 0 "" 2
+  87              		.loc 1 145 0
+  88              	 # 145 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  89 0020 19C10804 		e_lmw       %r14, 4(%sp)
+  90              	 # 0 "" 2
+  91              		.loc 1 146 0
+  92              	 # 146 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  93 0024 50010000 		e_lwz       %r0, 0(%sp)
+  94              	 # 0 "" 2
+  95              		.loc 1 147 0
+  96              	 # 147 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+  97 0028 7C0FF120 		mtcr        %r0
+  98              	 # 0 "" 2
+  99              		.loc 1 148 0
+ 100              	 # 148 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 101 002c 50010054 		e_lwz       %r0, 84(%sp)
+ 102              	 # 0 "" 2
+ 103              		.loc 1 149 0
+ 104              	 # 149 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 105 0030 7C0803A6 		mtlr        %r0
+ 106              	 # 0 "" 2
+ 107              		.loc 1 150 0
+ 108              	 # 150 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 109 0034 18218050 		e_addi      %sp, %sp, 80
+ 110              	 # 0 "" 2
+ 111              		.loc 1 151 0
+ 112              	 # 151 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 113 0038 0004     		se_blr
+ 114              	 # 0 "" 2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 3
+
+
+ 115 003a 0004     		se_blr
+ 116              		.cfi_endproc
+ 117              	.LFE17:
+ 118              		.size	port_dummy1, .-port_dummy1
+ 119              		.section	.text.port_dummy2,"axv",@progbits
+ 120              		.align 1
+ 121              		.p2align 4,,15
+ 122              		.globl port_dummy2
+ 123              		.type	port_dummy2, @function
+ 124              	port_dummy2:
+ 125              	.LFB18:
+ 126              		.loc 1 163 0
+ 127              		.cfi_startproc
+ 128              		.loc 1 165 0
+ 129              	 # 165 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 130              		.global _port_thread_start
+ 131              	 # 0 "" 2
+ 132              		.loc 1 166 0
+ 133              	 # 166 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 134              		_port_thread_start:
+ 135              	 # 0 "" 2
+ 136              	.LBB4:
+ 137              	.LBB5:
+ 138              		.file 2 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h"
+ 139              		.loc 2 164 0
+ 140              	 # 164 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h" 1
+ 141 0000 7C008146 		wrteei  1
+ 142              	 # 0 "" 2
+ 143              	.LBE5:
+ 144              	.LBE4:
+ 145              		.loc 1 168 0
+ 146              	 # 168 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 147 0004 7FE3FB78 		mr          %r3, %r31
+ 148              	 # 0 "" 2
+ 149              		.loc 1 169 0
+ 150              	 # 169 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 151 0008 7FC903A6 		mtctr       %r30
+ 152              	 # 0 "" 2
+ 153              		.loc 1 170 0
+ 154              	 # 170 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 155 000c 0007     		se_bctrl
+ 156              	 # 0 "" 2
+ 157              		.loc 1 171 0
+ 158              	 # 171 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c" 1
+ 159 000e 78000001 		e_bl        chThdExit
+ 160              	 # 0 "" 2
+ 161 0012 0004     		se_blr
+ 162              		.cfi_endproc
+ 163              	.LFE18:
+ 164              		.size	port_dummy2, .-port_dummy2
+ 165              		.section	".text","axv"
+ 166              	.Letext0:
+ 167              		.section	.debug_info,"",@progbits
+ 168              	.Ldebug_info0:
+ 169 0000 000000EE 		.4byte	0xee
+ 170 0004 0002     		.2byte	0x2
+ 171 0006 00000000 		.4byte	.Ldebug_abbrev0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 4
+
+
+ 172 000a 04       		.byte	0x4
+ 173 000b 01       		.uleb128 0x1
+ 174 000c 00000000 		.4byte	.LASF15
+ 175 0010 01       		.byte	0x1
+ 176 0011 00000000 		.4byte	.LASF16
+ 177 0015 00000000 		.4byte	.LASF17
+ 178 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 179 001d 00000000 		.4byte	0
+ 180 0021 00000000 		.4byte	0
+ 181 0025 00000000 		.4byte	.Ldebug_line0
+ 182 0029 02       		.uleb128 0x2
+ 183 002a 04       		.byte	0x4
+ 184 002b 05       		.byte	0x5
+ 185 002c 696E7400 		.string	"int"
+ 186 0030 03       		.uleb128 0x3
+ 187 0031 04       		.byte	0x4
+ 188 0032 07       		.byte	0x7
+ 189 0033 00000000 		.4byte	.LASF0
+ 190 0037 03       		.uleb128 0x3
+ 191 0038 04       		.byte	0x4
+ 192 0039 05       		.byte	0x5
+ 193 003a 00000000 		.4byte	.LASF1
+ 194 003e 03       		.uleb128 0x3
+ 195 003f 01       		.byte	0x1
+ 196 0040 06       		.byte	0x6
+ 197 0041 00000000 		.4byte	.LASF2
+ 198 0045 03       		.uleb128 0x3
+ 199 0046 01       		.byte	0x1
+ 200 0047 08       		.byte	0x8
+ 201 0048 00000000 		.4byte	.LASF3
+ 202 004c 03       		.uleb128 0x3
+ 203 004d 02       		.byte	0x2
+ 204 004e 05       		.byte	0x5
+ 205 004f 00000000 		.4byte	.LASF4
+ 206 0053 03       		.uleb128 0x3
+ 207 0054 02       		.byte	0x2
+ 208 0055 07       		.byte	0x7
+ 209 0056 00000000 		.4byte	.LASF5
+ 210 005a 03       		.uleb128 0x3
+ 211 005b 04       		.byte	0x4
+ 212 005c 07       		.byte	0x7
+ 213 005d 00000000 		.4byte	.LASF6
+ 214 0061 03       		.uleb128 0x3
+ 215 0062 08       		.byte	0x8
+ 216 0063 05       		.byte	0x5
+ 217 0064 00000000 		.4byte	.LASF7
+ 218 0068 03       		.uleb128 0x3
+ 219 0069 08       		.byte	0x8
+ 220 006a 07       		.byte	0x7
+ 221 006b 00000000 		.4byte	.LASF8
+ 222 006f 03       		.uleb128 0x3
+ 223 0070 01       		.byte	0x1
+ 224 0071 02       		.byte	0x2
+ 225 0072 00000000 		.4byte	.LASF9
+ 226 0076 03       		.uleb128 0x3
+ 227 0077 04       		.byte	0x4
+ 228 0078 07       		.byte	0x7
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 5
+
+
+ 229 0079 00000000 		.4byte	.LASF10
+ 230 007d 03       		.uleb128 0x3
+ 231 007e 01       		.byte	0x1
+ 232 007f 08       		.byte	0x8
+ 233 0080 00000000 		.4byte	.LASF11
+ 234 0084 04       		.uleb128 0x4
+ 235 0085 00000000 		.4byte	.LASF18
+ 236 0089 02       		.byte	0x2
+ 237 008a A0       		.byte	0xa0
+ 238 008b 01       		.byte	0x1
+ 239 008c 03       		.byte	0x3
+ 240 008d 05       		.uleb128 0x5
+ 241 008e 01       		.byte	0x1
+ 242 008f 00000000 		.4byte	.LASF12
+ 243 0093 01       		.byte	0x1
+ 244 0094 2A       		.byte	0x2a
+ 245 0095 01       		.byte	0x1
+ 246 0096 00000000 		.4byte	.LFB15
+ 247 009a 00000000 		.4byte	.LFE15
+ 248 009e 02       		.byte	0x2
+ 249 009f 71       		.byte	0x71
+ 250 00a0 00       		.sleb128 0
+ 251 00a1 01       		.byte	0x1
+ 252 00a2 05       		.uleb128 0x5
+ 253 00a3 01       		.byte	0x1
+ 254 00a4 00000000 		.4byte	.LASF13
+ 255 00a8 01       		.byte	0x1
+ 256 00a9 43       		.byte	0x43
+ 257 00aa 01       		.byte	0x1
+ 258 00ab 00000000 		.4byte	.LFB16
+ 259 00af 00000000 		.4byte	.LFE16
+ 260 00b3 02       		.byte	0x2
+ 261 00b4 71       		.byte	0x71
+ 262 00b5 00       		.sleb128 0
+ 263 00b6 01       		.byte	0x1
+ 264 00b7 05       		.uleb128 0x5
+ 265 00b8 01       		.byte	0x1
+ 266 00b9 00000000 		.4byte	.LASF14
+ 267 00bd 01       		.byte	0x1
+ 268 00be 83       		.byte	0x83
+ 269 00bf 01       		.byte	0x1
+ 270 00c0 00000000 		.4byte	.LFB17
+ 271 00c4 00000000 		.4byte	.LFE17
+ 272 00c8 02       		.byte	0x2
+ 273 00c9 71       		.byte	0x71
+ 274 00ca 00       		.sleb128 0
+ 275 00cb 01       		.byte	0x1
+ 276 00cc 06       		.uleb128 0x6
+ 277 00cd 01       		.byte	0x1
+ 278 00ce 00000000 		.4byte	.LASF19
+ 279 00d2 01       		.byte	0x1
+ 280 00d3 A3       		.byte	0xa3
+ 281 00d4 01       		.byte	0x1
+ 282 00d5 00000000 		.4byte	.LFB18
+ 283 00d9 00000000 		.4byte	.LFE18
+ 284 00dd 02       		.byte	0x2
+ 285 00de 71       		.byte	0x71
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 6
+
+
+ 286 00df 00       		.sleb128 0
+ 287 00e0 01       		.byte	0x1
+ 288 00e1 07       		.uleb128 0x7
+ 289 00e2 00000084 		.4byte	0x84
+ 290 00e6 00000000 		.4byte	.LBB4
+ 291 00ea 00000000 		.4byte	.LBE4
+ 292 00ee 01       		.byte	0x1
+ 293 00ef A7       		.byte	0xa7
+ 294 00f0 00       		.byte	0
+ 295 00f1 00       		.byte	0
+ 296              		.section	.debug_abbrev,"",@progbits
+ 297              	.Ldebug_abbrev0:
+ 298 0000 01       		.uleb128 0x1
+ 299 0001 11       		.uleb128 0x11
+ 300 0002 01       		.byte	0x1
+ 301 0003 25       		.uleb128 0x25
+ 302 0004 0E       		.uleb128 0xe
+ 303 0005 13       		.uleb128 0x13
+ 304 0006 0B       		.uleb128 0xb
+ 305 0007 03       		.uleb128 0x3
+ 306 0008 0E       		.uleb128 0xe
+ 307 0009 1B       		.uleb128 0x1b
+ 308 000a 0E       		.uleb128 0xe
+ 309 000b 55       		.uleb128 0x55
+ 310 000c 06       		.uleb128 0x6
+ 311 000d 11       		.uleb128 0x11
+ 312 000e 01       		.uleb128 0x1
+ 313 000f 52       		.uleb128 0x52
+ 314 0010 01       		.uleb128 0x1
+ 315 0011 10       		.uleb128 0x10
+ 316 0012 06       		.uleb128 0x6
+ 317 0013 00       		.byte	0
+ 318 0014 00       		.byte	0
+ 319 0015 02       		.uleb128 0x2
+ 320 0016 24       		.uleb128 0x24
+ 321 0017 00       		.byte	0
+ 322 0018 0B       		.uleb128 0xb
+ 323 0019 0B       		.uleb128 0xb
+ 324 001a 3E       		.uleb128 0x3e
+ 325 001b 0B       		.uleb128 0xb
+ 326 001c 03       		.uleb128 0x3
+ 327 001d 08       		.uleb128 0x8
+ 328 001e 00       		.byte	0
+ 329 001f 00       		.byte	0
+ 330 0020 03       		.uleb128 0x3
+ 331 0021 24       		.uleb128 0x24
+ 332 0022 00       		.byte	0
+ 333 0023 0B       		.uleb128 0xb
+ 334 0024 0B       		.uleb128 0xb
+ 335 0025 3E       		.uleb128 0x3e
+ 336 0026 0B       		.uleb128 0xb
+ 337 0027 03       		.uleb128 0x3
+ 338 0028 0E       		.uleb128 0xe
+ 339 0029 00       		.byte	0
+ 340 002a 00       		.byte	0
+ 341 002b 04       		.uleb128 0x4
+ 342 002c 2E       		.uleb128 0x2e
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 7
+
+
+ 343 002d 00       		.byte	0
+ 344 002e 03       		.uleb128 0x3
+ 345 002f 0E       		.uleb128 0xe
+ 346 0030 3A       		.uleb128 0x3a
+ 347 0031 0B       		.uleb128 0xb
+ 348 0032 3B       		.uleb128 0x3b
+ 349 0033 0B       		.uleb128 0xb
+ 350 0034 27       		.uleb128 0x27
+ 351 0035 0C       		.uleb128 0xc
+ 352 0036 20       		.uleb128 0x20
+ 353 0037 0B       		.uleb128 0xb
+ 354 0038 00       		.byte	0
+ 355 0039 00       		.byte	0
+ 356 003a 05       		.uleb128 0x5
+ 357 003b 2E       		.uleb128 0x2e
+ 358 003c 00       		.byte	0
+ 359 003d 3F       		.uleb128 0x3f
+ 360 003e 0C       		.uleb128 0xc
+ 361 003f 03       		.uleb128 0x3
+ 362 0040 0E       		.uleb128 0xe
+ 363 0041 3A       		.uleb128 0x3a
+ 364 0042 0B       		.uleb128 0xb
+ 365 0043 3B       		.uleb128 0x3b
+ 366 0044 0B       		.uleb128 0xb
+ 367 0045 27       		.uleb128 0x27
+ 368 0046 0C       		.uleb128 0xc
+ 369 0047 11       		.uleb128 0x11
+ 370 0048 01       		.uleb128 0x1
+ 371 0049 12       		.uleb128 0x12
+ 372 004a 01       		.uleb128 0x1
+ 373 004b 40       		.uleb128 0x40
+ 374 004c 0A       		.uleb128 0xa
+ 375 004d 9742     		.uleb128 0x2117
+ 376 004f 0C       		.uleb128 0xc
+ 377 0050 00       		.byte	0
+ 378 0051 00       		.byte	0
+ 379 0052 06       		.uleb128 0x6
+ 380 0053 2E       		.uleb128 0x2e
+ 381 0054 01       		.byte	0x1
+ 382 0055 3F       		.uleb128 0x3f
+ 383 0056 0C       		.uleb128 0xc
+ 384 0057 03       		.uleb128 0x3
+ 385 0058 0E       		.uleb128 0xe
+ 386 0059 3A       		.uleb128 0x3a
+ 387 005a 0B       		.uleb128 0xb
+ 388 005b 3B       		.uleb128 0x3b
+ 389 005c 0B       		.uleb128 0xb
+ 390 005d 27       		.uleb128 0x27
+ 391 005e 0C       		.uleb128 0xc
+ 392 005f 11       		.uleb128 0x11
+ 393 0060 01       		.uleb128 0x1
+ 394 0061 12       		.uleb128 0x12
+ 395 0062 01       		.uleb128 0x1
+ 396 0063 40       		.uleb128 0x40
+ 397 0064 0A       		.uleb128 0xa
+ 398 0065 9742     		.uleb128 0x2117
+ 399 0067 0C       		.uleb128 0xc
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 8
+
+
+ 400 0068 00       		.byte	0
+ 401 0069 00       		.byte	0
+ 402 006a 07       		.uleb128 0x7
+ 403 006b 1D       		.uleb128 0x1d
+ 404 006c 00       		.byte	0
+ 405 006d 31       		.uleb128 0x31
+ 406 006e 13       		.uleb128 0x13
+ 407 006f 11       		.uleb128 0x11
+ 408 0070 01       		.uleb128 0x1
+ 409 0071 12       		.uleb128 0x12
+ 410 0072 01       		.uleb128 0x1
+ 411 0073 58       		.uleb128 0x58
+ 412 0074 0B       		.uleb128 0xb
+ 413 0075 59       		.uleb128 0x59
+ 414 0076 0B       		.uleb128 0xb
+ 415 0077 00       		.byte	0
+ 416 0078 00       		.byte	0
+ 417 0079 00       		.byte	0
+ 418              		.section	.debug_aranges,"",@progbits
+ 419 0000 00000034 		.4byte	0x34
+ 420 0004 0002     		.2byte	0x2
+ 421 0006 00000000 		.4byte	.Ldebug_info0
+ 422 000a 04       		.byte	0x4
+ 423 000b 00       		.byte	0
+ 424 000c 0000     		.2byte	0
+ 425 000e 0000     		.2byte	0
+ 426 0010 00000000 		.4byte	.LFB15
+ 427 0014 00000002 		.4byte	.LFE15-.LFB15
+ 428 0018 00000000 		.4byte	.LFB16
+ 429 001c 00000008 		.4byte	.LFE16-.LFB16
+ 430 0020 00000000 		.4byte	.LFB17
+ 431 0024 0000003C 		.4byte	.LFE17-.LFB17
+ 432 0028 00000000 		.4byte	.LFB18
+ 433 002c 00000014 		.4byte	.LFE18-.LFB18
+ 434 0030 00000000 		.4byte	0
+ 435 0034 00000000 		.4byte	0
+ 436              		.section	.debug_ranges,"",@progbits
+ 437              	.Ldebug_ranges0:
+ 438 0000 00000000 		.4byte	.LFB15
+ 439 0004 00000000 		.4byte	.LFE15
+ 440 0008 00000000 		.4byte	.LFB16
+ 441 000c 00000000 		.4byte	.LFE16
+ 442 0010 00000000 		.4byte	.LFB17
+ 443 0014 00000000 		.4byte	.LFE17
+ 444 0018 00000000 		.4byte	.LFB18
+ 445 001c 00000000 		.4byte	.LFE18
+ 446 0020 00000000 		.4byte	0
+ 447 0024 00000000 		.4byte	0
+ 448              		.section	.debug_line,"",@progbits
+ 449              	.Ldebug_line0:
+ 450 0000 0000010F 		.section	.debug_str,"MS",@progbits,1
+ 450      00020000 
+ 450      00A80201 
+ 450      FB0E0D00 
+ 450      01010101 
+ 451              	.LASF7:
+ 452 0000 6C6F6E67 		.string	"long long int"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 9
+
+
+ 452      206C6F6E 
+ 452      6720696E 
+ 452      7400
+ 453              	.LASF0:
+ 454 000e 756E7369 		.string	"unsigned int"
+ 454      676E6564 
+ 454      20696E74 
+ 454      00
+ 455              	.LASF6:
+ 456 001b 6C6F6E67 		.string	"long unsigned int"
+ 456      20756E73 
+ 456      69676E65 
+ 456      6420696E 
+ 456      7400
+ 457              	.LASF8:
+ 458 002d 6C6F6E67 		.string	"long long unsigned int"
+ 458      206C6F6E 
+ 458      6720756E 
+ 458      7369676E 
+ 458      65642069 
+ 459              	.LASF15:
+ 460 0044 47       		.ascii	"G"
+ 461 0045 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 461      20342E39 
+ 461      2E322032 
+ 461      30313431 
+ 461      30333020 
+ 462              	.LASF17:
+ 463 0146 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 463      50433553 
+ 463      74756469 
+ 463      6F5C776F 
+ 463      726B7370 
+ 464              	.LASF3:
+ 465 018e 756E7369 		.string	"unsigned char"
+ 465      676E6564 
+ 465      20636861 
+ 465      7200
+ 466              	.LASF11:
+ 467 019c 63686172 		.string	"char"
+ 467      00
+ 468              	.LASF1:
+ 469 01a1 6C6F6E67 		.string	"long int"
+ 469      20696E74 
+ 469      00
+ 470              	.LASF16:
+ 471 01aa 2E2F636F 		.string	"./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/chcore.c"
+ 471      6D706F6E 
+ 471      656E7473 
+ 471      2F636869 
+ 471      62696F73 
+ 472              	.LASF9:
+ 473 01f3 5F426F6F 		.string	"_Bool"
+ 473      6C00
+ 474              	.LASF5:
+ 475 01f9 73686F72 		.string	"short unsigned int"
+ 475      7420756E 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 10
+
+
+ 475      7369676E 
+ 475      65642069 
+ 475      6E7400
+ 476              	.LASF2:
+ 477 020c 7369676E 		.string	"signed char"
+ 477      65642063 
+ 477      68617200 
+ 478              	.LASF12:
+ 479 0218 706F7274 		.string	"port_init"
+ 479      5F696E69 
+ 479      7400
+ 480              	.LASF18:
+ 481 0222 63685379 		.string	"chSysUnlock"
+ 481      73556E6C 
+ 481      6F636B00 
+ 482              	.LASF13:
+ 483 022e 706F7274 		.string	"port_halt"
+ 483      5F68616C 
+ 483      7400
+ 484              	.LASF4:
+ 485 0238 73686F72 		.string	"short int"
+ 485      7420696E 
+ 485      7400
+ 486              	.LASF14:
+ 487 0242 706F7274 		.string	"port_dummy1"
+ 487      5F64756D 
+ 487      6D793100 
+ 488              	.LASF19:
+ 489 024e 706F7274 		.string	"port_dummy2"
+ 489      5F64756D 
+ 489      6D793200 
+ 490              	.LASF10:
+ 491 025a 73697A65 		.string	"sizetype"
+ 491      74797065 
+ 491      00
+ 492              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chcore.c
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:10     .text.port_init:00000000 port_init
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:24     .text.port_halt:00000000 port_halt
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:43     .text.port_dummy1:00000000 port_dummy1
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:53     .text.port_dummy1:00000000 _port_switch
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:124    .text.port_dummy2:00000000 port_dummy2
+C:\Users\UTILIS~1\AppData\Local\Temp\ccW8XnhY.s:134    .text.port_dummy2:00000000 _port_thread_start
+
+UNDEFINED SYMBOLS
+chThdExit

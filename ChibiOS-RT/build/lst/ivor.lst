@@ -1,0 +1,339 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 1
+
+
+   1              	# 1 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/ivor.s"
+   1              	/*
+   0              	
+   0              	
+   2              	    ChibiOS/RT - Copyright (C) 2006,2007,2008,2009,2010,
+   3              	                 2011,2012,2013 Giovanni Di Sirio.
+   4              	
+   5              	    This file is part of ChibiOS/RT.
+   6              	
+   7              	    ChibiOS/RT is free software; you can redistribute it and/or modify
+   8              	    it under the terms of the GNU General Public License as published by
+   9              	    the Free Software Foundation; either version 3 of the License, or
+  10              	    (at your option) any later version.
+  11              	
+  12              	    ChibiOS/RT is distributed in the hope that it will be useful,
+  13              	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  14              	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  15              	    GNU General Public License for more details.
+  16              	
+  17              	    You should have received a copy of the GNU General Public License
+  18              	    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  19              	
+  20              	                                      ---
+  21              	
+  22              	    A special exception to the GPL can be applied should you wish to distribute
+  23              	    a combined work that includes ChibiOS/RT, without being obliged to provide
+  24              	    the source code for any proprietary components. See the file exception.txt
+  25              	    for full details of how and when the exception can be applied.
+  26              	*/
+  27              	
+  28              	/**
+  29              	 * @file    PPC/ivor.s
+  30              	 * @brief   Kernel ISRs.
+  31              	 *
+  32              	 * @addtogroup PPC_CORE
+  33              	 * @{
+  34              	 */
+  35              	
+  36              	/*
+  37              	 * Imports the PPC configuration headers.
+  38              	 */
+  39              	#define _FROM_ASM_
+  40              	#include "chconf.h"
+   1              	/*
+  41              	#include "chcore.h"
+   1              	/*
+   2              	    ChibiOS/RT - Copyright (C) 2006,2007,2008,2009,2010,
+   3              	                 2011,2012,2013 Giovanni Di Sirio.
+   4              	
+   5              	    This file is part of ChibiOS/RT.
+   6              	
+   7              	    ChibiOS/RT is free software; you can redistribute it and/or modify
+   8              	    it under the terms of the GNU General Public License as published by
+   9              	    the Free Software Foundation; either version 3 of the License, or
+  10              	    (at your option) any later version.
+  11              	
+  12              	    ChibiOS/RT is distributed in the hope that it will be useful,
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 2
+
+
+  13              	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  14              	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  15              	    GNU General Public License for more details.
+  16              	
+  17              	    You should have received a copy of the GNU General Public License
+  18              	    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  19              	
+  20              	                                      ---
+  21              	
+  22              	    A special exception to the GPL can be applied should you wish to distribute
+  23              	    a combined work that includes ChibiOS/RT, without being obliged to provide
+  24              	    the source code for any proprietary components. See the file exception.txt
+  25              	    for full details of how and when the exception can be applied.
+  26              	*/
+  27              	
+  28              	/**
+  29              	 * @file    PPC/chcore.h
+  30              	 * @brief   PowerPC architecture port macros and structures.
+  31              	 *
+  32              	 * @addtogroup PPC_CORE
+  33              	 * @{
+  34              	 */
+  35              	
+  36              	#ifndef _CHCORE_H_
+  37              	#define _CHCORE_H_
+  38              	
+  39              	#if CH_DBG_ENABLE_STACK_CHECK
+  40              	#error "option CH_DBG_ENABLE_STACK_CHECK not supported by this port"
+  41              	#endif
+  42              	
+  43              	/*===========================================================================*/
+  44              	/* Port constants (common).                                                  */
+  45              	/*===========================================================================*/
+  46              	
+  47              	/* Added to make the header stand-alone when included from asm.*/
+  48              	#ifndef FALSE
+  49              	#define FALSE       0
+  50              	#endif
+  51              	#ifndef TRUE
+  52              	#define TRUE        (!FALSE)
+  53              	#endif
+  54              	
+  55              	/**
+  56              	 * @name    Supported core variants
+  57              	 * @{
+  58              	 */
+  59              	#define PPC_VARIANT_e200z0              200
+  60              	#define PPC_VARIANT_e200z3              203
+  61              	#define PPC_VARIANT_e200z4              204
+  62              	/** @} */
+  63              	
+  64              	#include "vectors.h"
+   1              	/*
+  65              	#include "ppcparams.h"
+   1              	/*
+  66              	
+  42              	#include "checkCompiler.h"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 3
+
+
+   1              	/*
+  43              	
+  44              	#if !defined(__DOXYGEN__)
+  45              	        /*
+  46              	         * INTC registers address.
+  47              	         */
+  48              	        .equ  INTC_IACKR, 0xfff48010
+  49              	        .equ  INTC_EOIR,  0xfff48018
+  50              	        
+  51              	#ifdef __ghs_asm
+  52              	        .section    .handlers, "axv"
+  53              			.vle
+  54              	#else
+  55              	        .section    .handlers, "ax"
+  56              	#endif /* __ghs_asm */
+  57              	        
+  58              	
+  59              	#if PPC_SUPPORTS_DECREMENTER
+  60              	        /*
+  61              	         * _IVOR10 handler (Book-E decrementer).
+  62              	         */
+  63              	        .align      4
+  64              	        .globl      _IVOR10
+  65              	        .type       _IVOR10, @function
+  66              	_IVOR10:
+  67              	        /* Creation of the external stack frame (extctx structure).*/
+  68              	        e_stwu        sp, -80(sp)           /* Size of the extctx structure.*/
+  69              	#if PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI
+  70              	        e_stmvsrrw  8(sp)                  /* Saves PC, MSR.               */
+  71              	        e_stmvsprw  16(sp)                 /* Saves CR, LR, CTR, XER.      */
+  72              	        e_stmvgprw  32(sp)                 /* Saves GPR0, GPR3...GPR12.    */
+  73              	#else /* !(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+  74              	        stw         %r0, 32(%sp)            /* Saves GPR0.                  */
+  75              	        mfSRR0      %r0
+  76              	        stw         %r0, 8(%sp)             /* Saves PC.                    */
+  77              	        mfSRR1      %r0
+  78              	        stw         %r0, 12(%sp)            /* Saves MSR.                   */
+  79              	        mfCR        %r0
+  80              	        stw         %r0, 16(%sp)            /* Saves CR.                    */
+  81              	        mfLR        %r0
+  82              	        stw         %r0, 20(%sp)            /* Saves LR.                    */
+  83              	        mfCTR       %r0
+  84              	        stw         %r0, 24(%sp)            /* Saves CTR.                   */
+  85              	        mfXER       %r0
+  86              	        stw         %r0, 28(%sp)            /* Saves XER.                   */
+  87              	        stw         %r3, 36(%sp)            /* Saves GPR3...GPR12.          */
+  88              	        stw         %r4, 40(%sp)
+  89              	        stw         %r5, 44(%sp)
+  90              	        stw         %r6, 48(%sp)
+  91              	        stw         %r7, 52(%sp)
+  92              	        stw         %r8, 56(%sp)
+  93              	        stw         %r9, 60(%sp)
+  94              	        stw         %r10, 64(%sp)
+  95              	        stw         %r11, 68(%sp)
+  96              	        stw         %r12, 72(%sp)
+  97              	#endif /* !(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+  98              	
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 4
+
+
+  99              	        /* Reset DIE bit in TSR register.*/
+ 100              	        e_lis       %r3, 0x0800             /* DIS bit mask.                */
+ 101              	        mtspr       336, %r3                /* TSR register.                */
+ 102              	
+ 103              	        /* Restoring pre-IRQ MSR register value.*/
+ 104              	        mfSRR1      %r0
+ 105              	        /* No preemption, keeping EE disabled.*/
+ 106              	        se_bclri    %r0, 16                 /* EE = bit 16.                 */
+ 107              	        mtMSR       %r0
+ 108              	
+ 109              	#if CH_DBG_SYSTEM_STATE_CHECK
+ 110              	        e_bl        dbg_check_enter_isr
+ 111              	        e_bl        dbg_check_lock_from_isr
+ 112              	#endif
+ 113              	        e_bl        chSysTimerHandlerI
+ 114              	#if CH_DBG_SYSTEM_STATE_CHECK
+ 115              	        e_bl        dbg_check_unlock_from_isr
+ 116              	        e_bl        dbg_check_leave_isr
+ 117              	#endif
+ 118              	
+ 119              	        /* System tick handler invocation.*/
+ 120              	#if CH_DBG_SYSTEM_STATE_CHECK
+ 121              	        e_bl        dbg_check_lock
+ 122              	#endif
+ 123              	        e_bl        chSchIsPreemptionRequired
+ 124              	        e_cmpli     cr0, %r3, 0
+ 125              	        e_beq       cr0, _ivor_exit
+ 126              	        e_bl        chSchDoReschedule
+ 127              	        e_b         _ivor_exit
+ 128              	#endif /* PPC_SUPPORTS_DECREMENTER */
+ 129              	
+ 130              	        /*
+ 131              	         * _IVOR4 handler (Book-E external interrupt).
+ 132              	         */
+ 133              	        .align      4
+ 134              	        .globl      _IVOR4
+ 135              	        .type       _IVOR4, @function
+ 136              	_IVOR4:
+ 137              	        /* Creation of the external stack frame (extctx structure).*/
+ 138 0000 182106B0 	        e_stwu      sp, -80(sp)             /* Size of the extctx structure.*/
+ 139              	#if PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI
+ 140 0004 18811108 	        e_stmvsrrw  8(sp)                   /* Saves PC, MSR.               */
+ 141 0008 18211110 	        e_stmvsprw  16(sp)                  /* Saves CR, LR, CTR, XER.      */
+ 142 000c 18011120 	        e_stmvgprw  32(sp)                  /* Saves GPR0, GPR3...GPR12.    */
+ 143              	#else /* !(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+ 144              	        stw         %r0, 32(%sp)            /* Saves GPR0.                  */
+ 145              	        mfSRR0      %r0
+ 146              	        stw         %r0, 8(%sp)             /* Saves PC.                    */
+ 147              	        mfSRR1      %r0
+ 148              	        stw         %r0, 12(%sp)            /* Saves MSR.                   */
+ 149              	        mfCR        %r0
+ 150              	        stw         %r0, 16(%sp)            /* Saves CR.                    */
+ 151              	        mfLR        %r0
+ 152              	        stw         %r0, 20(%sp)            /* Saves LR.                    */
+ 153              	        mfCTR       %r0
+ 154              	        stw         %r0, 24(%sp)            /* Saves CTR.                   */
+ 155              	        mfXER       %r0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 5
+
+
+ 156              	        stw         %r0, 28(%sp)            /* Saves XER.                   */
+ 157              	        stw         %r3, 36(%sp)            /* Saves GPR3...GPR12.          */
+ 158              	        stw         %r4, 40(%sp)
+ 159              	        stw         %r5, 44(%sp)
+ 160              	        stw         %r6, 48(%sp)
+ 161              	        stw         %r7, 52(%sp)
+ 162              	        stw         %r8, 56(%sp)
+ 163              	        stw         %r9, 60(%sp)
+ 164              	        stw         %r10, 64(%sp)
+ 165              	        stw         %r11, 68(%sp)
+ 166              	        stw         %r12, 72(%sp)
+ 167              	#endif /* !(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+ 168              	
+ 169              	        /* Software vector address from the INTC register.*/
+ 170 0010 707FE7F4 	        e_lis       %r3, HI(INTC_IACKR)
+ 171 0014 7070C010 	        e_or2i      %r3, LO(INTC_IACKR)  /* IACKR register address.      */
+ 172 0018 50630000 	        e_lwz       %r3, 0(%r3)             /* IACKR register value.        */
+ 173 001c 50630000 	        e_lwz       %r3, 0(%r3)
+ 174 0020 7C6903A6 	        mtCTR       %r3                     /* Software handler address.    */
+ 175              	
+ 176              	        /* Restoring pre-IRQ MSR register value.*/
+ 177 0024 7C1B02A6 	        mfSRR1      %r0
+ 178              	        /* No preemption, keeping EE disabled.*/
+ 179 0028 6100     	        se_bclri    %r0, 16                 /* EE = bit 16.                 */
+ 180 002a 7C000124 	        mtMSR       %r0
+ 181              	
+ 182              	        /* Exectes the software handler.*/
+ 183 002e 0007     	        se_bctrl
+ 184              	
+ 185              	        /* Informs the INTC that the interrupt has been served.*/
+ 186 0030 7C0006AC 	        mbar        0
+ 187 0034 707FE7F4 	        e_lis       %r3, HI(INTC_EOIR)
+ 188 0038 7070C018 	        e_or2i      %r3, LO(INTC_EOIR)
+ 189 003c 54630000 	        e_stw       %r3, 0(%r3)             /* Writing any value should do. */
+ 190              	
+ 191              	        /* Verifies if a reschedule is required.*/
+ 192              	#if CH_DBG_SYSTEM_STATE_CHECK
+ 193              	        e_bl        dbg_check_lock
+ 194              	#endif
+ 195 0040 78000001 	        e_bl        chSchIsPreemptionRequired
+ 196 0044 1883A800 	        e_cmpli     cr0, %r3, 0
+ 197 0048 7A120000 	        e_beq       cr0, _ivor_exit
+ 198 004c 78000001 	        e_bl        chSchDoReschedule
+ 199              	
+ 200              	        /* Context restore.*/
+ 201              	        .globl      _ivor_exit
+ 202              	_ivor_exit:
+ 203              	#if CH_DBG_SYSTEM_STATE_CHECK
+ 204              	        bl          dbg_check_unlock
+ 205              	#endif
+ 206              	#if PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI
+ 207 0050 18011020 	        e_lmvgprw   32(sp)                 /* Restores GPR0, GPR3...GPR12. */
+ 208 0054 18211010 	        e_lmvsprw   16(sp)                 /* Restores CR, LR, CTR, XER.   */
+ 209 0058 18811008 	        e_lmvsrrw   8(sp)                  /* Restores PC, MSR.            */
+ 210              	#else /*!(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+ 211              	        lwz         %r3, 36(%sp)            /* Restores GPR3...GPR12.       */
+ 212              	        lwz         %r4, 40(%sp)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 6
+
+
+ 213              	        lwz         %r5, 44(%sp)
+ 214              	        lwz         %r6, 48(%sp)
+ 215              	        lwz         %r7, 52(%sp)
+ 216              	        lwz         %r8, 56(%sp)
+ 217              	        lwz         %r9, 60(%sp)
+ 218              	        lwz         %r10, 64(%sp)
+ 219              	        lwz         %r11, 68(%sp)
+ 220              	        lwz         %r12, 72(%sp)
+ 221              	        lwz         %r0, 8(%sp)
+ 222              	        mtSRR0      %r0                     /* Restores PC.                 */
+ 223              	        lwz         %r0, 12(%sp)
+ 224              	        mtSRR1      %r0                     /* Restores MSR.                */
+ 225              	        lwz         %r0, 16(%sp)
+ 226              	        mtCR        %r0                     /* Restores CR.                 */
+ 227              	        lwz         %r0, 20(%sp)
+ 228              	        mtLR        %r0                     /* Restores LR.                 */
+ 229              	        lwz         %r0, 24(%sp)
+ 230              	        mtCTR       %r0                     /* Restores CTR.                */
+ 231              	        lwz         %r0, 28(%sp)
+ 232              	        mtXER       %r0                     /* Restores XER.                */
+ 233              	        lwz         %r0, 32(%sp)            /* Restores GPR0.               */
+ 234              	#endif /* !(PPC_USE_VLE && PPC_SUPPORTS_VLE_MULTI) */
+ 235 005c 18218050 	        e_addi      sp, sp, 80            /* Back to the previous frame.  */
+ 236 0060 0008     	        se_rfi
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccmom23j.s 			page 7
+
+
+DEFINED SYMBOLS
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/ivor.s:48     *ABS*:fff48010 INTC_IACKR
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/ivor.s:49     *ABS*:fff48018 INTC_EOIR
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/ivor.s:136    .handlers:00000000 _IVOR4
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/ivor.s:202    .handlers:00000050 _ivor_exit
+
+UNDEFINED SYMBOLS
+chSchIsPreemptionRequired
+chSchDoReschedule

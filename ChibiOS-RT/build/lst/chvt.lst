@@ -1,0 +1,940 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 1
+
+
+   1              		.file	"chvt.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text._vt_init,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl _vt_init
+   9              		.type	_vt_init, @function
+  10              	_vt_init:
+  11              	.LFB15:
+  12              		.file 1 "./components/chibios_rt_portable_kernel_component/lib/src/chvt.c"
+  13              		.loc 1 50 0
+  14              		.cfi_startproc
+  15              		.loc 1 52 0
+  16 0000 7140E000 		e_lis %r10,.LANCHOR0@ha
+  17 0004 1D2A0000 		e_la %r9,.LANCHOR0@l(%r10)
+  18 0008 552A0000 		e_stw %r9,.LANCHOR0@l(%r10)
+  19 000c 55290004 		e_stw %r9,4(%r9)
+  20              		.loc 1 53 0
+  21 0010 715F7FFF 		e_li %r10,-1
+  22 0014 55490008 		e_stw %r10,8(%r9)
+  23              		.loc 1 54 0
+  24 0018 71400000 		e_li %r10,0
+  25 001c 5549000C 		e_stw %r10,12(%r9)
+  26 0020 0004     		se_blr
+  27              		.cfi_endproc
+  28              	.LFE15:
+  29              		.size	_vt_init, .-_vt_init
+  30              		.section	.text.chVTSetI,"axv",@progbits
+  31              		.align 1
+  32              		.p2align 4,,15
+  33              		.globl chVTSetI
+  34              		.type	chVTSetI, @function
+  35              	chVTSetI:
+  36              	.LFB16:
+  37              		.loc 1 76 0
+  38              		.cfi_startproc
+  39              	.LVL0:
+  40              		.loc 1 85 0
+  41 0000 7140E000 		e_lis %r10,.LANCHOR0@ha
+  42              		.loc 1 83 0
+  43 0004 D463     		se_stw %r6,16(%r3)
+  44              		.loc 1 85 0
+  45 0006 512A0000 		e_lwz %r9,.LANCHOR0@l(%r10)
+  46              	.LVL1:
+  47              		.loc 1 84 0
+  48 000a D353     		se_stw %r5,12(%r3)
+  49              		.loc 1 86 0
+  50 000c 50E90008 		e_lwz %r7,8(%r9)
+  51 0010 0D74     		se_cmpl %r4,%r7
+  52 0012 7A010014 		e_ble %cr0,.L3
+  53              	.L4:
+  54              		.loc 1 87 0
+  55 0016 0674     		se_sub %r4, %r7
+  56              	.LVL2:
+  57              		.loc 1 88 0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 2
+
+
+  58 0018 51290000 		e_lwz %r9,0(%r9)
+  59              	.LVL3:
+  60              		.loc 1 86 0
+  61 001c 50E90008 		e_lwz %r7,8(%r9)
+  62 0020 0D47     		se_cmpl %r7,%r4
+  63 0022 7A10FFF4 		e_blt %cr0,.L4
+  64              	.L3:
+  65              		.loc 1 91 0
+  66 0026 51090004 		e_lwz %r8,4(%r9)
+  67              		.loc 1 94 0
+  68 002a 1D4A0000 		e_la %r10,.LANCHOR0@l(%r10)
+  69              		.loc 1 91 0
+  70 002e 55230000 		e_stw %r9,0(%r3)
+  71 0032 55030004 		e_stw %r8,4(%r3)
+  72              		.loc 1 94 0
+  73 0036 7C895000 		cmp %cr1,%r9,%r10
+  74              		.loc 1 92 0
+  75 003a 54690004 		e_stw %r3,4(%r9)
+  76 003e 54680000 		e_stw %r3,0(%r8)
+  77              		.loc 1 93 0
+  78 0042 D243     		se_stw %r4,8(%r3)
+  79              		.loc 1 94 0
+  80 0044 7A160010 		e_beq %cr1,.L2
+  81              		.loc 1 95 0
+  82 0048 51490008 		e_lwz %r10,8(%r9)
+  83 004c 7D445050 		subf %r10, %r4, %r10
+  84 0050 55490008 		e_stw %r10,8(%r9)
+  85              	.L2:
+  86 0054 0004     		se_blr
+  87              		.cfi_endproc
+  88              	.LFE16:
+  89              		.size	chVTSetI, .-chVTSetI
+  90              		.section	.text.chVTResetI,"axv",@progbits
+  91              		.align 1
+  92              		.p2align 4,,15
+  93              		.globl chVTResetI
+  94              		.type	chVTResetI, @function
+  95              	chVTResetI:
+  96              	.LFB17:
+  97              		.loc 1 106 0
+  98              		.cfi_startproc
+  99              	.LVL4:
+ 100              		.loc 1 114 0
+ 101 0000 51430000 		e_lwz %r10,0(%r3)
+ 102 0004 7120E000 		e_lis %r9,.LANCHOR0@ha
+ 103 0008 1D290000 		e_la %r9,.LANCHOR0@l(%r9)
+ 104 000c 7C8A4800 		cmp %cr1,%r10,%r9
+ 105 0010 7A160014 		e_beq %cr1,.L9
+ 106              		.loc 1 115 0
+ 107 0014 512A0008 		e_lwz %r9,8(%r10)
+ 108 0018 51030008 		e_lwz %r8,8(%r3)
+ 109 001c 7D294214 		add %r9,%r9,%r8
+ 110 0020 552A0008 		e_stw %r9,8(%r10)
+ 111              	.L9:
+ 112              		.loc 1 116 0
+ 113 0024 51230004 		e_lwz %r9,4(%r3)
+ 114 0028 55490000 		e_stw %r10,0(%r9)
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 3
+
+
+ 115              		.loc 1 117 0
+ 116 002c 51430000 		e_lwz %r10,0(%r3)
+ 117 0030 552A0004 		e_stw %r9,4(%r10)
+ 118              		.loc 1 118 0
+ 119 0034 71200000 		e_li %r9,0
+ 120 0038 5523000C 		e_stw %r9,12(%r3)
+ 121 003c 0004     		se_blr
+ 122              		.cfi_endproc
+ 123              	.LFE17:
+ 124              		.size	chVTResetI, .-chVTResetI
+ 125              		.globl vtlist
+ 126              		.section	.bss.vtlist,"aw",@nobits
+ 127              		.align 2
+ 128              		.set	.LANCHOR0,. + 0
+ 129              		.type	vtlist, @object
+ 130              		.size	vtlist, 16
+ 131              	vtlist:
+ 132 0000 00000000 		.zero	16
+ 132      00000000 
+ 132      00000000 
+ 132      00000000 
+ 133              		.section	".text","axv"
+ 134              	.Letext0:
+ 135              		.file 2 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 136              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 137              		.file 4 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/include/chtypes.h"
+ 138              		.file 5 "./components/chibios_rt_portable_kernel_component/lib/include/chvt.h"
+ 139              		.section	.debug_info,"",@progbits
+ 140              	.Ldebug_info0:
+ 141 0000 0000021F 		.4byte	0x21f
+ 142 0004 0002     		.2byte	0x2
+ 143 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 144 000a 04       		.byte	0x4
+ 145 000b 01       		.uleb128 0x1
+ 146 000c 00000000 		.4byte	.LASF28
+ 147 0010 01       		.byte	0x1
+ 148 0011 00000000 		.4byte	.LASF29
+ 149 0015 00000000 		.4byte	.LASF30
+ 150 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 151 001d 00000000 		.4byte	0
+ 152 0021 00000000 		.4byte	0
+ 153 0025 00000000 		.4byte	.Ldebug_line0
+ 154 0029 02       		.uleb128 0x2
+ 155 002a 04       		.byte	0x4
+ 156 002b 05       		.byte	0x5
+ 157 002c 696E7400 		.string	"int"
+ 158 0030 03       		.uleb128 0x3
+ 159 0031 04       		.byte	0x4
+ 160 0032 07       		.byte	0x7
+ 161 0033 00000000 		.4byte	.LASF0
+ 162 0037 03       		.uleb128 0x3
+ 163 0038 04       		.byte	0x4
+ 164 0039 05       		.byte	0x5
+ 165 003a 00000000 		.4byte	.LASF1
+ 166 003e 03       		.uleb128 0x3
+ 167 003f 01       		.byte	0x1
+ 168 0040 06       		.byte	0x6
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 4
+
+
+ 169 0041 00000000 		.4byte	.LASF2
+ 170 0045 03       		.uleb128 0x3
+ 171 0046 01       		.byte	0x1
+ 172 0047 08       		.byte	0x8
+ 173 0048 00000000 		.4byte	.LASF3
+ 174 004c 03       		.uleb128 0x3
+ 175 004d 02       		.byte	0x2
+ 176 004e 05       		.byte	0x5
+ 177 004f 00000000 		.4byte	.LASF4
+ 178 0053 03       		.uleb128 0x3
+ 179 0054 02       		.byte	0x2
+ 180 0055 07       		.byte	0x7
+ 181 0056 00000000 		.4byte	.LASF5
+ 182 005a 04       		.uleb128 0x4
+ 183 005b 00000000 		.4byte	.LASF9
+ 184 005f 02       		.byte	0x2
+ 185 0060 41       		.byte	0x41
+ 186 0061 00000065 		.4byte	0x65
+ 187 0065 03       		.uleb128 0x3
+ 188 0066 04       		.byte	0x4
+ 189 0067 07       		.byte	0x7
+ 190 0068 00000000 		.4byte	.LASF6
+ 191 006c 03       		.uleb128 0x3
+ 192 006d 08       		.byte	0x8
+ 193 006e 05       		.byte	0x5
+ 194 006f 00000000 		.4byte	.LASF7
+ 195 0073 03       		.uleb128 0x3
+ 196 0074 08       		.byte	0x8
+ 197 0075 07       		.byte	0x7
+ 198 0076 00000000 		.4byte	.LASF8
+ 199 007a 04       		.uleb128 0x4
+ 200 007b 00000000 		.4byte	.LASF10
+ 201 007f 03       		.byte	0x3
+ 202 0080 2D       		.byte	0x2d
+ 203 0081 0000005A 		.4byte	0x5a
+ 204 0085 03       		.uleb128 0x3
+ 205 0086 01       		.byte	0x1
+ 206 0087 02       		.byte	0x2
+ 207 0088 00000000 		.4byte	.LASF11
+ 208 008c 04       		.uleb128 0x4
+ 209 008d 00000000 		.4byte	.LASF12
+ 210 0091 04       		.byte	0x4
+ 211 0092 42       		.byte	0x42
+ 212 0093 0000007A 		.4byte	0x7a
+ 213 0097 03       		.uleb128 0x3
+ 214 0098 04       		.byte	0x4
+ 215 0099 07       		.byte	0x7
+ 216 009a 00000000 		.4byte	.LASF13
+ 217 009e 05       		.uleb128 0x5
+ 218 009f 04       		.byte	0x4
+ 219 00a0 04       		.uleb128 0x4
+ 220 00a1 00000000 		.4byte	.LASF14
+ 221 00a5 05       		.byte	0x5
+ 222 00a6 58       		.byte	0x58
+ 223 00a7 000000AB 		.4byte	0xab
+ 224 00ab 06       		.uleb128 0x6
+ 225 00ac 04       		.byte	0x4
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 5
+
+
+ 226 00ad 000000B1 		.4byte	0xb1
+ 227 00b1 07       		.uleb128 0x7
+ 228 00b2 01       		.byte	0x1
+ 229 00b3 000000BD 		.4byte	0xbd
+ 230 00b7 08       		.uleb128 0x8
+ 231 00b8 0000009E 		.4byte	0x9e
+ 232 00bc 00       		.byte	0
+ 233 00bd 04       		.uleb128 0x4
+ 234 00be 00000000 		.4byte	.LASF15
+ 235 00c2 05       		.byte	0x5
+ 236 00c3 5D       		.byte	0x5d
+ 237 00c4 000000C8 		.4byte	0xc8
+ 238 00c8 09       		.uleb128 0x9
+ 239 00c9 00000000 		.4byte	.LASF15
+ 240 00cd 14       		.byte	0x14
+ 241 00ce 05       		.byte	0x5
+ 242 00cf 64       		.byte	0x64
+ 243 00d0 0000011B 		.4byte	0x11b
+ 244 00d4 0A       		.uleb128 0xa
+ 245 00d5 00000000 		.4byte	.LASF16
+ 246 00d9 05       		.byte	0x5
+ 247 00da 65       		.byte	0x65
+ 248 00db 0000011B 		.4byte	0x11b
+ 249 00df 02       		.byte	0x2
+ 250 00e0 23       		.byte	0x23
+ 251 00e1 00       		.uleb128 0
+ 252 00e2 0A       		.uleb128 0xa
+ 253 00e3 00000000 		.4byte	.LASF17
+ 254 00e7 05       		.byte	0x5
+ 255 00e8 67       		.byte	0x67
+ 256 00e9 0000011B 		.4byte	0x11b
+ 257 00ed 02       		.byte	0x2
+ 258 00ee 23       		.byte	0x23
+ 259 00ef 04       		.uleb128 0x4
+ 260 00f0 0A       		.uleb128 0xa
+ 261 00f1 00000000 		.4byte	.LASF18
+ 262 00f5 05       		.byte	0x5
+ 263 00f6 69       		.byte	0x69
+ 264 00f7 0000008C 		.4byte	0x8c
+ 265 00fb 02       		.byte	0x2
+ 266 00fc 23       		.byte	0x23
+ 267 00fd 08       		.uleb128 0x8
+ 268 00fe 0A       		.uleb128 0xa
+ 269 00ff 00000000 		.4byte	.LASF19
+ 270 0103 05       		.byte	0x5
+ 271 0104 6A       		.byte	0x6a
+ 272 0105 000000A0 		.4byte	0xa0
+ 273 0109 02       		.byte	0x2
+ 274 010a 23       		.byte	0x23
+ 275 010b 0C       		.uleb128 0xc
+ 276 010c 0A       		.uleb128 0xa
+ 277 010d 00000000 		.4byte	.LASF20
+ 278 0111 05       		.byte	0x5
+ 279 0112 6C       		.byte	0x6c
+ 280 0113 0000009E 		.4byte	0x9e
+ 281 0117 02       		.byte	0x2
+ 282 0118 23       		.byte	0x23
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 6
+
+
+ 283 0119 10       		.uleb128 0x10
+ 284 011a 00       		.byte	0
+ 285 011b 06       		.uleb128 0x6
+ 286 011c 04       		.byte	0x4
+ 287 011d 000000BD 		.4byte	0xbd
+ 288 0121 0B       		.uleb128 0xb
+ 289 0122 10       		.byte	0x10
+ 290 0123 05       		.byte	0x5
+ 291 0124 76       		.byte	0x76
+ 292 0125 00000162 		.4byte	0x162
+ 293 0129 0A       		.uleb128 0xa
+ 294 012a 00000000 		.4byte	.LASF16
+ 295 012e 05       		.byte	0x5
+ 296 012f 77       		.byte	0x77
+ 297 0130 0000011B 		.4byte	0x11b
+ 298 0134 02       		.byte	0x2
+ 299 0135 23       		.byte	0x23
+ 300 0136 00       		.uleb128 0
+ 301 0137 0A       		.uleb128 0xa
+ 302 0138 00000000 		.4byte	.LASF17
+ 303 013c 05       		.byte	0x5
+ 304 013d 79       		.byte	0x79
+ 305 013e 0000011B 		.4byte	0x11b
+ 306 0142 02       		.byte	0x2
+ 307 0143 23       		.byte	0x23
+ 308 0144 04       		.uleb128 0x4
+ 309 0145 0A       		.uleb128 0xa
+ 310 0146 00000000 		.4byte	.LASF18
+ 311 014a 05       		.byte	0x5
+ 312 014b 7B       		.byte	0x7b
+ 313 014c 0000008C 		.4byte	0x8c
+ 314 0150 02       		.byte	0x2
+ 315 0151 23       		.byte	0x23
+ 316 0152 08       		.uleb128 0x8
+ 317 0153 0A       		.uleb128 0xa
+ 318 0154 00000000 		.4byte	.LASF21
+ 319 0158 05       		.byte	0x5
+ 320 0159 7C       		.byte	0x7c
+ 321 015a 00000162 		.4byte	0x162
+ 322 015e 02       		.byte	0x2
+ 323 015f 23       		.byte	0x23
+ 324 0160 0C       		.uleb128 0xc
+ 325 0161 00       		.byte	0
+ 326 0162 0C       		.uleb128 0xc
+ 327 0163 0000008C 		.4byte	0x8c
+ 328 0167 04       		.uleb128 0x4
+ 329 0168 00000000 		.4byte	.LASF22
+ 330 016c 05       		.byte	0x5
+ 331 016d 7D       		.byte	0x7d
+ 332 016e 00000121 		.4byte	0x121
+ 333 0172 03       		.uleb128 0x3
+ 334 0173 01       		.byte	0x1
+ 335 0174 08       		.byte	0x8
+ 336 0175 00000000 		.4byte	.LASF23
+ 337 0179 0D       		.uleb128 0xd
+ 338 017a 01       		.byte	0x1
+ 339 017b 00000000 		.4byte	.LASF31
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 7
+
+
+ 340 017f 01       		.byte	0x1
+ 341 0180 32       		.byte	0x32
+ 342 0181 01       		.byte	0x1
+ 343 0182 00000000 		.4byte	.LFB15
+ 344 0186 00000000 		.4byte	.LFE15
+ 345 018a 02       		.byte	0x2
+ 346 018b 71       		.byte	0x71
+ 347 018c 00       		.sleb128 0
+ 348 018d 01       		.byte	0x1
+ 349 018e 0E       		.uleb128 0xe
+ 350 018f 01       		.byte	0x1
+ 351 0190 00000000 		.4byte	.LASF26
+ 352 0194 01       		.byte	0x1
+ 353 0195 4C       		.byte	0x4c
+ 354 0196 01       		.byte	0x1
+ 355 0197 00000000 		.4byte	.LFB16
+ 356 019b 00000000 		.4byte	.LFE16
+ 357 019f 02       		.byte	0x2
+ 358 01a0 71       		.byte	0x71
+ 359 01a1 00       		.sleb128 0
+ 360 01a2 01       		.byte	0x1
+ 361 01a3 000001E9 		.4byte	0x1e9
+ 362 01a7 0F       		.uleb128 0xf
+ 363 01a8 76747000 		.string	"vtp"
+ 364 01ac 01       		.byte	0x1
+ 365 01ad 4C       		.byte	0x4c
+ 366 01ae 0000011B 		.4byte	0x11b
+ 367 01b2 01       		.byte	0x1
+ 368 01b3 53       		.byte	0x53
+ 369 01b4 10       		.uleb128 0x10
+ 370 01b5 00000000 		.4byte	.LASF24
+ 371 01b9 01       		.byte	0x1
+ 372 01ba 4C       		.byte	0x4c
+ 373 01bb 0000008C 		.4byte	0x8c
+ 374 01bf 00000000 		.4byte	.LLST0
+ 375 01c3 11       		.uleb128 0x11
+ 376 01c4 00000000 		.4byte	.LASF25
+ 377 01c8 01       		.byte	0x1
+ 378 01c9 4C       		.byte	0x4c
+ 379 01ca 000000A0 		.4byte	0xa0
+ 380 01ce 01       		.byte	0x1
+ 381 01cf 55       		.byte	0x55
+ 382 01d0 0F       		.uleb128 0xf
+ 383 01d1 70617200 		.string	"par"
+ 384 01d5 01       		.byte	0x1
+ 385 01d6 4C       		.byte	0x4c
+ 386 01d7 0000009E 		.4byte	0x9e
+ 387 01db 01       		.byte	0x1
+ 388 01dc 56       		.byte	0x56
+ 389 01dd 12       		.uleb128 0x12
+ 390 01de 7000     		.string	"p"
+ 391 01e0 01       		.byte	0x1
+ 392 01e1 4D       		.byte	0x4d
+ 393 01e2 0000011B 		.4byte	0x11b
+ 394 01e6 01       		.byte	0x1
+ 395 01e7 59       		.byte	0x59
+ 396 01e8 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 8
+
+
+ 397 01e9 0E       		.uleb128 0xe
+ 398 01ea 01       		.byte	0x1
+ 399 01eb 00000000 		.4byte	.LASF27
+ 400 01ef 01       		.byte	0x1
+ 401 01f0 6A       		.byte	0x6a
+ 402 01f1 01       		.byte	0x1
+ 403 01f2 00000000 		.4byte	.LFB17
+ 404 01f6 00000000 		.4byte	.LFE17
+ 405 01fa 02       		.byte	0x2
+ 406 01fb 71       		.byte	0x71
+ 407 01fc 00       		.sleb128 0
+ 408 01fd 01       		.byte	0x1
+ 409 01fe 00000210 		.4byte	0x210
+ 410 0202 0F       		.uleb128 0xf
+ 411 0203 76747000 		.string	"vtp"
+ 412 0207 01       		.byte	0x1
+ 413 0208 6A       		.byte	0x6a
+ 414 0209 0000011B 		.4byte	0x11b
+ 415 020d 01       		.byte	0x1
+ 416 020e 53       		.byte	0x53
+ 417 020f 00       		.byte	0
+ 418 0210 13       		.uleb128 0x13
+ 419 0211 00000000 		.4byte	.LASF32
+ 420 0215 01       		.byte	0x1
+ 421 0216 2A       		.byte	0x2a
+ 422 0217 00000167 		.4byte	0x167
+ 423 021b 01       		.byte	0x1
+ 424 021c 05       		.byte	0x5
+ 425 021d 03       		.byte	0x3
+ 426 021e 00000000 		.4byte	vtlist
+ 427 0222 00       		.byte	0
+ 428              		.section	.debug_abbrev,"",@progbits
+ 429              	.Ldebug_abbrev0:
+ 430 0000 01       		.uleb128 0x1
+ 431 0001 11       		.uleb128 0x11
+ 432 0002 01       		.byte	0x1
+ 433 0003 25       		.uleb128 0x25
+ 434 0004 0E       		.uleb128 0xe
+ 435 0005 13       		.uleb128 0x13
+ 436 0006 0B       		.uleb128 0xb
+ 437 0007 03       		.uleb128 0x3
+ 438 0008 0E       		.uleb128 0xe
+ 439 0009 1B       		.uleb128 0x1b
+ 440 000a 0E       		.uleb128 0xe
+ 441 000b 55       		.uleb128 0x55
+ 442 000c 06       		.uleb128 0x6
+ 443 000d 11       		.uleb128 0x11
+ 444 000e 01       		.uleb128 0x1
+ 445 000f 52       		.uleb128 0x52
+ 446 0010 01       		.uleb128 0x1
+ 447 0011 10       		.uleb128 0x10
+ 448 0012 06       		.uleb128 0x6
+ 449 0013 00       		.byte	0
+ 450 0014 00       		.byte	0
+ 451 0015 02       		.uleb128 0x2
+ 452 0016 24       		.uleb128 0x24
+ 453 0017 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 9
+
+
+ 454 0018 0B       		.uleb128 0xb
+ 455 0019 0B       		.uleb128 0xb
+ 456 001a 3E       		.uleb128 0x3e
+ 457 001b 0B       		.uleb128 0xb
+ 458 001c 03       		.uleb128 0x3
+ 459 001d 08       		.uleb128 0x8
+ 460 001e 00       		.byte	0
+ 461 001f 00       		.byte	0
+ 462 0020 03       		.uleb128 0x3
+ 463 0021 24       		.uleb128 0x24
+ 464 0022 00       		.byte	0
+ 465 0023 0B       		.uleb128 0xb
+ 466 0024 0B       		.uleb128 0xb
+ 467 0025 3E       		.uleb128 0x3e
+ 468 0026 0B       		.uleb128 0xb
+ 469 0027 03       		.uleb128 0x3
+ 470 0028 0E       		.uleb128 0xe
+ 471 0029 00       		.byte	0
+ 472 002a 00       		.byte	0
+ 473 002b 04       		.uleb128 0x4
+ 474 002c 16       		.uleb128 0x16
+ 475 002d 00       		.byte	0
+ 476 002e 03       		.uleb128 0x3
+ 477 002f 0E       		.uleb128 0xe
+ 478 0030 3A       		.uleb128 0x3a
+ 479 0031 0B       		.uleb128 0xb
+ 480 0032 3B       		.uleb128 0x3b
+ 481 0033 0B       		.uleb128 0xb
+ 482 0034 49       		.uleb128 0x49
+ 483 0035 13       		.uleb128 0x13
+ 484 0036 00       		.byte	0
+ 485 0037 00       		.byte	0
+ 486 0038 05       		.uleb128 0x5
+ 487 0039 0F       		.uleb128 0xf
+ 488 003a 00       		.byte	0
+ 489 003b 0B       		.uleb128 0xb
+ 490 003c 0B       		.uleb128 0xb
+ 491 003d 00       		.byte	0
+ 492 003e 00       		.byte	0
+ 493 003f 06       		.uleb128 0x6
+ 494 0040 0F       		.uleb128 0xf
+ 495 0041 00       		.byte	0
+ 496 0042 0B       		.uleb128 0xb
+ 497 0043 0B       		.uleb128 0xb
+ 498 0044 49       		.uleb128 0x49
+ 499 0045 13       		.uleb128 0x13
+ 500 0046 00       		.byte	0
+ 501 0047 00       		.byte	0
+ 502 0048 07       		.uleb128 0x7
+ 503 0049 15       		.uleb128 0x15
+ 504 004a 01       		.byte	0x1
+ 505 004b 27       		.uleb128 0x27
+ 506 004c 0C       		.uleb128 0xc
+ 507 004d 01       		.uleb128 0x1
+ 508 004e 13       		.uleb128 0x13
+ 509 004f 00       		.byte	0
+ 510 0050 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 10
+
+
+ 511 0051 08       		.uleb128 0x8
+ 512 0052 05       		.uleb128 0x5
+ 513 0053 00       		.byte	0
+ 514 0054 49       		.uleb128 0x49
+ 515 0055 13       		.uleb128 0x13
+ 516 0056 00       		.byte	0
+ 517 0057 00       		.byte	0
+ 518 0058 09       		.uleb128 0x9
+ 519 0059 13       		.uleb128 0x13
+ 520 005a 01       		.byte	0x1
+ 521 005b 03       		.uleb128 0x3
+ 522 005c 0E       		.uleb128 0xe
+ 523 005d 0B       		.uleb128 0xb
+ 524 005e 0B       		.uleb128 0xb
+ 525 005f 3A       		.uleb128 0x3a
+ 526 0060 0B       		.uleb128 0xb
+ 527 0061 3B       		.uleb128 0x3b
+ 528 0062 0B       		.uleb128 0xb
+ 529 0063 01       		.uleb128 0x1
+ 530 0064 13       		.uleb128 0x13
+ 531 0065 00       		.byte	0
+ 532 0066 00       		.byte	0
+ 533 0067 0A       		.uleb128 0xa
+ 534 0068 0D       		.uleb128 0xd
+ 535 0069 00       		.byte	0
+ 536 006a 03       		.uleb128 0x3
+ 537 006b 0E       		.uleb128 0xe
+ 538 006c 3A       		.uleb128 0x3a
+ 539 006d 0B       		.uleb128 0xb
+ 540 006e 3B       		.uleb128 0x3b
+ 541 006f 0B       		.uleb128 0xb
+ 542 0070 49       		.uleb128 0x49
+ 543 0071 13       		.uleb128 0x13
+ 544 0072 38       		.uleb128 0x38
+ 545 0073 0A       		.uleb128 0xa
+ 546 0074 00       		.byte	0
+ 547 0075 00       		.byte	0
+ 548 0076 0B       		.uleb128 0xb
+ 549 0077 13       		.uleb128 0x13
+ 550 0078 01       		.byte	0x1
+ 551 0079 0B       		.uleb128 0xb
+ 552 007a 0B       		.uleb128 0xb
+ 553 007b 3A       		.uleb128 0x3a
+ 554 007c 0B       		.uleb128 0xb
+ 555 007d 3B       		.uleb128 0x3b
+ 556 007e 0B       		.uleb128 0xb
+ 557 007f 01       		.uleb128 0x1
+ 558 0080 13       		.uleb128 0x13
+ 559 0081 00       		.byte	0
+ 560 0082 00       		.byte	0
+ 561 0083 0C       		.uleb128 0xc
+ 562 0084 35       		.uleb128 0x35
+ 563 0085 00       		.byte	0
+ 564 0086 49       		.uleb128 0x49
+ 565 0087 13       		.uleb128 0x13
+ 566 0088 00       		.byte	0
+ 567 0089 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 11
+
+
+ 568 008a 0D       		.uleb128 0xd
+ 569 008b 2E       		.uleb128 0x2e
+ 570 008c 00       		.byte	0
+ 571 008d 3F       		.uleb128 0x3f
+ 572 008e 0C       		.uleb128 0xc
+ 573 008f 03       		.uleb128 0x3
+ 574 0090 0E       		.uleb128 0xe
+ 575 0091 3A       		.uleb128 0x3a
+ 576 0092 0B       		.uleb128 0xb
+ 577 0093 3B       		.uleb128 0x3b
+ 578 0094 0B       		.uleb128 0xb
+ 579 0095 27       		.uleb128 0x27
+ 580 0096 0C       		.uleb128 0xc
+ 581 0097 11       		.uleb128 0x11
+ 582 0098 01       		.uleb128 0x1
+ 583 0099 12       		.uleb128 0x12
+ 584 009a 01       		.uleb128 0x1
+ 585 009b 40       		.uleb128 0x40
+ 586 009c 0A       		.uleb128 0xa
+ 587 009d 9742     		.uleb128 0x2117
+ 588 009f 0C       		.uleb128 0xc
+ 589 00a0 00       		.byte	0
+ 590 00a1 00       		.byte	0
+ 591 00a2 0E       		.uleb128 0xe
+ 592 00a3 2E       		.uleb128 0x2e
+ 593 00a4 01       		.byte	0x1
+ 594 00a5 3F       		.uleb128 0x3f
+ 595 00a6 0C       		.uleb128 0xc
+ 596 00a7 03       		.uleb128 0x3
+ 597 00a8 0E       		.uleb128 0xe
+ 598 00a9 3A       		.uleb128 0x3a
+ 599 00aa 0B       		.uleb128 0xb
+ 600 00ab 3B       		.uleb128 0x3b
+ 601 00ac 0B       		.uleb128 0xb
+ 602 00ad 27       		.uleb128 0x27
+ 603 00ae 0C       		.uleb128 0xc
+ 604 00af 11       		.uleb128 0x11
+ 605 00b0 01       		.uleb128 0x1
+ 606 00b1 12       		.uleb128 0x12
+ 607 00b2 01       		.uleb128 0x1
+ 608 00b3 40       		.uleb128 0x40
+ 609 00b4 0A       		.uleb128 0xa
+ 610 00b5 9742     		.uleb128 0x2117
+ 611 00b7 0C       		.uleb128 0xc
+ 612 00b8 01       		.uleb128 0x1
+ 613 00b9 13       		.uleb128 0x13
+ 614 00ba 00       		.byte	0
+ 615 00bb 00       		.byte	0
+ 616 00bc 0F       		.uleb128 0xf
+ 617 00bd 05       		.uleb128 0x5
+ 618 00be 00       		.byte	0
+ 619 00bf 03       		.uleb128 0x3
+ 620 00c0 08       		.uleb128 0x8
+ 621 00c1 3A       		.uleb128 0x3a
+ 622 00c2 0B       		.uleb128 0xb
+ 623 00c3 3B       		.uleb128 0x3b
+ 624 00c4 0B       		.uleb128 0xb
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 12
+
+
+ 625 00c5 49       		.uleb128 0x49
+ 626 00c6 13       		.uleb128 0x13
+ 627 00c7 02       		.uleb128 0x2
+ 628 00c8 0A       		.uleb128 0xa
+ 629 00c9 00       		.byte	0
+ 630 00ca 00       		.byte	0
+ 631 00cb 10       		.uleb128 0x10
+ 632 00cc 05       		.uleb128 0x5
+ 633 00cd 00       		.byte	0
+ 634 00ce 03       		.uleb128 0x3
+ 635 00cf 0E       		.uleb128 0xe
+ 636 00d0 3A       		.uleb128 0x3a
+ 637 00d1 0B       		.uleb128 0xb
+ 638 00d2 3B       		.uleb128 0x3b
+ 639 00d3 0B       		.uleb128 0xb
+ 640 00d4 49       		.uleb128 0x49
+ 641 00d5 13       		.uleb128 0x13
+ 642 00d6 02       		.uleb128 0x2
+ 643 00d7 06       		.uleb128 0x6
+ 644 00d8 00       		.byte	0
+ 645 00d9 00       		.byte	0
+ 646 00da 11       		.uleb128 0x11
+ 647 00db 05       		.uleb128 0x5
+ 648 00dc 00       		.byte	0
+ 649 00dd 03       		.uleb128 0x3
+ 650 00de 0E       		.uleb128 0xe
+ 651 00df 3A       		.uleb128 0x3a
+ 652 00e0 0B       		.uleb128 0xb
+ 653 00e1 3B       		.uleb128 0x3b
+ 654 00e2 0B       		.uleb128 0xb
+ 655 00e3 49       		.uleb128 0x49
+ 656 00e4 13       		.uleb128 0x13
+ 657 00e5 02       		.uleb128 0x2
+ 658 00e6 0A       		.uleb128 0xa
+ 659 00e7 00       		.byte	0
+ 660 00e8 00       		.byte	0
+ 661 00e9 12       		.uleb128 0x12
+ 662 00ea 34       		.uleb128 0x34
+ 663 00eb 00       		.byte	0
+ 664 00ec 03       		.uleb128 0x3
+ 665 00ed 08       		.uleb128 0x8
+ 666 00ee 3A       		.uleb128 0x3a
+ 667 00ef 0B       		.uleb128 0xb
+ 668 00f0 3B       		.uleb128 0x3b
+ 669 00f1 0B       		.uleb128 0xb
+ 670 00f2 49       		.uleb128 0x49
+ 671 00f3 13       		.uleb128 0x13
+ 672 00f4 02       		.uleb128 0x2
+ 673 00f5 0A       		.uleb128 0xa
+ 674 00f6 00       		.byte	0
+ 675 00f7 00       		.byte	0
+ 676 00f8 13       		.uleb128 0x13
+ 677 00f9 34       		.uleb128 0x34
+ 678 00fa 00       		.byte	0
+ 679 00fb 03       		.uleb128 0x3
+ 680 00fc 0E       		.uleb128 0xe
+ 681 00fd 3A       		.uleb128 0x3a
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 13
+
+
+ 682 00fe 0B       		.uleb128 0xb
+ 683 00ff 3B       		.uleb128 0x3b
+ 684 0100 0B       		.uleb128 0xb
+ 685 0101 49       		.uleb128 0x49
+ 686 0102 13       		.uleb128 0x13
+ 687 0103 3F       		.uleb128 0x3f
+ 688 0104 0C       		.uleb128 0xc
+ 689 0105 02       		.uleb128 0x2
+ 690 0106 0A       		.uleb128 0xa
+ 691 0107 00       		.byte	0
+ 692 0108 00       		.byte	0
+ 693 0109 00       		.byte	0
+ 694              		.section	.debug_loc,"",@progbits
+ 695              	.Ldebug_loc0:
+ 696              	.LLST0:
+ 697 0000 00000000 		.4byte	.LVL0
+ 698 0004 00000000 		.4byte	.LVL2
+ 699 0008 0001     		.2byte	0x1
+ 700 000a 54       		.byte	0x54
+ 701 000b 00000000 		.4byte	.LVL2
+ 702 000f 00000000 		.4byte	.LFE16
+ 703 0013 0001     		.2byte	0x1
+ 704 0015 54       		.byte	0x54
+ 705 0016 00000000 		.4byte	0
+ 706 001a 00000000 		.4byte	0
+ 707              		.section	.debug_aranges,"",@progbits
+ 708 0000 0000002C 		.4byte	0x2c
+ 709 0004 0002     		.2byte	0x2
+ 710 0006 00000000 		.4byte	.Ldebug_info0
+ 711 000a 04       		.byte	0x4
+ 712 000b 00       		.byte	0
+ 713 000c 0000     		.2byte	0
+ 714 000e 0000     		.2byte	0
+ 715 0010 00000000 		.4byte	.LFB15
+ 716 0014 00000022 		.4byte	.LFE15-.LFB15
+ 717 0018 00000000 		.4byte	.LFB16
+ 718 001c 00000056 		.4byte	.LFE16-.LFB16
+ 719 0020 00000000 		.4byte	.LFB17
+ 720 0024 0000003E 		.4byte	.LFE17-.LFB17
+ 721 0028 00000000 		.4byte	0
+ 722 002c 00000000 		.4byte	0
+ 723              		.section	.debug_ranges,"",@progbits
+ 724              	.Ldebug_ranges0:
+ 725 0000 00000000 		.4byte	.LFB15
+ 726 0004 00000000 		.4byte	.LFE15
+ 727 0008 00000000 		.4byte	.LFB16
+ 728 000c 00000000 		.4byte	.LFE16
+ 729 0010 00000000 		.4byte	.LFB17
+ 730 0014 00000000 		.4byte	.LFE17
+ 731 0018 00000000 		.4byte	0
+ 732 001c 00000000 		.4byte	0
+ 733              		.section	.debug_line,"",@progbits
+ 734              	.Ldebug_line0:
+ 735 0000 00000267 		.section	.debug_str,"MS",@progbits,1
+ 735      00020000 
+ 735      02180201 
+ 735      FB0E0D00 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 14
+
+
+ 735      01010101 
+ 736              	.LASF26:
+ 737 0000 63685654 		.string	"chVTSetI"
+ 737      53657449 
+ 737      00
+ 738              	.LASF12:
+ 739 0009 73797374 		.string	"systime_t"
+ 739      696D655F 
+ 739      7400
+ 740              	.LASF14:
+ 741 0013 76746675 		.string	"vtfunc_t"
+ 741      6E635F74 
+ 741      00
+ 742              	.LASF6:
+ 743 001c 6C6F6E67 		.string	"long unsigned int"
+ 743      20756E73 
+ 743      69676E65 
+ 743      6420696E 
+ 743      7400
+ 744              	.LASF5:
+ 745 002e 73686F72 		.string	"short unsigned int"
+ 745      7420756E 
+ 745      7369676E 
+ 745      65642069 
+ 745      6E7400
+ 746              	.LASF15:
+ 747 0041 56697274 		.string	"VirtualTimer"
+ 747      75616C54 
+ 747      696D6572 
+ 747      00
+ 748              	.LASF3:
+ 749 004e 756E7369 		.string	"unsigned char"
+ 749      676E6564 
+ 749      20636861 
+ 749      7200
+ 750              	.LASF31:
+ 751 005c 5F76745F 		.string	"_vt_init"
+ 751      696E6974 
+ 751      00
+ 752              	.LASF9:
+ 753 0065 5F5F7569 		.string	"__uint32_t"
+ 753      6E743332 
+ 753      5F7400
+ 754              	.LASF29:
+ 755 0070 2E2F636F 		.string	"./components/chibios_rt_portable_kernel_component/lib/src/chvt.c"
+ 755      6D706F6E 
+ 755      656E7473 
+ 755      2F636869 
+ 755      62696F73 
+ 756              	.LASF0:
+ 757 00b1 756E7369 		.string	"unsigned int"
+ 757      676E6564 
+ 757      20696E74 
+ 757      00
+ 758              	.LASF8:
+ 759 00be 6C6F6E67 		.string	"long long unsigned int"
+ 759      206C6F6E 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 15
+
+
+ 759      6720756E 
+ 759      7369676E 
+ 759      65642069 
+ 760              	.LASF32:
+ 761 00d5 76746C69 		.string	"vtlist"
+ 761      737400
+ 762              	.LASF24:
+ 763 00dc 74696D65 		.string	"time"
+ 763      00
+ 764              	.LASF30:
+ 765 00e1 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 765      50433553 
+ 765      74756469 
+ 765      6F5C776F 
+ 765      726B7370 
+ 766              	.LASF18:
+ 767 0129 76745F74 		.string	"vt_time"
+ 767      696D6500 
+ 768              	.LASF13:
+ 769 0131 73697A65 		.string	"sizetype"
+ 769      74797065 
+ 769      00
+ 770              	.LASF21:
+ 771 013a 76745F73 		.string	"vt_systime"
+ 771      79737469 
+ 771      6D6500
+ 772              	.LASF7:
+ 773 0145 6C6F6E67 		.string	"long long int"
+ 773      206C6F6E 
+ 773      6720696E 
+ 773      7400
+ 774              	.LASF19:
+ 775 0153 76745F66 		.string	"vt_func"
+ 775      756E6300 
+ 776              	.LASF25:
+ 777 015b 76746675 		.string	"vtfunc"
+ 777      6E6300
+ 778              	.LASF23:
+ 779 0162 63686172 		.string	"char"
+ 779      00
+ 780              	.LASF20:
+ 781 0167 76745F70 		.string	"vt_par"
+ 781      617200
+ 782              	.LASF4:
+ 783 016e 73686F72 		.string	"short int"
+ 783      7420696E 
+ 783      7400
+ 784              	.LASF17:
+ 785 0178 76745F70 		.string	"vt_prev"
+ 785      72657600 
+ 786              	.LASF10:
+ 787 0180 75696E74 		.string	"uint32_t"
+ 787      33325F74 
+ 787      00
+ 788              	.LASF1:
+ 789 0189 6C6F6E67 		.string	"long int"
+ 789      20696E74 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 16
+
+
+ 789      00
+ 790              	.LASF28:
+ 791 0192 47       		.ascii	"G"
+ 792 0193 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 792      20342E39 
+ 792      2E322032 
+ 792      30313431 
+ 792      30333020 
+ 793              	.LASF2:
+ 794 0294 7369676E 		.string	"signed char"
+ 794      65642063 
+ 794      68617200 
+ 795              	.LASF22:
+ 796 02a0 56544C69 		.string	"VTList"
+ 796      737400
+ 797              	.LASF16:
+ 798 02a7 76745F6E 		.string	"vt_next"
+ 798      65787400 
+ 799              	.LASF27:
+ 800 02af 63685654 		.string	"chVTResetI"
+ 800      52657365 
+ 800      744900
+ 801              	.LASF11:
+ 802 02ba 5F426F6F 		.string	"_Bool"
+ 802      6C00
+ 803              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chvt.c
+C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s:10     .text._vt_init:00000000 _vt_init
+C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s:35     .text.chVTSetI:00000000 chVTSetI
+C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s:95     .text.chVTResetI:00000000 chVTResetI
+C:\Users\UTILIS~1\AppData\Local\Temp\cchqtyxe.s:131    .bss.vtlist:00000000 vtlist
+
+NO UNDEFINED SYMBOLS

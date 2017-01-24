@@ -1,0 +1,1059 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 1
+
+
+   1              		.file	"hal.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text.halInit,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl halInit
+   9              		.type	halInit, @function
+  10              	halInit:
+  11              	.LFB44:
+  12              		.file 1 "./components/portable_spc5_hal_component/lib/src/hal.c"
+  13              		.loc 1 56 0
+  14              		.cfi_startproc
+  15 0000 182106F8 		e_stwu %r1,-8(%r1)
+  16              	.LCFI0:
+  17              		.cfi_def_cfa_offset 8
+  18 0004 0080     		se_mflr %r0
+  19 0006 D301     		se_stw %r0,12(%r1)
+  20              		.cfi_offset 65, 4
+  21              		.loc 1 58 0
+  22 0008 78000001 		e_bl hal_lld_init
+  23              	.LVL0:
+  24              		.loc 1 64 0
+  25 000c 7060E000 		e_lis %r3,pal_default_config@ha
+  26 0010 1C630000 		e_la %r3,pal_default_config@l(%r3)
+  27 0014 78000001 		e_bl _pal_lld_init
+  28              	.LVL1:
+  29              		.loc 1 88 0
+  30 0018 78000001 		e_bl pwmInit
+  31              	.LVL2:
+  32              		.loc 1 91 0
+  33 001c 78000001 		e_bl sdInit
+  34              	.LVL3:
+  35              		.loc 1 116 0
+  36 0020 C301     		se_lwz %r0,12(%r1)
+  37 0022 0090     		se_mtlr %r0
+  38              		.cfi_restore 65
+  39 0024 2071     		se_addi %r1,8
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 0
+  42              		.loc 1 115 0
+  43 0026 78000000 		e_b boardInit
+  44              	.LVL4:
+  45              		.cfi_endproc
+  46              	.LFE44:
+  47              		.size	halInit, .-halInit
+  48              		.section	".text","axv"
+  49              	.Letext0:
+  50              		.file 2 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+  51              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+  52              		.file 4 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/include/chtypes.h"
+  53              		.file 5 "./components/chibios_rt_portable_kernel_component/lib/include/chvt.h"
+  54              		.file 6 "./components/spc560dxx_hal_drivers_component/lib/include/pal_lld.h"
+  55              		.file 7 "./components/spc560dxx_hal_drivers_component/lib/include/hal_lld.h"
+  56              		.file 8 "./components/portable_spc5_hal_component/lib/include/pwm.h"
+  57              		.file 9 "./components/portable_spc5_hal_component/lib/include/serial.h"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 2
+
+
+  58              		.file 10 "./components/spc560dxx_hal_board_initialization_component/cfg/board.h"
+  59              		.section	.debug_info,"",@progbits
+  60              	.Ldebug_info0:
+  61 0000 00000303 		.4byte	0x303
+  62 0004 0002     		.2byte	0x2
+  63 0006 00000000 		.4byte	.Ldebug_abbrev0
+  64 000a 04       		.byte	0x4
+  65 000b 01       		.uleb128 0x1
+  66 000c 00000000 		.4byte	.LASF45
+  67 0010 01       		.byte	0x1
+  68 0011 00000000 		.4byte	.LASF46
+  69 0015 00000000 		.4byte	.LASF47
+  70 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  71 001d 00000000 		.4byte	0
+  72 0021 00000000 		.4byte	0
+  73 0025 00000000 		.4byte	.Ldebug_line0
+  74 0029 02       		.uleb128 0x2
+  75 002a 04       		.byte	0x4
+  76 002b 05       		.byte	0x5
+  77 002c 696E7400 		.string	"int"
+  78 0030 03       		.uleb128 0x3
+  79 0031 04       		.byte	0x4
+  80 0032 07       		.byte	0x7
+  81 0033 00000000 		.4byte	.LASF0
+  82 0037 03       		.uleb128 0x3
+  83 0038 04       		.byte	0x4
+  84 0039 05       		.byte	0x5
+  85 003a 00000000 		.4byte	.LASF1
+  86 003e 03       		.uleb128 0x3
+  87 003f 01       		.byte	0x1
+  88 0040 06       		.byte	0x6
+  89 0041 00000000 		.4byte	.LASF2
+  90 0045 04       		.uleb128 0x4
+  91 0046 00000000 		.4byte	.LASF5
+  92 004a 02       		.byte	0x2
+  93 004b 1D       		.byte	0x1d
+  94 004c 00000050 		.4byte	0x50
+  95 0050 03       		.uleb128 0x3
+  96 0051 01       		.byte	0x1
+  97 0052 08       		.byte	0x8
+  98 0053 00000000 		.4byte	.LASF3
+  99 0057 03       		.uleb128 0x3
+ 100 0058 02       		.byte	0x2
+ 101 0059 05       		.byte	0x5
+ 102 005a 00000000 		.4byte	.LASF4
+ 103 005e 04       		.uleb128 0x4
+ 104 005f 00000000 		.4byte	.LASF6
+ 105 0063 02       		.byte	0x2
+ 106 0064 2B       		.byte	0x2b
+ 107 0065 00000069 		.4byte	0x69
+ 108 0069 03       		.uleb128 0x3
+ 109 006a 02       		.byte	0x2
+ 110 006b 07       		.byte	0x7
+ 111 006c 00000000 		.4byte	.LASF7
+ 112 0070 04       		.uleb128 0x4
+ 113 0071 00000000 		.4byte	.LASF8
+ 114 0075 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 3
+
+
+ 115 0076 3F       		.byte	0x3f
+ 116 0077 00000037 		.4byte	0x37
+ 117 007b 04       		.uleb128 0x4
+ 118 007c 00000000 		.4byte	.LASF9
+ 119 0080 02       		.byte	0x2
+ 120 0081 41       		.byte	0x41
+ 121 0082 00000086 		.4byte	0x86
+ 122 0086 03       		.uleb128 0x3
+ 123 0087 04       		.byte	0x4
+ 124 0088 07       		.byte	0x7
+ 125 0089 00000000 		.4byte	.LASF10
+ 126 008d 03       		.uleb128 0x3
+ 127 008e 08       		.byte	0x8
+ 128 008f 05       		.byte	0x5
+ 129 0090 00000000 		.4byte	.LASF11
+ 130 0094 03       		.uleb128 0x3
+ 131 0095 08       		.byte	0x8
+ 132 0096 07       		.byte	0x7
+ 133 0097 00000000 		.4byte	.LASF12
+ 134 009b 04       		.uleb128 0x4
+ 135 009c 00000000 		.4byte	.LASF13
+ 136 00a0 03       		.byte	0x3
+ 137 00a1 15       		.byte	0x15
+ 138 00a2 00000045 		.4byte	0x45
+ 139 00a6 04       		.uleb128 0x4
+ 140 00a7 00000000 		.4byte	.LASF14
+ 141 00ab 03       		.byte	0x3
+ 142 00ac 21       		.byte	0x21
+ 143 00ad 0000005E 		.4byte	0x5e
+ 144 00b1 04       		.uleb128 0x4
+ 145 00b2 00000000 		.4byte	.LASF15
+ 146 00b6 03       		.byte	0x3
+ 147 00b7 2C       		.byte	0x2c
+ 148 00b8 00000070 		.4byte	0x70
+ 149 00bc 04       		.uleb128 0x4
+ 150 00bd 00000000 		.4byte	.LASF16
+ 151 00c1 03       		.byte	0x3
+ 152 00c2 2D       		.byte	0x2d
+ 153 00c3 0000007B 		.4byte	0x7b
+ 154 00c7 03       		.uleb128 0x3
+ 155 00c8 01       		.byte	0x1
+ 156 00c9 02       		.byte	0x2
+ 157 00ca 00000000 		.4byte	.LASF17
+ 158 00ce 04       		.uleb128 0x4
+ 159 00cf 00000000 		.4byte	.LASF18
+ 160 00d3 04       		.byte	0x4
+ 161 00d4 42       		.byte	0x42
+ 162 00d5 000000BC 		.4byte	0xbc
+ 163 00d9 03       		.uleb128 0x3
+ 164 00da 04       		.byte	0x4
+ 165 00db 07       		.byte	0x7
+ 166 00dc 00000000 		.4byte	.LASF19
+ 167 00e0 05       		.uleb128 0x5
+ 168 00e1 04       		.byte	0x4
+ 169 00e2 04       		.uleb128 0x4
+ 170 00e3 00000000 		.4byte	.LASF20
+ 171 00e7 05       		.byte	0x5
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 4
+
+
+ 172 00e8 58       		.byte	0x58
+ 173 00e9 000000ED 		.4byte	0xed
+ 174 00ed 06       		.uleb128 0x6
+ 175 00ee 04       		.byte	0x4
+ 176 00ef 000000F3 		.4byte	0xf3
+ 177 00f3 07       		.uleb128 0x7
+ 178 00f4 01       		.byte	0x1
+ 179 00f5 000000FF 		.4byte	0xff
+ 180 00f9 08       		.uleb128 0x8
+ 181 00fa 000000E0 		.4byte	0xe0
+ 182 00fe 00       		.byte	0
+ 183 00ff 04       		.uleb128 0x4
+ 184 0100 00000000 		.4byte	.LASF21
+ 185 0104 05       		.byte	0x5
+ 186 0105 5D       		.byte	0x5d
+ 187 0106 0000010A 		.4byte	0x10a
+ 188 010a 09       		.uleb128 0x9
+ 189 010b 00000000 		.4byte	.LASF21
+ 190 010f 14       		.byte	0x14
+ 191 0110 05       		.byte	0x5
+ 192 0111 64       		.byte	0x64
+ 193 0112 0000015D 		.4byte	0x15d
+ 194 0116 0A       		.uleb128 0xa
+ 195 0117 00000000 		.4byte	.LASF22
+ 196 011b 05       		.byte	0x5
+ 197 011c 65       		.byte	0x65
+ 198 011d 0000015D 		.4byte	0x15d
+ 199 0121 02       		.byte	0x2
+ 200 0122 23       		.byte	0x23
+ 201 0123 00       		.uleb128 0
+ 202 0124 0A       		.uleb128 0xa
+ 203 0125 00000000 		.4byte	.LASF23
+ 204 0129 05       		.byte	0x5
+ 205 012a 67       		.byte	0x67
+ 206 012b 0000015D 		.4byte	0x15d
+ 207 012f 02       		.byte	0x2
+ 208 0130 23       		.byte	0x23
+ 209 0131 04       		.uleb128 0x4
+ 210 0132 0A       		.uleb128 0xa
+ 211 0133 00000000 		.4byte	.LASF24
+ 212 0137 05       		.byte	0x5
+ 213 0138 69       		.byte	0x69
+ 214 0139 000000CE 		.4byte	0xce
+ 215 013d 02       		.byte	0x2
+ 216 013e 23       		.byte	0x23
+ 217 013f 08       		.uleb128 0x8
+ 218 0140 0A       		.uleb128 0xa
+ 219 0141 00000000 		.4byte	.LASF25
+ 220 0145 05       		.byte	0x5
+ 221 0146 6A       		.byte	0x6a
+ 222 0147 000000E2 		.4byte	0xe2
+ 223 014b 02       		.byte	0x2
+ 224 014c 23       		.byte	0x23
+ 225 014d 0C       		.uleb128 0xc
+ 226 014e 0A       		.uleb128 0xa
+ 227 014f 00000000 		.4byte	.LASF26
+ 228 0153 05       		.byte	0x5
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 5
+
+
+ 229 0154 6C       		.byte	0x6c
+ 230 0155 000000E0 		.4byte	0xe0
+ 231 0159 02       		.byte	0x2
+ 232 015a 23       		.byte	0x23
+ 233 015b 10       		.uleb128 0x10
+ 234 015c 00       		.byte	0
+ 235 015d 06       		.uleb128 0x6
+ 236 015e 04       		.byte	0x4
+ 237 015f 000000FF 		.4byte	0xff
+ 238 0163 0B       		.uleb128 0xb
+ 239 0164 10       		.byte	0x10
+ 240 0165 05       		.byte	0x5
+ 241 0166 76       		.byte	0x76
+ 242 0167 000001A4 		.4byte	0x1a4
+ 243 016b 0A       		.uleb128 0xa
+ 244 016c 00000000 		.4byte	.LASF22
+ 245 0170 05       		.byte	0x5
+ 246 0171 77       		.byte	0x77
+ 247 0172 0000015D 		.4byte	0x15d
+ 248 0176 02       		.byte	0x2
+ 249 0177 23       		.byte	0x23
+ 250 0178 00       		.uleb128 0
+ 251 0179 0A       		.uleb128 0xa
+ 252 017a 00000000 		.4byte	.LASF23
+ 253 017e 05       		.byte	0x5
+ 254 017f 79       		.byte	0x79
+ 255 0180 0000015D 		.4byte	0x15d
+ 256 0184 02       		.byte	0x2
+ 257 0185 23       		.byte	0x23
+ 258 0186 04       		.uleb128 0x4
+ 259 0187 0A       		.uleb128 0xa
+ 260 0188 00000000 		.4byte	.LASF24
+ 261 018c 05       		.byte	0x5
+ 262 018d 7B       		.byte	0x7b
+ 263 018e 000000CE 		.4byte	0xce
+ 264 0192 02       		.byte	0x2
+ 265 0193 23       		.byte	0x23
+ 266 0194 08       		.uleb128 0x8
+ 267 0195 0A       		.uleb128 0xa
+ 268 0196 00000000 		.4byte	.LASF27
+ 269 019a 05       		.byte	0x5
+ 270 019b 7C       		.byte	0x7c
+ 271 019c 000001A4 		.4byte	0x1a4
+ 272 01a0 02       		.byte	0x2
+ 273 01a1 23       		.byte	0x23
+ 274 01a2 0C       		.uleb128 0xc
+ 275 01a3 00       		.byte	0
+ 276 01a4 0C       		.uleb128 0xc
+ 277 01a5 000000CE 		.4byte	0xce
+ 278 01a9 04       		.uleb128 0x4
+ 279 01aa 00000000 		.4byte	.LASF28
+ 280 01ae 05       		.byte	0x5
+ 281 01af 7D       		.byte	0x7d
+ 282 01b0 00000163 		.4byte	0x163
+ 283 01b4 03       		.uleb128 0x3
+ 284 01b5 01       		.byte	0x1
+ 285 01b6 08       		.byte	0x8
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 6
+
+
+ 286 01b7 00000000 		.4byte	.LASF29
+ 287 01bb 06       		.uleb128 0x6
+ 288 01bc 04       		.byte	0x4
+ 289 01bd 000001C1 		.4byte	0x1c1
+ 290 01c1 0D       		.uleb128 0xd
+ 291 01c2 0000009B 		.4byte	0x9b
+ 292 01c6 04       		.uleb128 0x4
+ 293 01c7 00000000 		.4byte	.LASF30
+ 294 01cb 06       		.byte	0x6
+ 295 01cc 8A       		.byte	0x8a
+ 296 01cd 000000A6 		.4byte	0xa6
+ 297 01d1 0B       		.uleb128 0xb
+ 298 01d2 08       		.byte	0x8
+ 299 01d3 06       		.byte	0x6
+ 300 01d4 97       		.byte	0x97
+ 301 01d5 00000204 		.4byte	0x204
+ 302 01d9 0A       		.uleb128 0xa
+ 303 01da 00000000 		.4byte	.LASF31
+ 304 01de 06       		.byte	0x6
+ 305 01df 98       		.byte	0x98
+ 306 01e0 000000B1 		.4byte	0xb1
+ 307 01e4 02       		.byte	0x2
+ 308 01e5 23       		.byte	0x23
+ 309 01e6 00       		.uleb128 0
+ 310 01e7 0A       		.uleb128 0xa
+ 311 01e8 00000000 		.4byte	.LASF32
+ 312 01ec 06       		.byte	0x6
+ 313 01ed 99       		.byte	0x99
+ 314 01ee 0000009B 		.4byte	0x9b
+ 315 01f2 02       		.byte	0x2
+ 316 01f3 23       		.byte	0x23
+ 317 01f4 04       		.uleb128 0x4
+ 318 01f5 0A       		.uleb128 0xa
+ 319 01f6 00000000 		.4byte	.LASF33
+ 320 01fa 06       		.byte	0x6
+ 321 01fb 9A       		.byte	0x9a
+ 322 01fc 000001C6 		.4byte	0x1c6
+ 323 0200 02       		.byte	0x2
+ 324 0201 23       		.byte	0x23
+ 325 0202 06       		.uleb128 0x6
+ 326 0203 00       		.byte	0
+ 327 0204 04       		.uleb128 0x4
+ 328 0205 00000000 		.4byte	.LASF34
+ 329 0209 06       		.byte	0x6
+ 330 020a 9B       		.byte	0x9b
+ 331 020b 000001D1 		.4byte	0x1d1
+ 332 020f 0B       		.uleb128 0xb
+ 333 0210 0C       		.byte	0xc
+ 334 0211 06       		.byte	0x6
+ 335 0212 A6       		.byte	0xa6
+ 336 0213 00000242 		.4byte	0x242
+ 337 0217 0A       		.uleb128 0xa
+ 338 0218 00000000 		.4byte	.LASF35
+ 339 021c 06       		.byte	0x6
+ 340 021d A7       		.byte	0xa7
+ 341 021e 000001C6 		.4byte	0x1c6
+ 342 0222 02       		.byte	0x2
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 7
+
+
+ 343 0223 23       		.byte	0x23
+ 344 0224 00       		.uleb128 0
+ 345 0225 0A       		.uleb128 0xa
+ 346 0226 00000000 		.4byte	.LASF36
+ 347 022a 06       		.byte	0x6
+ 348 022b A8       		.byte	0xa8
+ 349 022c 00000242 		.4byte	0x242
+ 350 0230 02       		.byte	0x2
+ 351 0231 23       		.byte	0x23
+ 352 0232 04       		.uleb128 0x4
+ 353 0233 0A       		.uleb128 0xa
+ 354 0234 00000000 		.4byte	.LASF37
+ 355 0238 06       		.byte	0x6
+ 356 0239 A9       		.byte	0xa9
+ 357 023a 000001BB 		.4byte	0x1bb
+ 358 023e 02       		.byte	0x2
+ 359 023f 23       		.byte	0x23
+ 360 0240 08       		.uleb128 0x8
+ 361 0241 00       		.byte	0
+ 362 0242 06       		.uleb128 0x6
+ 363 0243 04       		.byte	0x4
+ 364 0244 00000248 		.4byte	0x248
+ 365 0248 0D       		.uleb128 0xd
+ 366 0249 00000204 		.4byte	0x204
+ 367 024d 04       		.uleb128 0x4
+ 368 024e 00000000 		.4byte	.LASF38
+ 369 0252 06       		.byte	0x6
+ 370 0253 AA       		.byte	0xaa
+ 371 0254 0000020F 		.4byte	0x20f
+ 372 0258 0E       		.uleb128 0xe
+ 373 0259 01       		.byte	0x1
+ 374 025a 00000000 		.4byte	.LASF48
+ 375 025e 01       		.byte	0x1
+ 376 025f 38       		.byte	0x38
+ 377 0260 01       		.byte	0x1
+ 378 0261 00000000 		.4byte	.LFB44
+ 379 0265 00000000 		.4byte	.LFE44
+ 380 0269 00000000 		.4byte	.LLST0
+ 381 026d 01       		.byte	0x1
+ 382 026e 000002A1 		.4byte	0x2a1
+ 383 0272 0F       		.uleb128 0xf
+ 384 0273 00000000 		.4byte	.LVL0
+ 385 0277 000002C1 		.4byte	0x2c1
+ 386 027b 0F       		.uleb128 0xf
+ 387 027c 00000000 		.4byte	.LVL1
+ 388 0280 000002CC 		.4byte	0x2cc
+ 389 0284 0F       		.uleb128 0xf
+ 390 0285 00000000 		.4byte	.LVL2
+ 391 0289 000002E7 		.4byte	0x2e7
+ 392 028d 0F       		.uleb128 0xf
+ 393 028e 00000000 		.4byte	.LVL3
+ 394 0292 000002F1 		.4byte	0x2f1
+ 395 0296 10       		.uleb128 0x10
+ 396 0297 00000000 		.4byte	.LVL4
+ 397 029b 01       		.byte	0x1
+ 398 029c 000002FC 		.4byte	0x2fc
+ 399 02a0 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 8
+
+
+ 400 02a1 11       		.uleb128 0x11
+ 401 02a2 00000000 		.4byte	.LASF39
+ 402 02a6 05       		.byte	0x5
+ 403 02a7 F5       		.byte	0xf5
+ 404 02a8 000001A9 		.4byte	0x1a9
+ 405 02ac 01       		.byte	0x1
+ 406 02ad 01       		.byte	0x1
+ 407 02ae 12       		.uleb128 0x12
+ 408 02af 00000000 		.4byte	.LASF40
+ 409 02b3 06       		.byte	0x6
+ 410 02b4 019D     		.2byte	0x19d
+ 411 02b6 000002BC 		.4byte	0x2bc
+ 412 02ba 01       		.byte	0x1
+ 413 02bb 01       		.byte	0x1
+ 414 02bc 0D       		.uleb128 0xd
+ 415 02bd 0000024D 		.4byte	0x24d
+ 416 02c1 13       		.uleb128 0x13
+ 417 02c2 01       		.byte	0x1
+ 418 02c3 00000000 		.4byte	.LASF41
+ 419 02c7 07       		.byte	0x7
+ 420 02c8 03B1     		.2byte	0x3b1
+ 421 02ca 01       		.byte	0x1
+ 422 02cb 01       		.byte	0x1
+ 423 02cc 14       		.uleb128 0x14
+ 424 02cd 01       		.byte	0x1
+ 425 02ce 00000000 		.4byte	.LASF49
+ 426 02d2 06       		.byte	0x6
+ 427 02d3 01A2     		.2byte	0x1a2
+ 428 02d5 01       		.byte	0x1
+ 429 02d6 01       		.byte	0x1
+ 430 02d7 000002E1 		.4byte	0x2e1
+ 431 02db 08       		.uleb128 0x8
+ 432 02dc 000002E1 		.4byte	0x2e1
+ 433 02e0 00       		.byte	0
+ 434 02e1 06       		.uleb128 0x6
+ 435 02e2 04       		.byte	0x4
+ 436 02e3 000002BC 		.4byte	0x2bc
+ 437 02e7 15       		.uleb128 0x15
+ 438 02e8 01       		.byte	0x1
+ 439 02e9 00000000 		.4byte	.LASF42
+ 440 02ed 08       		.byte	0x8
+ 441 02ee E7       		.byte	0xe7
+ 442 02ef 01       		.byte	0x1
+ 443 02f0 01       		.byte	0x1
+ 444 02f1 13       		.uleb128 0x13
+ 445 02f2 01       		.byte	0x1
+ 446 02f3 00000000 		.4byte	.LASF43
+ 447 02f7 09       		.byte	0x9
+ 448 02f8 0122     		.2byte	0x122
+ 449 02fa 01       		.byte	0x1
+ 450 02fb 01       		.byte	0x1
+ 451 02fc 15       		.uleb128 0x15
+ 452 02fd 01       		.byte	0x1
+ 453 02fe 00000000 		.4byte	.LASF44
+ 454 0302 0A       		.byte	0xa
+ 455 0303 4B       		.byte	0x4b
+ 456 0304 01       		.byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 9
+
+
+ 457 0305 01       		.byte	0x1
+ 458 0306 00       		.byte	0
+ 459              		.section	.debug_abbrev,"",@progbits
+ 460              	.Ldebug_abbrev0:
+ 461 0000 01       		.uleb128 0x1
+ 462 0001 11       		.uleb128 0x11
+ 463 0002 01       		.byte	0x1
+ 464 0003 25       		.uleb128 0x25
+ 465 0004 0E       		.uleb128 0xe
+ 466 0005 13       		.uleb128 0x13
+ 467 0006 0B       		.uleb128 0xb
+ 468 0007 03       		.uleb128 0x3
+ 469 0008 0E       		.uleb128 0xe
+ 470 0009 1B       		.uleb128 0x1b
+ 471 000a 0E       		.uleb128 0xe
+ 472 000b 55       		.uleb128 0x55
+ 473 000c 06       		.uleb128 0x6
+ 474 000d 11       		.uleb128 0x11
+ 475 000e 01       		.uleb128 0x1
+ 476 000f 52       		.uleb128 0x52
+ 477 0010 01       		.uleb128 0x1
+ 478 0011 10       		.uleb128 0x10
+ 479 0012 06       		.uleb128 0x6
+ 480 0013 00       		.byte	0
+ 481 0014 00       		.byte	0
+ 482 0015 02       		.uleb128 0x2
+ 483 0016 24       		.uleb128 0x24
+ 484 0017 00       		.byte	0
+ 485 0018 0B       		.uleb128 0xb
+ 486 0019 0B       		.uleb128 0xb
+ 487 001a 3E       		.uleb128 0x3e
+ 488 001b 0B       		.uleb128 0xb
+ 489 001c 03       		.uleb128 0x3
+ 490 001d 08       		.uleb128 0x8
+ 491 001e 00       		.byte	0
+ 492 001f 00       		.byte	0
+ 493 0020 03       		.uleb128 0x3
+ 494 0021 24       		.uleb128 0x24
+ 495 0022 00       		.byte	0
+ 496 0023 0B       		.uleb128 0xb
+ 497 0024 0B       		.uleb128 0xb
+ 498 0025 3E       		.uleb128 0x3e
+ 499 0026 0B       		.uleb128 0xb
+ 500 0027 03       		.uleb128 0x3
+ 501 0028 0E       		.uleb128 0xe
+ 502 0029 00       		.byte	0
+ 503 002a 00       		.byte	0
+ 504 002b 04       		.uleb128 0x4
+ 505 002c 16       		.uleb128 0x16
+ 506 002d 00       		.byte	0
+ 507 002e 03       		.uleb128 0x3
+ 508 002f 0E       		.uleb128 0xe
+ 509 0030 3A       		.uleb128 0x3a
+ 510 0031 0B       		.uleb128 0xb
+ 511 0032 3B       		.uleb128 0x3b
+ 512 0033 0B       		.uleb128 0xb
+ 513 0034 49       		.uleb128 0x49
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 10
+
+
+ 514 0035 13       		.uleb128 0x13
+ 515 0036 00       		.byte	0
+ 516 0037 00       		.byte	0
+ 517 0038 05       		.uleb128 0x5
+ 518 0039 0F       		.uleb128 0xf
+ 519 003a 00       		.byte	0
+ 520 003b 0B       		.uleb128 0xb
+ 521 003c 0B       		.uleb128 0xb
+ 522 003d 00       		.byte	0
+ 523 003e 00       		.byte	0
+ 524 003f 06       		.uleb128 0x6
+ 525 0040 0F       		.uleb128 0xf
+ 526 0041 00       		.byte	0
+ 527 0042 0B       		.uleb128 0xb
+ 528 0043 0B       		.uleb128 0xb
+ 529 0044 49       		.uleb128 0x49
+ 530 0045 13       		.uleb128 0x13
+ 531 0046 00       		.byte	0
+ 532 0047 00       		.byte	0
+ 533 0048 07       		.uleb128 0x7
+ 534 0049 15       		.uleb128 0x15
+ 535 004a 01       		.byte	0x1
+ 536 004b 27       		.uleb128 0x27
+ 537 004c 0C       		.uleb128 0xc
+ 538 004d 01       		.uleb128 0x1
+ 539 004e 13       		.uleb128 0x13
+ 540 004f 00       		.byte	0
+ 541 0050 00       		.byte	0
+ 542 0051 08       		.uleb128 0x8
+ 543 0052 05       		.uleb128 0x5
+ 544 0053 00       		.byte	0
+ 545 0054 49       		.uleb128 0x49
+ 546 0055 13       		.uleb128 0x13
+ 547 0056 00       		.byte	0
+ 548 0057 00       		.byte	0
+ 549 0058 09       		.uleb128 0x9
+ 550 0059 13       		.uleb128 0x13
+ 551 005a 01       		.byte	0x1
+ 552 005b 03       		.uleb128 0x3
+ 553 005c 0E       		.uleb128 0xe
+ 554 005d 0B       		.uleb128 0xb
+ 555 005e 0B       		.uleb128 0xb
+ 556 005f 3A       		.uleb128 0x3a
+ 557 0060 0B       		.uleb128 0xb
+ 558 0061 3B       		.uleb128 0x3b
+ 559 0062 0B       		.uleb128 0xb
+ 560 0063 01       		.uleb128 0x1
+ 561 0064 13       		.uleb128 0x13
+ 562 0065 00       		.byte	0
+ 563 0066 00       		.byte	0
+ 564 0067 0A       		.uleb128 0xa
+ 565 0068 0D       		.uleb128 0xd
+ 566 0069 00       		.byte	0
+ 567 006a 03       		.uleb128 0x3
+ 568 006b 0E       		.uleb128 0xe
+ 569 006c 3A       		.uleb128 0x3a
+ 570 006d 0B       		.uleb128 0xb
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 11
+
+
+ 571 006e 3B       		.uleb128 0x3b
+ 572 006f 0B       		.uleb128 0xb
+ 573 0070 49       		.uleb128 0x49
+ 574 0071 13       		.uleb128 0x13
+ 575 0072 38       		.uleb128 0x38
+ 576 0073 0A       		.uleb128 0xa
+ 577 0074 00       		.byte	0
+ 578 0075 00       		.byte	0
+ 579 0076 0B       		.uleb128 0xb
+ 580 0077 13       		.uleb128 0x13
+ 581 0078 01       		.byte	0x1
+ 582 0079 0B       		.uleb128 0xb
+ 583 007a 0B       		.uleb128 0xb
+ 584 007b 3A       		.uleb128 0x3a
+ 585 007c 0B       		.uleb128 0xb
+ 586 007d 3B       		.uleb128 0x3b
+ 587 007e 0B       		.uleb128 0xb
+ 588 007f 01       		.uleb128 0x1
+ 589 0080 13       		.uleb128 0x13
+ 590 0081 00       		.byte	0
+ 591 0082 00       		.byte	0
+ 592 0083 0C       		.uleb128 0xc
+ 593 0084 35       		.uleb128 0x35
+ 594 0085 00       		.byte	0
+ 595 0086 49       		.uleb128 0x49
+ 596 0087 13       		.uleb128 0x13
+ 597 0088 00       		.byte	0
+ 598 0089 00       		.byte	0
+ 599 008a 0D       		.uleb128 0xd
+ 600 008b 26       		.uleb128 0x26
+ 601 008c 00       		.byte	0
+ 602 008d 49       		.uleb128 0x49
+ 603 008e 13       		.uleb128 0x13
+ 604 008f 00       		.byte	0
+ 605 0090 00       		.byte	0
+ 606 0091 0E       		.uleb128 0xe
+ 607 0092 2E       		.uleb128 0x2e
+ 608 0093 01       		.byte	0x1
+ 609 0094 3F       		.uleb128 0x3f
+ 610 0095 0C       		.uleb128 0xc
+ 611 0096 03       		.uleb128 0x3
+ 612 0097 0E       		.uleb128 0xe
+ 613 0098 3A       		.uleb128 0x3a
+ 614 0099 0B       		.uleb128 0xb
+ 615 009a 3B       		.uleb128 0x3b
+ 616 009b 0B       		.uleb128 0xb
+ 617 009c 27       		.uleb128 0x27
+ 618 009d 0C       		.uleb128 0xc
+ 619 009e 11       		.uleb128 0x11
+ 620 009f 01       		.uleb128 0x1
+ 621 00a0 12       		.uleb128 0x12
+ 622 00a1 01       		.uleb128 0x1
+ 623 00a2 40       		.uleb128 0x40
+ 624 00a3 06       		.uleb128 0x6
+ 625 00a4 9742     		.uleb128 0x2117
+ 626 00a6 0C       		.uleb128 0xc
+ 627 00a7 01       		.uleb128 0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 12
+
+
+ 628 00a8 13       		.uleb128 0x13
+ 629 00a9 00       		.byte	0
+ 630 00aa 00       		.byte	0
+ 631 00ab 0F       		.uleb128 0xf
+ 632 00ac 898201   		.uleb128 0x4109
+ 633 00af 00       		.byte	0
+ 634 00b0 11       		.uleb128 0x11
+ 635 00b1 01       		.uleb128 0x1
+ 636 00b2 31       		.uleb128 0x31
+ 637 00b3 13       		.uleb128 0x13
+ 638 00b4 00       		.byte	0
+ 639 00b5 00       		.byte	0
+ 640 00b6 10       		.uleb128 0x10
+ 641 00b7 898201   		.uleb128 0x4109
+ 642 00ba 00       		.byte	0
+ 643 00bb 11       		.uleb128 0x11
+ 644 00bc 01       		.uleb128 0x1
+ 645 00bd 9542     		.uleb128 0x2115
+ 646 00bf 0C       		.uleb128 0xc
+ 647 00c0 31       		.uleb128 0x31
+ 648 00c1 13       		.uleb128 0x13
+ 649 00c2 00       		.byte	0
+ 650 00c3 00       		.byte	0
+ 651 00c4 11       		.uleb128 0x11
+ 652 00c5 34       		.uleb128 0x34
+ 653 00c6 00       		.byte	0
+ 654 00c7 03       		.uleb128 0x3
+ 655 00c8 0E       		.uleb128 0xe
+ 656 00c9 3A       		.uleb128 0x3a
+ 657 00ca 0B       		.uleb128 0xb
+ 658 00cb 3B       		.uleb128 0x3b
+ 659 00cc 0B       		.uleb128 0xb
+ 660 00cd 49       		.uleb128 0x49
+ 661 00ce 13       		.uleb128 0x13
+ 662 00cf 3F       		.uleb128 0x3f
+ 663 00d0 0C       		.uleb128 0xc
+ 664 00d1 3C       		.uleb128 0x3c
+ 665 00d2 0C       		.uleb128 0xc
+ 666 00d3 00       		.byte	0
+ 667 00d4 00       		.byte	0
+ 668 00d5 12       		.uleb128 0x12
+ 669 00d6 34       		.uleb128 0x34
+ 670 00d7 00       		.byte	0
+ 671 00d8 03       		.uleb128 0x3
+ 672 00d9 0E       		.uleb128 0xe
+ 673 00da 3A       		.uleb128 0x3a
+ 674 00db 0B       		.uleb128 0xb
+ 675 00dc 3B       		.uleb128 0x3b
+ 676 00dd 05       		.uleb128 0x5
+ 677 00de 49       		.uleb128 0x49
+ 678 00df 13       		.uleb128 0x13
+ 679 00e0 3F       		.uleb128 0x3f
+ 680 00e1 0C       		.uleb128 0xc
+ 681 00e2 3C       		.uleb128 0x3c
+ 682 00e3 0C       		.uleb128 0xc
+ 683 00e4 00       		.byte	0
+ 684 00e5 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 13
+
+
+ 685 00e6 13       		.uleb128 0x13
+ 686 00e7 2E       		.uleb128 0x2e
+ 687 00e8 00       		.byte	0
+ 688 00e9 3F       		.uleb128 0x3f
+ 689 00ea 0C       		.uleb128 0xc
+ 690 00eb 03       		.uleb128 0x3
+ 691 00ec 0E       		.uleb128 0xe
+ 692 00ed 3A       		.uleb128 0x3a
+ 693 00ee 0B       		.uleb128 0xb
+ 694 00ef 3B       		.uleb128 0x3b
+ 695 00f0 05       		.uleb128 0x5
+ 696 00f1 27       		.uleb128 0x27
+ 697 00f2 0C       		.uleb128 0xc
+ 698 00f3 3C       		.uleb128 0x3c
+ 699 00f4 0C       		.uleb128 0xc
+ 700 00f5 00       		.byte	0
+ 701 00f6 00       		.byte	0
+ 702 00f7 14       		.uleb128 0x14
+ 703 00f8 2E       		.uleb128 0x2e
+ 704 00f9 01       		.byte	0x1
+ 705 00fa 3F       		.uleb128 0x3f
+ 706 00fb 0C       		.uleb128 0xc
+ 707 00fc 03       		.uleb128 0x3
+ 708 00fd 0E       		.uleb128 0xe
+ 709 00fe 3A       		.uleb128 0x3a
+ 710 00ff 0B       		.uleb128 0xb
+ 711 0100 3B       		.uleb128 0x3b
+ 712 0101 05       		.uleb128 0x5
+ 713 0102 27       		.uleb128 0x27
+ 714 0103 0C       		.uleb128 0xc
+ 715 0104 3C       		.uleb128 0x3c
+ 716 0105 0C       		.uleb128 0xc
+ 717 0106 01       		.uleb128 0x1
+ 718 0107 13       		.uleb128 0x13
+ 719 0108 00       		.byte	0
+ 720 0109 00       		.byte	0
+ 721 010a 15       		.uleb128 0x15
+ 722 010b 2E       		.uleb128 0x2e
+ 723 010c 00       		.byte	0
+ 724 010d 3F       		.uleb128 0x3f
+ 725 010e 0C       		.uleb128 0xc
+ 726 010f 03       		.uleb128 0x3
+ 727 0110 0E       		.uleb128 0xe
+ 728 0111 3A       		.uleb128 0x3a
+ 729 0112 0B       		.uleb128 0xb
+ 730 0113 3B       		.uleb128 0x3b
+ 731 0114 0B       		.uleb128 0xb
+ 732 0115 27       		.uleb128 0x27
+ 733 0116 0C       		.uleb128 0xc
+ 734 0117 3C       		.uleb128 0x3c
+ 735 0118 0C       		.uleb128 0xc
+ 736 0119 00       		.byte	0
+ 737 011a 00       		.byte	0
+ 738 011b 00       		.byte	0
+ 739              		.section	.debug_loc,"",@progbits
+ 740              	.Ldebug_loc0:
+ 741              	.LLST0:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 14
+
+
+ 742 0000 00000000 		.4byte	.LFB44
+ 743 0004 00000000 		.4byte	.LCFI0
+ 744 0008 0002     		.2byte	0x2
+ 745 000a 71       		.byte	0x71
+ 746 000b 00       		.sleb128 0
+ 747 000c 00000000 		.4byte	.LCFI0
+ 748 0010 00000000 		.4byte	.LCFI1
+ 749 0014 0002     		.2byte	0x2
+ 750 0016 71       		.byte	0x71
+ 751 0017 08       		.sleb128 8
+ 752 0018 00000000 		.4byte	.LCFI1
+ 753 001c 00000000 		.4byte	.LFE44
+ 754 0020 0002     		.2byte	0x2
+ 755 0022 71       		.byte	0x71
+ 756 0023 00       		.sleb128 0
+ 757 0024 00000000 		.4byte	0
+ 758 0028 00000000 		.4byte	0
+ 759              		.section	.debug_aranges,"",@progbits
+ 760 0000 0000001C 		.4byte	0x1c
+ 761 0004 0002     		.2byte	0x2
+ 762 0006 00000000 		.4byte	.Ldebug_info0
+ 763 000a 04       		.byte	0x4
+ 764 000b 00       		.byte	0
+ 765 000c 0000     		.2byte	0
+ 766 000e 0000     		.2byte	0
+ 767 0010 00000000 		.4byte	.LFB44
+ 768 0014 0000002A 		.4byte	.LFE44-.LFB44
+ 769 0018 00000000 		.4byte	0
+ 770 001c 00000000 		.4byte	0
+ 771              		.section	.debug_ranges,"",@progbits
+ 772              	.Ldebug_ranges0:
+ 773 0000 00000000 		.4byte	.LFB44
+ 774 0004 00000000 		.4byte	.LFE44
+ 775 0008 00000000 		.4byte	0
+ 776 000c 00000000 		.4byte	0
+ 777              		.section	.debug_line,"",@progbits
+ 778              	.Ldebug_line0:
+ 779 0000 00000313 		.section	.debug_str,"MS",@progbits,1
+ 779      00020000 
+ 779      02F40201 
+ 779      FB0E0D00 
+ 779      01010101 
+ 780              	.LASF36:
+ 781 0000 696E6974 		.string	"inits"
+ 781      7300
+ 782              	.LASF28:
+ 783 0006 56544C69 		.string	"VTList"
+ 783      737400
+ 784              	.LASF5:
+ 785 000d 5F5F7569 		.string	"__uint8_t"
+ 785      6E74385F 
+ 785      7400
+ 786              	.LASF25:
+ 787 0017 76745F66 		.string	"vt_func"
+ 787      756E6300 
+ 788              	.LASF18:
+ 789 001f 73797374 		.string	"systime_t"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 15
+
+
+ 789      696D655F 
+ 789      7400
+ 790              	.LASF49:
+ 791 0029 5F70616C 		.string	"_pal_lld_init"
+ 791      5F6C6C64 
+ 791      5F696E69 
+ 791      7400
+ 792              	.LASF8:
+ 793 0037 5F5F696E 		.string	"__int32_t"
+ 793      7433325F 
+ 793      7400
+ 794              	.LASF30:
+ 795 0041 696F6D6F 		.string	"iomode_t"
+ 795      64655F74 
+ 795      00
+ 796              	.LASF42:
+ 797 004a 70776D49 		.string	"pwmInit"
+ 797      6E697400 
+ 798              	.LASF35:
+ 799 0052 64656661 		.string	"default_mode"
+ 799      756C745F 
+ 799      6D6F6465 
+ 799      00
+ 800              	.LASF48:
+ 801 005f 68616C49 		.string	"halInit"
+ 801      6E697400 
+ 802              	.LASF3:
+ 803 0067 756E7369 		.string	"unsigned char"
+ 803      676E6564 
+ 803      20636861 
+ 803      7200
+ 804              	.LASF20:
+ 805 0075 76746675 		.string	"vtfunc_t"
+ 805      6E635F74 
+ 805      00
+ 806              	.LASF10:
+ 807 007e 6C6F6E67 		.string	"long unsigned int"
+ 807      20756E73 
+ 807      69676E65 
+ 807      6420696E 
+ 807      7400
+ 808              	.LASF41:
+ 809 0090 68616C5F 		.string	"hal_lld_init"
+ 809      6C6C645F 
+ 809      696E6974 
+ 809      00
+ 810              	.LASF7:
+ 811 009d 73686F72 		.string	"short unsigned int"
+ 811      7420756E 
+ 811      7369676E 
+ 811      65642069 
+ 811      6E7400
+ 812              	.LASF31:
+ 813 00b0 7063725F 		.string	"pcr_index"
+ 813      696E6465 
+ 813      7800
+ 814              	.LASF21:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 16
+
+
+ 815 00ba 56697274 		.string	"VirtualTimer"
+ 815      75616C54 
+ 815      696D6572 
+ 815      00
+ 816              	.LASF6:
+ 817 00c7 5F5F7569 		.string	"__uint16_t"
+ 817      6E743136 
+ 817      5F7400
+ 818              	.LASF37:
+ 819 00d2 70616473 		.string	"padsels"
+ 819      656C7300 
+ 820              	.LASF9:
+ 821 00da 5F5F7569 		.string	"__uint32_t"
+ 821      6E743332 
+ 821      5F7400
+ 822              	.LASF46:
+ 823 00e5 2E2F636F 		.string	"./components/portable_spc5_hal_component/lib/src/hal.c"
+ 823      6D706F6E 
+ 823      656E7473 
+ 823      2F706F72 
+ 823      7461626C 
+ 824              	.LASF0:
+ 825 011c 756E7369 		.string	"unsigned int"
+ 825      676E6564 
+ 825      20696E74 
+ 825      00
+ 826              	.LASF29:
+ 827 0129 63686172 		.string	"char"
+ 827      00
+ 828              	.LASF13:
+ 829 012e 75696E74 		.string	"uint8_t"
+ 829      385F7400 
+ 830              	.LASF44:
+ 831 0136 626F6172 		.string	"boardInit"
+ 831      64496E69 
+ 831      7400
+ 832              	.LASF39:
+ 833 0140 76746C69 		.string	"vtlist"
+ 833      737400
+ 834              	.LASF40:
+ 835 0147 70616C5F 		.string	"pal_default_config"
+ 835      64656661 
+ 835      756C745F 
+ 835      636F6E66 
+ 835      696700
+ 836              	.LASF47:
+ 837 015a 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 837      50433553 
+ 837      74756469 
+ 837      6F5C776F 
+ 837      726B7370 
+ 838              	.LASF24:
+ 839 01a2 76745F74 		.string	"vt_time"
+ 839      696D6500 
+ 840              	.LASF15:
+ 841 01aa 696E7433 		.string	"int32_t"
+ 841      325F7400 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 17
+
+
+ 842              	.LASF19:
+ 843 01b2 73697A65 		.string	"sizetype"
+ 843      74797065 
+ 843      00
+ 844              	.LASF27:
+ 845 01bb 76745F73 		.string	"vt_systime"
+ 845      79737469 
+ 845      6D6500
+ 846              	.LASF11:
+ 847 01c6 6C6F6E67 		.string	"long long int"
+ 847      206C6F6E 
+ 847      6720696E 
+ 847      7400
+ 848              	.LASF34:
+ 849 01d4 7370635F 		.string	"spc_siu_init_t"
+ 849      7369755F 
+ 849      696E6974 
+ 849      5F7400
+ 850              	.LASF26:
+ 851 01e3 76745F70 		.string	"vt_par"
+ 851      617200
+ 852              	.LASF32:
+ 853 01ea 6770646F 		.string	"gpdo_value"
+ 853      5F76616C 
+ 853      756500
+ 854              	.LASF43:
+ 855 01f5 7364496E 		.string	"sdInit"
+ 855      697400
+ 856              	.LASF4:
+ 857 01fc 73686F72 		.string	"short int"
+ 857      7420696E 
+ 857      7400
+ 858              	.LASF14:
+ 859 0206 75696E74 		.string	"uint16_t"
+ 859      31365F74 
+ 859      00
+ 860              	.LASF23:
+ 861 020f 76745F70 		.string	"vt_prev"
+ 861      72657600 
+ 862              	.LASF33:
+ 863 0217 7063725F 		.string	"pcr_value"
+ 863      76616C75 
+ 863      6500
+ 864              	.LASF1:
+ 865 0221 6C6F6E67 		.string	"long int"
+ 865      20696E74 
+ 865      00
+ 866              	.LASF45:
+ 867 022a 47       		.ascii	"G"
+ 868 022b 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 868      20342E39 
+ 868      2E322032 
+ 868      30313431 
+ 868      30333020 
+ 869              	.LASF2:
+ 870 032c 7369676E 		.string	"signed char"
+ 870      65642063 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 18
+
+
+ 870      68617200 
+ 871              	.LASF16:
+ 872 0338 75696E74 		.string	"uint32_t"
+ 872      33325F74 
+ 872      00
+ 873              	.LASF38:
+ 874 0341 50414C43 		.string	"PALConfig"
+ 874      6F6E6669 
+ 874      6700
+ 875              	.LASF22:
+ 876 034b 76745F6E 		.string	"vt_next"
+ 876      65787400 
+ 877              	.LASF17:
+ 878 0353 5F426F6F 		.string	"_Bool"
+ 878      6C00
+ 879              	.LASF12:
+ 880 0359 6C6F6E67 		.string	"long long unsigned int"
+ 880      206C6F6E 
+ 880      6720756E 
+ 880      7369676E 
+ 880      65642069 
+ 881              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 hal.c
+C:\Users\UTILIS~1\AppData\Local\Temp\cc4cDmHk.s:10     .text.halInit:00000000 halInit
+
+UNDEFINED SYMBOLS
+hal_lld_init
+pal_default_config
+_pal_lld_init
+pwmInit
+sdInit
+boardInit

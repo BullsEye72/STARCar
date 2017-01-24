@@ -1,0 +1,605 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 1
+
+
+   1              	# 1 "./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s"
+   1              	/*
+   0              	
+   0              	
+   2              	    ChibiOS/RT - Copyright (C) 2006,2007,2008,2009,2010,
+   3              	                 2011,2012,2013 Giovanni Di Sirio.
+   4              	
+   5              	    This file is part of ChibiOS/RT.
+   6              	
+   7              	    ChibiOS/RT is free software; you can redistribute it and/or modify
+   8              	    it under the terms of the GNU General Public License as published by
+   9              	    the Free Software Foundation; either version 3 of the License, or
+  10              	    (at your option) any later version.
+  11              	
+  12              	    ChibiOS/RT is distributed in the hope that it will be useful,
+  13              	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  14              	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  15              	    GNU General Public License for more details.
+  16              	
+  17              	    You should have received a copy of the GNU General Public License
+  18              	    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  19              	
+  20              	                                      ---
+  21              	
+  22              	    A special exception to the GPL can be applied should you wish to distribute
+  23              	    a combined work that includes ChibiOS/RT, without being obliged to provide
+  24              	    the source code for any proprietary components. See the file exception.txt
+  25              	    for full details of how and when the exception can be applied.
+  26              	*/
+  27              	
+  28              	/**
+  29              	 * @file    SPC560Dxx/vectors.s
+  30              	 * @brief   SPC560Dxx vectors table.
+  31              	 *
+  32              	 * @addtogroup PPC_CORE
+  33              	 * @{
+  34              	 */
+  35              	
+  36              	#if !defined(__DOXYGEN__)
+  37              	
+  38              	        /* Software vectors table. The vectors are accessed from the IVOR4
+  39              	           handler only. In order to declare an interrupt handler just create
+  40              	           a function withe the same name of a vector, the symbol will
+  41              	           override the weak symbol declared here.*/
+  42              	        .section    .vectors, "axv"
+  43              	
+  44              	#if defined(__ghs_asm)
+  45              	        .vle
+  46              	#endif
+  47              	
+  48              	        .align      4
+  49              	        .globl      _vectors
+  50              	_vectors:
+  51 0000 00000000 	        .long       vector0,    vector1,    vector2,    vector3
+  51      00000000 
+  51      00000000 
+  51      00000000 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 2
+
+
+  52 0010 00000000 	        .long       vector4,    vector5,    vector6,    vector7
+  52      00000000 
+  52      00000000 
+  52      00000000 
+  53 0020 00000000 	        .long       vector8,    vector9,    vector10,   vector11
+  53      00000000 
+  53      00000000 
+  53      00000000 
+  54 0030 00000000 	        .long       vector12,   vector13,   vector14,   vector15
+  54      00000000 
+  54      00000000 
+  54      00000000 
+  55 0040 00000000 	        .long       vector16,   vector17,   vector18,   vector19
+  55      00000000 
+  55      00000000 
+  55      00000000 
+  56 0050 00000000 	        .long       vector20,   vector21,   vector22,   vector23
+  56      00000000 
+  56      00000000 
+  56      00000000 
+  57 0060 00000000 	        .long       vector24,   vector25,   vector26,   vector27
+  57      00000000 
+  57      00000000 
+  57      00000000 
+  58 0070 00000000 	        .long       vector28,   vector29,   vector30,   vector31
+  58      00000000 
+  58      00000000 
+  58      00000000 
+  59 0080 00000000 	        .long       vector32,   vector33,   vector34,   vector35
+  59      00000000 
+  59      00000000 
+  59      00000000 
+  60 0090 00000000 	        .long       vector36,   vector37,   vector38,   vector39
+  60      00000000 
+  60      00000000 
+  60      00000000 
+  61 00a0 00000000 	        .long       vector40,   vector41,   vector42,   vector43
+  61      00000000 
+  61      00000000 
+  61      00000000 
+  62 00b0 00000000 	        .long       vector44,   vector45,   vector46,   vector47
+  62      00000000 
+  62      00000000 
+  62      00000000 
+  63 00c0 00000000 	        .long       vector48,   vector49,   vector50,   vector51
+  63      00000000 
+  63      00000000 
+  63      00000000 
+  64 00d0 00000000 	        .long       vector52,   vector53,   vector54,   vector55
+  64      00000000 
+  64      00000000 
+  64      00000000 
+  65 00e0 00000000 	        .long       vector56,   vector57,   vector58,   vector59
+  65      00000000 
+  65      00000000 
+  65      00000000 
+  66 00f0 00000000 	        .long       vector60,   vector61,   vector62,   vector63
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 3
+
+
+  66      00000000 
+  66      00000000 
+  66      00000000 
+  67 0100 00000000 	        .long       vector64,   vector65,   vector66,   vector67
+  67      00000000 
+  67      00000000 
+  67      00000000 
+  68 0110 00000000 	        .long       vector68,   vector69,   vector70,   vector71
+  68      00000000 
+  68      00000000 
+  68      00000000 
+  69 0120 00000000 	        .long       vector72,   vector73,   vector74,   vector75
+  69      00000000 
+  69      00000000 
+  69      00000000 
+  70 0130 00000000 	        .long       vector76,   vector77,   vector78,   vector79
+  70      00000000 
+  70      00000000 
+  70      00000000 
+  71 0140 00000000 	        .long       vector80,   vector81,   vector82,   vector83
+  71      00000000 
+  71      00000000 
+  71      00000000 
+  72 0150 00000000 	        .long       vector84,   vector85,   vector86,   vector87
+  72      00000000 
+  72      00000000 
+  72      00000000 
+  73 0160 00000000 	        .long       vector88,   vector89,   vector90,   vector91
+  73      00000000 
+  73      00000000 
+  73      00000000 
+  74 0170 00000000 	        .long       vector92,   vector93,   vector94,   vector95
+  74      00000000 
+  74      00000000 
+  74      00000000 
+  75 0180 00000000 	        .long       vector96,   vector97,   vector98,   vector99
+  75      00000000 
+  75      00000000 
+  75      00000000 
+  76 0190 00000000 	        .long       vector100,  vector101,  vector102,  vector103
+  76      00000000 
+  76      00000000 
+  76      00000000 
+  77 01a0 00000000 	        .long       vector104,  vector105,  vector106,  vector107
+  77      00000000 
+  77      00000000 
+  77      00000000 
+  78 01b0 00000000 	        .long       vector108,  vector109,  vector110,  vector111
+  78      00000000 
+  78      00000000 
+  78      00000000 
+  79 01c0 00000000 	        .long       vector112,  vector113,  vector114,  vector115
+  79      00000000 
+  79      00000000 
+  79      00000000 
+  80 01d0 00000000 	        .long       vector116,  vector117,  vector118,  vector119
+  80      00000000 
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 4
+
+
+  80      00000000 
+  80      00000000 
+  81 01e0 00000000 	        .long       vector120,  vector121,  vector122,  vector123
+  81      00000000 
+  81      00000000 
+  81      00000000 
+  82 01f0 00000000 	        .long       vector124,  vector125,  vector126,  vector127
+  82      00000000 
+  82      00000000 
+  82      00000000 
+  83 0200 00000000 	        .long       vector128,  vector129,  vector130,  vector131
+  83      00000000 
+  83      00000000 
+  83      00000000 
+  84 0210 00000000 	        .long       vector132,  vector133,  vector134,  vector135
+  84      00000000 
+  84      00000000 
+  84      00000000 
+  85 0220 00000000 	        .long       vector136,  vector137,  vector138,  vector139
+  85      00000000 
+  85      00000000 
+  85      00000000 
+  86 0230 00000000 	        .long       vector140,  vector141,  vector142,  vector143
+  86      00000000 
+  86      00000000 
+  86      00000000 
+  87 0240 00000000 	        .long       vector144,  vector145,  vector146,  vector147
+  87      00000000 
+  87      00000000 
+  87      00000000 
+  88 0250 00000000 	        .long       vector148,  vector149,  vector150,  vector151
+  88      00000000 
+  88      00000000 
+  88      00000000 
+  89 0260 00000000 	        .long       vector152,  vector153,  vector154
+  89      00000000 
+  89      00000000 
+  90              	
+  91              	        .text
+  92              	        .align      2
+  93              	        
+  94              	        .weak       vector0,    vector1,    vector2,    vector3
+  95              	        .weak       vector4,    vector5,    vector6,    vector7
+  96              	        .weak       vector8,    vector9,    vector10,   vector11
+  97              	        .weak       vector12,   vector13,   vector14,   vector15
+  98              	        .weak       vector16,   vector17,   vector18,   vector19
+  99              	        .weak       vector20,   vector21,   vector22,   vector23
+ 100              	        .weak       vector24,   vector25,   vector26,   vector27
+ 101              	        .weak       vector28,   vector29,   vector30,   vector31
+ 102              	        .weak       vector32,   vector33,   vector34,   vector35
+ 103              	        .weak       vector36,   vector37,   vector38,   vector39
+ 104              	        .weak       vector40,   vector41,   vector42,   vector43
+ 105              	        .weak       vector44,   vector45,   vector46,   vector47
+ 106              	        .weak       vector48,   vector49,   vector50,   vector51
+ 107              	        .weak       vector52,   vector53,   vector54,   vector55
+ 108              	        .weak       vector56,   vector57,   vector58,   vector59
+ 109              	        .weak       vector60,   vector61,   vector62,   vector63
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 5
+
+
+ 110              	        .weak       vector64,   vector65,   vector66,   vector67
+ 111              	        .weak       vector68,   vector69,   vector70,   vector71
+ 112              	        .weak       vector72,   vector73,   vector74,   vector75
+ 113              	        .weak       vector76,   vector77,   vector78,   vector79
+ 114              	        .weak       vector80,   vector81,   vector82,   vector83
+ 115              	        .weak       vector84,   vector85,   vector86,   vector87
+ 116              	        .weak       vector88,   vector89,   vector90,   vector91
+ 117              	        .weak       vector92,   vector93,   vector94,   vector95
+ 118              	        .weak       vector96,   vector97,   vector98,   vector99
+ 119              	        .weak       vector100,  vector101,  vector102,  vector103
+ 120              	        .weak       vector104,  vector105,  vector106,  vector107
+ 121              	        .weak       vector108,  vector109,  vector110,  vector111
+ 122              	        .weak       vector112,  vector113,  vector114,  vector115
+ 123              	        .weak       vector116,  vector117,  vector118,  vector119
+ 124              	        .weak       vector120,  vector121,  vector122,  vector123
+ 125              	        .weak       vector124,  vector125,  vector126,  vector127
+ 126              	        .weak       vector128,  vector129,  vector130,  vector131
+ 127              	        .weak       vector132,  vector133,  vector134,  vector135
+ 128              	        .weak       vector136,  vector137,  vector138,  vector139
+ 129              	        .weak       vector140,  vector141,  vector142,  vector143
+ 130              	        .weak       vector144,  vector145,  vector146,  vector147
+ 131              	        .weak       vector148,  vector149,  vector150,  vector151
+ 132              	        .weak       vector152,  vector153,  vector154
+ 133              	
+ 134              	vector0:
+ 135              	vector1:
+ 136              	vector2:
+ 137              	vector3:
+ 138              	vector4:
+ 139              	vector5:
+ 140              	vector6:
+ 141              	vector7:
+ 142              	vector8:
+ 143              	vector9:
+ 144              	vector10:
+ 145              	vector11:
+ 146              	vector12:
+ 147              	vector13:
+ 148              	vector14:
+ 149              	vector15:
+ 150              	vector16:
+ 151              	vector17:
+ 152              	vector18:
+ 153              	vector19:
+ 154              	vector20:
+ 155              	vector21:
+ 156              	vector22:
+ 157              	vector23:
+ 158              	vector24:
+ 159              	vector25:
+ 160              	vector26:
+ 161              	vector27:
+ 162              	vector28:
+ 163              	vector29:
+ 164              	vector30:
+ 165              	vector31:
+ 166              	vector32:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 6
+
+
+ 167              	vector33:
+ 168              	vector34:
+ 169              	vector35:
+ 170              	vector36:
+ 171              	vector37:
+ 172              	vector38:
+ 173              	vector39:
+ 174              	vector40:
+ 175              	vector41:
+ 176              	vector42:
+ 177              	vector43:
+ 178              	vector44:
+ 179              	vector45:
+ 180              	vector46:
+ 181              	vector47:
+ 182              	vector48:
+ 183              	vector49:
+ 184              	vector50:
+ 185              	vector51:
+ 186              	vector52:
+ 187              	vector53:
+ 188              	vector54:
+ 189              	vector55:
+ 190              	vector56:
+ 191              	vector57:
+ 192              	vector58:
+ 193              	vector59:
+ 194              	vector60:
+ 195              	vector61:
+ 196              	vector62:
+ 197              	vector63:
+ 198              	vector64:
+ 199              	vector65:
+ 200              	vector66:
+ 201              	vector67:
+ 202              	vector68:
+ 203              	vector69:
+ 204              	vector70:
+ 205              	vector71:
+ 206              	vector72:
+ 207              	vector73:
+ 208              	vector74:
+ 209              	vector75:
+ 210              	vector76:
+ 211              	vector77:
+ 212              	vector78:
+ 213              	vector79:
+ 214              	vector80:
+ 215              	vector81:
+ 216              	vector82:
+ 217              	vector83:
+ 218              	vector84:
+ 219              	vector85:
+ 220              	vector86:
+ 221              	vector87:
+ 222              	vector88:
+ 223              	vector89:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 7
+
+
+ 224              	vector90:
+ 225              	vector91:
+ 226              	vector92:
+ 227              	vector93:
+ 228              	vector94:
+ 229              	vector95:
+ 230              	vector96:
+ 231              	vector97:
+ 232              	vector98:
+ 233              	vector99:
+ 234              	vector100:
+ 235              	vector101:
+ 236              	vector102:
+ 237              	vector103:
+ 238              	vector104:
+ 239              	vector105:
+ 240              	vector106:
+ 241              	vector107:
+ 242              	vector108:
+ 243              	vector109:
+ 244              	vector110:
+ 245              	vector111:
+ 246              	vector112:
+ 247              	vector113:
+ 248              	vector114:
+ 249              	vector115:
+ 250              	vector116:
+ 251              	vector117:
+ 252              	vector118:
+ 253              	vector119:
+ 254              	vector120:
+ 255              	vector121:
+ 256              	vector122:
+ 257              	vector123:
+ 258              	vector124:
+ 259              	vector125:
+ 260              	vector126:
+ 261              	vector127:
+ 262              	vector128:
+ 263              	vector129:
+ 264              	vector130:
+ 265              	vector131:
+ 266              	vector132:
+ 267              	vector133:
+ 268              	vector134:
+ 269              	vector135:
+ 270              	vector136:
+ 271              	vector137:
+ 272              	vector138:
+ 273              	vector139:
+ 274              	vector140:
+ 275              	vector141:
+ 276              	vector142:
+ 277              	vector143:
+ 278              	vector144:
+ 279              	vector145:
+ 280              	vector146:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 8
+
+
+ 281              	vector147:
+ 282              	vector148:
+ 283              	vector149:
+ 284              	vector150:
+ 285              	vector151:
+ 286              	vector152:
+ 287              	vector153:
+ 288              	vector154:
+ 289              	
+ 290              	        .weak       _unhandled_irq
+ 291              	        .type       _unhandled_irq, @function
+ 292              	_unhandled_irq:
+ 293 0000 E800     	        se_b          _unhandled_irq
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 9
+
+
+DEFINED SYMBOLS
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:50     .vectors:00000000 _vectors
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:134    .text:00000000 vector0
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:135    .text:00000000 vector1
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:136    .text:00000000 vector2
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:137    .text:00000000 vector3
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:138    .text:00000000 vector4
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:139    .text:00000000 vector5
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:140    .text:00000000 vector6
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:141    .text:00000000 vector7
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:142    .text:00000000 vector8
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:143    .text:00000000 vector9
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:144    .text:00000000 vector10
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:145    .text:00000000 vector11
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:146    .text:00000000 vector12
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:147    .text:00000000 vector13
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:148    .text:00000000 vector14
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:149    .text:00000000 vector15
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:150    .text:00000000 vector16
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:151    .text:00000000 vector17
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:152    .text:00000000 vector18
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:153    .text:00000000 vector19
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:154    .text:00000000 vector20
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:155    .text:00000000 vector21
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:156    .text:00000000 vector22
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:157    .text:00000000 vector23
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:158    .text:00000000 vector24
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:159    .text:00000000 vector25
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:160    .text:00000000 vector26
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:161    .text:00000000 vector27
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:162    .text:00000000 vector28
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:163    .text:00000000 vector29
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:164    .text:00000000 vector30
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:165    .text:00000000 vector31
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:166    .text:00000000 vector32
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:167    .text:00000000 vector33
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:168    .text:00000000 vector34
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:169    .text:00000000 vector35
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:170    .text:00000000 vector36
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:171    .text:00000000 vector37
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:172    .text:00000000 vector38
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:173    .text:00000000 vector39
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:174    .text:00000000 vector40
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:175    .text:00000000 vector41
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:176    .text:00000000 vector42
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:177    .text:00000000 vector43
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:178    .text:00000000 vector44
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:179    .text:00000000 vector45
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:180    .text:00000000 vector46
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:181    .text:00000000 vector47
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:182    .text:00000000 vector48
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:183    .text:00000000 vector49
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:184    .text:00000000 vector50
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:185    .text:00000000 vector51
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:186    .text:00000000 vector52
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:187    .text:00000000 vector53
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:188    .text:00000000 vector54
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 10
+
+
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:189    .text:00000000 vector55
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:190    .text:00000000 vector56
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:191    .text:00000000 vector57
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:192    .text:00000000 vector58
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:193    .text:00000000 vector59
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:194    .text:00000000 vector60
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:195    .text:00000000 vector61
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:196    .text:00000000 vector62
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:197    .text:00000000 vector63
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:198    .text:00000000 vector64
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:199    .text:00000000 vector65
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:200    .text:00000000 vector66
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:201    .text:00000000 vector67
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:202    .text:00000000 vector68
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:203    .text:00000000 vector69
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:204    .text:00000000 vector70
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:205    .text:00000000 vector71
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:206    .text:00000000 vector72
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:207    .text:00000000 vector73
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:208    .text:00000000 vector74
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:209    .text:00000000 vector75
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:210    .text:00000000 vector76
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:211    .text:00000000 vector77
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:212    .text:00000000 vector78
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:213    .text:00000000 vector79
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:214    .text:00000000 vector80
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:215    .text:00000000 vector81
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:216    .text:00000000 vector82
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:217    .text:00000000 vector83
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:218    .text:00000000 vector84
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:219    .text:00000000 vector85
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:220    .text:00000000 vector86
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:221    .text:00000000 vector87
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:222    .text:00000000 vector88
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:223    .text:00000000 vector89
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:224    .text:00000000 vector90
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:225    .text:00000000 vector91
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:226    .text:00000000 vector92
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:227    .text:00000000 vector93
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:228    .text:00000000 vector94
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:229    .text:00000000 vector95
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:230    .text:00000000 vector96
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:231    .text:00000000 vector97
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:232    .text:00000000 vector98
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:233    .text:00000000 vector99
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:234    .text:00000000 vector100
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:235    .text:00000000 vector101
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:236    .text:00000000 vector102
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:237    .text:00000000 vector103
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:238    .text:00000000 vector104
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:239    .text:00000000 vector105
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:240    .text:00000000 vector106
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:241    .text:00000000 vector107
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:242    .text:00000000 vector108
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:243    .text:00000000 vector109
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:244    .text:00000000 vector110
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:245    .text:00000000 vector111
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccUvYQEj.s 			page 11
+
+
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:246    .text:00000000 vector112
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:247    .text:00000000 vector113
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:248    .text:00000000 vector114
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:249    .text:00000000 vector115
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:250    .text:00000000 vector116
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:251    .text:00000000 vector117
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:252    .text:00000000 vector118
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:253    .text:00000000 vector119
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:254    .text:00000000 vector120
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:255    .text:00000000 vector121
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:256    .text:00000000 vector122
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:257    .text:00000000 vector123
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:258    .text:00000000 vector124
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:259    .text:00000000 vector125
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:260    .text:00000000 vector126
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:261    .text:00000000 vector127
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:262    .text:00000000 vector128
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:263    .text:00000000 vector129
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:264    .text:00000000 vector130
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:265    .text:00000000 vector131
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:266    .text:00000000 vector132
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:267    .text:00000000 vector133
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:268    .text:00000000 vector134
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:269    .text:00000000 vector135
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:270    .text:00000000 vector136
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:271    .text:00000000 vector137
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:272    .text:00000000 vector138
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:273    .text:00000000 vector139
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:274    .text:00000000 vector140
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:275    .text:00000000 vector141
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:276    .text:00000000 vector142
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:277    .text:00000000 vector143
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:278    .text:00000000 vector144
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:279    .text:00000000 vector145
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:280    .text:00000000 vector146
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:281    .text:00000000 vector147
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:282    .text:00000000 vector148
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:283    .text:00000000 vector149
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:284    .text:00000000 vector150
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:285    .text:00000000 vector151
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:286    .text:00000000 vector152
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:287    .text:00000000 vector153
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:288    .text:00000000 vector154
+./components/chibios_rt_spc560dxx_kernel_port_component/lib/src/vectors.s:292    .text:00000000 _unhandled_irq
+
+NO UNDEFINED SYMBOLS

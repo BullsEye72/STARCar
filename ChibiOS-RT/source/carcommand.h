@@ -25,4 +25,5 @@
 
 void turncmd(int direction);
 void drivecmd(int direction,int speed);
+void switchlightcmd(int light, int on_off);
 void stopcmd(void);

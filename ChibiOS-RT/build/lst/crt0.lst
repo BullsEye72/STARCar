@@ -1,0 +1,163 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cciqdP7j.s 			page 1
+
+
+   1              	# 1 "./components/spc560dxx_platform_component/lib/src/crt0.s"
+   1              	/*
+   0              	
+   0              	
+   2              	    SPC5 HAL - Copyright (C) 2013 STMicroelectronics
+   3              	
+   4              	    Licensed under the Apache License, Version 2.0 (the "License");
+   5              	    you may not use this file except in compliance with the License.
+   6              	    You may obtain a copy of the License at
+   7              	
+   8              	        http://www.apache.org/licenses/LICENSE-2.0
+   9              	
+  10              	    Unless required by applicable law or agreed to in writing, software
+  11              	    distributed under the License is distributed on an "AS IS" BASIS,
+  12              	    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  13              	    See the License for the specific language governing permissions and
+  14              	    limitations under the License.
+  15              	*/
+  16              	
+  17              	/**
+  18              	 * @file    crt0.s
+  19              	 * @brief   Generic PowerPC startup file for GCC.
+  20              	 *
+  21              	 * @addtogroup PPC_STARTUP
+  22              	 * @{
+  23              	 */
+  24              	
+  25              	#include "checkCompiler.h"
+   1              	/*
+  26              	
+  27              	#if !defined(__DOXYGEN__)
+  28              	
+  29              	
+  30              	        .section    .crt0, "axv"
+  31              	        .align		2
+  32              	        .globl      _boot_address
+  33              	        .type       _boot_address, @function
+  34              	_VLE
+  35              	_boot_address:
+  36              	        /*
+  37              	         * Stack setup.
+  38              	         */
+  39 0000 7020E000 			e_lis       %r1, HI(__process_stack_end__)
+  40 0004 7020C000 	        e_or2i      %r1, LO(__process_stack_end__)
+  41 0008 4800     	        se_li       %r0, 0
+  42 000a 180106F8 	        e_stwu      %r0, -8(%r1)
+  43              	        /*
+  44              	         * Small sections registers initialization.
+  45              	         */
+  46 000e 7040E000 	        e_lis       %r2,  HI(__sdata2_start__)
+  47 0012 7040C000 	        e_or2i      %r2,  LO(__sdata2_start__)
+  48 0016 71A0E000 	        e_lis       %r13, HI(__sdata_start__)
+  49 001a 71A0C000 	        e_or2i      %r13, LO(__sdata_start__)
+  50              	        /*
+  51              	         * Early initialization.
+  52              	         */
+  53 001e 78000001 	        e_bl        __early_init
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cciqdP7j.s 			page 2
+
+
+  54              	        /*
+  55              	         * BSS clearing.
+  56              	         */
+  57 0022 7080E000 	        e_lis       %r4, HI(__bss_start__)
+  58 0026 7080C000 	        e_or2i      %r4, LO(__bss_start__)
+  59 002a 70A0E000 	        e_lis       %r5, HI(__bss_end__)
+  60 002e 70A0C000 	        e_or2i      %r5, LO(__bss_end__)
+  61 0032 4807     	        se_li       %r7, 0
+  62              	.bssloop:
+  63              	_NOVLE
+  64 0034 7C042840 	        cmpl        cr0, %r4, %r5
+  65              	_VLE
+  66 0038 E004     	        se_bge      .bssend
+  67 003a D074     	        se_stw      %r7, 0(%r4)
+  68 003c 2034     	        se_addi     %r4, 4
+  69 003e E8FB     	        se_b        .bssloop
+  70              	.bssend:
+  71              	        /*
+  72              	         * DATA initialization.
+  73              	         */
+  74 0040 7080E000 	        e_lis       %r4, HI(__romdata_start__)
+  75 0044 7080C000 	        e_or2i      %r4, LO(__romdata_start__)
+  76 0048 70A0E000 	        e_lis       %r5, HI(__data_start__)
+  77 004c 70A0C000 	        e_or2i      %r5, LO(__data_start__)
+  78 0050 70C0E000 	        e_lis       %r6, HI(__data_end__)
+  79 0054 70C0C000 	        e_or2i      %r6, LO(__data_end__)
+  80              	.dataloop:
+  81              	_NOVLE
+  82              	.align 2
+  83 0058 7C053040 	        cmpl        cr0, %r5, %r6
+  84              	_VLE
+  85 005c E006     	        se_bge      .dataend
+  86 005e C074     	        se_lwz      %r7, 0(%r4)
+  87 0060 2034     	        se_addi     %r4, 4
+  88 0062 D075     	        se_stw      %r7, 0(%r5)
+  89 0064 2035     	        se_addi     %r5, 4
+  90 0066 E8F9     	        se_b        .dataloop
+  91              	.dataend:
+  92              	        /*
+  93              	         * Late initialization.
+  94              	         */
+  95 0068 78000001 	        e_bl        __late_init
+  96              	        /*
+  97              	         * Main program invocation.
+  98              	         */
+  99 006c 78000001 	        e_bl        main
+ 100 0070 78000000 	        e_b         _main_exit_handler
+ 101              	
+ 102              	        /*
+ 103              	         * Default main exit code, infinite loop.
+ 104              	         */
+ 105              	        .weak       _main_exit_handler
+ 106              	        .globl      _main_exit_handler
+ 107              	        .type       _main_exit_handler, @function
+ 108              	_main_exit_handler:
+ 109 0074 78000000 	        e_b         _main_exit_handler
+ 110              	
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cciqdP7j.s 			page 3
+
+
+ 111              	        /*
+ 112              	         * Default early initialization code, none.
+ 113              	         */
+ 114              	        .weak       __early_init
+ 115              	        .globl      __early_init
+ 116              	        .type       __early_init, @function
+ 117              	__early_init:
+ 118 0078 0004     	        se_blr
+ 119              	
+ 120              	        /*
+ 121              	         * Default late initialization code, none.
+ 122              	         */
+ 123              	        .weak       __late_init
+ 124              	        .globl      __late_init
+ 125              	        .type       __late_init, @function
+ 126              	__late_init:
+ 127 007a 0004     	        se_blr
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\cciqdP7j.s 			page 4
+
+
+DEFINED SYMBOLS
+./components/spc560dxx_platform_component/lib/src/crt0.s:35     .crt0:00000000 _boot_address
+./components/spc560dxx_platform_component/lib/src/crt0.s:117    .crt0:00000078 __early_init
+./components/spc560dxx_platform_component/lib/src/crt0.s:62     .crt0:00000034 .bssloop
+./components/spc560dxx_platform_component/lib/src/crt0.s:70     .crt0:00000040 .bssend
+./components/spc560dxx_platform_component/lib/src/crt0.s:80     .crt0:00000058 .dataloop
+./components/spc560dxx_platform_component/lib/src/crt0.s:91     .crt0:00000068 .dataend
+./components/spc560dxx_platform_component/lib/src/crt0.s:126    .crt0:0000007a __late_init
+./components/spc560dxx_platform_component/lib/src/crt0.s:108    .crt0:00000074 _main_exit_handler
+
+UNDEFINED SYMBOLS
+__process_stack_end__
+__sdata2_start__
+__sdata_start__
+__bss_start__
+__bss_end__
+__romdata_start__
+__data_start__
+__data_end__
+main

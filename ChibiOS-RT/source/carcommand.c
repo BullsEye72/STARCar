@@ -24,6 +24,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern int nBlinkers;
+extern int nWiper;
+
 void turncmd(int direction) {
   if (direction == 1) {
     palClearPad(PORT_B, PIN_IN3);
@@ -103,6 +106,78 @@ void drivecmd(int direction, int speed) {
   pwmEnableChannel(&PWMD1, 0, PWM_PERCENTAGE_TO_WIDTH(&PWMD1, speed));
 }
 
+void switchlightcmd(int light, int on_off)
+{
+	if(on_off == 0)
+	{
+		switch(light)
+		{
+			case 1:
+			{
+				palClearPad(PORT_B, PB_LEDBLANCHE);
+				break;
+			}
+
+			case 2:
+			{
+				palClearPad(PORT_C, PC_LEDROUGE);
+				break;
+			}
+
+			case 3:
+			{
+				nBlinkers = 0;
+				break;
+			}
+
+			case 4:
+			{
+				nWiper = 0;
+				break;
+			}
+		}
+	}
+	if(on_off == 1)
+	{
+		switch(light)
+		{
+			case 1:
+			{
+				palSetPad(PORT_B, PB_LEDBLANCHE);
+				break;
+			}
+
+			case 2:
+			{
+				palSetPad(PORT_C, PC_LEDROUGE);
+				break;
+			}
+
+			case 3:
+			{
+				nBlinkers = 1;
+				break;
+			}
+
+			case 4:
+			{
+				nWiper = 1;
+				break;
+			}
+		}
+	}
+	if(on_off == 2)
+	{
+		if(light == 3)
+			nBlinkers = 2;
+	}
+	if(on_off == 3)
+	{
+		if(light == 3)
+			nBlinkers = 3;
+	}
+}
+
 void stopcmd() {
   /* Shutdown the drive motor */
   palClearPad(PORT_B, PIN_IN1);
@@ -113,4 +188,5 @@ void stopcmd() {
   palClearPad(PORT_B, PIN_IN4);
 
 }
+
 

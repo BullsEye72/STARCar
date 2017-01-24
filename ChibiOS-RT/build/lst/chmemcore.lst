@@ -1,0 +1,1180 @@
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 1
+
+
+   1              		.file	"chmemcore.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text._core_init,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl _core_init
+   9              		.type	_core_init, @function
+  10              	_core_init:
+  11              	.LFB15:
+  12              		.file 1 "./components/chibios_rt_portable_kernel_component/lib/src/chmemcore.c"
+  13              		.loc 1 66 0
+  14              		.cfi_startproc
+  15              		.loc 1 70 0
+  16 0000 7120E000 		e_lis %r9,__heap_base__@ha
+  17              		.loc 1 71 0
+  18 0004 7140E000 		e_lis %r10,__heap_end__@ha
+  19              		.loc 1 70 0
+  20 0008 1D290000 		e_la %r9,__heap_base__@l(%r9)
+  21              		.loc 1 71 0
+  22 000c 1D4A0000 		e_la %r10,__heap_end__@l(%r10)
+  23              		.loc 1 70 0
+  24 0010 19298007 		e_addi %r9,%r9,7
+  25              		.loc 1 71 0
+  26 0014 194AC4F8 		e_andi %r10,%r10,-8
+  27              		.loc 1 70 0
+  28 0018 1929C4F8 		e_andi %r9,%r9,-8
+  29 001c 7100E000 		e_lis %r8,.LANCHOR0@ha
+  30 0020 55280000 		e_stw %r9,.LANCHOR0@l(%r8)
+  31              		.loc 1 71 0
+  32 0024 7120E000 		e_lis %r9,.LANCHOR1@ha
+  33 0028 55490000 		e_stw %r10,.LANCHOR1@l(%r9)
+  34 002c 0004     		se_blr
+  35              		.cfi_endproc
+  36              	.LFE15:
+  37              		.size	_core_init, .-_core_init
+  38              		.section	.text.chCoreAlloc,"axv",@progbits
+  39              		.align 1
+  40              		.p2align 4,,15
+  41              		.globl chCoreAlloc
+  42              		.type	chCoreAlloc, @function
+  43              	chCoreAlloc:
+  44              	.LFB16:
+  45              		.loc 1 91 0
+  46              		.cfi_startproc
+  47              	.LVL0:
+  48              	.LBB8:
+  49              	.LBB9:
+  50              		.file 2 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h"
+  51              		.loc 2 149 0
+  52              	 # 149 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h" 1
+  53 0000 7C000146 		wrteei  0
+  54              	 # 0 "" 2
+  55              	.LVL1:
+  56              	.LBE9:
+  57              	.LBE8:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 2
+
+
+  58              	.LBB10:
+  59              	.LBB11:
+  60              		.loc 1 118 0
+  61 0004 7120E000 		e_lis %r9,.LANCHOR0@ha
+  62              		.loc 1 117 0
+  63 0008 18E38007 		e_addi %r7,%r3,7
+  64              		.loc 1 118 0
+  65 000c 7140E000 		e_lis %r10,.LANCHOR1@ha
+  66 0010 50690000 		e_lwz %r3,.LANCHOR0@l(%r9)
+  67              	.LVL2:
+  68              		.loc 1 117 0
+  69 0014 18E7C4F8 		e_andi %r7,%r7,-8
+  70              	.LVL3:
+  71              		.loc 1 118 0
+  72 0018 50CA0000 		e_lwz %r6,.LANCHOR1@l(%r10)
+  73 001c 0636     		se_sub %r6, %r3
+  74 001e 0D67     		se_cmpl %r7,%r6
+  75 0020 7A110012 		e_bgt %cr0,.L4
+  76              	.LVL4:
+  77              		.loc 1 121 0
+  78 0024 7CE33A14 		add %r7,%r3,%r7
+  79              	.LVL5:
+  80 0028 54E90000 		e_stw %r7,.LANCHOR0@l(%r9)
+  81              	.LBE11:
+  82              	.LBE10:
+  83              	.LBB13:
+  84              	.LBB14:
+  85              		.loc 2 164 0
+  86              	 # 164 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h" 1
+  87 002c 7C008146 		wrteei  1
+  88              	 # 0 "" 2
+  89              	.LBE14:
+  90              	.LBE13:
+  91              		.loc 1 98 0
+  92 0030 0004     		se_blr
+  93              	.LVL6:
+  94              	.L4:
+  95              	.LBB16:
+  96              	.LBB12:
+  97              		.loc 1 119 0
+  98 0032 4803     		se_li %r3,0
+  99              	.LBE12:
+ 100              	.LBE16:
+ 101              	.LBB17:
+ 102              	.LBB15:
+ 103              		.loc 2 164 0
+ 104              	 # 164 "./components/chibios_rt_portable_kernel_component/lib/include/chsys.h" 1
+ 105 0034 7C008146 		wrteei  1
+ 106              	 # 0 "" 2
+ 107              	.LBE15:
+ 108              	.LBE17:
+ 109              		.loc 1 98 0
+ 110 0038 0004     		se_blr
+ 111              		.cfi_endproc
+ 112              	.LFE16:
+ 113              		.size	chCoreAlloc, .-chCoreAlloc
+ 114              		.section	.text.chCoreAllocI,"axv",@progbits
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 3
+
+
+ 115              		.align 1
+ 116              		.p2align 4,,15
+ 117              		.globl chCoreAllocI
+ 118              		.type	chCoreAllocI, @function
+ 119              	chCoreAllocI:
+ 120              	.LFB17:
+ 121              		.loc 1 112 0
+ 122              		.cfi_startproc
+ 123              	.LVL7:
+ 124              		.loc 1 117 0
+ 125 0000 2063     		se_addi %r3,7
+ 126              	.LVL8:
+ 127              		.loc 1 118 0
+ 128 0002 7120E000 		e_lis %r9,.LANCHOR0@ha
+ 129              		.loc 1 117 0
+ 130 0006 1867C4F8 		e_andi %r7,%r3,-8
+ 131              	.LVL9:
+ 132              		.loc 1 118 0
+ 133 000a 7140E000 		e_lis %r10,.LANCHOR1@ha
+ 134 000e 50690000 		e_lwz %r3,.LANCHOR0@l(%r9)
+ 135 0012 50CA0000 		e_lwz %r6,.LANCHOR1@l(%r10)
+ 136 0016 0636     		se_sub %r6, %r3
+ 137 0018 0D67     		se_cmpl %r7,%r6
+ 138 001a 7A11000E 		e_bgt %cr0,.L8
+ 139              	.LVL10:
+ 140              		.loc 1 121 0
+ 141 001e 7CE33A14 		add %r7,%r3,%r7
+ 142              	.LVL11:
+ 143 0022 54E90000 		e_stw %r7,.LANCHOR0@l(%r9)
+ 144              		.loc 1 122 0
+ 145 0026 0004     		se_blr
+ 146              	.LVL12:
+ 147              	.L8:
+ 148              		.loc 1 119 0
+ 149 0028 4803     		se_li %r3,0
+ 150              		.loc 1 123 0
+ 151 002a 0004     		se_blr
+ 152              		.cfi_endproc
+ 153              	.LFE17:
+ 154              		.size	chCoreAllocI, .-chCoreAllocI
+ 155              		.section	.text.chCoreStatus,"axv",@progbits
+ 156              		.align 1
+ 157              		.p2align 4,,15
+ 158              		.globl chCoreStatus
+ 159              		.type	chCoreStatus, @function
+ 160              	chCoreStatus:
+ 161              	.LFB18:
+ 162              		.loc 1 132 0
+ 163              		.cfi_startproc
+ 164              		.loc 1 134 0
+ 165 0000 7120E000 		e_lis %r9,.LANCHOR1@ha
+ 166 0004 50690000 		e_lwz %r3,.LANCHOR1@l(%r9)
+ 167 0008 7120E000 		e_lis %r9,.LANCHOR0@ha
+ 168 000c 51290000 		e_lwz %r9,.LANCHOR0@l(%r9)
+ 169              		.loc 1 135 0
+ 170 0010 7C691850 		subf %r3, %r9, %r3
+ 171 0014 0004     		se_blr
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 4
+
+
+ 172              		.cfi_endproc
+ 173              	.LFE18:
+ 174              		.size	chCoreStatus, .-chCoreStatus
+ 175              		.section	.bss.endmem,"aw",@nobits
+ 176              		.align 2
+ 177              		.set	.LANCHOR1,. + 0
+ 178              		.type	endmem, @object
+ 179              		.size	endmem, 4
+ 180              	endmem:
+ 181 0000 00000000 		.zero	4
+ 182              		.section	.bss.nextmem,"aw",@nobits
+ 183              		.align 2
+ 184              		.set	.LANCHOR0,. + 0
+ 185              		.type	nextmem, @object
+ 186              		.size	nextmem, 4
+ 187              	nextmem:
+ 188 0000 00000000 		.zero	4
+ 189              		.section	".text","axv"
+ 190              	.Letext0:
+ 191              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 192              		.file 4 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 193              		.file 5 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_1.0.0.2016
+ 194              		.section	.debug_info,"",@progbits
+ 195              	.Ldebug_info0:
+ 196 0000 0000021F 		.4byte	0x21f
+ 197 0004 0002     		.2byte	0x2
+ 198 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 199 000a 04       		.byte	0x4
+ 200 000b 01       		.uleb128 0x1
+ 201 000c 00000000 		.4byte	.LASF21
+ 202 0010 01       		.byte	0x1
+ 203 0011 00000000 		.4byte	.LASF22
+ 204 0015 00000000 		.4byte	.LASF23
+ 205 0019 00000000 		.4byte	.Ldebug_ranges0+0x30
+ 206 001d 00000000 		.4byte	0
+ 207 0021 00000000 		.4byte	0
+ 208 0025 00000000 		.4byte	.Ldebug_line0
+ 209 0029 02       		.uleb128 0x2
+ 210 002a 04       		.byte	0x4
+ 211 002b 05       		.byte	0x5
+ 212 002c 696E7400 		.string	"int"
+ 213 0030 03       		.uleb128 0x3
+ 214 0031 00000000 		.4byte	.LASF3
+ 215 0035 03       		.byte	0x3
+ 216 0036 D4       		.byte	0xd4
+ 217 0037 0000003B 		.4byte	0x3b
+ 218 003b 04       		.uleb128 0x4
+ 219 003c 04       		.byte	0x4
+ 220 003d 07       		.byte	0x7
+ 221 003e 00000000 		.4byte	.LASF0
+ 222 0042 04       		.uleb128 0x4
+ 223 0043 04       		.byte	0x4
+ 224 0044 05       		.byte	0x5
+ 225 0045 00000000 		.4byte	.LASF1
+ 226 0049 04       		.uleb128 0x4
+ 227 004a 01       		.byte	0x1
+ 228 004b 06       		.byte	0x6
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 5
+
+
+ 229 004c 00000000 		.4byte	.LASF2
+ 230 0050 03       		.uleb128 0x3
+ 231 0051 00000000 		.4byte	.LASF4
+ 232 0055 04       		.byte	0x4
+ 233 0056 1D       		.byte	0x1d
+ 234 0057 0000005B 		.4byte	0x5b
+ 235 005b 04       		.uleb128 0x4
+ 236 005c 01       		.byte	0x1
+ 237 005d 08       		.byte	0x8
+ 238 005e 00000000 		.4byte	.LASF5
+ 239 0062 04       		.uleb128 0x4
+ 240 0063 02       		.byte	0x2
+ 241 0064 05       		.byte	0x5
+ 242 0065 00000000 		.4byte	.LASF6
+ 243 0069 04       		.uleb128 0x4
+ 244 006a 02       		.byte	0x2
+ 245 006b 07       		.byte	0x7
+ 246 006c 00000000 		.4byte	.LASF7
+ 247 0070 04       		.uleb128 0x4
+ 248 0071 04       		.byte	0x4
+ 249 0072 07       		.byte	0x7
+ 250 0073 00000000 		.4byte	.LASF8
+ 251 0077 04       		.uleb128 0x4
+ 252 0078 08       		.byte	0x8
+ 253 0079 05       		.byte	0x5
+ 254 007a 00000000 		.4byte	.LASF9
+ 255 007e 04       		.uleb128 0x4
+ 256 007f 08       		.byte	0x8
+ 257 0080 07       		.byte	0x7
+ 258 0081 00000000 		.4byte	.LASF10
+ 259 0085 03       		.uleb128 0x3
+ 260 0086 00000000 		.4byte	.LASF11
+ 261 008a 05       		.byte	0x5
+ 262 008b 15       		.byte	0x15
+ 263 008c 00000050 		.4byte	0x50
+ 264 0090 04       		.uleb128 0x4
+ 265 0091 01       		.byte	0x1
+ 266 0092 02       		.byte	0x2
+ 267 0093 00000000 		.4byte	.LASF12
+ 268 0097 04       		.uleb128 0x4
+ 269 0098 04       		.byte	0x4
+ 270 0099 07       		.byte	0x7
+ 271 009a 00000000 		.4byte	.LASF13
+ 272 009e 05       		.uleb128 0x5
+ 273 009f 04       		.byte	0x4
+ 274 00a0 04       		.uleb128 0x4
+ 275 00a1 01       		.byte	0x1
+ 276 00a2 08       		.byte	0x8
+ 277 00a3 00000000 		.4byte	.LASF14
+ 278 00a7 06       		.uleb128 0x6
+ 279 00a8 04       		.byte	0x4
+ 280 00a9 00000085 		.4byte	0x85
+ 281 00ad 07       		.uleb128 0x7
+ 282 00ae 00000000 		.4byte	.LASF15
+ 283 00b2 02       		.byte	0x2
+ 284 00b3 94       		.byte	0x94
+ 285 00b4 01       		.byte	0x1
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 6
+
+
+ 286 00b5 03       		.byte	0x3
+ 287 00b6 08       		.uleb128 0x8
+ 288 00b7 01       		.byte	0x1
+ 289 00b8 00000000 		.4byte	.LASF24
+ 290 00bc 01       		.byte	0x1
+ 291 00bd 70       		.byte	0x70
+ 292 00be 01       		.byte	0x1
+ 293 00bf 0000009E 		.4byte	0x9e
+ 294 00c3 01       		.byte	0x1
+ 295 00c4 000000DD 		.4byte	0xdd
+ 296 00c8 09       		.uleb128 0x9
+ 297 00c9 00000000 		.4byte	.LASF25
+ 298 00cd 01       		.byte	0x1
+ 299 00ce 70       		.byte	0x70
+ 300 00cf 00000030 		.4byte	0x30
+ 301 00d3 0A       		.uleb128 0xa
+ 302 00d4 7000     		.string	"p"
+ 303 00d6 01       		.byte	0x1
+ 304 00d7 71       		.byte	0x71
+ 305 00d8 0000009E 		.4byte	0x9e
+ 306 00dc 00       		.byte	0
+ 307 00dd 07       		.uleb128 0x7
+ 308 00de 00000000 		.4byte	.LASF16
+ 309 00e2 02       		.byte	0x2
+ 310 00e3 A0       		.byte	0xa0
+ 311 00e4 01       		.byte	0x1
+ 312 00e5 03       		.byte	0x3
+ 313 00e6 0B       		.uleb128 0xb
+ 314 00e7 01       		.byte	0x1
+ 315 00e8 00000000 		.4byte	.LASF26
+ 316 00ec 01       		.byte	0x1
+ 317 00ed 42       		.byte	0x42
+ 318 00ee 01       		.byte	0x1
+ 319 00ef 00000000 		.4byte	.LFB15
+ 320 00f3 00000000 		.4byte	.LFE15
+ 321 00f7 02       		.byte	0x2
+ 322 00f8 71       		.byte	0x71
+ 323 00f9 00       		.sleb128 0
+ 324 00fa 01       		.byte	0x1
+ 325 00fb 0000011A 		.4byte	0x11a
+ 326 00ff 0C       		.uleb128 0xc
+ 327 0100 00000000 		.4byte	.LASF17
+ 328 0104 01       		.byte	0x1
+ 329 0105 44       		.byte	0x44
+ 330 0106 0000011A 		.4byte	0x11a
+ 331 010a 01       		.byte	0x1
+ 332 010b 01       		.byte	0x1
+ 333 010c 0C       		.uleb128 0xc
+ 334 010d 00000000 		.4byte	.LASF18
+ 335 0111 01       		.byte	0x1
+ 336 0112 45       		.byte	0x45
+ 337 0113 0000011A 		.4byte	0x11a
+ 338 0117 01       		.byte	0x1
+ 339 0118 01       		.byte	0x1
+ 340 0119 00       		.byte	0
+ 341 011a 0D       		.uleb128 0xd
+ 342 011b 00000085 		.4byte	0x85
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 7
+
+
+ 343 011f 00000125 		.4byte	0x125
+ 344 0123 0E       		.uleb128 0xe
+ 345 0124 00       		.byte	0
+ 346 0125 0F       		.uleb128 0xf
+ 347 0126 01       		.byte	0x1
+ 348 0127 00000000 		.4byte	.LASF27
+ 349 012b 01       		.byte	0x1
+ 350 012c 5B       		.byte	0x5b
+ 351 012d 01       		.byte	0x1
+ 352 012e 0000009E 		.4byte	0x9e
+ 353 0132 00000000 		.4byte	.LFB16
+ 354 0136 00000000 		.4byte	.LFE16
+ 355 013a 02       		.byte	0x2
+ 356 013b 71       		.byte	0x71
+ 357 013c 00       		.sleb128 0
+ 358 013d 01       		.byte	0x1
+ 359 013e 000001A5 		.4byte	0x1a5
+ 360 0142 10       		.uleb128 0x10
+ 361 0143 00000000 		.4byte	.LASF25
+ 362 0147 01       		.byte	0x1
+ 363 0148 5B       		.byte	0x5b
+ 364 0149 00000030 		.4byte	0x30
+ 365 014d 00000000 		.4byte	.LLST0
+ 366 0151 0A       		.uleb128 0xa
+ 367 0152 7000     		.string	"p"
+ 368 0154 01       		.byte	0x1
+ 369 0155 5C       		.byte	0x5c
+ 370 0156 0000009E 		.4byte	0x9e
+ 371 015a 11       		.uleb128 0x11
+ 372 015b 000000AD 		.4byte	0xad
+ 373 015f 00000000 		.4byte	.LBB8
+ 374 0163 00000000 		.4byte	.LBE8
+ 375 0167 01       		.byte	0x1
+ 376 0168 5E       		.byte	0x5e
+ 377 0169 12       		.uleb128 0x12
+ 378 016a 000000B6 		.4byte	0xb6
+ 379 016e 00000000 		.4byte	.LBB10
+ 380 0172 00000000 		.4byte	.Ldebug_ranges0+0
+ 381 0176 01       		.byte	0x1
+ 382 0177 5F       		.byte	0x5f
+ 383 0178 00000195 		.4byte	0x195
+ 384 017c 13       		.uleb128 0x13
+ 385 017d 000000C8 		.4byte	0xc8
+ 386 0181 00000000 		.4byte	.LLST1
+ 387 0185 14       		.uleb128 0x14
+ 388 0186 00000000 		.4byte	.Ldebug_ranges0+0
+ 389 018a 15       		.uleb128 0x15
+ 390 018b 000000D3 		.4byte	0xd3
+ 391 018f 00000000 		.4byte	.LLST2
+ 392 0193 00       		.byte	0
+ 393 0194 00       		.byte	0
+ 394 0195 16       		.uleb128 0x16
+ 395 0196 000000DD 		.4byte	0xdd
+ 396 019a 00000000 		.4byte	.LBB13
+ 397 019e 00000000 		.4byte	.Ldebug_ranges0+0x18
+ 398 01a2 01       		.byte	0x1
+ 399 01a3 60       		.byte	0x60
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 8
+
+
+ 400 01a4 00       		.byte	0
+ 401 01a5 17       		.uleb128 0x17
+ 402 01a6 000000B6 		.4byte	0xb6
+ 403 01aa 00000000 		.4byte	.LFB17
+ 404 01ae 00000000 		.4byte	.LFE17
+ 405 01b2 02       		.byte	0x2
+ 406 01b3 71       		.byte	0x71
+ 407 01b4 00       		.sleb128 0
+ 408 01b5 01       		.byte	0x1
+ 409 01b6 000001CD 		.4byte	0x1cd
+ 410 01ba 13       		.uleb128 0x13
+ 411 01bb 000000C8 		.4byte	0xc8
+ 412 01bf 00000000 		.4byte	.LLST3
+ 413 01c3 15       		.uleb128 0x15
+ 414 01c4 000000D3 		.4byte	0xd3
+ 415 01c8 00000000 		.4byte	.LLST4
+ 416 01cc 00       		.byte	0
+ 417 01cd 18       		.uleb128 0x18
+ 418 01ce 01       		.byte	0x1
+ 419 01cf 00000000 		.4byte	.LASF28
+ 420 01d3 01       		.byte	0x1
+ 421 01d4 84       		.byte	0x84
+ 422 01d5 01       		.byte	0x1
+ 423 01d6 00000030 		.4byte	0x30
+ 424 01da 00000000 		.4byte	.LFB18
+ 425 01de 00000000 		.4byte	.LFE18
+ 426 01e2 02       		.byte	0x2
+ 427 01e3 71       		.byte	0x71
+ 428 01e4 00       		.sleb128 0
+ 429 01e5 01       		.byte	0x1
+ 430 01e6 19       		.uleb128 0x19
+ 431 01e7 00000000 		.4byte	.LASF19
+ 432 01eb 01       		.byte	0x1
+ 433 01ec 3A       		.byte	0x3a
+ 434 01ed 000000A7 		.4byte	0xa7
+ 435 01f1 05       		.byte	0x5
+ 436 01f2 03       		.byte	0x3
+ 437 01f3 00000000 		.4byte	nextmem
+ 438 01f7 19       		.uleb128 0x19
+ 439 01f8 00000000 		.4byte	.LASF20
+ 440 01fc 01       		.byte	0x1
+ 441 01fd 3B       		.byte	0x3b
+ 442 01fe 000000A7 		.4byte	0xa7
+ 443 0202 05       		.byte	0x5
+ 444 0203 03       		.byte	0x3
+ 445 0204 00000000 		.4byte	endmem
+ 446 0208 0C       		.uleb128 0xc
+ 447 0209 00000000 		.4byte	.LASF17
+ 448 020d 01       		.byte	0x1
+ 449 020e 44       		.byte	0x44
+ 450 020f 0000011A 		.4byte	0x11a
+ 451 0213 01       		.byte	0x1
+ 452 0214 01       		.byte	0x1
+ 453 0215 0C       		.uleb128 0xc
+ 454 0216 00000000 		.4byte	.LASF18
+ 455 021a 01       		.byte	0x1
+ 456 021b 45       		.byte	0x45
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 9
+
+
+ 457 021c 0000011A 		.4byte	0x11a
+ 458 0220 01       		.byte	0x1
+ 459 0221 01       		.byte	0x1
+ 460 0222 00       		.byte	0
+ 461              		.section	.debug_abbrev,"",@progbits
+ 462              	.Ldebug_abbrev0:
+ 463 0000 01       		.uleb128 0x1
+ 464 0001 11       		.uleb128 0x11
+ 465 0002 01       		.byte	0x1
+ 466 0003 25       		.uleb128 0x25
+ 467 0004 0E       		.uleb128 0xe
+ 468 0005 13       		.uleb128 0x13
+ 469 0006 0B       		.uleb128 0xb
+ 470 0007 03       		.uleb128 0x3
+ 471 0008 0E       		.uleb128 0xe
+ 472 0009 1B       		.uleb128 0x1b
+ 473 000a 0E       		.uleb128 0xe
+ 474 000b 55       		.uleb128 0x55
+ 475 000c 06       		.uleb128 0x6
+ 476 000d 11       		.uleb128 0x11
+ 477 000e 01       		.uleb128 0x1
+ 478 000f 52       		.uleb128 0x52
+ 479 0010 01       		.uleb128 0x1
+ 480 0011 10       		.uleb128 0x10
+ 481 0012 06       		.uleb128 0x6
+ 482 0013 00       		.byte	0
+ 483 0014 00       		.byte	0
+ 484 0015 02       		.uleb128 0x2
+ 485 0016 24       		.uleb128 0x24
+ 486 0017 00       		.byte	0
+ 487 0018 0B       		.uleb128 0xb
+ 488 0019 0B       		.uleb128 0xb
+ 489 001a 3E       		.uleb128 0x3e
+ 490 001b 0B       		.uleb128 0xb
+ 491 001c 03       		.uleb128 0x3
+ 492 001d 08       		.uleb128 0x8
+ 493 001e 00       		.byte	0
+ 494 001f 00       		.byte	0
+ 495 0020 03       		.uleb128 0x3
+ 496 0021 16       		.uleb128 0x16
+ 497 0022 00       		.byte	0
+ 498 0023 03       		.uleb128 0x3
+ 499 0024 0E       		.uleb128 0xe
+ 500 0025 3A       		.uleb128 0x3a
+ 501 0026 0B       		.uleb128 0xb
+ 502 0027 3B       		.uleb128 0x3b
+ 503 0028 0B       		.uleb128 0xb
+ 504 0029 49       		.uleb128 0x49
+ 505 002a 13       		.uleb128 0x13
+ 506 002b 00       		.byte	0
+ 507 002c 00       		.byte	0
+ 508 002d 04       		.uleb128 0x4
+ 509 002e 24       		.uleb128 0x24
+ 510 002f 00       		.byte	0
+ 511 0030 0B       		.uleb128 0xb
+ 512 0031 0B       		.uleb128 0xb
+ 513 0032 3E       		.uleb128 0x3e
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 10
+
+
+ 514 0033 0B       		.uleb128 0xb
+ 515 0034 03       		.uleb128 0x3
+ 516 0035 0E       		.uleb128 0xe
+ 517 0036 00       		.byte	0
+ 518 0037 00       		.byte	0
+ 519 0038 05       		.uleb128 0x5
+ 520 0039 0F       		.uleb128 0xf
+ 521 003a 00       		.byte	0
+ 522 003b 0B       		.uleb128 0xb
+ 523 003c 0B       		.uleb128 0xb
+ 524 003d 00       		.byte	0
+ 525 003e 00       		.byte	0
+ 526 003f 06       		.uleb128 0x6
+ 527 0040 0F       		.uleb128 0xf
+ 528 0041 00       		.byte	0
+ 529 0042 0B       		.uleb128 0xb
+ 530 0043 0B       		.uleb128 0xb
+ 531 0044 49       		.uleb128 0x49
+ 532 0045 13       		.uleb128 0x13
+ 533 0046 00       		.byte	0
+ 534 0047 00       		.byte	0
+ 535 0048 07       		.uleb128 0x7
+ 536 0049 2E       		.uleb128 0x2e
+ 537 004a 00       		.byte	0
+ 538 004b 03       		.uleb128 0x3
+ 539 004c 0E       		.uleb128 0xe
+ 540 004d 3A       		.uleb128 0x3a
+ 541 004e 0B       		.uleb128 0xb
+ 542 004f 3B       		.uleb128 0x3b
+ 543 0050 0B       		.uleb128 0xb
+ 544 0051 27       		.uleb128 0x27
+ 545 0052 0C       		.uleb128 0xc
+ 546 0053 20       		.uleb128 0x20
+ 547 0054 0B       		.uleb128 0xb
+ 548 0055 00       		.byte	0
+ 549 0056 00       		.byte	0
+ 550 0057 08       		.uleb128 0x8
+ 551 0058 2E       		.uleb128 0x2e
+ 552 0059 01       		.byte	0x1
+ 553 005a 3F       		.uleb128 0x3f
+ 554 005b 0C       		.uleb128 0xc
+ 555 005c 03       		.uleb128 0x3
+ 556 005d 0E       		.uleb128 0xe
+ 557 005e 3A       		.uleb128 0x3a
+ 558 005f 0B       		.uleb128 0xb
+ 559 0060 3B       		.uleb128 0x3b
+ 560 0061 0B       		.uleb128 0xb
+ 561 0062 27       		.uleb128 0x27
+ 562 0063 0C       		.uleb128 0xc
+ 563 0064 49       		.uleb128 0x49
+ 564 0065 13       		.uleb128 0x13
+ 565 0066 20       		.uleb128 0x20
+ 566 0067 0B       		.uleb128 0xb
+ 567 0068 01       		.uleb128 0x1
+ 568 0069 13       		.uleb128 0x13
+ 569 006a 00       		.byte	0
+ 570 006b 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 11
+
+
+ 571 006c 09       		.uleb128 0x9
+ 572 006d 05       		.uleb128 0x5
+ 573 006e 00       		.byte	0
+ 574 006f 03       		.uleb128 0x3
+ 575 0070 0E       		.uleb128 0xe
+ 576 0071 3A       		.uleb128 0x3a
+ 577 0072 0B       		.uleb128 0xb
+ 578 0073 3B       		.uleb128 0x3b
+ 579 0074 0B       		.uleb128 0xb
+ 580 0075 49       		.uleb128 0x49
+ 581 0076 13       		.uleb128 0x13
+ 582 0077 00       		.byte	0
+ 583 0078 00       		.byte	0
+ 584 0079 0A       		.uleb128 0xa
+ 585 007a 34       		.uleb128 0x34
+ 586 007b 00       		.byte	0
+ 587 007c 03       		.uleb128 0x3
+ 588 007d 08       		.uleb128 0x8
+ 589 007e 3A       		.uleb128 0x3a
+ 590 007f 0B       		.uleb128 0xb
+ 591 0080 3B       		.uleb128 0x3b
+ 592 0081 0B       		.uleb128 0xb
+ 593 0082 49       		.uleb128 0x49
+ 594 0083 13       		.uleb128 0x13
+ 595 0084 00       		.byte	0
+ 596 0085 00       		.byte	0
+ 597 0086 0B       		.uleb128 0xb
+ 598 0087 2E       		.uleb128 0x2e
+ 599 0088 01       		.byte	0x1
+ 600 0089 3F       		.uleb128 0x3f
+ 601 008a 0C       		.uleb128 0xc
+ 602 008b 03       		.uleb128 0x3
+ 603 008c 0E       		.uleb128 0xe
+ 604 008d 3A       		.uleb128 0x3a
+ 605 008e 0B       		.uleb128 0xb
+ 606 008f 3B       		.uleb128 0x3b
+ 607 0090 0B       		.uleb128 0xb
+ 608 0091 27       		.uleb128 0x27
+ 609 0092 0C       		.uleb128 0xc
+ 610 0093 11       		.uleb128 0x11
+ 611 0094 01       		.uleb128 0x1
+ 612 0095 12       		.uleb128 0x12
+ 613 0096 01       		.uleb128 0x1
+ 614 0097 40       		.uleb128 0x40
+ 615 0098 0A       		.uleb128 0xa
+ 616 0099 9742     		.uleb128 0x2117
+ 617 009b 0C       		.uleb128 0xc
+ 618 009c 01       		.uleb128 0x1
+ 619 009d 13       		.uleb128 0x13
+ 620 009e 00       		.byte	0
+ 621 009f 00       		.byte	0
+ 622 00a0 0C       		.uleb128 0xc
+ 623 00a1 34       		.uleb128 0x34
+ 624 00a2 00       		.byte	0
+ 625 00a3 03       		.uleb128 0x3
+ 626 00a4 0E       		.uleb128 0xe
+ 627 00a5 3A       		.uleb128 0x3a
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 12
+
+
+ 628 00a6 0B       		.uleb128 0xb
+ 629 00a7 3B       		.uleb128 0x3b
+ 630 00a8 0B       		.uleb128 0xb
+ 631 00a9 49       		.uleb128 0x49
+ 632 00aa 13       		.uleb128 0x13
+ 633 00ab 3F       		.uleb128 0x3f
+ 634 00ac 0C       		.uleb128 0xc
+ 635 00ad 3C       		.uleb128 0x3c
+ 636 00ae 0C       		.uleb128 0xc
+ 637 00af 00       		.byte	0
+ 638 00b0 00       		.byte	0
+ 639 00b1 0D       		.uleb128 0xd
+ 640 00b2 01       		.uleb128 0x1
+ 641 00b3 01       		.byte	0x1
+ 642 00b4 49       		.uleb128 0x49
+ 643 00b5 13       		.uleb128 0x13
+ 644 00b6 01       		.uleb128 0x1
+ 645 00b7 13       		.uleb128 0x13
+ 646 00b8 00       		.byte	0
+ 647 00b9 00       		.byte	0
+ 648 00ba 0E       		.uleb128 0xe
+ 649 00bb 21       		.uleb128 0x21
+ 650 00bc 00       		.byte	0
+ 651 00bd 00       		.byte	0
+ 652 00be 00       		.byte	0
+ 653 00bf 0F       		.uleb128 0xf
+ 654 00c0 2E       		.uleb128 0x2e
+ 655 00c1 01       		.byte	0x1
+ 656 00c2 3F       		.uleb128 0x3f
+ 657 00c3 0C       		.uleb128 0xc
+ 658 00c4 03       		.uleb128 0x3
+ 659 00c5 0E       		.uleb128 0xe
+ 660 00c6 3A       		.uleb128 0x3a
+ 661 00c7 0B       		.uleb128 0xb
+ 662 00c8 3B       		.uleb128 0x3b
+ 663 00c9 0B       		.uleb128 0xb
+ 664 00ca 27       		.uleb128 0x27
+ 665 00cb 0C       		.uleb128 0xc
+ 666 00cc 49       		.uleb128 0x49
+ 667 00cd 13       		.uleb128 0x13
+ 668 00ce 11       		.uleb128 0x11
+ 669 00cf 01       		.uleb128 0x1
+ 670 00d0 12       		.uleb128 0x12
+ 671 00d1 01       		.uleb128 0x1
+ 672 00d2 40       		.uleb128 0x40
+ 673 00d3 0A       		.uleb128 0xa
+ 674 00d4 9742     		.uleb128 0x2117
+ 675 00d6 0C       		.uleb128 0xc
+ 676 00d7 01       		.uleb128 0x1
+ 677 00d8 13       		.uleb128 0x13
+ 678 00d9 00       		.byte	0
+ 679 00da 00       		.byte	0
+ 680 00db 10       		.uleb128 0x10
+ 681 00dc 05       		.uleb128 0x5
+ 682 00dd 00       		.byte	0
+ 683 00de 03       		.uleb128 0x3
+ 684 00df 0E       		.uleb128 0xe
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 13
+
+
+ 685 00e0 3A       		.uleb128 0x3a
+ 686 00e1 0B       		.uleb128 0xb
+ 687 00e2 3B       		.uleb128 0x3b
+ 688 00e3 0B       		.uleb128 0xb
+ 689 00e4 49       		.uleb128 0x49
+ 690 00e5 13       		.uleb128 0x13
+ 691 00e6 02       		.uleb128 0x2
+ 692 00e7 06       		.uleb128 0x6
+ 693 00e8 00       		.byte	0
+ 694 00e9 00       		.byte	0
+ 695 00ea 11       		.uleb128 0x11
+ 696 00eb 1D       		.uleb128 0x1d
+ 697 00ec 00       		.byte	0
+ 698 00ed 31       		.uleb128 0x31
+ 699 00ee 13       		.uleb128 0x13
+ 700 00ef 11       		.uleb128 0x11
+ 701 00f0 01       		.uleb128 0x1
+ 702 00f1 12       		.uleb128 0x12
+ 703 00f2 01       		.uleb128 0x1
+ 704 00f3 58       		.uleb128 0x58
+ 705 00f4 0B       		.uleb128 0xb
+ 706 00f5 59       		.uleb128 0x59
+ 707 00f6 0B       		.uleb128 0xb
+ 708 00f7 00       		.byte	0
+ 709 00f8 00       		.byte	0
+ 710 00f9 12       		.uleb128 0x12
+ 711 00fa 1D       		.uleb128 0x1d
+ 712 00fb 01       		.byte	0x1
+ 713 00fc 31       		.uleb128 0x31
+ 714 00fd 13       		.uleb128 0x13
+ 715 00fe 52       		.uleb128 0x52
+ 716 00ff 01       		.uleb128 0x1
+ 717 0100 55       		.uleb128 0x55
+ 718 0101 06       		.uleb128 0x6
+ 719 0102 58       		.uleb128 0x58
+ 720 0103 0B       		.uleb128 0xb
+ 721 0104 59       		.uleb128 0x59
+ 722 0105 0B       		.uleb128 0xb
+ 723 0106 01       		.uleb128 0x1
+ 724 0107 13       		.uleb128 0x13
+ 725 0108 00       		.byte	0
+ 726 0109 00       		.byte	0
+ 727 010a 13       		.uleb128 0x13
+ 728 010b 05       		.uleb128 0x5
+ 729 010c 00       		.byte	0
+ 730 010d 31       		.uleb128 0x31
+ 731 010e 13       		.uleb128 0x13
+ 732 010f 02       		.uleb128 0x2
+ 733 0110 06       		.uleb128 0x6
+ 734 0111 00       		.byte	0
+ 735 0112 00       		.byte	0
+ 736 0113 14       		.uleb128 0x14
+ 737 0114 0B       		.uleb128 0xb
+ 738 0115 01       		.byte	0x1
+ 739 0116 55       		.uleb128 0x55
+ 740 0117 06       		.uleb128 0x6
+ 741 0118 00       		.byte	0
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 14
+
+
+ 742 0119 00       		.byte	0
+ 743 011a 15       		.uleb128 0x15
+ 744 011b 34       		.uleb128 0x34
+ 745 011c 00       		.byte	0
+ 746 011d 31       		.uleb128 0x31
+ 747 011e 13       		.uleb128 0x13
+ 748 011f 02       		.uleb128 0x2
+ 749 0120 06       		.uleb128 0x6
+ 750 0121 00       		.byte	0
+ 751 0122 00       		.byte	0
+ 752 0123 16       		.uleb128 0x16
+ 753 0124 1D       		.uleb128 0x1d
+ 754 0125 00       		.byte	0
+ 755 0126 31       		.uleb128 0x31
+ 756 0127 13       		.uleb128 0x13
+ 757 0128 52       		.uleb128 0x52
+ 758 0129 01       		.uleb128 0x1
+ 759 012a 55       		.uleb128 0x55
+ 760 012b 06       		.uleb128 0x6
+ 761 012c 58       		.uleb128 0x58
+ 762 012d 0B       		.uleb128 0xb
+ 763 012e 59       		.uleb128 0x59
+ 764 012f 0B       		.uleb128 0xb
+ 765 0130 00       		.byte	0
+ 766 0131 00       		.byte	0
+ 767 0132 17       		.uleb128 0x17
+ 768 0133 2E       		.uleb128 0x2e
+ 769 0134 01       		.byte	0x1
+ 770 0135 31       		.uleb128 0x31
+ 771 0136 13       		.uleb128 0x13
+ 772 0137 11       		.uleb128 0x11
+ 773 0138 01       		.uleb128 0x1
+ 774 0139 12       		.uleb128 0x12
+ 775 013a 01       		.uleb128 0x1
+ 776 013b 40       		.uleb128 0x40
+ 777 013c 0A       		.uleb128 0xa
+ 778 013d 9742     		.uleb128 0x2117
+ 779 013f 0C       		.uleb128 0xc
+ 780 0140 01       		.uleb128 0x1
+ 781 0141 13       		.uleb128 0x13
+ 782 0142 00       		.byte	0
+ 783 0143 00       		.byte	0
+ 784 0144 18       		.uleb128 0x18
+ 785 0145 2E       		.uleb128 0x2e
+ 786 0146 00       		.byte	0
+ 787 0147 3F       		.uleb128 0x3f
+ 788 0148 0C       		.uleb128 0xc
+ 789 0149 03       		.uleb128 0x3
+ 790 014a 0E       		.uleb128 0xe
+ 791 014b 3A       		.uleb128 0x3a
+ 792 014c 0B       		.uleb128 0xb
+ 793 014d 3B       		.uleb128 0x3b
+ 794 014e 0B       		.uleb128 0xb
+ 795 014f 27       		.uleb128 0x27
+ 796 0150 0C       		.uleb128 0xc
+ 797 0151 49       		.uleb128 0x49
+ 798 0152 13       		.uleb128 0x13
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 15
+
+
+ 799 0153 11       		.uleb128 0x11
+ 800 0154 01       		.uleb128 0x1
+ 801 0155 12       		.uleb128 0x12
+ 802 0156 01       		.uleb128 0x1
+ 803 0157 40       		.uleb128 0x40
+ 804 0158 0A       		.uleb128 0xa
+ 805 0159 9742     		.uleb128 0x2117
+ 806 015b 0C       		.uleb128 0xc
+ 807 015c 00       		.byte	0
+ 808 015d 00       		.byte	0
+ 809 015e 19       		.uleb128 0x19
+ 810 015f 34       		.uleb128 0x34
+ 811 0160 00       		.byte	0
+ 812 0161 03       		.uleb128 0x3
+ 813 0162 0E       		.uleb128 0xe
+ 814 0163 3A       		.uleb128 0x3a
+ 815 0164 0B       		.uleb128 0xb
+ 816 0165 3B       		.uleb128 0x3b
+ 817 0166 0B       		.uleb128 0xb
+ 818 0167 49       		.uleb128 0x49
+ 819 0168 13       		.uleb128 0x13
+ 820 0169 02       		.uleb128 0x2
+ 821 016a 0A       		.uleb128 0xa
+ 822 016b 00       		.byte	0
+ 823 016c 00       		.byte	0
+ 824 016d 00       		.byte	0
+ 825              		.section	.debug_loc,"",@progbits
+ 826              	.Ldebug_loc0:
+ 827              	.LLST0:
+ 828 0000 00000000 		.4byte	.LVL0
+ 829 0004 00000000 		.4byte	.LVL2
+ 830 0008 0001     		.2byte	0x1
+ 831 000a 53       		.byte	0x53
+ 832 000b 00000000 		.4byte	.LVL2
+ 833 000f 00000000 		.4byte	.LVL3
+ 834 0013 0003     		.2byte	0x3
+ 835 0015 77       		.byte	0x77
+ 836 0016 79       		.sleb128 -7
+ 837 0017 9F       		.byte	0x9f
+ 838 0018 00000000 		.4byte	.LVL3
+ 839 001c 00000000 		.4byte	.LFE16
+ 840 0020 0004     		.2byte	0x4
+ 841 0022 F3       		.byte	0xf3
+ 842 0023 01       		.uleb128 0x1
+ 843 0024 53       		.byte	0x53
+ 844 0025 9F       		.byte	0x9f
+ 845 0026 00000000 		.4byte	0
+ 846 002a 00000000 		.4byte	0
+ 847              	.LLST1:
+ 848 002e 00000000 		.4byte	.LVL1
+ 849 0032 00000000 		.4byte	.LVL2
+ 850 0036 0001     		.2byte	0x1
+ 851 0038 53       		.byte	0x53
+ 852 0039 00000000 		.4byte	.LVL2
+ 853 003d 00000000 		.4byte	.LVL3
+ 854 0041 0003     		.2byte	0x3
+ 855 0043 77       		.byte	0x77
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 16
+
+
+ 856 0044 79       		.sleb128 -7
+ 857 0045 9F       		.byte	0x9f
+ 858 0046 00000000 		.4byte	.LVL3
+ 859 004a 00000000 		.4byte	.LVL5
+ 860 004e 0001     		.2byte	0x1
+ 861 0050 57       		.byte	0x57
+ 862 0051 00000000 		.4byte	.LVL5
+ 863 0055 00000000 		.4byte	.LVL6
+ 864 0059 0009     		.2byte	0x9
+ 865 005b F3       		.byte	0xf3
+ 866 005c 01       		.uleb128 0x1
+ 867 005d 53       		.byte	0x53
+ 868 005e 23       		.byte	0x23
+ 869 005f 07       		.uleb128 0x7
+ 870 0060 09       		.byte	0x9
+ 871 0061 F8       		.byte	0xf8
+ 872 0062 1A       		.byte	0x1a
+ 873 0063 9F       		.byte	0x9f
+ 874 0064 00000000 		.4byte	.LVL6
+ 875 0068 00000000 		.4byte	.LFE16
+ 876 006c 0001     		.2byte	0x1
+ 877 006e 57       		.byte	0x57
+ 878 006f 00000000 		.4byte	0
+ 879 0073 00000000 		.4byte	0
+ 880              	.LLST2:
+ 881 0077 00000000 		.4byte	.LVL4
+ 882 007b 00000000 		.4byte	.LVL6
+ 883 007f 0001     		.2byte	0x1
+ 884 0081 53       		.byte	0x53
+ 885 0082 00000000 		.4byte	0
+ 886 0086 00000000 		.4byte	0
+ 887              	.LLST3:
+ 888 008a 00000000 		.4byte	.LVL7
+ 889 008e 00000000 		.4byte	.LVL8
+ 890 0092 0001     		.2byte	0x1
+ 891 0094 53       		.byte	0x53
+ 892 0095 00000000 		.4byte	.LVL8
+ 893 0099 00000000 		.4byte	.LVL9
+ 894 009d 0003     		.2byte	0x3
+ 895 009f 73       		.byte	0x73
+ 896 00a0 79       		.sleb128 -7
+ 897 00a1 9F       		.byte	0x9f
+ 898 00a2 00000000 		.4byte	.LVL9
+ 899 00a6 00000000 		.4byte	.LVL11
+ 900 00aa 0001     		.2byte	0x1
+ 901 00ac 57       		.byte	0x57
+ 902 00ad 00000000 		.4byte	.LVL11
+ 903 00b1 00000000 		.4byte	.LVL12
+ 904 00b5 0009     		.2byte	0x9
+ 905 00b7 F3       		.byte	0xf3
+ 906 00b8 01       		.uleb128 0x1
+ 907 00b9 53       		.byte	0x53
+ 908 00ba 23       		.byte	0x23
+ 909 00bb 07       		.uleb128 0x7
+ 910 00bc 09       		.byte	0x9
+ 911 00bd F8       		.byte	0xf8
+ 912 00be 1A       		.byte	0x1a
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 17
+
+
+ 913 00bf 9F       		.byte	0x9f
+ 914 00c0 00000000 		.4byte	.LVL12
+ 915 00c4 00000000 		.4byte	.LFE17
+ 916 00c8 0001     		.2byte	0x1
+ 917 00ca 57       		.byte	0x57
+ 918 00cb 00000000 		.4byte	0
+ 919 00cf 00000000 		.4byte	0
+ 920              	.LLST4:
+ 921 00d3 00000000 		.4byte	.LVL10
+ 922 00d7 00000000 		.4byte	.LVL12
+ 923 00db 0001     		.2byte	0x1
+ 924 00dd 53       		.byte	0x53
+ 925 00de 00000000 		.4byte	0
+ 926 00e2 00000000 		.4byte	0
+ 927              		.section	.debug_aranges,"",@progbits
+ 928 0000 00000034 		.4byte	0x34
+ 929 0004 0002     		.2byte	0x2
+ 930 0006 00000000 		.4byte	.Ldebug_info0
+ 931 000a 04       		.byte	0x4
+ 932 000b 00       		.byte	0
+ 933 000c 0000     		.2byte	0
+ 934 000e 0000     		.2byte	0
+ 935 0010 00000000 		.4byte	.LFB15
+ 936 0014 0000002E 		.4byte	.LFE15-.LFB15
+ 937 0018 00000000 		.4byte	.LFB16
+ 938 001c 0000003A 		.4byte	.LFE16-.LFB16
+ 939 0020 00000000 		.4byte	.LFB17
+ 940 0024 0000002C 		.4byte	.LFE17-.LFB17
+ 941 0028 00000000 		.4byte	.LFB18
+ 942 002c 00000016 		.4byte	.LFE18-.LFB18
+ 943 0030 00000000 		.4byte	0
+ 944 0034 00000000 		.4byte	0
+ 945              		.section	.debug_ranges,"",@progbits
+ 946              	.Ldebug_ranges0:
+ 947 0000 00000000 		.4byte	.LBB10
+ 948 0004 00000000 		.4byte	.LBE10
+ 949 0008 00000000 		.4byte	.LBB16
+ 950 000c 00000000 		.4byte	.LBE16
+ 951 0010 00000000 		.4byte	0
+ 952 0014 00000000 		.4byte	0
+ 953 0018 00000000 		.4byte	.LBB13
+ 954 001c 00000000 		.4byte	.LBE13
+ 955 0020 00000000 		.4byte	.LBB17
+ 956 0024 00000000 		.4byte	.LBE17
+ 957 0028 00000000 		.4byte	0
+ 958 002c 00000000 		.4byte	0
+ 959 0030 00000000 		.4byte	.LFB15
+ 960 0034 00000000 		.4byte	.LFE15
+ 961 0038 00000000 		.4byte	.LFB16
+ 962 003c 00000000 		.4byte	.LFE16
+ 963 0040 00000000 		.4byte	.LFB17
+ 964 0044 00000000 		.4byte	.LFE17
+ 965 0048 00000000 		.4byte	.LFB18
+ 966 004c 00000000 		.4byte	.LFE18
+ 967 0050 00000000 		.4byte	0
+ 968 0054 00000000 		.4byte	0
+ 969              		.section	.debug_line,"",@progbits
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 18
+
+
+ 970              	.Ldebug_line0:
+ 971 0000 000002E7 		.section	.debug_str,"MS",@progbits,1
+ 971      00020000 
+ 971      02670201 
+ 971      FB0E0D00 
+ 971      01010101 
+ 972              	.LASF20:
+ 973 0000 656E646D 		.string	"endmem"
+ 973      656D00
+ 974              	.LASF4:
+ 975 0007 5F5F7569 		.string	"__uint8_t"
+ 975      6E74385F 
+ 975      7400
+ 976              	.LASF3:
+ 977 0011 73697A65 		.string	"size_t"
+ 977      5F7400
+ 978              	.LASF19:
+ 979 0018 6E657874 		.string	"nextmem"
+ 979      6D656D00 
+ 980              	.LASF24:
+ 981 0020 6368436F 		.string	"chCoreAllocI"
+ 981      7265416C 
+ 981      6C6F6349 
+ 981      00
+ 982              	.LASF25:
+ 983 002d 73697A65 		.string	"size"
+ 983      00
+ 984              	.LASF8:
+ 985 0032 6C6F6E67 		.string	"long unsigned int"
+ 985      20756E73 
+ 985      69676E65 
+ 985      6420696E 
+ 985      7400
+ 986              	.LASF28:
+ 987 0044 6368436F 		.string	"chCoreStatus"
+ 987      72655374 
+ 987      61747573 
+ 987      00
+ 988              	.LASF7:
+ 989 0051 73686F72 		.string	"short unsigned int"
+ 989      7420756E 
+ 989      7369676E 
+ 989      65642069 
+ 989      6E7400
+ 990              	.LASF22:
+ 991 0064 2E2F636F 		.string	"./components/chibios_rt_portable_kernel_component/lib/src/chmemcore.c"
+ 991      6D706F6E 
+ 991      656E7473 
+ 991      2F636869 
+ 991      62696F73 
+ 992              	.LASF5:
+ 993 00aa 756E7369 		.string	"unsigned char"
+ 993      676E6564 
+ 993      20636861 
+ 993      7200
+ 994              	.LASF26:
+ 995 00b8 5F636F72 		.string	"_core_init"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 19
+
+
+ 995      655F696E 
+ 995      697400
+ 996              	.LASF0:
+ 997 00c3 756E7369 		.string	"unsigned int"
+ 997      676E6564 
+ 997      20696E74 
+ 997      00
+ 998              	.LASF10:
+ 999 00d0 6C6F6E67 		.string	"long long unsigned int"
+ 999      206C6F6E 
+ 999      6720756E 
+ 999      7369676E 
+ 999      65642069 
+ 1000              	.LASF11:
+ 1001 00e7 75696E74 		.string	"uint8_t"
+ 1001      385F7400 
+ 1002              	.LASF17:
+ 1003 00ef 5F5F6865 		.string	"__heap_base__"
+ 1003      61705F62 
+ 1003      6173655F 
+ 1003      5F00
+ 1004              	.LASF23:
+ 1005 00fd 433A5C53 		.string	"C:\\SPC5Studio\\workspace\\ChibiOS-RT SPC560Dxx CARSIMU STANDALONE DEMO FW"
+ 1005      50433553 
+ 1005      74756469 
+ 1005      6F5C776F 
+ 1005      726B7370 
+ 1006              	.LASF13:
+ 1007 0145 73697A65 		.string	"sizetype"
+ 1007      74797065 
+ 1007      00
+ 1008              	.LASF9:
+ 1009 014e 6C6F6E67 		.string	"long long int"
+ 1009      206C6F6E 
+ 1009      6720696E 
+ 1009      7400
+ 1010              	.LASF14:
+ 1011 015c 63686172 		.string	"char"
+ 1011      00
+ 1012              	.LASF18:
+ 1013 0161 5F5F6865 		.string	"__heap_end__"
+ 1013      61705F65 
+ 1013      6E645F5F 
+ 1013      00
+ 1014              	.LASF15:
+ 1015 016e 63685379 		.string	"chSysLock"
+ 1015      734C6F63 
+ 1015      6B00
+ 1016              	.LASF6:
+ 1017 0178 73686F72 		.string	"short int"
+ 1017      7420696E 
+ 1017      7400
+ 1018              	.LASF27:
+ 1019 0182 6368436F 		.string	"chCoreAlloc"
+ 1019      7265416C 
+ 1019      6C6F6300 
+ 1020              	.LASF1:
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 20
+
+
+ 1021 018e 6C6F6E67 		.string	"long int"
+ 1021      20696E74 
+ 1021      00
+ 1022              	.LASF21:
+ 1023 0197 47       		.ascii	"G"
+ 1024 0198 4E552043 		.string	"NU C 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle) -mcall-sysv
+ 1024      20342E39 
+ 1024      2E322032 
+ 1024      30313431 
+ 1024      30333020 
+ 1025              	.LASF2:
+ 1026 0299 7369676E 		.string	"signed char"
+ 1026      65642063 
+ 1026      68617200 
+ 1027              	.LASF12:
+ 1028 02a5 5F426F6F 		.string	"_Bool"
+ 1028      6C00
+ 1029              	.LASF16:
+ 1030 02ab 63685379 		.string	"chSysUnlock"
+ 1030      73556E6C 
+ 1030      6F636B00 
+ 1031              		.ident	"GCC: (GNU) 4.9.2 20141030 (Wed Jun 8 08:37:55 MSK 2016         build.sh rev= ELvle)"
+GAS LISTING C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 chmemcore.c
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:10     .text._core_init:00000000 _core_init
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:43     .text.chCoreAlloc:00000000 chCoreAlloc
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:119    .text.chCoreAllocI:00000000 chCoreAllocI
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:160    .text.chCoreStatus:00000000 chCoreStatus
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:180    .bss.endmem:00000000 endmem
+C:\Users\UTILIS~1\AppData\Local\Temp\ccSaYKUL.s:187    .bss.nextmem:00000000 nextmem
+
+UNDEFINED SYMBOLS
+__heap_base__
+__heap_end__

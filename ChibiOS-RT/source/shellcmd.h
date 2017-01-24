@@ -46,3 +46,6 @@ void turn(BaseSequentialStream *chp, int argc, char *argv[]);
 void blink(BaseSequentialStream *chp, int argc, char *argv[]);
 void startdemo(BaseSequentialStream *chp, int argc, char *argv[]);
 void stopdemo(BaseSequentialStream *chp, int argc, char *argv[]);
+void light(BaseSequentialStream *chp, int argc, char *argv[]);
+void rpm(BaseSequentialStream *chp, int argc, char *argv[]);
+void mode(BaseSequentialStream *chp, int argc, char *argv[]);

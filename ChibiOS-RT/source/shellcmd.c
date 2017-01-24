@@ -26,6 +26,7 @@
 
 int iCarBlinker = 0;
 bool_t bFullDemoRunning = false;
+extern int carMode;
 
 /*
  * LEDs blinker thread, times are in milliseconds.
@@ -263,7 +264,7 @@ void speed(BaseSequentialStream *chp, int argc, char *argv[]) {
   /*
    * Display the Speed Counter.
    */
-  chprintf(chp, "Speed %d\r\n", counter);
+  chprintf(chp, "%d\r\n", counter);
 }
 
 /*
@@ -374,6 +375,115 @@ void stopdemo(BaseSequentialStream *chp, int argc, char *argv[]) {
 }
 
 /*
+ * switch on/off a specified led
+ */
+void light(BaseSequentialStream *chp, int argc, char *argv[]) {
+
+	printf("%d", argc);
+
+	int light = 0;
+	int on_off = 0;
+
+	(void)argv;
+	if (argc != 2) {
+		chprintf(chp, "Usage: light <LIGHT (1/2/3/4)> <ON_OFF (0/1/2/3)>\r\n");
+		return;
+	}
+
+	light = atoi(argv[0]);
+	on_off = atoi(argv[1]);
+
+	if(light != 3 && (on_off == 2 || on_off == 3))
+	{
+		chprintf(chp, "Please between 0 and 1 in this case\r\n");
+	}
+	else
+	{
+		switchlightcmd(light, on_off);
+	}
+
+	if (light > 4 || light == 0) {
+		chprintf(chp, "Please between 1 and 4\r\n");
+	}
+	else {
+		switchlightcmd(light, on_off);
+	}
+}
+
+/*
+ * Display Calculated RPM
+ */
+void rpm(BaseSequentialStream *chp, int argc, char *argv[]) {
+	int tps = 0;
+	int cnt1 = 0;
+	int dif = 0;
+	int rpm = 0;
+
+  (void)argv;
+  if (argc > 0) {
+    chprintf(chp, "Usage: rpm\r\n");
+    return;
+  }
+
+  /*
+   * Display Calculated RPM.
+   */
+
+  tps = 500;
+  cnt1 = counter;
+  osalThreadSleepMilliseconds(500);
+  dif = counter - cnt1;
+
+  rpm = ((dif * 60000) / tps);
+  chprintf(chp, "%d\r\n", rpm);
+
+}
+
+/*
+ * Display Car Mode
+ */
+void mode(BaseSequentialStream *chp, int argc, char *argv[]) {
+
+  (void)argv;
+  if (argc > 0) {
+    chprintf(chp, "Usage: mode\r\n");
+    return;
+  }
+
+  /*
+   * Display Car Mode
+   */
+
+  /* 1 : NUIT (EIRQ4)
+  * 2 : PLUIE (EIRQ1)
+  * 4 : URGENCE (EIRQ2)
+  * 8 : SENS (EIRQ3)
+  */
+
+  char str[80];
+  strcpy(str, "");
+
+  if(carMode==1||carMode==3||carMode==5||carMode==7||carMode==9||carMode==11||carMode==13||carMode==15){
+	  strcat(str, "Nuit ");
+  }
+
+  if(carMode==2||carMode==3||carMode==6||carMode==7||carMode==10||carMode==11||carMode==14||carMode==15){
+  	  strcat(str, "Pluie ");
+    }
+
+  if(carMode==4||carMode==5||carMode==6||carMode==7||carMode==12||carMode==13||carMode==14||carMode==15){
+  	  strcat(str, "Urgence ");
+    }
+
+  if(carMode>=8 && carMode<=15){
+  	  strcat(str, "Sens ");
+    }
+
+  chprintf(chp, "%s\r\n", str);
+
+}
+
+/*
  * Array of defined commands, you can add more.
  */
 const ShellCommand shell_commands[] = { {"mem", cmd_mem}, {"threads",
@@ -383,4 +493,6 @@ const ShellCommand shell_commands[] = { {"mem", cmd_mem}, {"threads",
                                            "drive", drive},
                                        {"turn", turn}, {"blink", blink}, {
                                            "startdemo", startdemo},
-                                       {"stopdemo", stopdemo}, {NULL, NULL}};
+                                       {"stopdemo", stopdemo},
+									   {"light", light}, {"rpm",rpm},
+									   {"mode",mode},{NULL, NULL}};

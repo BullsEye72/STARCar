@@ -4,7 +4,7 @@ Travail des Codeurs Quantiques sur le sujet STMicroelectronics des 24h du code L
 ## Matériel/Logiciels
 
 - Carte STMictroelectronics SPC560D-Dis
-- SPCStudio 5
+- SPCStudio 5 (Avec [ChibiOS](http://chibios.org/dokuwiki/doku.php) comme [RTOS](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'exploitation_temps_r%C3%A9el))
 - Eclipse pour Java+Swing
 - Voiture fabriquée par les organisateurs (ST) comportant des LED et des moteurs, ainsi qu'un module arduino bluetooth
 

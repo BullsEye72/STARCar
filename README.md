@@ -1,4 +1,4 @@
-# STARCar
+# STARCar (ST Amazing Race Car)
 Travail des Codeurs Quantiques sur le sujet STMicroelectronics des 24h du code Le Mans le 21-22/01/2017
 
 ## Matériel/Logiciels

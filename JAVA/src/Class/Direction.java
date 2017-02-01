@@ -48,7 +48,7 @@ public class Direction {
 
     public void SetDirectionToURL(String lat, String Long, String Speed) throws MalformedURLException, IOException, InterruptedException {
         String URLchaine;
-        URLchaine = "http://traccar.spc5studio.com:5055/?id=000003&lat=" + lat + "&lon=" + Long + "&speed=" + Speed + "";
+        URLchaine = "http://bullseye.freeboxos.fr:5055/?id=000003&lat=" + lat + "&lon=" + Long + "&speed=" + Speed + "";
 
         URL monURL = new URL(URLchaine);
         Thread.sleep(Vitesse / Integer.parseInt(Speed));

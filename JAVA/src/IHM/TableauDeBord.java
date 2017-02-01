@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  */
 public class TableauDeBord extends javax.swing.JFrame {
 
+    
     public static LiaisonJavaC liaison = new LiaisonJavaC();
         
     private boolean etatPhareAvant = false;

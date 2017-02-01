@@ -25,7 +25,7 @@ public class SerialCommunicationCodeurQuantic implements SerialPortEventListener
         String osname = System.getProperty("os.name", "").toLowerCase();
         if (osname.startsWith("windows")) {
             // windows
-            defaultPort = "COM5"; // TODO
+            defaultPort = "COM4"; // TODO
         } else {
             System.out.println("Sorry, your operating system is not supported");
             return;
@@ -82,7 +82,7 @@ public class SerialCommunicationCodeurQuantic implements SerialPortEventListener
         }
     }
 
-    public void initSerialPort() {
+    public void initSerialPort() throws Exception {
         // initalize serial port
         try {
             serialPort = (SerialPort) portId.open("SimpleReadApp", 2000);
@@ -109,6 +109,10 @@ public class SerialCommunicationCodeurQuantic implements SerialPortEventListener
                     SerialPort.PARITY_NONE);
         } catch (UnsupportedCommOperationException e) {
         }
+        
+        TwoWaySerialComm read = new TwoWaySerialComm();
+        
+        read.connect(serialPort);
     }
 
     public void serialEvent(SerialPortEvent event) {

@@ -6,6 +6,8 @@
 package Class;
 
 import IHM.TableauDeBord;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,15 +34,19 @@ public class LiaisonJavaC {
 
     public LiaisonJavaC() {
 
-        vitesseTab[0] = 2000;
-        vitesseTab[1] = 0;
-        vitesseTab[2] = 2500;
-        vitesseTab[3] = 5000;
-        vitesseTab[4] = 7500;
-        vitesseTab[5] = 10000;
-
-        commande.initSerialPort();
-        commande.initwritetoport();
+            vitesseTab[0] = 2000;
+            vitesseTab[1] = 0;
+            vitesseTab[2] = 2500;
+            vitesseTab[3] = 5000;
+            vitesseTab[4] = 7500;
+            vitesseTab[5] = 10000;
+        
+        try {    
+            commande.initSerialPort();
+            commande.initwritetoport();
+        } catch (Exception ex) {
+            Logger.getLogger(LiaisonJavaC.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void Acceler(int vitesse) {
@@ -76,7 +82,7 @@ public class LiaisonJavaC {
                 break;
         }
 
-        TableauDeBord.barRPM.setValue(vitesseMoteur);
+        //TableauDeBord.barRPM.setValue(vitesseMoteur);
         TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");
         commande.writetoport(messageToutDroit + vitesseMoteur + "\r");
     }
@@ -166,9 +172,9 @@ public class LiaisonJavaC {
         }
     }
 
-    public void majCompteTour() {
+    public static void majCompteTour(int vitesseMoteur) {
 
-        //TableauDeBord.barRPM.setValue(vitesseMoteur);
+        TableauDeBord.barRPM.setValue(vitesseMoteur);
     }
 
     public void ClignotantGauche(boolean etat) {

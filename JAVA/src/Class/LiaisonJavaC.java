@@ -82,8 +82,8 @@ public class LiaisonJavaC {
                 break;
         }
 
-        //TableauDeBord.barRPM.setValue(vitesseMoteur);
-        TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");
+        /*TableauDeBord.barRPM.setValue(vitesseMoteur);
+        TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");*/
         commande.writetoport(messageToutDroit + vitesseMoteur + "\r");
     }
 
@@ -120,8 +120,8 @@ public class LiaisonJavaC {
                 break;
         }
 
-        TableauDeBord.barRPM.setValue(vitesseMoteur);
-        TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");
+        /*TableauDeBord.barRPM.setValue(vitesseMoteur);
+        TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");*/
         commande.writetoport(messageRalentir + vitesseMoteur + "\r");
     }
 
@@ -173,8 +173,10 @@ public class LiaisonJavaC {
     }
 
     public static void majCompteTour(int vitesseMoteur) {
-       
+        
         TableauDeBord.barRPM.setValue(vitesseMoteur);
+        TableauDeBord.barRPM.updateUI();
+        
         TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");
     }
 

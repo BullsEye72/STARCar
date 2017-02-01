@@ -51,12 +51,9 @@ public class TwoWaySerialComm {
             try {
                 while ((len = this.in.read(buffer)) > -1) {
                                         
-                    OutputStream out = serial.getOutputStream();                                                            
-                    out.write("rpm".getBytes());
-                    out.close();                    
+                    LiaisonJavaC.commande.writetoport("rpm\r");
                     
-                    String response = new String(buffer, 0, len);
-                   
+                    String response = new String(buffer, 0, len);                   
                     
                     if(!response.equals("")){
                         LiaisonJavaC.majCompteTour(Integer.parseInt(response));

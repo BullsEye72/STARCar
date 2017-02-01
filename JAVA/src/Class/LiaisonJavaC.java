@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class LiaisonJavaC {
 
-    SerialCommunicationCodeurQuantic commande = new SerialCommunicationCodeurQuantic();
+    static SerialCommunicationCodeurQuantic commande = new SerialCommunicationCodeurQuantic();
 
     String messagePharesAvantON = "light 1 1\r"
             , messagePharesAvantOFF = "light 1 0\r"
@@ -173,8 +173,9 @@ public class LiaisonJavaC {
     }
 
     public static void majCompteTour(int vitesseMoteur) {
-
+       
         TableauDeBord.barRPM.setValue(vitesseMoteur);
+        TableauDeBord.fieldRPM.setText(vitesseMoteur + " RPM");
     }
 
     public void ClignotantGauche(boolean etat) {
